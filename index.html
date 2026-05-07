@@ -7,20 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
         .logic-border { border: 1px solid #f3f4f6; }
         .audit-panel { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 48px; }
         
-        /* Ondo-Style Slider */
+        /* Premium Train Theme Inputs */
         input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 4px; border-radius: 2px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #000000; cursor: pointer; border: 3px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-
-        /* Train Styling */
-        .train-engine { width: 120px; height: 80px; background: #000; border-radius: 8px 32px 8px 8px; position: relative; flex-shrink: 0; }
-        .train-car { min-width: 160px; height: 80px; background: #fff; border: 2px solid #000; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; justify-content: center; position: relative; transition: all 0.3s ease; }
-        .train-connector { width: 20px; height: 4px; background: #000; align-self: center; flex-shrink: 0; }
-        .car-wheel { width: 16px; height: 16px; background: #000; border-radius: 50%; position: absolute; bottom: -8px; }
-        .wheel-left { left: 20px; } .wheel-right { right: 20px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #000000; cursor: pointer; border: 3px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
     </style>
 </head>
 <body class="antialiased">
@@ -28,7 +22,7 @@
     <div class="bg-black text-white py-3 px-6 text-center sticky top-0 z-[100] flex justify-center items-center gap-6">
         <span class="text-[10px] font-bold tracking-[0.3em] uppercase">Logic-Locked PaaS v2.1</span>
         <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-        <span class="text-[10px] font-bold tracking-[0.3em] uppercase underline decoration-blue-500 underline-offset-4">Institutional Release: 06.19.2026</span>
+        <span class="text-[10px] font-bold tracking-[0.3em] uppercase underline decoration-blue-500 underline-offset-4">Institutional Release: June 19, 2026</span>
     </div>
 
     <nav class="flex justify-between items-center px-12 py-12 max-w-7xl mx-auto">
@@ -42,106 +36,177 @@
         <div class="flex gap-4">
             <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="px-6 py-2.5 rounded-full border border-gray-100 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-50 transition-all flex items-center gap-2">
                 <span>View Whitepaper v2.1</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-8 py-16">
+    <main class="max-w-7xl mx-auto px-8 py-16">
         
-        <div class="mb-24">
-            <h1 class="text-6xl md:text-8xl font-medium tracking-tighter text-gray-900 mb-10 leading-[1.05]">
-                Automated Revenue <br>& Compliance
-            </h1>
-            <p class="text-xl text-gray-500 max-w-3xl leading-relaxed">
-                The IAW Logic-Locked Rail is a <span class="text-black font-semibold underline decoration-blue-500 underline-offset-8">Global Multi-Chain Mainframe</span>. Build your distribution rail with mathematical state-locking to eliminate counterparty risk.
-            </p>
-        </div>
-
-        <section class="audit-panel p-8 md:p-16 mb-32">
-            <div class="mb-16 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="w-full md:w-1/2">
-                    <h3 class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.4em] mb-4">Step 1: Set Monthly Liquidity</h3>
-                    <input type="range" id="volRange" min="100000" max="1000000000" step="100000" value="1000000" oninput="updateAudit()">
-                    <div class="flex justify-between mt-4 text-[9px] font-bold text-gray-300 uppercase">
-                        <span>$100K</span>
-                        <span>$500M</span>
-                        <span>$1B</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-gray-900 mb-8 leading-[1.05]" id="main-title">
+                        Automated Revenue <br>& Compliance
+                    </h1>
+                    <p class="text-lg text-gray-500 leading-relaxed mb-8">
+                        The IAW Logic-Locked Rail is a <span class="text-black font-semibold underline decoration-blue-500 underline-offset-8">Global Multi-Chain Mainframe</span> engineered for high-velocity institutional tokenization. Utilizing Xahau Hooks to enforce treasury routing at the ledger level with zero counterparty risk.
+                    </p>
+                    <div class="border-l-4 border-black pl-6 mb-8">
+                        <h3 class="text-md font-bold text-black uppercase tracking-wider">Multi-Chain Capable. Zero Counterparty Risk.</h3>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">The protocol scales across diverse ledgers in real-time via Xahau Hooks.</p>
                     </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Volume</p>
-                    <span id="volDisplay" class="text-5xl font-light tracking-tighter text-black">$1,000,000</span>
-                </div>
             </div>
 
-            <div class="mb-16">
-                <h3 class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.4em] mb-6">Step 2: Attach Institutional Cars</h3>
-                <div class="flex flex-wrap gap-4">
-                    <button onclick="toggleCar('tax')" id="btn-tax" class="px-6 py-3 border border-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Add Tax Car</button>
-                    <button onclick="toggleCar('affiliate')" id="btn-affiliate" class="px-6 py-3 border border-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Add Affiliate Car</button>
-                    <button onclick="toggleCar('insurance')" id="btn-insurance" class="px-6 py-3 border border-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Add Insurance Car</button>
-                    <button onclick="toggleCar('401k')" id="btn-401k" class="px-6 py-3 border border-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Add 401k Car</button>
-                    <button onclick="toggleCar('savings')" id="btn-savings" class="px-6 py-3 border border-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Add Savings Car</button>
-                </div>
-            </div>
-
-            <div class="overflow-x-auto pb-12 mb-16 no-scrollbar">
-                <div class="flex items-start" id="trainRail">
-                    <div class="flex flex-col items-center">
-                        <div class="train-engine">
-                            <div class="absolute top-2 left-4 w-6 h-10 bg-blue-500 rounded-sm"></div>
-                            <div class="car-wheel wheel-left"></div>
-                            <div class="car-wheel wheel-right"></div>
+            <div class="lg:col-span-7">
+                <section class="audit-panel p-8 md:p-12">
+                    <h2 class="text-lg font-bold text-black uppercase tracking-widest mb-6">Build Your Capital Rail (Interactive Demo)</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Monthly Liquidity Volume (USD)</label>
+                            <input type="text" id="volInput" value="$1,000,000" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-lg font-semibold focus:outline-none focus:border-black" oninput="handleTextInput(this.value)">
                         </div>
-                        <p class="text-[9px] font-bold mt-4 uppercase tracking-tighter">IAW Engine (0.33%)</p>
+                        <div class="flex flex-col justify-end">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Granular Visual Scale</label>
+                            <input type="range" id="volRange" min="1000" max="100000000" step="1000" value="1000000" class="w-full" oninput="handleSliderInput(this.value)">
+                            <div class="flex justify-between mt-2 text-[8px] font-bold text-gray-400 uppercase tracking-widest">
+                                <span>$1K</span>
+                                <span>$50M</span>
+                                <span>$100M</span>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="mb-10">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">Build Your Protocol Rail</label>
+                        <div class="relative inline-block w-full">
+                            <select id="addCarSelect" onchange="addCar(this.value)" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-wider appearance-none cursor-pointer focus:outline-none focus:border-black">
+                                <option value="" disabled selected>+ Add Custom Routing Car (Click to Attach)</option>
+                                <option value="tax">Tax Car (0% - 10%)</option>
+                                <option value="affiliate">Affiliate Car (0% - 5%)</option>
+                                <option value="insurance">Insurance Car (0% - 50%)</option>
+                                <option value="four01k">401k Allocator Car (0% - 100%)</option>
+                                <option value="savings">Personal Savings Car (0% - 20%)</option>
+                            </select>
+                        </div>
                     </div>
+
+                    <div class="overflow-x-auto pb-8 mb-8">
+                        <div class="flex items-end gap-2 min-w-[650px] py-4" id="train-track">
+                            
+                            <div class="flex-shrink-0 flex flex-col items-center">
+                                <svg class="w-24 h-16 text-black" viewBox="0 0 100 60" fill="currentColor">
+                                    <rect x="10" y="25" width="25" height="25" rx="2" />
+                                    <rect x="35" y="15" width="30" height="35" rx="2" />
+                                    <rect x="40" y="20" width="12" height="12" rx="1" fill="white" />
+                                    <rect x="65" y="25" width="25" height="25" rx="2" />
+                                    <rect x="75" y="10" width="8" height="15" rx="1" />
+                                    <ellipse cx="79" cy="8" rx="6" ry="3" />
+                                    <circle cx="22" cy="54" r="6" stroke="white" stroke-width="2" />
+                                    <circle cx="50" cy="54" r="6" stroke="white" stroke-width="2" />
+                                    <circle cx="78" cy="54" r="6" stroke="white" stroke-width="2" />
+                                    <line x1="22" y1="54" x2="78" y2="54" stroke="currentColor" stroke-width="2" />
+                                </svg>
+                                <span class="text-[8px] font-bold uppercase tracking-widest mt-2 bg-black text-white px-2 py-0.5 rounded">ENGINE</span>
+                            </div>
+
+                            <div class="w-4 h-0.5 bg-gray-400 mb-8 flex-shrink-0"></div>
+
+                            <div class="relative bg-white border-2 border-black rounded-3xl p-5 w-44 flex-shrink-0 flex flex-col justify-between h-40 shadow-md">
+                                <div>
+                                    <p class="text-[9px] font-black tracking-wider uppercase text-black">IAW Core Rail</p>
+                                    <p class="text-[8px] text-gray-400 uppercase mt-1">Locks 1/1 RLUSD Pairing</p>
+                                </div>
+                                <div class="my-2">
+                                    <span class="text-xl font-bold text-black">0.33% Fixed</span>
+                                    <p class="text-[8px] text-gray-500 uppercase tracking-tighter">Treasury state-locking</p>
+                                </div>
+                                <div class="absolute -bottom-3 left-0 right-0 flex justify-around px-4">
+                                    <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
+                                    <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
+                                </div>
+                            </div>
+
+                            <div id="dynamic-cars" class="flex items-end gap-2"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-6 bg-white border border-gray-100 rounded-3xl flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Traditional Banking</span>
+                                    <span class="text-[8px] px-2 py-0.5 bg-red-50 text-red-500 rounded font-bold">1.8% Avg Friction</span>
+                                </div>
+                                <p id="legacyCost" class="text-2xl font-bold text-gray-300">$18,000.00</p>
+                            </div>
+                            <ul class="space-y-1.5 pt-4 border-t border-gray-50 text-[8px] uppercase tracking-widest font-bold text-gray-400 mt-4">
+                                <li>72-120 Hours Settlement</li>
+                                <li>Custodial Dependency</li>
+                                <li>Fragmented Compliance</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-6 bg-white border-2 border-black rounded-3xl shadow-xl flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-bold text-black uppercase tracking-widest">IAW Logic-Locked Rail</span>
+                                    <span id="totalFeeLabel" class="text-[8px] px-2 py-0.5 bg-blue-50 text-blue-600 rounded font-bold">0.33% Base Fee</span>
+                                </div>
+                                <p id="iawCost" class="text-2xl font-bold text-black">$3,300.00</p>
+                            </div>
+                            <ul class="space-y-1.5 pt-4 border-t border-gray-100 text-[8px] uppercase tracking-widest font-bold text-gray-500 mt-4">
+                                <li>~5 Seconds Finality</li>
+                                <li>Non-Custodial</li>
+                                <li>Programmatic Hook-Based Compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-8 border-t border-gray-100">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Operational Optimization Profit</p>
+                        <h4 id="savings" class="text-4xl md:text-5xl font-black text-black tracking-tighter">+$14,700.00</h4>
+                    </div>
+
+                </section>
             </div>
+        </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="p-8 rounded-[32px] bg-white border border-gray-100">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Legacy Banking (1.8% Avg)</span>
-                    </div>
-                    <p id="legacyCost" class="text-4xl font-medium text-gray-300">$18,000.00</p>
-                    <p class="text-[9px] mt-4 text-gray-400 uppercase">Fixed profit loss to intermediaries</p>
+        <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-12 text-center">Institutional Regulatory Proof</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+            <a href="https://www.vara.ae/" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center flex flex-col justify-between">
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">UAE: VARA</p>
+                    <p class="text-[11px] text-gray-400 font-bold group-hover:text-black transition-colors uppercase">DIFC COMPLIANT</p>
                 </div>
-                <div class="p-8 rounded-[32px] bg-white border-2 border-black shadow-xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-bold text-black uppercase tracking-widest">IAW Build Distribution</span>
-                        <span id="totalFeeLabel" class="text-[10px] px-2 py-1 bg-blue-50 text-blue-600 rounded-full font-bold">0.33%</span>
-                    </div>
-                    <p id="iawCost" class="text-4xl font-medium text-black">$3,300.00</p>
-                    <p class="text-[9px] mt-4 text-gray-500 uppercase">Automated routing to designated vaults</p>
+                <span class="text-[9px] text-blue-500 font-bold mt-4 inline-flex items-center justify-center gap-1">Verify Link <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></span>
+            </a>
+            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center flex flex-col justify-between">
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">EU: MICA</p>
+                    <p class="text-[11px] text-gray-400 font-bold group-hover:text-black transition-colors uppercase">REGULATION (EU) 2023/1114</p>
                 </div>
-            </div>
-
-            <div class="text-center pt-8 border-t border-gray-100">
-                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">Monthly Revenue Efficiency</p>
-                <h4 id="savings" class="text-6xl font-bold text-black tracking-tighter">+$14,700.00</h4>
-            </div>
-        </section>
-
-        <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-12 text-center">Global Regulatory Proof</h4>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-48">
-            <a href="https://www.vara.ae/" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">UAE: VARA</p>
-                <p class="text-[12px] text-gray-400 font-bold group-hover:text-black uppercase">DIFC Compliant</p>
+                <span class="text-[9px] text-blue-500 font-bold mt-4 inline-flex items-center justify-center gap-1">Verify Link <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></span>
             </a>
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">EU: MICA</p>
-                <p class="text-[12px] text-gray-400 font-bold group-hover:text-black uppercase">Regulation (EU) 2023/1114</p>
+            <a href="https://www.congress.gov/bill/118th-congress/house-bill/4766" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center flex flex-col justify-between">
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">USA: CLARITY ACT</p>
+                    <p class="text-[11px] text-gray-400 font-bold group-hover:text-black transition-colors uppercase">STABLECOIN PARITY</p>
+                </div>
+                <span class="text-[9px] text-blue-500 font-bold mt-4 inline-flex items-center justify-center gap-1">Verify Link <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></span>
             </a>
-            <a href="https://www.congress.gov/bill/118th-congress/house-bill/4766" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">USA: CLARITY ACT</p>
-                <p class="text-[12px] text-gray-400 font-bold group-hover:text-black uppercase">Stablecoin Parity</p>
-            </a>
-            <a href="https://www.bis.org/publ/othp73.pdf" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">GLOBAL: BIS</p>
-                <p class="text-[12px] text-gray-400 font-bold group-hover:text-black uppercase uppercase">Agorá Settlement</p>
+            <a href="https://www.bis.org/publ/othp73.pdf" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center flex flex-col justify-between">
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">GLOBAL: BIS</p>
+                    <p class="text-[11px] text-gray-400 font-bold group-hover:text-black transition-colors uppercase">Agorá Settlement</p>
+                </div>
+                <span class="text-[9px] text-blue-500 font-bold mt-4 inline-flex items-center justify-center gap-1">Verify Link <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></span>
             </a>
         </div>
+
     </main>
 
     <footer class="bg-gray-50 px-12 py-24 border-t border-gray-100">
@@ -150,106 +215,197 @@
                 <div class="max-w-md">
                     <p class="text-[12px] font-bold uppercase tracking-[0.4em] mb-6">Innovative App World LLC</p>
                     <p class="text-[11px] text-gray-500 leading-relaxed uppercase tracking-widest">
-                        A multi-chain Protocol-as-a-Service (PaaS) mainframe engineered for the metaverse. <br><br>
+                        A multi-chain Protocol-as-a-Service (PaaS) mainframe engineered for high-velocity institutional tokenization. <br><br>
                         <span class="text-black font-bold">Institutional Release Target: June 19, 2026.</span>
                     </p>
                 </div>
-                <div class="grid grid-cols-2 gap-12 text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-12">
                     <div>
-                        <p class="mb-6 text-black">Compliance</p>
-                        <ul class="space-y-3">
-                            <li><a href="https://www.vara.ae/" target="_blank" class="hover:text-black">UAE: VARA</a></li>
-                            <li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" target="_blank" class="hover:text-black">EU: MiCA</a></li>
-                            <li><a href="https://www.congress.gov/bill/118th-congress/house-bill/4766" target="_blank" class="hover:text-black">USA: Clarity Act</a></li>
+                        <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Compliance References</p>
+                        <ul class="text-[10px] space-y-3 text-gray-400 uppercase tracking-widest">
+                            <li><a href="https://www.vara.ae/" target="_blank" class="hover:text-black transition-colors block">UAE: VARA</a></li>
+                            <li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" target="_blank" class="hover:text-black transition-colors block">EU: MiCA Regulation</a></li>
+                            <li><a href="https://www.congress.gov/bill/118th-congress/house-bill/4766" target="_blank" class="hover:text-black transition-colors block">USA: Clarity Act</a></li>
+                            <li><a href="https://www.bis.org/publ/othp73.pdf" target="_blank" class="hover:text-black transition-colors block">BIS Global Framework</a></li>
                         </ul>
                     </div>
                     <div>
-                        <p class="mb-6 text-black">Infrastructure</p>
-                        <ul class="space-y-3">
-                            <li><a href="https://xrptokenizer.com" target="_blank" class="hover:text-black">XRP Tokenizer</a></li>
-                            <li><a href="https://xahau.network" target="_blank" class="hover:text-black">Xahau Hooks</a></li>
+                        <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Infrastructure</p>
+                        <ul class="text-[10px] space-y-3 text-gray-400 uppercase tracking-widest">
+                            <li><a href="https://xrptokenizer.com" target="_blank" class="hover:text-black transition-colors block">XRP Tokenizer</a></li>
+                            <li><a href="https://xahau.network" target="_blank" class="hover:text-black transition-colors block">Xahau Hooks</a></li>
                         </ul>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Developer Identity</p>
+                        <p class="text-[11px] text-black font-bold mb-1">Derek Benjamin Little</p>
+                        <p class="text-[10px] text-gray-400 lowercase mb-1">derek@xrptokenizer.com</p>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Phone: 337-7853</p>
                     </div>
                 </div>
             </div>
             <div class="pt-12 border-t border-gray-200/50 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-[9px] uppercase tracking-[0.4em] text-gray-400">© 2026 Innovative App World LLC | Derek Benjamin Little</p>
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-300">Logic-Locked v3.5 | Institutional Mainframe</p>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-300">Target Institutional Release: June 19, 2026. SEC Compliance and Rule 17a-4 standards are integral. Links working.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        let activeCars = {};
-        const carConfigs = {
-            tax: { name: 'Tax', max: 10, default: 2 },
-            affiliate: { name: 'Affiliate', max: 5, default: 1 },
-            insurance: { name: 'Insurance', max: 50, default: 5 },
-            '401k': { name: '401k', max: 100, default: 10 },
-            savings: { name: 'Personal Savings', max: 100, default: 15 }
+        // Track states of active dynamic cars
+        const carsState = {
+            tax: { name: "Tax Car", min: 0, max: 10, val: 2, active: true, step: 0.1, label: "0% - 10%" },
+            affiliate: { name: "Affiliate Car", min: 0, max: 5, val: 1, active: true, step: 0.1, label: "0% - 5%" },
+            insurance: { name: "Insurance Car", min: 0, max: 50, val: 5, active: true, step: 0.5, label: "0% - 50%" },
+            four01k: { name: "401k Allocator", min: 0, max: 100, val: 10, active: false, step: 1, label: "0% - 100%" },
+            savings: { name: "Personal Savings", min: 0, max: 20, val: 5, active: false, step: 0.5, label: "0% - 20%" }
         };
 
-        function toggleCar(id) {
-            const rail = document.getElementById('trainRail');
-            const btn = document.getElementById(`btn-${id}`);
-            
-            if (activeCars[id]) {
-                delete activeCars[id];
-                document.getElementById(`car-wrap-${id}`).remove();
-                btn.classList.remove('bg-black', 'text-white');
-            } else {
-                activeCars[id] = carConfigs[id].default;
-                btn.classList.add('bg-black', 'text-white');
-                
-                const wrapper = document.createElement('div');
-                wrapper.id = `car-wrap-${id}`;
-                wrapper.className = 'flex items-center';
-                wrapper.innerHTML = `
-                    <div class="train-connector"></div>
-                    <div class="flex flex-col items-center">
-                        <div class="train-car">
-                            <span class="text-[8px] font-black uppercase mb-1">${carConfigs[id].name}</span>
-                            <input type="range" min="0" max="${carConfigs[id].max}" value="${carConfigs[id].default}" oninput="updateCarVal('${id}', this.value)">
-                            <span id="val-${id}" class="text-[9px] font-bold mt-1">${carConfigs[id].default}%</span>
-                            <div class="car-wheel wheel-left"></div>
-                            <div class="car-wheel wheel-right"></div>
+        let currentVolume = 1000000;
+
+        // Formats numbers as clean financial USD values
+        const formatCurrency = (val) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(val).replace('.00', '');
+        };
+
+        // Text input event handler
+        function handleTextInput(rawText) {
+            const numericValue = parseFloat(rawText.replace(/[^0-9.]/g, ''));
+            if (!isNaN(numericValue) && numericValue > 0) {
+                currentVolume = numericValue;
+                document.getElementById('volRange').value = Math.min(numericValue, 100000000);
+                updateCalculations();
+            }
+        }
+
+        // Slider input event handler
+        function handleSliderInput(val) {
+            currentVolume = parseFloat(val);
+            document.getElementById('volInput').value = formatCurrency(currentVolume);
+            updateCalculations();
+        }
+
+        // Add a car to the train structure
+        function addCar(carKey) {
+            if (carsState[carKey]) {
+                carsState[carKey].active = true;
+                // Reset select index
+                document.getElementById('addCarSelect').selectedIndex = 0;
+                renderDynamicCars();
+                updateCalculations();
+            }
+        }
+
+        // Remove a car from the train structure
+        function removeCar(carKey) {
+            if (carsState[carKey]) {
+                carsState[carKey].active = false;
+                renderDynamicCars();
+                updateCalculations();
+            }
+        }
+
+        // Render dynamic SVG train cars on the track
+        function renderDynamicCars() {
+            const container = document.getElementById('dynamic-cars');
+            container.innerHTML = '';
+
+            Object.keys(carsState).forEach(key => {
+                const car = carsState[key];
+                if (car.active) {
+                    // Create connecting coupler
+                    const coupler = document.createElement('div');
+                    coupler.className = "w-4 h-0.5 bg-gray-400 mb-8 flex-shrink-0";
+                    container.appendChild(coupler);
+
+                    // Build train car element
+                    const carCard = document.createElement('div');
+                    carCard.className = "relative bg-white border border-gray-200 rounded-3xl p-5 w-44 flex-shrink-0 flex flex-col justify-between h-40 shadow-sm";
+                    carCard.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[9px] font-bold text-black uppercase tracking-wider">${car.name}</p>
+                                <p class="text-[8px] text-gray-400 uppercase mt-0.5">${car.label}</p>
+                            </div>
+                            <button onclick="removeCar('${key}')" class="text-xs font-black text-gray-300 hover:text-black transition-colors">×</button>
                         </div>
-                    </div>
-                `;
-                rail.appendChild(wrapper);
-            }
-            updateAudit();
+                        <div class="my-1">
+                            <input type="range" min="${car.min}" max="${car.max}" step="${car.step}" value="${car.val}" 
+                                class="w-full cursor-pointer" oninput="updateCarValue('${key}', this.value)">
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-400">Rate</span>
+                                <p class="text-xs font-black text-black" id="rate-${key}">${car.val}%</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-400">Amount</span>
+                                <p class="text-xs font-black text-black" id="cost-${key}">$0.00</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-3 left-0 right-0 flex justify-around px-4">
+                            <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
+                            <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
+                        </div>
+                    `;
+                    container.appendChild(carCard);
+                }
+            });
         }
 
-        function updateCarVal(id, val) {
-            activeCars[id] = parseFloat(val);
-            document.getElementById(`val-${id}`).innerText = val + '%';
-            updateAudit();
+        // Live track value updates
+        function updateCarValue(carKey, newValue) {
+            carsState[carKey].val = parseFloat(newValue);
+            document.getElementById(`rate-${carKey}`).innerText = newValue + '%';
+            updateCalculations();
         }
 
-        function updateAudit() {
-            const vol = parseFloat(document.getElementById('volRange').value);
-            const baseRate = 0.0033;
-            let addedRates = 0;
-            
-            for (let key in activeCars) {
-                addedRates += (activeCars[key] / 100);
-            }
+        // Recalculate operational metrics instantly
+        function updateCalculations() {
+            // Traditional Banking at a static 1.8%
+            const legacyFrictionRate = 0.018;
+            const legacyTotalFriction = currentVolume * legacyFrictionRate;
 
-            const legacyCost = vol * 0.018;
-            const iawCost = vol * (baseRate + addedRates);
-            const efficiency = legacyCost - iawCost;
+            // Compute total customizable IAW protocol variables
+            let totalProtocolRate = 0.0033; // Fixed 0.33% base logic charge
+            let totalCustomAllocation = 0;
 
-            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            Object.keys(carsState).forEach(key => {
+                const car = carsState[key];
+                if (car.active) {
+                    const carCost = currentVolume * (car.val / 100);
+                    totalProtocolRate += (car.val / 100);
+                    totalCustomAllocation += carCost;
+                    
+                    // Keep card values updated dynamically if rendered
+                    const costEl = document.getElementById(`cost-${key}`);
+                    if (costEl) {
+                        costEl.innerText = formatCurrency(carCost);
+                    }
+                }
+            });
 
-            document.getElementById('volDisplay').innerText = formatter.format(vol).replace('.00', '');
-            document.getElementById('legacyCost').innerText = formatter.format(legacyCost);
-            document.getElementById('iawCost').innerText = formatter.format(iawCost);
-            document.getElementById('savings').innerText = (efficiency >= 0 ? '+' : '') + formatter.format(efficiency);
-            document.getElementById('totalFeeLabel').innerText = ((baseRate + addedRates) * 100).toFixed(2) + '%';
+            // Compare base friction fee only, since custom allocations remain internal to the treasury
+            const iawBaseFriction = currentVolume * 0.0033;
+            const netRecoveredSavings = legacyTotalFriction - iawBaseFriction;
+
+            // Write updates to DOM elements
+            document.getElementById('legacyCost').innerText = formatCurrency(legacyTotalFriction);
+            document.getElementById('iawCost').innerText = formatCurrency(iawBaseFriction + totalCustomAllocation);
+            document.getElementById('totalFeeLabel').innerText = `${(totalProtocolRate * 100).toFixed(2)}% Total Rail`;
+            document.getElementById('savings').innerText = '+' + formatCurrency(netRecoveredSavings);
         }
 
-        window.onload = updateAudit;
+        // Launch logic structures on page display
+        window.onload = () => {
+            renderDynamicCars();
+            updateCalculations();
+        };
     </script>
 </body>
 </html>
