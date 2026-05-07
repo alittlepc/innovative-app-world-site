@@ -3,116 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovative App World | Institutional Rail Architect</title>
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text y=%22.9em%22 font-size=%2260%22 x=%2250%25%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22>IAW</text></svg>">
-
+    <title>IAW | Institutional Logic-Locked Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; scroll-behavior: smooth; overflow-x: hidden; }
-        .glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
-        .gradient-text { background: linear-gradient(to r, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        input[type=range]::-webkit-slider-thumb { border: 2px solid #3b82f6; height: 20px; width: 20px; border-radius: 50%; background: #ffffff; cursor: pointer; -webkit-appearance: none; margin-top: -7px; }
-        .rail-car { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-        .feature-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
-        .template-btn:hover { background: rgba(59, 130, 246, 0.2); }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
+        .logic-border { border: 1px solid #e5e7eb; }
+        .institutional-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 4px; border-radius: 2px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; border: 2px solid #ffffff; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .car-node { transition: all 0.4s ease; }
     </style>
 </head>
-<body class="selection:bg-blue-500/30">
+<body class="antialiased">
 
-    <div class="bg-blue-600/10 border-b border-blue-500/20 py-2 text-center sticky top-0 z-[100] backdrop-blur-md px-4">
-        <p class="text-[9px] md:text-xs font-bold tracking-widest text-blue-400 uppercase">
-            Platform Preview: Stage 4 Testing | Institutional Launch Scheduled No Later Than 06-19-2026
-        </p>
+    <div class="bg-gray-50 border-b border-gray-200 py-3 px-8 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-[10px] font-bold text-white uppercase">IAW</div>
+            <span class="text-[11px] font-semibold tracking-tight text-gray-500 uppercase">Institutional PaaS v2.1 | Non-Custodial Utility</span>
+        </div>
+        <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-blue-600">
+            <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse"></span> Logic Locked</span>
+            <span class="text-gray-300">|</span>
+            <span class="text-gray-400">Launch: 06.19.2026</span>
+        </div>
     </div>
 
-    <nav class="flex justify-between items-center px-8 py-6 border-b border-white/5">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">IAW</div>
-            <span class="text-lg font-bold tracking-tight">Innovative App World</span>
-        </div>
-        <div class="hidden md:flex gap-4">
-            <button onclick="setTemplate('treasury')" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition">Treasury Mode</button>
-            <button onclick="setTemplate('realestate')" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition">TaaS Mode</button>
-            <button onclick="resetRail()" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition text-red-500">Reset Rail</button>
-        </div>
-    </nav>
-
-    <section id="architect" class="max-w-7xl mx-auto px-6 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 gradient-text">Architect Your Institutional Rail</h1>
-            <p class="text-gray-400 text-lg">Regulated 1:1 RLUSD infrastructure. Build custom rails for 24/7 liquidity and absolute finality.</p>
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <div class="mb-16">
+            <h1 class="text-5xl font-medium tracking-tight text-gray-900 mb-6">Automated Revenue & Compliance</h1>
+            <p class="text-xl text-gray-500 max-w-2xl leading-relaxed">
+                The IAW Logic-Locked Rail uses Xahau Hooks to enforce treasury routing at the ledger level. 
+                Experience 1:1 RLUSD parity with zero counterparty risk.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            <div class="lg:col-span-1 space-y-6">
-                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-2xl">
-                    <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Regulation Readiness</h4>
-                    <div class="h-2 w-full bg-gray-800 rounded-full mb-2 overflow-hidden">
-                        <div id="complianceBar" class="h-full bg-yellow-500 transition-all duration-500" style="width: 25%"></div>
+            <div class="lg:col-span-4 space-y-8">
+                <div class="p-6 bg-gray-50 rounded-xl logic-border">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Regulatory Alignment</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">US Clarity Act</span>
+                            <span class="text-green-600 font-bold uppercase text-[10px]">Active</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">EU MiCA Standards</span>
+                            <span class="text-green-600 font-bold uppercase text-[10px]">Synced</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">BIS Cross-Border</span>
+                            <span class="text-blue-600 font-bold uppercase text-[10px]">Optimized</span>
+                        </div>
                     </div>
-                    <p id="complianceStatus" class="text-[10px] font-bold text-yellow-500 uppercase">Baseline Asset Pairing Only</p>
                 </div>
 
                 <div class="space-y-4">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-blue-500">Feature Modules</h3>
-                    <button onclick="addFeature('KYC Automation', 0.05, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
-                        <p class="text-sm font-bold group-hover:text-blue-400">KYC/AML Automation</p>
-                        <p class="text-[10px] text-gray-500">+0.05% Fee | MiCA Ready</p>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-widest">Protocol Modules (PaaS)</h3>
+                    <button onclick="addModule('JIT Minting', 0.05)" class="w-full text-left p-4 rounded-lg logic-border bg-white hover:bg-gray-50 transition-all group">
+                        <p class="text-sm font-semibold">Just-In-Time Minting</p>
+                        <p class="text-[11px] text-gray-400">1:1 RLUSD State-Lock Verification</p>
                     </button>
-                    <button onclick="addFeature('Real-Time Audit', 0.04, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
-                        <p class="text-sm font-bold group-hover:text-blue-400">Real-Time Auditing</p>
-                        <p class="text-[10px] text-gray-500">+0.04% Fee | FDIC Standard</p>
+                    <button onclick="addModule('Asset Recovery', 0.04)" class="w-full text-left p-4 rounded-lg logic-border bg-white hover:bg-gray-50 transition-all group">
+                        <p class="text-sm font-semibold">Flag 64 Restitution</p>
+                        <p class="text-[11px] text-gray-400">Regulatory Asset Clawback Logic</p>
                     </button>
-                    <button onclick="addFeature('Smart Hooks', 0.08, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
-                        <p class="text-sm font-bold group-hover:text-blue-400">Smart Asset Hooks</p>
-                        <p class="text-[10px] text-gray-500">+0.08% Fee | Automated Logic</p>
-                    </button>
-                    <button onclick="addFeature('Multi-Sig Vault', 0.03, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
-                        <p class="text-sm font-bold group-hover:text-blue-400">Multi-Sig Vaulting</p>
-                        <p class="text-[10px] text-gray-500">+0.03% Fee | Custodial Safety</p>
+                    <button onclick="addModule('404 Liquidity', 0.08)" class="w-full text-left p-4 rounded-lg logic-border bg-white hover:bg-gray-50 transition-all group">
+                        <p class="text-sm font-semibold">404 RWA Alignment</p>
+                        <p class="text-[11px] text-gray-400">Semi-Fungible Asset Fractioning</p>
                     </button>
                 </div>
             </div>
 
-            <div class="lg:col-span-3 space-y-8">
+            <div class="lg:col-span-8 space-y-6">
                 
-                <div class="bg-[#0a0a0a] border border-white/5 rounded-3xl p-10 min-h-[220px] flex items-center overflow-x-auto gap-2 relative">
-                    <div class="absolute bottom-6 left-8 right-8 h-[4px] bg-white/[0.03] rounded-full"></div> 
-                    
-                    <div class="rail-car flex-shrink-0 z-10">
-                        <div class="w-36 h-24 bg-blue-600 rounded-lg flex flex-col items-center justify-center relative shadow-[0_0_30px_rgba(37,99,235,0.4)]">
-                            <span class="text-[8px] font-bold uppercase text-white/50 mb-1">IAW Engine</span>
-                            <span class="font-bold text-2xl">0.33%</span>
-                            <div class="absolute -bottom-2 w-full flex justify-around px-2">
-                                <div class="w-5 h-5 bg-gray-900 rounded-full border-2 border-blue-400"></div>
-                                <div class="w-5 h-5 bg-gray-900 rounded-full border-2 border-blue-400"></div>
-                            </div>
+                <div class="p-10 bg-white logic-border rounded-2xl flex items-center overflow-x-auto gap-3 relative min-h-[160px]">
+                    <div id="rail-visual" class="flex gap-3">
+                        <div class="w-32 h-20 bg-blue-600 rounded flex flex-col items-center justify-center text-white shadow-lg">
+                            <span class="text-[8px] font-bold uppercase opacity-60">IAW Mainframe</span>
+                            <span class="text-xl font-bold">0.33%</span>
                         </div>
                     </div>
-
-                    <div id="train-container" class="flex gap-2"></div>
+                    <div class="absolute bottom-4 left-10 text-[9px] font-bold text-gray-300 uppercase tracking-widest">Mathematical State-Lock Path</div>
                 </div>
 
-                <div class="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 glow">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="p-8 bg-white logic-border rounded-2xl shadow-sm">
+                    <div class="flex justify-between items-end mb-8">
                         <div>
-                            <label class="text-xs text-gray-500 uppercase tracking-widest font-bold block mb-4">Total Liquidity Volume</label>
-                            <input type="range" id="volSlider" min="1" max="100000000" step="1" value="10000" 
-                                   class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="calculate()">
-                            <div class="flex justify-between mt-4">
-                                <span class="font-mono text-3xl text-white font-bold" id="displayVol">$10,000.00</span>
-                                <div class="text-right">
-                                    <span class="text-[10px] text-blue-500 font-bold uppercase block">Aggregated Fee</span>
-                                    <span class="text-xl font-bold" id="totalRate">0.33%</span>
+                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Transaction Volume Audit</h3>
+                            <p class="text-[10px] text-gray-400 italic">Simulate institutional liquidity overhead</p>
+                        </div>
+                        <span id="volLabel" class="text-4xl font-light text-gray-900">$100,000</span>
+                    </div>
+                    
+                    <input type="range" id="volRange" min="10000" max="1000000" step="10000" value="100000" class="mb-10" oninput="updateAudit()">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-6 bg-gray-50 rounded-xl border-l-4 border-red-500">
+                            <h4 class="text-[10px] font-bold text-gray-400 uppercase mb-4">Current Legacy Banking</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span>Fees (1.8% Avg)</span>
+                                    <span id="legacyCost" class="font-semibold">$1,800.00</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-400">
+                                    <span>Settlement</span>
+                                    <span>3-5 Days</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="p-4 bg-white/5 rounded-xl border border-white/10">
-                                <span class="text-gray-500 text-[10px] uppercase font-bold block mb-1">IAW Cost</span>
-                                <span id="iawFees" class="font-mono text-lg text-blue-400 font-
+                        <div class="p-6 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                            <h4 class="text-[10px] font-bold text-blue-600 uppercase mb-4">IAW Logic-Locked Rail</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span>PaaS Fee (<span id="feeRate">0.33</span>%)</span>
+                                    <span id="iawCost" class="font-semibold text-blue-600">$330.00</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-400">
+                                    <span>Settlement</span>
+                                    <span class="text-blue-600">~5 Seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-100 flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase block mb-1">Operational Recovery</span>
+                            <span id="savings" class="text-3xl font-medium text-gray-900">+$1,470.00</span>
+                        </div>
+                        <button class="px-8 py-3 bg-gray-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-blue-600 transition-colors">
+                            Request Protocol Demo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+                    <div class="space-y-2">
+                        <h5 class="text-xs font-bold uppercase tracking-tighter">Non-Custodial Utility</h5>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            [Source 24] User Sovereignty is maintained as all private keys remain under user control. 
+                            [Source 14] The rail eliminates counterparty risk by using Xahau Hooks to enforce compliance 
+                            directly at the ledger level via mathematical state-locking.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <h5 class="text-xs font-bold uppercase tracking-tighter">Automated Revenue Logic</h5>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            [Source 29] A fixed 0.33% Integrity Fee is automatically routed via 64-bit precision logic. 
+                            [Source 32] Risk isolation ensures operational revenue is decoupled from asset issuance, 
+                            providing a clean institutional-grade audit trail.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-gray-100 text-center space-y-4">
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Innovative App World LLC | Derek Benjamin Little | Blockchain Architect</p>
+        <div class="flex justify-center gap-6 text-[10px] font-semibold text-gray-400 uppercase tracking-widest">
+            <a href="mailto:alittlepc@gmail.com" class="hover:text-blue-600 transition-colors">Email</a>
+            <a href="https://xrptokenizer.com" class="hover:text-blue-600 transition-colors">XRPTokenizer.com</a>
+            <a href="https://www.linkedin.com/company/innovativeappworld" class="hover:text-blue-600 transition-colors">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        let totalRate = 0.33;
+        let modules = [];
+
+        function addModule(name, cost) {
+            if (modules.includes(name)) return;
+            modules.push(name);
+            totalRate += cost;
+            
+            const rail = document.getElementById('rail-visual');
+            const node = document.createElement('div');
+            node.className = 'w-24 h-20 bg-gray-50 border border-gray-200 rounded flex flex-col items-center justify-center text-center car-node';
+            node.innerHTML = `
+                <span class="text-[7px] font-bold text-gray-400 uppercase px-1 leading-tight">${name}</span>
+                <span class="text-[10px] font-bold text-blue-600">+${cost}%</span>
+            `;
+            rail.appendChild(node);
+            updateAudit();
+        }
+
+        function updateAudit() {
+            const vol = parseInt(document.getElementById('volRange').value);
+            const legacyRate = 0.018; // 1.8%
+            const iawRate = totalRate / 100;
+            
+            const legacyCost = vol * legacyRate;
+            const iawCost = vol * iawRate;
+            const savings = legacyCost - iawCost;
+
+            document.getElementById('volLabel').innerText = '$' + vol.toLocaleString();
+            document.getElementById('feeRate').innerText = totalRate.toFixed(2);
+            document.getElementById('legacyCost').innerText = '$' + legacyCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('iawCost').innerText = '$' + iawCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('savings').innerText = '+$' + savings.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+
+        function resetRail() {
+            totalRate = 0.33;
+            modules = [];
+            document.getElementById('rail-visual').innerHTML = `
+                <div class="w-32 h-20 bg-blue-600 rounded flex flex-col items-center justify-center text-white shadow-lg">
+                    <span class="text-[8px] font-bold uppercase opacity-60">IAW Mainframe</span>
+                    <span class="text-xl font-bold">0.33%</span>
+                </div>
+            `;
+            updateAudit();
+        }
+        updateAudit();
+    </script>
+</body>
+</html>
