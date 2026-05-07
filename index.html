@@ -12,8 +12,6 @@
         .car-box { min-width: 260px; height: 260px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
         .wallet-input { font-family: monospace; font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; width: 100%; outline: none; color: #475569; }
         .wallet-input:focus { border-color: #3b82f6; background: #fff; color: #000; }
-        .title-input { font-size: 10px; font-weight: 900; text-transform: uppercase; border: none; border-bottom: 1px solid #e2e8f0; width: 100%; margin-bottom: 8px; outline: none; }
-        .title-input:focus { border-bottom-color: #3b82f6; color: #3b82f6; }
         .step-card { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 20px; }
         input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000; cursor: pointer; border: 3px solid #fff; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
@@ -30,7 +28,7 @@
             </div>
         </div>
         <div class="hidden md:block text-right">
-            <span class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">Protocol v3.1 | Active</span>
+            <span class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">Protocol v3.0 | Secure</span>
         </div>
     </nav>
 
@@ -40,35 +38,35 @@
             <section class="bg-white p-8 rounded-[32px] shadow-sm border border-slate-200">
                 <h2 class="text-xl font-black mb-6 flex items-center gap-2">
                     <span class="w-6 h-6 bg-blue-600 text-white text-[12px] flex items-center justify-center rounded-full">!</span>
-                    Test Your Config
+                    How to Test Your Rail
                 </h2>
                 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Set Volume</p>
-                    <p class="text-sm font-medium text-slate-600">Enter your monthly total in the black box (e.g., "$1,000,000").</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Set the Fuel</p>
+                    <p class="text-sm font-medium text-slate-600">Enter your monthly volume in the black box. <br><strong>Example:</strong> Type "$500,000".</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Add "Other" Car</p>
-                    <p class="text-sm font-medium text-slate-600">Click <strong>+ Add Custom Purpose Car</strong>. A new car appears on the track.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Attach Cargo</p>
+                    <p class="text-sm font-medium text-slate-600">Click <strong>+ Add Custom Car</strong>. <br><strong>Example:</strong> Name it "Staff Payroll".</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Edit Name & Account</p>
-                    <p class="text-sm font-medium text-slate-600">Click the title (e.g., "New Allocation") to rename it. Paste your <strong>Target Wallet</strong> below it.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Route the Funds</p>
+                    <p class="text-sm font-medium text-slate-600">Paste a wallet address into the <strong>Target Account</strong> field. This is where the money goes.</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 4: Precision Slide</p>
-                    <p class="text-sm font-medium text-slate-600">Adjust the slider. The percentage and dollars update instantly at **0.000** precision.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 4: Audit the Logic</p>
+                    <p class="text-sm font-medium text-slate-600">Adjust the slider. Watch the <strong>Monthly Route</strong> dollar amount update in real-time.</p>
                 </div>
             </section>
 
             <section class="bg-black text-white p-8 rounded-[32px] shadow-2xl">
-                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block">Monthly Pipeline Volume (USD)</label>
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block">Total Pipeline Volume (USD)</label>
                 <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-2" oninput="updateVol(this.value)">
                 <div class="mt-8 flex justify-between items-center bg-slate-900 p-4 rounded-2xl">
-                    <span class="text-xs font-bold text-slate-400 uppercase">IAW Base Fee</span>
+                    <span class="text-xs font-bold text-slate-400 uppercase">Base Friction</span>
                     <span class="text-xl font-black text-blue-400">0.330%</span>
                 </div>
             </section>
@@ -76,7 +74,7 @@
 
         <div class="lg:col-span-8">
             <div class="mb-6 flex justify-between items-end">
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Active Pipeline Visual</h3>
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Active Protocol Visual</h3>
                 <button onclick="addCar()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg transition-transform active:scale-95">
                     + Add Custom Purpose Car
                 </button>
@@ -123,14 +121,15 @@
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-[40px] border border-slate-200">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6">Distribution Ledger</h4>
-                    <div id="summary-list" class="space-y-3"></div>
+                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6">Routing Ledger</h4>
+                    <div id="summary-list" class="space-y-3">
+                        </div>
                 </div>
                 <div class="bg-blue-600 p-8 rounded-[40px] text-white flex flex-col justify-center shadow-2xl">
-                    <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2">Total Monthly Route</p>
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2">Net Monthly Outflow</p>
                     <h2 id="total-dollars" class="text-5xl font-black tracking-tighter">$3,300.00</h2>
                     <div class="mt-4 pt-4 border-t border-blue-400/30 flex justify-between items-center">
-                        <span class="text-sm font-bold opacity-80 uppercase">Pipeline Load</span>
+                        <span class="text-sm font-bold opacity-80 uppercase">Total Rail Load</span>
                         <span id="total-percent" class="text-xl font-black text-blue-200">0.330%</span>
                     </div>
                 </div>
@@ -155,9 +154,9 @@
             const id = Date.now();
             cars.push({
                 id: id,
-                title: "Custom Purpose",
+                title: "New Allocation",
                 percent: 1.000,
-                wallet: "rDestinationAccount..."
+                wallet: "rDestinationAddress..."
             });
             render();
         }
@@ -178,13 +177,15 @@
         function calculate() {
             let totalP = 0.330;
             let totalD = volume * 0.00330;
+
             document.getElementById('core-dollars').innerText = formatCurrency(volume * 0.00330);
 
             let summaryHtml = `
                 <div class="flex justify-between items-center py-2 border-b border-slate-50">
-                    <span class="text-xs font-black uppercase text-slate-800">IAW Base Fee</span>
+                    <span class="text-xs font-black uppercase text-slate-800">IAW Protocol Fee</span>
                     <span class="text-sm font-mono font-bold">0.330%</span>
-                </div>`;
+                </div>
+            `;
 
             cars.forEach(car => {
                 const amt = volume * (car.percent / 100);
@@ -200,7 +201,8 @@
                     <div class="flex justify-between items-center py-2 border-b border-slate-50">
                         <span class="text-xs font-bold text-slate-500 uppercase">${car.title}</span>
                         <span class="text-sm font-mono font-bold">${car.percent.toFixed(3)}%</span>
-                    </div>`;
+                    </div>
+                `;
             });
 
             document.getElementById('total-percent').innerText = totalP.toFixed(3) + '%';
@@ -226,7 +228,7 @@
                     <div class="h-full flex flex-col justify-between">
                         <div class="relative">
                             <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black text-xl">×</button>
-                            <input type="text" value="${car.title}" class="title-input" oninput="updateCar(${car.id}, 'title', this.value)">
+                            <input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-slate-100 outline-none focus:border-blue-500 mb-3" oninput="updateCar(${car.id}, 'title', this.value)">
                             
                             <label class="text-[8px] font-bold text-slate-400 uppercase">Target Account</label>
                             <input type="text" value="${car.wallet}" placeholder="rAddress..." class="wallet-input" oninput="updateCar(${car.id}, 'wallet', this.value)">
@@ -242,7 +244,8 @@
                     <div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8">
                         <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
                         <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
-                    </div>`;
+                    </div>
+                `;
                 container.appendChild(coupler);
                 container.appendChild(carDiv);
             });
