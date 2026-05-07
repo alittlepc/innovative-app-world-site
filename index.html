@@ -42,8 +42,8 @@
                 Logic-Locked Institutional Rails.
             </h1>
             <p class="text-xl text-gray-500 max-w-2xl leading-relaxed">
-                The IAW Logic-Locked Rail is a multi-chain PaaS mainframe engineered for high-velocity institutional tokenization. 
-                We enforce treasury routing at the ledger level via Xahau Hooks, anchoring digital value 1:1 with RLUSD.
+                The IAW Logic-Locked Rail is a multi-chain PaaS mainframe engineered for high-velocity institutional tokenization[cite: 13]. 
+                We enforce treasury routing at the ledger level via Xahau Hooks, anchoring digital value 1:1 with RLUSD[cite: 14, 15].
             </p>
         </div>
 
@@ -78,4 +78,64 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
             <div>
                 <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-6 pb-2 border-b border-gray-100">Institutional Parity & Safety</h4>
-                <ul class="
+                <ul class="space-y-6">
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">Non-Custodial Sovereignty</p>
+                        <p class="text-gray-500 leading-relaxed">All private keys and collateral remain under sole control of the user. IAW never has access to credentials.</p>
+                    </li>
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">Asset Restitution (Flag 64)</p>
+                        <p class="text-gray-500 leading-relaxed">Protocol mandates tfMPTCanClawback for recovery in cases of lost keys or regulatory mandates[cite: 36].</p>
+                    </li>
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">Infrastructure Hosting</p>
+                        <p class="text-gray-500 leading-relaxed">Utilizes <a href="https://xrptokenizer.com" target="_blank" class="text-blue-600 hover:underline">XRP Tokenizer.com</a> for cryptographic verification and Hook hosting[cite: 25].</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-6 pb-2 border-b border-gray-100">Global Regulatory Alignment</h4>
+                <ul class="space-y-6">
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">EU: MiCA Compliance</p>
+                        <p class="text-gray-500 leading-relaxed">Supports strict reserve and transparency requirements for asset-referenced tokens[cite: 19].</p>
+                    </li>
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">USA: Clarity for Payment Stablecoins</p>
+                        <p class="text-gray-500 leading-relaxed">Engineered for high standards of dollar-backed payment rails and software utilities[cite: 20].</p>
+                    </li>
+                    <li class="text-sm">
+                        <p class="font-bold text-gray-900 mb-1">Global: BIS Framework</p>
+                        <p class="text-gray-500 leading-relaxed">Prioritizes 1:1 parity and liquidity stability according to BIS cross-border recommendations[cite: 21].</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-5xl mx-auto px-6 py-16 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 opacity-50">
+        <div class="text-center md:text-left">
+            <p class="text-[10px] font-bold text-black uppercase tracking-[0.3em]">Innovative App World LLC</p>
+            <p class="text-[9px] text-gray-500 uppercase mt-1">Blockchain Architect: Derek Benjamin Little [cite: 4]</p>
+        </div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Launch No Later Than June 19, 2026 [cite: 40]</p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const vol = parseInt(document.getElementById('volRange').value);
+            const legacyRate = 0.018; 
+            const iawRate = 0.0033;
+            const legacyCost = vol * legacyRate;
+            const iawCost = vol * iawRate;
+            const savings = legacyCost - iawCost;
+
+            document.getElementById('volDisplay').innerText = '$' + vol.toLocaleString();
+            document.getElementById('legacyCost').innerText = '$' + legacyCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('iawCost').innerText = '$' + iawCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('savings').innerText = '+$' + savings.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+        calculate();
+    </script>
+</body>
+</html>
