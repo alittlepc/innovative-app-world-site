@@ -3,371 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Institutional Logic-Locked Rail</title>
+    <title>IAW | Global Automated Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
-        .logic-border { border: 1px solid #f3f4f6; }
-        .audit-panel { background: #fcfcfc; border: 1px solid #f3f4f6; border-radius: 48px; }
-        
-        /* Custom UI Inputs */
-        input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 4px; border-radius: 2px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000000; cursor: pointer; border: 3px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease; }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
-
-        .wallet-input { font-family: monospace; font-size: 9px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; padding: 2px 6px; width: 100%; color: #6b7280; outline: none; }
-        .wallet-input:focus { border-color: #000; color: #000; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; }
+        .train-container { overflow-x: auto; white-space: nowrap; padding: 40px 20px; border-radius: 40px; background: #f9fafb; border: 1px solid #f3f4f6; }
+        .wallet-input { font-family: monospace; font-size: 10px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 6px; padding: 4px 8px; width: 100%; outline: none; }
+        .wallet-input:focus { border-color: #000; background: #fff; }
+        .car-card { min-width: 240px; height: 220px; flex-shrink: 0; position: relative; }
+        input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: #e5e7eb; border-radius: 2px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #000; cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="antialiased">
+<body class="p-4 md:p-12">
 
-    <div class="bg-black text-white py-3 px-6 text-center sticky top-0 z-[100] flex justify-center items-center gap-6">
-        <span class="text-[10px] font-bold tracking-[0.3em] uppercase">Logic-Locked PaaS v2.1</span>
-        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-        <span class="text-[10px] font-bold tracking-[0.3em] uppercase underline decoration-blue-500 underline-offset-4">Institutional Release: June 19, 2026</span>
-    </div>
-
-    <nav class="flex justify-between items-center px-12 py-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center text-[11px] font-black text-white tracking-tighter uppercase">IAW</div>
-            <div>
-                <span class="text-sm font-bold tracking-tight uppercase">Innovative App World</span>
-                <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-0.5">Non-Custodial Utility Mainframe</p>
+    <header class="max-w-7xl mx-auto mb-12 flex justify-between items-center">
+        <div>
+            <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded text-[10px]">IAW</div>
+                <span class="text-xs font-bold uppercase tracking-widest">Innovative App World LLC</span>
             </div>
+            <h1 class="text-4xl font-black tracking-tighter">Automated Deduction Rail</h1>
+            <p class="text-gray-500 text-sm mt-1 uppercase tracking-wider font-semibold">Payroll • International Exchange • Corporate Treasury</p>
         </div>
-        <div class="flex gap-4">
-            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="px-6 py-2.5 rounded-full border border-gray-100 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-50 transition-all flex items-center gap-2">
-                <span>View Whitepaper v2.1</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+        <div class="text-right">
+            <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">System Status</p>
+            <p class="text-xs font-bold uppercase">v2.5 Live | June 19, 2026</p>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-7xl mx-auto px-8 py-16">
+    <main class="max-w-7xl mx-auto">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-            <div class="lg:col-span-5 flex flex-col justify-between">
-                <div>
-                    <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-gray-900 mb-8 leading-[1.05]" id="main-title">
-                        Automated Revenue <br> & Compliance
-                    </h1>
-                    <p class="text-lg text-gray-500 leading-relaxed mb-8">
-                        The IAW Logic-Locked Rail is a <span class="text-black font-semibold underline decoration-blue-500 underline-offset-8">Global Multi-Chain Mainframe</span> engineered for high-velocity institutional tokenization. Utilizing Xahau Hooks to enforce treasury routing at the ledger level with zero counterparty risk.
-                    </p>
-                    <div class="border-l-4 border-black pl-6 mb-8">
-                        <h3 class="text-md font-bold text-black uppercase tracking-wider">Multi-Chain Capable. Zero Counterparty Risk.</h3>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">The protocol scales across diverse ledgers in real-time via Xahau Hooks.</p>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 bg-black p-8 rounded-[40px] text-white">
+            <div class="md:col-span-2">
+                <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Transaction / Payroll Volume (USD)</label>
+                <div class="flex items-center gap-4">
+                    <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-4xl font-black outline-none border-b-2 border-gray-800 focus:border-blue-500 w-full" oninput="updateVol(this.value)">
                 </div>
             </div>
-
-            <div class="lg:col-span-7">
-                <section class="audit-panel p-8 md:p-12">
-                    <h2 class="text-lg font-bold text-black uppercase tracking-widest mb-6 text-center lg:text-left">Build Your Capital Rail (Interactive Demo)</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Monthly Liquidity Volume (USD)</label>
-                            <input type="text" id="volInput" value="$1,000,000" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-lg font-semibold focus:outline-none focus:border-black" oninput="handleTextInput(this.value)">
-                        </div>
-                        <div class="flex flex-col justify-end">
-                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Granular Visual Scale</label>
-                            <input type="range" id="volRange" min="1000" max="100000000" step="1000" value="1000000" class="w-full" oninput="handleSliderInput(this.value)">
-                            <div class="flex justify-between mt-2 text-[8px] font-bold text-gray-400 uppercase tracking-widest">
-                                <span>$1K</span>
-                                <span>$50M</span>
-                                <span>$100M</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-10">
-                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">Add Custom Routing Destination</label>
-                        <div class="relative inline-block w-full">
-                            <select id="addCarSelect" onchange="addCar(this.value)" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-wider appearance-none cursor-pointer focus:outline-none focus:border-black">
-                                <option value="" disabled selected>+ Attach New Train Car</option>
-                                <option value="tax">Tax Car (0% - 10%)</option>
-                                <option value="affiliate">Affiliate Car (0% - 5%)</option>
-                                <option value="insurance">Insurance Car (0% - 50%)</option>
-                                <option value="four01k">401k Allocator Car (0% - 100%)</option>
-                                <option value="savings">Personal Savings Car (0% - 20%)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto pb-10 mb-8">
-                        <div class="flex items-end gap-2 min-w-[700px] py-4" id="train-track">
-                            
-                            <div class="flex-shrink-0 flex flex-col items-center">
-                                <svg class="w-24 h-16 text-black" viewBox="0 0 100 60" fill="currentColor">
-                                    <rect x="10" y="25" width="25" height="25" rx="2" />
-                                    <rect x="35" y="15" width="30" height="35" rx="2" />
-                                    <rect x="40" y="20" width="12" height="12" rx="1" fill="white" />
-                                    <rect x="65" y="25" width="25" height="25" rx="2" />
-                                    <rect x="75" y="10" width="8" height="15" rx="1" />
-                                    <ellipse cx="79" cy="8" rx="6" ry="3" />
-                                    <circle cx="22" cy="54" r="6" stroke="white" stroke-width="2" />
-                                    <circle cx="50" cy="54" r="6" stroke="white" stroke-width="2" />
-                                    <circle cx="78" cy="54" r="6" stroke="white" stroke-width="2" />
-                                    <line x1="22" y1="54" x2="78" y2="54" stroke="currentColor" stroke-width="2" />
-                                </svg>
-                                <span class="text-[8px] font-bold uppercase tracking-widest mt-2 bg-black text-white px-2 py-0.5 rounded">ENGINE</span>
-                            </div>
-
-                            <div class="w-4 h-0.5 bg-gray-400 mb-8 flex-shrink-0"></div>
-
-                            <div class="relative bg-white border-2 border-black rounded-3xl p-5 w-48 flex-shrink-0 flex flex-col justify-between h-48 shadow-md">
-                                <div>
-                                    <p class="text-[9px] font-black tracking-wider uppercase text-black">IAW Core Rail</p>
-                                    <input type="text" value="rIAWCentralHubVault..." class="wallet-input mt-2" readonly>
-                                </div>
-                                <div class="my-2">
-                                    <span class="text-xl font-bold text-black">0.330% Fixed</span>
-                                    <p class="text-[8px] text-gray-500 uppercase tracking-tighter" id="cost-core">$3,300.00</p>
-                                </div>
-                                <div class="absolute -bottom-3 left-0 right-0 flex justify-around px-4">
-                                    <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
-                                    <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
-                                </div>
-                            </div>
-
-                            <div id="dynamic-cars" class="flex items-end gap-2"></div>
-
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="p-6 bg-white border border-gray-100 rounded-3xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Legacy Banking</span>
-                                    <span class="text-[8px] px-2 py-0.5 bg-red-50 text-red-500 rounded font-bold">1.800% Avg Friction</span>
-                                </div>
-                                <p id="legacyCost" class="text-2xl font-bold text-gray-300">$18,000.00</p>
-                            </div>
-                        </div>
-
-                        <div class="p-6 bg-white border-2 border-black rounded-3xl shadow-xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-bold text-black uppercase tracking-widest">Total Rail Logic</span>
-                                    <span id="totalFeeLabel" class="text-[8px] px-2 py-0.5 bg-blue-50 text-blue-600 rounded font-bold">0.330% Base</span>
-                                </div>
-                                <p id="iawCost" class="text-2xl font-bold text-black">$3,300.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center pt-8 border-t border-gray-100">
-                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Net Monthly Savings Recovered</p>
-                        <h4 id="savings" class="text-4xl md:text-5xl font-black text-black tracking-tighter">+$14,700.00</h4>
-                    </div>
-
-                </section>
+            <div class="flex flex-col justify-center border-l border-gray-800 pl-8">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Infrastructure Fee</p>
+                <h2 class="text-2xl font-black">0.330%</h2>
             </div>
         </div>
 
-        <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-12 text-center">Global Regulatory Compliance</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-24">
-            <a href="https://www.vara.ae/" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">UAE: VARA</p>
-                <p class="text-[11px] text-gray-400 font-bold group-hover:text-black uppercase">DIFC COMPLIANT</p>
-            </a>
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">EU: MICA</p>
-                <p class="text-[11px] text-gray-400 font-bold group-hover:text-black uppercase">REGULATION 2023/1114</p>
-            </a>
-            <a href="https://www.congress.gov/bill/118th-congress/house-bill/4766" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">USA: CLARITY ACT</p>
-                <p class="text-[11px] text-gray-400 font-bold group-hover:text-black uppercase">STABLECOIN PARITY</p>
-            </a>
-            <a href="https://www.bis.org/publ/othp73.pdf" target="_blank" class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-500 hover:shadow-xl transition-all group text-center">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">GLOBAL: BIS</p>
-                <p class="text-[11px] text-gray-400 font-bold group-hover:text-black uppercase">Agorá Settlement</p>
-            </a>
+        <div class="mb-8 flex flex-wrap gap-4 items-center">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Attach Deduction Module:</span>
+            <button onclick="addCar('Savings')" class="px-4 py-2 bg-gray-100 hover:bg-black hover:text-white rounded-full text-[10px] font-bold uppercase tracking-widest transition-all">+ Savings</button>
+            <button onclick="addCar('Custom')" class="px-4 py-2 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-600 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all">+ Custom Purpose</button>
+        </div>
+
+        <div class="train-container mb-12">
+            <div class="flex items-end gap-0" id="train-track">
+                
+                <div class="flex-shrink-0 flex flex-col items-center mr-4">
+                    <svg class="w-32 h-20 text-black" viewBox="0 0 100 60" fill="currentColor">
+                        <rect x="10" y="25" width="25" height="25" rx="2" />
+                        <rect x="35" y="15" width="30" height="35" rx="2" />
+                        <rect x="40" y="20" width="12" height="12" rx="1" fill="white" />
+                        <rect x="65" y="25" width="25" height="25" rx="2" />
+                        <rect x="75" y="10" width="8" height="15" rx="1" />
+                        <circle cx="22" cy="54" r="6" />
+                        <circle cx="50" cy="54" r="6" />
+                        <circle cx="78" cy="54" r="6" />
+                        <line x1="22" y1="54" x2="78" y2="54" stroke="black" stroke-width="2" />
+                    </svg>
+                    <span class="text-[9px] font-bold uppercase mt-2">Engine</span>
+                </div>
+
+                <div class="w-8 h-1 bg-gray-300 mb-10 flex-shrink-0"></div>
+
+                <div class="car-card bg-white border-2 border-black rounded-[32px] p-6 shadow-xl mr-2">
+                    <div class="h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] font-black uppercase text-blue-600 tracking-tighter">Core Integrity Rail</span>
+                            <input type="text" value="rIAWCentralHub..." class="wallet-input mt-2" readonly>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black">0.330%</p>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase" id="core-dollars">$3,300</p>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-3 left-0 right-0 flex justify-around">
+                        <div class="w-5 h-5 bg-black rounded-full border-2 border-white"></div>
+                        <div class="w-5 h-5 bg-black rounded-full border-2 border-white"></div>
+                    </div>
+                </div>
+
+                <div id="dynamic-cars" class="flex items-end gap-0"></div>
+
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-8 rounded-[40px]">
+                <h3 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">Route Summary</h3>
+                <div id="summary-list" class="space-y-4">
+                    </div>
+            </div>
+            <div class="bg-blue-600 p-8 rounded-[40px] text-white flex flex-col justify-center">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 mb-2">Total Managed Routing</span>
+                <h2 id="total-percent" class="text-6xl font-black tracking-tighter">0.330%</h2>
+                <div class="mt-4 pt-4 border-t border-blue-400">
+                    <p id="total-dollars" class="text-xl font-bold">$3,300.00 / mo</p>
+                </div>
+            </div>
         </div>
 
     </main>
 
-    <footer class="bg-gray-50 px-12 py-24 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto text-center md:text-left">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div>
-                    <p class="text-[12px] font-bold uppercase tracking-[0.4em] mb-6">Innovative App World LLC</p>
-                    <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-loose">
-                        Institutional Release: June 19, 2026.<br>
-                        Derek Benjamin Little<br>
-                        Founder & CEO
-                    </p>
-                </div>
-                <div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Compliance</p>
-                    <ul class="text-[9px] space-y-2 text-gray-400 uppercase tracking-widest">
-                        <li>UAE: VARA DIFC</li>
-                        <li>EU: MiCA REGULATION</li>
-                        <li>USA: CLARITY ACT</li>
-                        <li>SEC RULE 17A-4</li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Infrastructure</p>
-                    <ul class="text-[9px] space-y-2 text-gray-400 uppercase tracking-widest">
-                        <li>XRP TOKENIZER</li>
-                        <li>XAHAU HOOKS</li>
-                        <li>RLUSD PAIRING</li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest mb-6 text-black">Direct Contact</p>
-                    <p class="text-[9px] text-gray-400 uppercase tracking-widest">derek@xrptokenizer.com</p>
-                    <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-2">Ph: 337-7853</p>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-gray-200/50">
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-400">© 2026 IAW LLC | Multi-Chain Mainframe | Precision Logic v2.1</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        const carsState = {
-            tax: { name: "Tax Car", min: 0, max: 10, val: 2.000, active: true, step: 0.001, addr: "rTaxCollectorAddress..." },
-            affiliate: { name: "Affiliate Car", min: 0, max: 5, val: 1.000, active: true, step: 0.001, addr: "rAffiliatePartnerAddress..." },
-            insurance: { name: "Insurance Car", min: 0, max: 50, val: 5.000, active: true, step: 0.001, addr: "rInsurancePoolAddress..." },
-            four01k: { name: "401k Allocator", min: 0, max: 100, val: 10.000, active: false, step: 0.001, addr: "rEmployeeRetireVault..." },
-            savings: { name: "Personal Savings", min: 0, max: 20, val: 5.000, active: false, step: 0.001, addr: "rPersonalTreasury..." }
-        };
+        let volume = 1000000;
+        let cars = [];
 
-        let currentVolume = 1000000;
-
-        const formatCurrency = (val) => {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(val).replace('.00', '');
-        };
-
-        function handleTextInput(rawText) {
-            const numericValue = parseFloat(rawText.replace(/[^0-9.]/g, ''));
-            if (!isNaN(numericValue) && numericValue > 0) {
-                currentVolume = numericValue;
-                document.getElementById('volRange').value = Math.min(numericValue, 100000000);
-                updateCalculations();
+        function updateVol(val) {
+            let num = parseFloat(val.replace(/[^0-9.]/g, ''));
+            if (!isNaN(num)) {
+                volume = num;
+                document.getElementById('volDisplay').value = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+                calculate();
             }
         }
 
-        function handleSliderInput(val) {
-            currentVolume = parseFloat(val);
-            document.getElementById('volInput').value = formatCurrency(currentVolume);
-            updateCalculations();
+        function addCar(type) {
+            const id = Date.now();
+            const isCustom = type === 'Custom';
+            cars.push({
+                id: id,
+                title: isCustom ? "New Deduction" : "Savings Car",
+                percent: 1.000,
+                wallet: "rDestinationAddress...",
+                isCustom: isCustom
+            });
+            render();
         }
 
-        function addCar(carKey) {
-            if (carsState[carKey]) {
-                carsState[carKey].active = true;
-                document.getElementById('addCarSelect').selectedIndex = 0;
-                renderDynamicCars();
-                updateCalculations();
-            }
+        function removeCar(id) {
+            cars = cars.filter(c => c.id !== id);
+            render();
         }
 
-        function removeCar(carKey) {
-            if (carsState[carKey]) {
-                carsState[carKey].active = false;
-                renderDynamicCars();
-                updateCalculations();
-            }
+        function updateCar(id, field, value) {
+            const car = cars.find(c => c.id === id);
+            if (field === 'percent') car.percent = parseFloat(value);
+            if (field === 'title') car.title = value;
+            if (field === 'wallet') car.wallet = value;
+            calculate();
         }
 
-        function renderDynamicCars() {
+        function calculate() {
+            let totalP = 0.330;
+            let totalD = volume * 0.00330;
+
+            document.getElementById('core-dollars').innerText = formatCurrency(volume * 0.00330);
+
+            let summaryHtml = `
+                <div class="flex justify-between border-b pb-2">
+                    <span class="text-xs font-bold uppercase">IAW Base Rail</span>
+                    <span class="text-xs font-mono">0.330%</span>
+                </div>
+            `;
+
+            cars.forEach(car => {
+                const amt = volume * (car.percent / 100);
+                totalP += car.percent;
+                totalD += amt;
+
+                const costEl = document.getElementById(`cost-${car.id}`);
+                const rateEl = document.getElementById(`rate-${car.id}`);
+                if (costEl) costEl.innerText = formatCurrency(amt);
+                if (rateEl) rateEl.innerText = car.percent.toFixed(3) + '%';
+
+                summaryHtml += `
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-xs font-bold uppercase text-gray-500">${car.title}</span>
+                        <span class="text-xs font-mono font-bold">${car.percent.toFixed(3)}%</span>
+                    </div>
+                `;
+            });
+
+            document.getElementById('total-percent').innerText = totalP.toFixed(3) + '%';
+            document.getElementById('total-dollars').innerText = formatCurrency(totalD) + ' / mo';
+            document.getElementById('summary-list').innerHTML = summaryHtml;
+        }
+
+        function formatCurrency(v) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v);
+        }
+
+        function render() {
             const container = document.getElementById('dynamic-cars');
             container.innerHTML = '';
-
-            Object.keys(carsState).forEach(key => {
-                const car = carsState[key];
-                if (car.active) {
-                    const coupler = document.createElement('div');
-                    coupler.className = "w-4 h-0.5 bg-gray-400 mb-8 flex-shrink-0";
-                    container.appendChild(coupler);
-
-                    const carCard = document.createElement('div');
-                    carCard.className = "relative bg-white border border-gray-200 rounded-3xl p-5 w-52 flex-shrink-0 flex flex-col justify-between h-48 shadow-sm";
-                    carCard.innerHTML = `
-                        <div class="flex justify-between items-start">
-                            <div class="w-full">
-                                <p class="text-[9px] font-bold text-black uppercase tracking-wider">${car.name}</p>
-                                <input type="text" value="${car.addr}" placeholder="Assign Wallet Address" class="wallet-input mt-1" oninput="carsState['${key}'].addr = this.value">
-                            </div>
-                            <button onclick="removeCar('${key}')" class="text-xs font-black text-gray-300 hover:text-black transition-colors ml-2">×</button>
+            
+            cars.forEach(car => {
+                const coupler = document.createElement('div');
+                coupler.className = "w-8 h-1 bg-gray-300 mb-10 flex-shrink-0";
+                
+                const carDiv = document.createElement('div');
+                carDiv.className = "car-card bg-white border border-gray-200 rounded-[32px] p-6 shadow-sm mr-2";
+                carDiv.innerHTML = `
+                    <div class="h-full flex flex-col justify-between">
+                        <div class="relative">
+                            <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-gray-300 hover:text-red-500 font-black text-xl">×</button>
+                            ${car.isCustom ? 
+                                `<input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-gray-100 outline-none focus:border-blue-500" oninput="updateCar(${car.id}, 'title', this.value)">` :
+                                `<span class="text-[9px] font-black uppercase text-black tracking-widest">${car.title}</span>`
+                            }
+                            <input type="text" value="${car.wallet}" placeholder="rAddress..." class="wallet-input mt-2" oninput="updateCar(${car.id}, 'wallet', this.value)">
                         </div>
-                        <div class="my-1">
-                            <input type="range" min="${car.min}" max="${car.max}" step="${car.step}" value="${car.val}" 
-                                class="w-full cursor-pointer" oninput="updateCarValue('${key}', this.value)">
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-gray-400">Rate</span>
-                                <p class="text-[11px] font-black text-black" id="rate-${key}">${car.val.toFixed(3)}%</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-gray-400">Monthly Route</span>
-                                <p class="text-[11px] font-black text-black" id="cost-${key}">$0.00</p>
+                        <div class="space-y-2">
+                            <input type="range" min="0" max="100" step="0.001" value="${car.percent}" oninput="updateCar(${car.id}, 'percent', this.value)">
+                            <div class="flex justify-between items-end">
+                                <p class="text-xl font-black" id="rate-${car.id}">${car.percent.toFixed(3)}%</p>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase" id="cost-${car.id}">$0.00</p>
                             </div>
                         </div>
-                        <div class="absolute -bottom-3 left-0 right-0 flex justify-around px-4">
-                            <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
-                            <div class="w-5 h-5 rounded-full bg-black border-2 border-white"></div>
-                        </div>
-                    `;
-                    container.appendChild(carCard);
-                }
+                    </div>
+                    <div class="absolute -bottom-3 left-0 right-0 flex justify-around">
+                        <div class="w-5 h-5 bg-black rounded-full border-2 border-white"></div>
+                        <div class="w-5 h-5 bg-black rounded-full border-2 border-white"></div>
+                    </div>
+                `;
+                container.appendChild(coupler);
+                container.appendChild(carDiv);
             });
+            calculate();
         }
 
-        function updateCarValue(carKey, newValue) {
-            carsState[carKey].val = parseFloat(newValue);
-            document.getElementById(`rate-${carKey}`).innerText = carsState[carKey].val.toFixed(3) + '%';
-            updateCalculations();
-        }
-
-        function updateCalculations() {
-            const legacyRate = 0.01800;
-            const legacyTotal = currentVolume * legacyRate;
-
-            let totalProtocolRate = 0.00330; 
-            let totalAddedAllocation = 0;
-
-            // Core IAW cost
-            document.getElementById('cost-core').innerText = formatCurrency(currentVolume * 0.00330);
-
-            Object.keys(carsState).forEach(key => {
-                const car = carsState[key];
-                if (car.active) {
-                    const carCost = currentVolume * (car.val / 100);
-                    totalProtocolRate += (car.val / 100);
-                    totalAddedAllocation += carCost;
-                    
-                    const costEl = document.getElementById(`cost-${key}`);
-                    if (costEl) costEl.innerText = formatCurrency(carCost);
-                }
-            });
-
-            const iawBaseFriction = currentVolume * 0.00330;
-            const savingsValue = legacyTotal - iawBaseFriction;
-
-            document.getElementById('legacyCost').innerText = formatCurrency(legacyTotal);
-            document.getElementById('iawCost').innerText = formatCurrency(iawBaseFriction + totalAddedAllocation);
-            document.getElementById('totalFeeLabel').innerText = `${(totalProtocolRate * 100).toFixed(3)}% Protocol Rail`;
-            document.getElementById('savings').innerText = '+' + formatCurrency(savingsValue);
-        }
-
-        window.onload = () => {
-            renderDynamicCars();
-            updateCalculations();
-        };
+        window.onload = render;
     </script>
 </body>
 </html>
