@@ -10,6 +10,7 @@
         body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; scroll-behavior: smooth; }
         .glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
         .gradient-text { background: linear-gradient(to r, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        input[type=range]::-webkit-slider-thumb { border: 2px solid #3b82f6; height: 20px; width: 20px; border-radius: 50%; background: #ffffff; cursor: pointer; -webkit-appearance: none; margin-top: -7px; }
     </style>
 </head>
 <body class="selection:bg-blue-500/30">
@@ -21,7 +22,6 @@
         </div>
         <div class="hidden md:flex gap-8 text-sm text-gray-400 items-center">
             <a href="#simulator" class="hover:text-white transition">Simulator</a>
-            <a href="#comparison" class="hover:text-white transition">Analysis</a>
             <a href="#compliance" class="hover:text-white transition">Compliance</a>
             <a href="https://www.linkedin.com/in/derek-little-761a201b1/" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-blue-700 transition">Partner Inquiry</a>
         </div>
@@ -30,102 +30,81 @@
     <section class="max-w-6xl mx-auto px-8 py-24 text-center">
         <span class="text-blue-500 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Sovereign Finance Infrastructure</span>
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 gradient-text">
-            The Institutional Rail <br> for RWA Migration.
+            Migration Efficiency. <br> Redefined.
         </h1>
         <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            IAW facilitates high-velocity settlement rails for the next generation of finance. 
-            Fixed 0.33% utility harvest. Zero-friction finality.
+            IAW facilitates institutional RWA settlement with absolute finality. 
+            Contrast your current friction against the Sovereign Rail.
         </p>
-        
-        <div class="flex flex-col md:flex-row justify-center gap-4">
-            <a href="#simulator" class="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition">Open Simulator</a>
-            <a href="https://www.linkedin.com/in/derek-little-761a201b1/" target="_blank" class="px-8 py-4 bg-black border border-white/20 font-bold rounded-xl hover:border-white transition">Contact Founder</a>
-        </div>
     </section>
 
-    <section id="simulator" class="max-w-4xl mx-auto px-8 py-16">
-        <div class="bg-gradient-to-b from-blue-500/10 to-transparent p-[1px] rounded-3xl glow">
+    <section id="simulator" class="max-w-6xl mx-auto px-8 py-16">
+        <div class="bg-gradient-to-b from-blue-500/10 to-transparent p-[1px] rounded-3xl glow mb-12">
             <div class="bg-[#0a0a0a] p-8 md:p-12 rounded-[23px]">
-                <h3 class="text-2xl font-bold mb-2">IAW Rail Simulator</h3>
-                <p class="text-gray-500 mb-10 text-sm">Real-time projection of the 0.33% utility harvest loop.</p>
                 
-                <div class="space-y-10">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="text-xs text-gray-500 uppercase tracking-widest font-bold">Migration Volume (RLUSD)</label>
-                            <span id="displayVol" class="font-mono text-xl text-blue-500 font-bold">$1,000,000</span>
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold mb-2">Institutional Rail Simulator</h3>
+                    <p class="text-gray-500 text-sm">Slide to calculate the friction gap between Legacy Rails and IAW.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto mb-16">
+                    <div class="flex justify-between mb-4">
+                        <label class="text-xs text-gray-500 uppercase tracking-widest font-bold">Migration Amount (RLUSD)</label>
+                        <span id="displayVol" class="font-mono text-3xl text-white font-bold">$1,000,000</span>
+                    </div>
+                    <input type="range" id="volSlider" min="100000" max="100000000" step="100000" value="1,000,000" 
+                           class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="calculate()">
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <div class="p-8 rounded-2xl border border-red-500/10 bg-red-500/[0.02]">
+                        <div class="flex items-center gap-2 mb-6">
+                            <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                            <h4 class="font-bold text-red-400 uppercase tracking-tight text-sm">Legacy TradFi Friction (Avg. 3.5%)</h4>
                         </div>
-                        <input type="range" id="volSlider" min="100000" max="100000000" step="100000" value="1000000" 
-                               class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="calculate()">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-end">
+                                <span class="text-gray-500 text-xs">Estimated Fees/FX Loss:</span>
+                                <span id="legacyFees" class="text-2xl font-mono text-red-500 font-bold">$35,000.00</span>
+                            </div>
+                            <div class="flex justify-between items-end border-t border-white/5 pt-4">
+                                <span class="text-gray-500 text-xs">Settlement Time:</span>
+                                <span class="text-gray-200 font-bold italic">2 — 5 Business Days</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-6 border border-white/5 bg-white/[0.02] rounded-2xl">
-                            <span class="text-gray-500 text-[10px] uppercase tracking-widest block mb-1">IAW Utility Harvest (0.33%)</span>
-                            <span id="harvestAmt" class="text-3xl font-bold text-blue-400">$3,300.00</span>
+                    <div class="p-8 rounded-2xl border border-blue-500/20 bg-blue-600/[0.03] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase">Optimized</div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <h4 class="font-bold text-blue-400 uppercase tracking-tight text-sm">IAW Utility Harvest (Fixed 0.33%)</h4>
                         </div>
-                        <div class="p-6 border border-white/5 bg-white/[0.02] rounded-2xl">
-                            <span class="text-gray-500 text-[10px] uppercase tracking-widest block mb-1">Settled Asset Mint (99.67%)</span>
-                            <span id="mintAmt" class="text-3xl font-bold text-gray-200">$996,700.00</span>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-end">
+                                <span class="text-gray-500 text-xs">Total Utility Fee:</span>
+                                <span id="iawFees" class="text-2xl font-mono text-blue-400 font-bold">$3,300.00</span>
+                            </div>
+                            <div class="flex justify-between items-end border-t border-white/5 pt-4">
+                                <span class="text-gray-500 text-xs">Settlement Time:</span>
+                                <span class="text-green-400 font-bold italic">~5 Seconds (24/7)</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
+                <div class="mt-8 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center">
+                    <span class="text-gray-400 text-xs uppercase tracking-widest block mb-1 font-bold">Capital Efficiency Gain</span>
+                    <span id="savings" class="text-xl font-bold text-green-400">+$31,700.00 Saved in Friction</span>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="comparison" class="max-w-6xl mx-auto px-8 py-24 border-t border-white/5">
-        <div class="text-center mb-16">
-            <h3 class="text-3xl font-bold mb-4">The Efficiency Gap</h3>
-            <p class="text-gray-400">Comparing Legacy TradFi friction against IAW Sovereign Rails.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="p-8 bg-white/[0.02] rounded-3xl border border-red-500/10">
-                <div class="flex items-center gap-3 mb-8">
-                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                    <h4 class="text-lg font-bold text-red-400">Legacy Systems (SWIFT)</h4>
-                </div>
-                <ul class="space-y-6">
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Total Friction (Fees/FX)</span>
-                        <span class="font-mono text-red-400">3.0% — 5.0%</span>
-                    </li>
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Average Settlement</span>
-                        <span class="font-mono text-red-400">48 — 120 Hours</span>
-                    </li>
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Availability</span>
-                        <span class="font-mono text-red-400">Bank Hours Only</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="p-8 bg-blue-600/[0.03] rounded-3xl border border-blue-500/20 glow">
-                <div class="flex items-center gap-3 mb-8">
-                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                    <h4 class="text-lg font-bold text-blue-400">IAW Sovereign Rails</h4>
-                </div>
-                <ul class="space-y-6">
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Utility Fee</span>
-                        <span class="font-mono text-blue-400">Fixed 0.33%</span>
-                    </li>
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Average Settlement</span>
-                        <span class="font-mono text-green-400">3 — 5 Seconds</span>
-                    </li>
-                    <li class="flex justify-between border-b border-white/5 pb-4 text-sm">
-                        <span class="text-gray-500">Availability</span>
-                        <span class="font-mono text-blue-400">24/7/365</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="compliance" class="max-w-6xl mx-auto px-8 py-24 border-t border-white/5">
+    <section id="compliance" class="max-w-6xl mx-auto px-8 py-12 border-t border-white/5">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
                 <h4 class="text-blue-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Global Compliance</h4>
@@ -151,22 +130,28 @@
     <footer class="max-w-6xl mx-auto px-8 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <p class="text-gray-500 text-[10px] uppercase tracking-wider">© 2026 Innovative App World LLC. All Rights Reserved.</p>
         <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-            <a href="https://www.linkedin.com/in/derek-little-761a201b1/" target="_blank" class="text-blue-500 hover:text-white transition">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/derek-little-761a201b1/" target="_blank" class="text-blue-500 hover:text-white transition">LinkedIn Inquiry</a>
             <span class="text-white/10">|</span>
-            <span class="text-gray-500 underline decoration-blue-500/50 underline-offset-4">Status: Pre-Migration Prep</span>
+            <span class="text-gray-500 underline decoration-blue-500/50 underline-offset-4">Institutional Mainnet Prep</span>
         </div>
     </footer>
 
     <script>
         function calculate() {
             const vol = parseInt(document.getElementById('volSlider').value);
-            const harvest = vol * 0.0033;
-            const mint = vol - harvest;
+            
+            // MATH
+            const iawFee = vol * 0.0033;
+            const legacyFee = vol * 0.035; // Using a conservative 3.5% average
+            const savings = legacyFee - iawFee;
 
+            // DOM UPDATES
             document.getElementById('displayVol').innerText = '$' + vol.toLocaleString();
-            document.getElementById('harvestAmt').innerText = '$' + harvest.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('mintAmt').innerText = '$' + mint.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('iawFees').innerText = '$' + iawFee.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('legacyFees').innerText = '$' + legacyFee.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('savings').innerText = '+$' + savings.toLocaleString(undefined, {minimumFractionDigits: 2}) + ' Saved in Friction';
         }
+        // Run on load
         calculate();
     </script>
 </body>
