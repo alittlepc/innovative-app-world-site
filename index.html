@@ -22,9 +22,9 @@
 </head>
 <body class="selection:bg-blue-500/30">
 
-    <div class="bg-blue-600/10 border-b border-blue-500/20 py-2 text-center sticky top-0 z-[100] backdrop-blur-md">
-        <p class="text-[10px] md:text-xs font-bold tracking-widest text-blue-400 uppercase">
-            Clarity Status: Senate Markup Finalizing | Production Launch 06-19-2026
+    <div class="bg-blue-600/10 border-b border-blue-500/20 py-2 text-center sticky top-0 z-[100] backdrop-blur-md px-4">
+        <p class="text-[9px] md:text-xs font-bold tracking-widest text-blue-400 uppercase">
+            Platform Preview: Stage 4 Testing | Institutional Launch Scheduled No Later Than 06-19-2026
         </p>
     </div>
 
@@ -36,14 +36,14 @@
         <div class="hidden md:flex gap-4">
             <button onclick="setTemplate('treasury')" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition">Treasury Mode</button>
             <button onclick="setTemplate('realestate')" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition">TaaS Mode</button>
-            <button onclick="resetRail()" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition">Clear All</button>
+            <button onclick="resetRail()" class="template-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase transition text-red-500">Reset Rail</button>
         </div>
     </nav>
 
     <section id="architect" class="max-w-7xl mx-auto px-6 py-12">
         <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 gradient-text">Configure Your Liquidity Rail</h1>
-            <p class="text-gray-400 text-lg">Build institutional infrastructure for RLUSD with real-time compliance and settlement.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 gradient-text">Architect Your Institutional Rail</h1>
+            <p class="text-gray-400 text-lg">Regulated 1:1 RLUSD infrastructure. Build custom rails for 24/7 liquidity and absolute finality.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
@@ -59,19 +59,19 @@
 
                 <div class="space-y-4">
                     <h3 class="text-xs font-bold uppercase tracking-widest text-blue-500">Feature Modules</h3>
-                    <button id="btn-kyc" onclick="addFeature('KYC Automation', 0.05, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
+                    <button onclick="addFeature('KYC Automation', 0.05, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
                         <p class="text-sm font-bold group-hover:text-blue-400">KYC/AML Automation</p>
                         <p class="text-[10px] text-gray-500">+0.05% Fee | MiCA Ready</p>
                     </button>
-                    <button id="btn-audit" onclick="addFeature('Real-Time Audit', 0.04, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
+                    <button onclick="addFeature('Real-Time Audit', 0.04, 'Compliance')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
                         <p class="text-sm font-bold group-hover:text-blue-400">Real-Time Auditing</p>
                         <p class="text-[10px] text-gray-500">+0.04% Fee | FDIC Standard</p>
                     </button>
-                    <button id="btn-hooks" onclick="addFeature('Smart Hooks', 0.08, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
+                    <button onclick="addFeature('Smart Hooks', 0.08, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
                         <p class="text-sm font-bold group-hover:text-blue-400">Smart Asset Hooks</p>
                         <p class="text-[10px] text-gray-500">+0.08% Fee | Automated Logic</p>
                     </button>
-                    <button id="btn-vault" onclick="addFeature('Multi-Sig Vault', 0.03, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
+                    <button onclick="addFeature('Multi-Sig Vault', 0.03, 'Utility')" class="feature-card w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 transition group">
                         <p class="text-sm font-bold group-hover:text-blue-400">Multi-Sig Vaulting</p>
                         <p class="text-[10px] text-gray-500">+0.03% Fee | Custodial Safety</p>
                     </button>
@@ -115,114 +115,4 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="p-4 bg-white/5 rounded-xl border border-white/10">
                                 <span class="text-gray-500 text-[10px] uppercase font-bold block mb-1">IAW Cost</span>
-                                <span id="iawFees" class="font-mono text-lg text-blue-400 font-bold">$33.00</span>
-                                <span class="text-[10px] text-green-500 block font-bold">Time: 5 Seconds</span>
-                            </div>
-                            <div class="p-4 bg-red-500/5 rounded-xl border border-red-500/10">
-                                <span class="text-gray-500 text-[10px] uppercase font-bold block mb-1">Bank Cost</span>
-                                <span id="legacyFees" class="font-mono text-lg text-gray-300 font-bold">$180.00</span>
-                                <span class="text-[10px] text-red-500 block font-bold">Time: 3-5 Days</span>
-                            </div>
-                            <div class="col-span-2 p-4 bg-blue-600/10 border border-blue-600/20 rounded-xl text-center">
-                                <span class="text-gray-400 text-xs uppercase font-bold block mb-1">Total Savings</span>
-                                <span id="savings" class="text-2xl font-bold text-blue-400">+$147.00 Recovered</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="px-10 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition shadow-lg">Inquire via LinkedIn</a>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-widest max-w-xs text-center md:text-left leading-relaxed">
-                        Notice: Patrick Witt (White House Advisor) targets 07-04-2026 for federal bill signing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        let currentRate = 0.33;
-        let activeFeatures = [];
-        let complianceScore = 25;
-
-        function addFeature(name, cost, type) {
-            if (activeFeatures.includes(name)) return;
-            
-            activeFeatures.push(name);
-            currentRate += cost;
-            if(type === 'Compliance') complianceScore += 35;
-            
-            const container = document.getElementById('train-container');
-            const car = document.createElement('div');
-            car.className = 'rail-car flex-shrink-0';
-            car.innerHTML = `
-                <div class="w-32 h-20 bg-gray-800/50 border border-white/10 rounded-lg flex flex-col items-center justify-center relative backdrop-blur-sm">
-                    <span class="text-[8px] font-bold uppercase text-blue-400 text-center px-2 mb-1">${name}</span>
-                    <span class="text-[10px] text-gray-500">+${cost}%</span>
-                    <div class="absolute -bottom-1.5 w-full flex justify-around px-2">
-                        <div class="w-4 h-4 bg-gray-900 rounded-full border border-gray-700"></div>
-                        <div class="w-4 h-4 bg-gray-900 rounded-full border border-gray-700"></div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(car);
-            updateUI();
-        }
-
-        function setTemplate(mode) {
-            resetRail();
-            if(mode === 'treasury') {
-                addFeature('KYC Automation', 0.05, 'Compliance');
-                addFeature('Real-Time Audit', 0.04, 'Compliance');
-            } else if(mode === 'realestate') {
-                addFeature('Smart Hooks', 0.08, 'Utility');
-                addFeature('Multi-Sig Vault', 0.03, 'Utility');
-            }
-        }
-
-        function resetRail() {
-            currentRate = 0.33;
-            activeFeatures = [];
-            complianceScore = 25;
-            document.getElementById('train-container').innerHTML = '';
-            updateUI();
-        }
-
-        function updateUI() {
-            const bar = document.getElementById('complianceBar');
-            const status = document.getElementById('complianceStatus');
-            
-            bar.style.width = complianceScore + '%';
-            if(complianceScore < 50) {
-                bar.className = 'h-full bg-yellow-500 transition-all duration-500';
-                status.innerText = 'Baseline Asset Pairing Only';
-                status.className = 'text-[10px] font-bold text-yellow-500 uppercase';
-            } else if(complianceScore < 90) {
-                bar.className = 'h-full bg-blue-500 transition-all duration-500';
-                status.innerText = 'Institutional Grade Ready';
-                status.className = 'text-[10px] font-bold text-blue-500 uppercase';
-            } else {
-                bar.className = 'h-full bg-green-500 transition-all duration-500';
-                status.innerText = 'Full Federal Compliance Sync';
-                status.className = 'text-[10px] font-bold text-green-500 uppercase';
-            }
-            calculate();
-        }
-
-        function calculate() {
-            const vol = parseFloat(document.getElementById('volSlider').value);
-            const iawFee = vol * (currentRate / 100);
-            const legacyFee = vol * 0.018; 
-            const savings = legacyFee - iawFee;
-
-            document.getElementById('totalRate').innerText = currentRate.toFixed(2) + '%';
-            document.getElementById('displayVol').innerText = '$' + vol.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('iawFees').innerText = '$' + iawFee.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('legacyFees').innerText = '$' + legacyFee.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('savings').innerText = '+$' + savings.toLocaleString(undefined, {minimumFractionDigits: 2}) + ' Recovered';
-        }
-        updateUI();
-    </script>
-</body>
-</html>
+                                <span id="iawFees" class="font-mono text-lg text-blue-400 font-
