@@ -8,90 +8,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #000000; color: #ffffff; }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .glass-panel { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); }
         .blue-gradient-text { background: linear-gradient(90deg, #60a5fa, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Custom Slider Styling */
-        input[type=range] { -webkit-appearance: none; width: 100%; background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #3b82f6; cursor: pointer; border: 4px solid #000; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); transition: transform 0.2s; }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; outline: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 32px; width: 32px; border-radius: 50%; background: #3b82f6; cursor: pointer; border: 4px solid #000; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="bg-blue-600/10 border-b border-blue-500/20 text-blue-400 py-3 px-6 text-center sticky top-0 z-[100] backdrop-blur-md">
         <p class="text-[10px] font-bold tracking-[0.4em] uppercase">
-            Protocol Preview: Stage 4 Testing | Institutional Launch 06.19.26
+            Protocol Preview: Stage 4 Testing | Target Launch 06.19.26
         </p>
     </div>
 
     <nav class="flex justify-between items-center px-8 py-10 max-w-7xl mx-auto">
         <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[12px] font-black text-black tracking-tighter">IAW</div>
-            <div class="hidden md:block">
+            <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[12px] font-black text-black tracking-tighter uppercase">IAW</div>
+            <div class="hidden md:block leading-tight">
                 <span class="text-sm font-bold tracking-[0.2em] uppercase">Innovative App World</span>
-                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-0.5">Non-Custodial PaaS</p>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-0.5">Blockchain Architect: Derek Benjamin Little</p>
             </div>
         </div>
-        <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="px-6 py-2.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-            Technical Spec v2.1
+        <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="px-6 py-2.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all flex items-center gap-2">
+            <span>Ref: White Paper v2.1</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
     </nav>
 
     <main class="max-w-6xl mx-auto px-8 py-12">
         
-        <div class="mb-32 text-center md:text-left">
+        <div class="mb-24">
             <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-none">
-                Logic-Locked <br><span class="blue-gradient-text">Capital Rails.</span>
+                Logic-Locked <br><span class="blue-gradient-text">Institutional Rails.</span>
             </h1>
             <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
-                Automating institutional commerce via Xahau Hooks. Our mainframe enforces 1:1 RLUSD parity and treasury routing directly at the ledger level.
+                Utilizing Xahau Hooks to enforce treasury routing at the ledger level. Engineered for high-velocity tokenization with zero counterparty risk.
             </p>
         </div>
 
-        <section class="glass-panel rounded-[40px] p-12 mb-32">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+        <section class="glass-panel rounded-[40px] p-8 md:p-14 mb-24">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
                 <div>
-                    <h3 class="text-[11px] font-black text-blue-500 uppercase tracking-[0.3em] mb-4">Operational Efficiency Audit</h3>
-                    <p class="text-lg text-gray-300">Scaling Profitability Recovery from $1 to $1B</p>
+                    <h3 class="text-[11px] font-black text-blue-500 uppercase tracking-[0.3em] mb-4">Integrity Fee Audit</h3>
+                    <p class="text-lg text-gray-300">Scale recovery from $1 to $1,000,000,000</p>
                 </div>
                 <div class="text-right">
-                    <p class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-widest">Selected Monthly Volume</p>
-                    <span id="volDisplay" class="text-6xl md:text-7xl font-light tracking-tighter">$1,000,000</span>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-widest">Calculated Monthly Volume</p>
+                    <span id="volDisplay" class="text-5xl md:text-7xl font-light tracking-tighter text-white">$1,000,000</span>
                 </div>
             </div>
 
             <div class="px-2 mb-20">
-                <input type="range" id="volRange" min="1" max="1000000000" step="1" value="1000000" class="w-full" oninput="calculate()">
+                <input type="range" id="volRange" min="1" max="1000000000" step="1" value="1000000" class="w-full" oninput="updateCalculator()">
                 <div class="flex justify-between mt-6 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
                     <span>$1.00</span>
                     <span>$500M</span>
-                    <span>$1 Billion</span>
+                    <span>$1.0 Billion</span>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="p-10 rounded-3xl bg-white/5 border border-white/5">
-                    <div class="flex justify-between items-start mb-8">
-                        <span class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Legacy Banking System</span>
-                        <span class="text-[10px] px-2 py-1 bg-red-500/10 text-red-500 rounded font-bold">1.8% Fee Friction</span>
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Legacy Financial Friction</span>
+                            <span class="text-[10px] px-2 py-1 bg-red-500/10 text-red-500 rounded font-bold">1.8% Fee</span>
+                        </div>
+                        <p id="legacyCost" class="text-4xl font-medium mb-12 text-gray-400">$18,000.00</p>
                     </div>
-                    <p id="legacyCost" class="text-4xl font-medium mb-8 text-gray-400">$18,000.00</p>
-                    <div class="space-y-4 pt-8 border-t border-white/5 text-[11px] uppercase tracking-widest text-gray-500 font-bold">
-                        <div class="flex justify-between"><span>Settlement Delay</span><span class="text-red-500">72-120 Hours</span></div>
-                        <div class="flex justify-between"><span>Custodial Risk</span><span class="text-red-500">Full Centralization</span></div>
+                    <div class="space-y-4 pt-8 border-t border-white/5 text-[10px] uppercase tracking-widest font-bold">
+                        <div class="flex justify-between"><span>Settlement Finality</span><span class="text-red-500">72-120 Hours</span></div>
+                        <div class="flex justify-between"><span>Regulatory Path</span><span class="text-red-500">Fragmented</span></div>
+                        <div class="flex justify-between"><span>Counterparty Risk</span><span class="text-red-500">Full Custody</span></div>
                     </div>
                 </div>
 
-                <div class="p-10 rounded-3xl bg-blue-600/10 border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.1)]">
-                    <div class="flex justify-between items-start mb-8">
-                        <span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">IAW Logic-Locked Rail</span>
-                        <span class="text-[10px] px-2 py-1 bg-green-500/10 text-green-500 rounded font-bold">0.33% Integrity Fee</span>
+                <div class="p-10 rounded-3xl bg-blue-600/10 border border-blue-500/20 shadow-[0_0_60px_rgba(59,130,246,0.1)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">IAW Logic-Locked Rail</span>
+                            <span class="text-[10px] px-2 py-1 bg-green-500/10 text-green-500 rounded font-bold">0.33% Fee</span>
+                        </div>
+                        <p id="iawCost" class="text-4xl font-medium mb-12 text-white">$3,300.00</p>
                     </div>
-                    <p id="iawCost" class="text-4xl font-medium mb-8 text-white">$3,300.00</p>
-                    <div class="space-y-4 pt-8 border-t border-white/5 text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+                    <div class="space-y-4 pt-8 border-t border-white/10 text-[10px] uppercase tracking-widest font-bold">
                         <div class="flex justify-between"><span>Settlement Finality</span><span class="text-green-500">~5 Seconds</span></div>
-                        <div class="flex justify-between"><span>Custodial Risk</span><span class="text-green-500">Non-Custodial</span></div>
+                        <div class="flex justify-between"><span>Regulatory Path</span><span class="text-green-500">Programmatic</span></div>
+                        <div class="flex justify-between"><span>Counterparty Risk</span><span class="text-green-500">Non-Custodial</span></div>
                     </div>
                 </div>
             </div>
@@ -102,38 +107,57 @@
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
             <div>
-                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Revenue Logic</h5>
-                <p class="text-sm text-gray-400 leading-relaxed italic">"Every transaction triggers a fixed 0.33% infrastructure fee... instantly routed via 64-bit precision logic." [Sec 4]</p>
+                <h4 class="text-[11px] font-bold text-blue-500 uppercase tracking-[0.3em] pb-3 border-b border-white/10 mb-8">Technical Logic [Ref: v2.1]</h4>
+                <div class="space-y-8">
+                    <div class="text-sm">
+                        <p class="font-bold text-white mb-2">The Toll-Keeper Engine</p>
+                        <p class="text-gray-400 leading-relaxed italic">"64-bit precision logic triggers a fixed 0.33% infrastructure fee instantly routed to the IAWCENTRALHUB."</p>
+                    </div>
+                    <div class="text-sm">
+                        <p class="font-bold text-white mb-2">Account-Level State Locking</p>
+                        <p class="text-gray-400 leading-relaxed italic">"Mathematical state-locking eliminates the need for third-party custody of user assets."</p>
+                    </div>
+                </div>
             </div>
             <div>
-                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Asset Safety</h5>
-                <p class="text-sm text-gray-400 leading-relaxed italic">"Mandates tfMPTCanClawback for asset recovery in cases of lost keys or regulatory mandates." [Sec 5]</p>
-            </div>
-            <div>
-                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Sovereignty</h5>
-                <p class="text-sm text-gray-400 leading-relaxed italic">"User assets are secured via ledger-level logic, not intermediary wallets. IAW never has access to credentials." [Sec 3]</p>
+                <h4 class="text-[11px] font-bold text-blue-500 uppercase tracking-[0.3em] pb-3 border-b border-white/10 mb-8">Global Alignment</h4>
+                <div class="grid grid-cols-2 gap-8 text-[10px] font-bold uppercase tracking-widest">
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <p class="text-blue-400 mb-1">UAE: VARA</p>
+                        <p class="text-gray-500">DIFC Compliant</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <p class="text-blue-400 mb-1">EU: MiCA</p>
+                        <p class="text-gray-500">e-Money Framework</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <p class="text-blue-400 mb-1">USA: SEC</p>
+                        <p class="text-gray-500">Rule 17a-4 Standards</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <p class="text-blue-400 mb-1">GLOBAL: BIS</p>
+                        <p class="text-gray-500">Cross-Border Settlement</p>
+                    </div>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <footer class="max-w-7xl mx-auto px-8 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+    <footer class="max-w-6xl mx-auto px-8 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left opacity-60">
         <div>
             <p class="text-[11px] font-bold uppercase tracking-[0.4em]">Innovative App World LLC</p>
-            <p class="text-[10px] text-gray-600 uppercase tracking-widest mt-2">Derek Benjamin Little | Blockchain Architect</p>
+            <p class="text-[9px] uppercase tracking-widest text-gray-600 mt-2 italic">Institutional Launch Target: June 19, 2026</p>
         </div>
-        <div class="flex gap-4">
-             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">VARA UAE</span>
-             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">MiCA EU</span>
-             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">US CLARITY</span>
-        </div>
+        <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest border border-blue-500/30 px-6 py-2 rounded-full">Secure Rail v2.9</p>
     </footer>
 
     <script>
-        function calculate() {
-            const vol = parseFloat(document.getElementById('volRange').value);
+        function updateCalculator() {
+            const volInput = document.getElementById('volRange');
+            const vol = parseFloat(volInput.value);
             
             const legacyRate = 0.018; 
             const iawRate = 0.0033;
@@ -142,7 +166,6 @@
             const iawCost = vol * iawRate;
             const savings = legacyCost - iawCost;
 
-            // Formatter for large currency values
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
@@ -155,9 +178,7 @@
             document.getElementById('iawCost').innerText = formatter.format(iawCost);
             document.getElementById('savings').innerText = '+' + formatter.format(savings);
         }
-
-        // Run once on load to initialize
-        window.onload = calculate;
+        window.onload = updateCalculator;
     </script>
 </body>
 </html>
