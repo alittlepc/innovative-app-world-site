@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Precision Routing Rail v3.5</title>
+    <title>IAW | Institutional Routing Mainframe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="text-right">
-            <span class="text-[10px] font-black bg-green-100 text-green-600 px-3 py-1 rounded-full uppercase tracking-widest">Protocol v3.5 | Secure</span>
+            <span class="text-[10px] font-black bg-green-100 text-green-600 px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">Protocol | Secure</span>
         </div>
     </nav>
 
@@ -38,21 +38,21 @@
         
         <div class="lg:col-span-4 space-y-8">
             <section class="bg-white p-8 rounded-[32px] shadow-sm border border-slate-200">
-                <h2 class="text-xl font-black mb-6 flex items-center gap-2">
-                    <span class="w-6 h-6 bg-blue-600 text-white text-[12px] flex items-center justify-center rounded-full italic">i</span>
-                    Configuration Guide
+                <h2 class="text-xl font-black mb-6 flex items-center gap-2 text-slate-900">
+                    <span class="w-6 h-6 bg-blue-600 text-white text-[12px] flex items-center justify-center rounded-full italic">!</span>
+                    Operational Directives
                 </h2>
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Pipeline Fuel</p>
-                    <p class="text-sm font-medium text-slate-600">Enter volume in the black box. <strong>Example:</strong> $1,000,000.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Set Pipeline Volume</p>
+                    <p class="text-sm font-medium text-slate-600">Enter monthly fuel in the black box. <br><strong>Example:</strong> $1,000,000.</p>
                 </div>
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Attach Modules</p>
-                    <p class="text-sm font-medium text-slate-600">Use the buttons to add <strong>Tax</strong>, <strong>Payroll</strong>, or <strong>Custom</strong> cars. You can add multiples!</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Initialize Car Logic</p>
+                    <p class="text-sm font-medium text-slate-600">Add <strong>Tax</strong>, <strong>Payroll</strong>, or <strong>Other</strong> cars. Use multiples for State/Fed splits.</p>
                 </div>
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Define Purpose</p>
-                    <p class="text-sm font-medium text-slate-600">Click the car title to rename (e.g., "State Tax 02"). Paste destination wallets into <strong>Target Account</strong>.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Protocol Routing</p>
+                    <p class="text-sm font-medium text-slate-600">Rename cars by clicking titles. Paste destination wallets into <strong>Target Account</strong>.</p>
                 </div>
             </section>
 
@@ -68,9 +68,7 @@
 
         <div class="lg:col-span-8">
             <div class="mb-6 flex flex-wrap gap-3 items-end justify-between">
-                <div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Active Routing Logic</h3>
-                </div>
+                <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Active Pipeline Visual</h3>
                 <div class="flex gap-2">
                     <button onclick="addCar('Tax')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm">+ Tax Car</button>
                     <button onclick="addCar('Payroll')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm">+ Payroll Car</button>
@@ -83,13 +81,10 @@
                     <div class="flex-shrink-0 mr-4 flex flex-col items-center">
                         <svg class="w-32 h-24 text-slate-900" viewBox="0 0 100 60" fill="currentColor">
                             <path d="M10 25h25v25H10zM35 15h30v35H35zM65 25h25v25H65z" />
-                            <circle cx="22" cy="54" r="6" />
-                            <circle cx="50" cy="54" r="6" />
-                            <circle cx="78" cy="54" r="6" />
+                            <circle cx="22" cy="54" r="6" /><circle cx="50" cy="54" r="6" /><circle cx="78" cy="54" r="6" />
                         </svg>
                         <span class="text-[10px] font-black uppercase mt-2 bg-slate-200 px-3 py-1 rounded">IAW Locomotive</span>
                     </div>
-
                     <div class="w-8 h-1 bg-slate-300 mb-12 flex-shrink-0"></div>
 
                     <div class="car-box bg-white border-4 border-slate-900 rounded-[40px] p-6 shadow-xl">
@@ -116,15 +111,15 @@
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-[40px] border border-slate-200 h-[300px] overflow-y-auto">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6 sticky top-0 bg-white pb-2">Distribution Summary</h4>
-                    <div id="summary-list" class="space-y-3"></div>
+                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6 sticky top-0 bg-white">Routing Summary</h4>
+                    <div id="summary-list" class="space-y-3 mt-4"></div>
                 </div>
                 <div class="bg-blue-600 p-8 rounded-[40px] text-white flex flex-col justify-center shadow-2xl relative overflow-hidden">
                     <div class="absolute -right-4 -top-4 w-32 h-32 bg-white opacity-5 rounded-full"></div>
                     <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2">Net Monthly Outflow</p>
                     <h2 id="total-dollars" class="text-5xl font-black tracking-tighter">$3,300.00</h2>
                     <div class="mt-4 pt-4 border-t border-blue-400/30 flex justify-between items-center">
-                        <span class="text-sm font-bold opacity-80 uppercase">Total System Load</span>
+                        <span class="text-sm font-bold opacity-80 uppercase">Pipeline Load</span>
                         <span id="total-percent" class="text-xl font-black text-blue-200">0.330%</span>
                     </div>
                 </div>
@@ -132,39 +127,55 @@
         </div>
     </main>
 
-    <footer class="max-w-[1600px] w-full mx-auto mt-20 pt-8 border-t border-slate-200 pb-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-2">
+    <footer class="max-w-[1600px] w-full mx-auto mt-20 pt-12 border-t border-slate-200 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <div class="w-6 h-6 bg-black text-white flex items-center justify-center font-black rounded text-[8px]">IAW</div>
-                    <span class="text-xs font-black uppercase tracking-widest">Innovative App World LLC</span>
+                    <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded-lg text-xs">IAW</div>
+                    <span class="text-xs font-black uppercase tracking-widest">Innovative App World</span>
                 </div>
-                <p class="text-xs text-slate-400 font-medium leading-relaxed max-w-sm">
-                    Providing high-fidelity XRPL application development, metaverse infrastructure, and programmable money solutions for global fintech utility.
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter leading-relaxed">
+                    Enterprise XRPL Solutions<br>Institutional Asset Routing<br>Precision Tokenization Rails
                 </p>
             </div>
+            
             <div>
-                <h5 class="text-[10px] font-black uppercase text-slate-900 mb-4 tracking-widest">Core Projects</h5>
-                <ul class="text-[10px] font-bold text-slate-500 space-y-2 uppercase tracking-tighter">
-                    <li><a href="#" class="footer-link">XRP Tokenizer</a></li>
-                    <li><a href="#" class="footer-link">SSFI Identity</a></li>
-                    <li><a href="#" class="footer-link">TaaS Infrastructure</a></li>
+                <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Global Compliance</h5>
+                <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
+                    <li><a href="https://www.fatf-gafi.org" target="_blank" class="footer-link">FATF Standards (AML/CFT)</a></li>
+                    <li><a href="https://www.bis.org/basel_framework/" target="_blank" class="footer-link">Basel III Framework</a></li>
+                    <li><a href="https://www.iosco.org" target="_blank" class="footer-link">IOSCO Regulatory Principles</a></li>
+                    <li><a href="https://www.fsb.org" target="_blank" class="footer-link">Financial Stability Board (FSB)</a></li>
                 </ul>
             </div>
+
             <div>
-                <h5 class="text-[10px] font-black uppercase text-slate-900 mb-4 tracking-widest">Contact</h5>
-                <ul class="text-[10px] font-bold text-slate-500 space-y-2 uppercase tracking-tighter">
-                    <li>Yulee, Florida</li>
-                    <li>LinkedIn Networking</li>
-                    <li>2026 Innovation Hub</li>
+                <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Regional Standards</h5>
+                <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
+                    <li><a href="https://finance.ec.europa.eu/digital-finance/markets-crypto-assets-mica_en" target="_blank" class="footer-link">EU MiCA Regulation</a></li>
+                    <li><a href="https://www.fca.org.uk" target="_blank" class="footer-link">UK FCA Standards</a></li>
+                    <li><a href="https://www.dfsa.ae" target="_blank" class="footer-link">Dubai VARA Guidelines</a></li>
+                    <li><a href="https://www.mas.gov.sg" target="_blank" class="footer-link">Singapore MAS Framework</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Connect</h5>
+                <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
+                    <li><a href="https://www.linkedin.com/in/innovative-app-world" target="_blank" class="footer-link flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn Networking
+                    </a></li>
+                    <li><a href="mailto:alittlepc@gmail.com" class="footer-link">Email Inquiry</a></li>
+                    <li><a href="https://xrptokenizer.com" target="_blank" class="footer-link">XRP Tokenizer Portal</a></li>
                 </ul>
             </div>
         </div>
         <div class="mt-12 flex justify-between items-center border-t border-slate-100 pt-8">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">© 2026 Derek Benjamin Little</p>
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">© 2026 Derek Benjamin Little | IAW Proprietary System</p>
             <div class="flex gap-4">
                 <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter">System Online</span>
+                <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter">Systems Nominal</span>
             </div>
         </div>
     </footer>
@@ -185,28 +196,15 @@
         function addCar(type) {
             const id = Date.now();
             let defaultTitle = "Other Car";
-            let defaultPercent = 1.000;
-            
             if(type === 'Tax') defaultTitle = "Tax Car 01";
             if(type === 'Payroll') defaultTitle = "Payroll Car 01";
-
-            cars.push({
-                id: id,
-                title: defaultTitle,
-                percent: defaultPercent,
-                wallet: "rDestinationAddress..."
-            });
+            cars.push({ id, title: defaultTitle, percent: 1.000, wallet: "rDestinationAddress..." });
             render();
-            
-            // Auto-scroll to end
             const vp = document.getElementById('viewport');
             setTimeout(() => { vp.scrollLeft = vp.scrollWidth; }, 100);
         }
 
-        function removeCar(id) {
-            cars = cars.filter(c => c.id !== id);
-            render();
-        }
+        function removeCar(id) { cars = cars.filter(c => c.id !== id); render(); }
 
         function updateCar(id, field, value) {
             const car = cars.find(c => c.id === id);
@@ -217,79 +215,38 @@
         }
 
         function calculate() {
-            let totalP = 0.330;
-            let totalD = volume * 0.00330;
+            let totalP = 0.330, totalD = volume * 0.00330;
             document.getElementById('core-dollars').innerText = formatCurrency(volume * 0.00330);
-
-            let summaryHtml = `
-                <div class="flex justify-between items-center py-2 border-b border-slate-50">
-                    <span class="text-xs font-black uppercase text-slate-800">IAW Protocol Fee</span>
-                    <span class="text-sm font-mono font-bold">0.330%</span>
-                </div>`;
-
+            let summaryHtml = `<div class="flex justify-between items-center py-2 border-b border-slate-50"><span class="text-xs font-black uppercase text-slate-800">IAW Base Fee</span><span class="text-sm font-mono font-bold">0.330%</span></div>`;
             cars.forEach(car => {
                 const amt = volume * (car.percent / 100);
-                totalP += car.percent;
-                totalD += amt;
-
+                totalP += car.percent; totalD += amt;
                 if(document.getElementById(`cost-${car.id}`)) {
                     document.getElementById(`cost-${car.id}`).innerText = formatCurrency(amt);
                     document.getElementById(`rate-${car.id}`).innerText = car.percent.toFixed(3) + '%';
                 }
-
-                summaryHtml += `
-                    <div class="flex justify-between items-center py-2 border-b border-slate-50">
-                        <span class="text-xs font-bold text-slate-500 uppercase">${car.title}</span>
-                        <span class="text-sm font-mono font-bold">${car.percent.toFixed(3)}%</span>
-                    </div>`;
+                summaryHtml += `<div class="flex justify-between items-center py-2 border-b border-slate-50"><span class="text-xs font-bold text-slate-500 uppercase">${car.title}</span><span class="text-sm font-mono font-bold">${car.percent.toFixed(3)}%</span></div>`;
             });
-
             document.getElementById('total-percent').innerText = totalP.toFixed(3) + '%';
             document.getElementById('total-dollars').innerText = formatCurrency(totalD);
             document.getElementById('summary-list').innerHTML = summaryHtml;
         }
 
-        function formatCurrency(v) {
-            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v);
-        }
+        function formatCurrency(v) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); }
 
         function render() {
             const container = document.getElementById('dynamic-cars');
             container.innerHTML = '';
-            
             cars.forEach(car => {
                 const coupler = document.createElement('div');
                 coupler.className = "w-8 h-1 bg-slate-300 mb-12 flex-shrink-0";
-                
                 const carDiv = document.createElement('div');
                 carDiv.className = "car-box bg-white border border-slate-200 rounded-[40px] p-6 shadow-sm ml-2";
-                carDiv.innerHTML = `
-                    <div class="h-full flex flex-col justify-between">
-                        <div class="relative">
-                            <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black text-xl">×</button>
-                            <input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-slate-100 outline-none focus:border-blue-500 mb-3 bg-transparent" oninput="updateCar(${car.id}, 'title', this.value)">
-                            
-                            <label class="text-[8px] font-bold text-slate-400 uppercase">Target Account</label>
-                            <input type="text" value="${car.wallet}" placeholder="rAddress..." class="wallet-input" oninput="updateCar(${car.id}, 'wallet', this.value)">
-                        </div>
-                        <div class="mt-4">
-                            <input type="range" min="0" max="100" step="0.001" value="${car.percent}" oninput="updateCar(${car.id}, 'percent', this.value)">
-                            <div class="flex justify-between items-end mt-2">
-                                <p class="text-2xl font-black tracking-tighter" id="rate-${car.id}">${car.percent.toFixed(3)}%</p>
-                                <p class="text-[10px] text-slate-400 font-black uppercase" id="cost-${car.id}">$0.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8">
-                        <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
-                        <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
-                    </div>`;
-                container.appendChild(coupler);
-                container.appendChild(carDiv);
+                carDiv.innerHTML = `<div class="h-full flex flex-col justify-between"><div class="relative"><button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black text-xl">×</button><input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-slate-100 outline-none focus:border-blue-500 mb-3 bg-transparent" oninput="updateCar(${car.id}, 'title', this.value)"><label class="text-[8px] font-bold text-slate-400 uppercase">Target Account</label><input type="text" value="${car.wallet}" class="wallet-input" oninput="updateCar(${car.id}, 'wallet', this.value)"></div><div class="mt-4"><input type="range" min="0" max="100" step="0.001" value="${car.percent}" oninput="updateCar(${car.id}, 'percent', this.value)"><div class="flex justify-between items-end mt-2"><p class="text-2xl font-black tracking-tighter" id="rate-${car.id}">${car.percent.toFixed(3)}%</p><p class="text-[10px] text-slate-400 font-black uppercase" id="cost-${car.id}">$0.00</p></div></div></div><div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8"><div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div><div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div></div>`;
+                container.appendChild(coupler); container.appendChild(carDiv);
             });
             calculate();
         }
-
         window.onload = render;
     </script>
 </body>
