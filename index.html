@@ -7,122 +7,157 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
-        .logic-border { border: 1px solid #e5e7eb; }
-        input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 8px; border-radius: 4px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #000000; cursor: pointer; border: 3px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.1s ease; }
+        body { font-family: 'Inter', sans-serif; background-color: #000000; color: #ffffff; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .blue-gradient-text { background: linear-gradient(90deg, #60a5fa, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Custom Slider Styling */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; outline: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #3b82f6; cursor: pointer; border: 4px solid #000; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); transition: transform 0.2s; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="bg-blue-600 text-white py-3 px-6 text-center sticky top-0 z-[100] shadow-md">
-        <p class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-            Platform Preview: Stage 4 Testing | Institutional Launch: 06.19.2026
+    <div class="bg-blue-600/10 border-b border-blue-500/20 text-blue-400 py-3 px-6 text-center sticky top-0 z-[100] backdrop-blur-md">
+        <p class="text-[10px] font-bold tracking-[0.4em] uppercase">
+            Protocol Preview: Stage 4 Testing | Institutional Launch 06.19.26
         </p>
     </div>
 
-    <nav class="flex justify-between items-center px-8 py-8 max-w-7xl mx-auto">
-        <div class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-black rounded flex items-center justify-center text-[11px] font-bold text-white uppercase tracking-tighter">IAW</div>
-            <span class="text-sm font-bold tracking-tight uppercase tracking-widest">Innovative App World</span>
+    <nav class="flex justify-between items-center px-8 py-10 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[12px] font-black text-black tracking-tighter">IAW</div>
+            <div class="hidden md:block">
+                <span class="text-sm font-bold tracking-[0.2em] uppercase">Innovative App World</span>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-0.5">Non-Custodial PaaS</p>
+            </div>
         </div>
-        <div class="flex gap-6 items-center">
-            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold text-blue-600 hover:bg-blue-100 transition-all uppercase tracking-widest flex items-center gap-2 border border-blue-200 px-4 py-2 rounded-full bg-blue-50">
-                <span>Ref: White Paper v2.1</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
-        </div>
+        <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="px-6 py-2.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+            Technical Spec v2.1
+        </a>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-6 py-12">
+    <main class="max-w-6xl mx-auto px-8 py-12">
         
-        <div class="mb-20">
-            <h1 class="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 mb-8 leading-[1.1]">
-                Logic-Locked Institutional Rails.
+        <div class="mb-32 text-center md:text-left">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-none">
+                Logic-Locked <br><span class="blue-gradient-text">Capital Rails.</span>
             </h1>
-            <p class="text-xl text-gray-500 max-w-2xl leading-relaxed">
-                Utilizing Xahau Hooks to enforce treasury routing at the ledger level. 
-                Non-custodial infrastructure engineered for the next generation of global commerce.
+            <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
+                Automating institutional commerce via Xahau Hooks. Our mainframe enforces 1:1 RLUSD parity and treasury routing directly at the ledger level.
             </p>
         </div>
 
-        <div class="p-10 logic-border rounded-3xl mb-24 bg-gray-50/30">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+        <section class="glass-panel rounded-[40px] p-12 mb-32">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
                 <div>
-                    <h3 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-2">Protocol Revenue Recovery</h3>
-                    <p class="text-xs text-gray-400 italic">Simulating logic-locked efficiency against legacy friction.</p>
+                    <h3 class="text-[11px] font-black text-blue-500 uppercase tracking-[0.3em] mb-4">Operational Efficiency Audit</h3>
+                    <p class="text-lg text-gray-300">Scaling Profitability Recovery from $1 to $1B</p>
                 </div>
                 <div class="text-right">
-                    <span id="volDisplay" class="text-5xl font-light text-gray-900">$1,000,000</span>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase mt-2">Monthly Transaction Volume (USD)</p>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-widest">Selected Monthly Volume</p>
+                    <span id="volDisplay" class="text-6xl md:text-7xl font-light tracking-tighter">$1,000,000</span>
                 </div>
             </div>
 
-            <div class="px-2 mb-16">
-                <input type="range" id="volRange" min="100000" max="25000000" step="100000" value="1000000" class="w-full cursor-pointer" oninput="calculate()">
+            <div class="px-2 mb-20">
+                <input type="range" id="volRange" min="1" max="1000000000" step="1" value="1000000" class="w-full" oninput="calculate()">
+                <div class="flex justify-between mt-6 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
+                    <span>$1.00</span>
+                    <span>$500M</span>
+                    <span>$1 Billion</span>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 logic-border rounded-2xl overflow-hidden mb-12">
-                <div class="bg-white p-8">
-                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-6">Legacy Banking Option</span>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-[10px] font-bold text-gray-400 uppercase mb-1">Fee Friction (1.8% Avg)</p>
-                            <p id="legacyCost" class="text-3xl font-medium text-gray-400">$18,000.00</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-                            <div>
-                                <p class="text-[9px] font-bold text-gray-400 uppercase">Settlement</p>
-                                <p class="text-xs text-red-400 font-bold uppercase">3-5 Day Delay</p>
-                            </div>
-                            <div>
-                                <p class="text-[9px] font-bold text-gray-400 uppercase">Custody</p>
-                                <p class="text-xs text-red-400 font-bold uppercase">Third-Party Risk</p>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/5">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Legacy Banking System</span>
+                        <span class="text-[10px] px-2 py-1 bg-red-500/10 text-red-500 rounded font-bold">1.8% Fee Friction</span>
+                    </div>
+                    <p id="legacyCost" class="text-4xl font-medium mb-8 text-gray-400">$18,000.00</p>
+                    <div class="space-y-4 pt-8 border-t border-white/5 text-[11px] uppercase tracking-widest text-gray-500 font-bold">
+                        <div class="flex justify-between"><span>Settlement Delay</span><span class="text-red-500">72-120 Hours</span></div>
+                        <div class="flex justify-between"><span>Custodial Risk</span><span class="text-red-500">Full Centralization</span></div>
                     </div>
                 </div>
-                <div class="bg-white p-8 border-l-4 border-l-blue-600">
-                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-6">IAW Logic-Locked Rail</span>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-[10px] font-bold text-blue-600 uppercase mb-1">Integrity Fee (0.33%)</p>
-                            <p id="iawCost" class="text-3xl font-medium text-blue-600">$3,300.00</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-                            <div>
-                                <p class="text-[9px] font-bold text-gray-400 uppercase">Settlement</p>
-                                <p class="text-xs text-green-500 font-bold uppercase">~5 Sec Finality</p>
-                            </div>
-                            <div>
-                                <p class="text-[9px] font-bold text-gray-400 uppercase">Custody</p>
-                                <p class="text-xs text-green-500 font-bold uppercase">Non-Custodial</p>
-                            </div>
-                        </div>
+
+                <div class="p-10 rounded-3xl bg-blue-600/10 border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.1)]">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">IAW Logic-Locked Rail</span>
+                        <span class="text-[10px] px-2 py-1 bg-green-500/10 text-green-500 rounded font-bold">0.33% Integrity Fee</span>
+                    </div>
+                    <p id="iawCost" class="text-4xl font-medium mb-8 text-white">$3,300.00</p>
+                    <div class="space-y-4 pt-8 border-t border-white/5 text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+                        <div class="flex justify-between"><span>Settlement Finality</span><span class="text-green-500">~5 Seconds</span></div>
+                        <div class="flex justify-between"><span>Custodial Risk</span><span class="text-green-500">Non-Custodial</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-gray-200 text-center md:text-left">
-                <span class="text-[10px] font-bold text-gray-400 uppercase block mb-1 tracking-widest">Monthly Operational Profit Recovered</span>
-                <span id="savings" class="text-5xl font-bold text-gray-900">+$14,700.00</span>
+            <div class="text-center pt-12 border-t border-white/5">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-4">Total Revenue Recovered Monthly</p>
+                <h4 id="savings" class="text-6xl md:text-8xl font-black blue-gradient-text tracking-tighter">+$14,700.00</h4>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
+            <div>
+                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Revenue Logic</h5>
+                <p class="text-sm text-gray-400 leading-relaxed italic">"Every transaction triggers a fixed 0.33% infrastructure fee... instantly routed via 64-bit precision logic." [Sec 4]</p>
+            </div>
+            <div>
+                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Asset Safety</h5>
+                <p class="text-sm text-gray-400 leading-relaxed italic">"Mandates tfMPTCanClawback for asset recovery in cases of lost keys or regulatory mandates." [Sec 5]</p>
+            </div>
+            <div>
+                <h5 class="text-[11px] font-bold uppercase tracking-widest text-blue-500 mb-6">Sovereignty</h5>
+                <p class="text-sm text-gray-400 leading-relaxed italic">"User assets are secured via ledger-level logic, not intermediary wallets. IAW never has access to credentials." [Sec 3]</p>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
-            <div class="space-y-8">
-                <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] pb-2 border-b border-gray-100">Protocol Specifications</h4>
-                <div class="space-y-6">
-                    <div class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">The "Toll-Keeper" Engine</p>
-                        <p class="text-gray-500 leading-relaxed italic">"Using 64-bit precision logic, the Hook instantly routes fees to the IAWCENTRALHUB... Operational revenue is decoupled from issuance logic." [White Paper Sec. 4]</p>
-                    </div>
-                    <div class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">Account-Level State Locking</p>
-                        <p class="text-gray-500 leading-relaxed italic">"Eliminating the need for custody of user assets... enforces compliance and treasury routing at the ledger level." [White Paper Sec. 1]</p>
-                    </div>
-                </div>
-            </div>
-            <div class="space-y-8">
-                <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] pb-2 border-b border-gray-100">Global Alignment</h4>
-                <div class="space-y-6">
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-8 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+        <div>
+            <p class="text-[11px] font-bold uppercase tracking-[0.4em]">Innovative App World LLC</p>
+            <p class="text-[10px] text-gray-600 uppercase tracking-widest mt-2">Derek Benjamin Little | Blockchain Architect</p>
+        </div>
+        <div class="flex gap-4">
+             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">VARA UAE</span>
+             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">MiCA EU</span>
+             <span class="px-4 py-1.5 bg-white/5 rounded text-[9px] font-bold text-gray-500 uppercase tracking-widest">US CLARITY</span>
+        </div>
+    </footer>
+
+    <script>
+        function calculate() {
+            const vol = parseFloat(document.getElementById('volRange').value);
+            
+            const legacyRate = 0.018; 
+            const iawRate = 0.0033;
+            
+            const legacyCost = vol * legacyRate;
+            const iawCost = vol * iawRate;
+            const savings = legacyCost - iawCost;
+
+            // Formatter for large currency values
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
+
+            document.getElementById('volDisplay').innerText = formatter.format(vol).replace('.00', '');
+            document.getElementById('legacyCost').innerText = formatter.format(legacyCost);
+            document.getElementById('iawCost').innerText = formatter.format(iawCost);
+            document.getElementById('savings').innerText = '+' + formatter.format(savings);
+        }
+
+        // Run once on load to initialize
+        window.onload = calculate;
+    </script>
+</body>
+</html>
