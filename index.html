@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Precision Routing Rail</title>
+    <title>IAW | Institutional Multi-Route Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #111827; }
         .train-viewport { overflow-x: auto; padding: 60px 20px; background: #f8fafc; border-radius: 40px; border: 2px dashed #e2e8f0; }
-        .car-box { min-width: 260px; height: 260px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
+        .car-box { min-width: 280px; height: 280px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
         .wallet-input { font-family: monospace; font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; width: 100%; outline: none; color: #475569; }
         .wallet-input:focus { border-color: #3b82f6; background: #fff; color: #000; }
         .step-card { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 20px; }
@@ -17,18 +17,19 @@
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000; cursor: pointer; border: 3px solid #fff; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
     </style>
 </head>
-<body class="p-6 md:p-12 bg-slate-50">
+<body class="p-4 md:p-12 bg-slate-50">
 
     <nav class="max-w-[1600px] mx-auto mb-12 flex justify-between items-center">
         <div class="flex items-center gap-3">
             <div class="w-12 h-12 bg-black text-white flex items-center justify-center font-black rounded-xl shadow-lg">IAW</div>
             <div>
                 <h1 class="text-2xl font-black tracking-tighter uppercase">Innovative App World</h1>
-                <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase">Multi-Chain Routing Mainframe</p>
+                <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase text-nowrap">Multi-Chain Routing & Metaverse Economy Mainframe</p>
             </div>
         </div>
         <div class="hidden md:block text-right">
-            <span class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">Protocol v3.0 | Secure</span>
+            <p class="text-[10px] font-black uppercase text-slate-400">Security Protocol</p>
+            <span class="text-[10px] font-black bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full uppercase tracking-widest">v3.5 | Secure Encryption Active</span>
         </div>
     </nav>
 
@@ -38,46 +39,47 @@
             <section class="bg-white p-8 rounded-[32px] shadow-sm border border-slate-200">
                 <h2 class="text-xl font-black mb-6 flex items-center gap-2">
                     <span class="w-6 h-6 bg-blue-600 text-white text-[12px] flex items-center justify-center rounded-full">!</span>
-                    How to Test Your Rail
+                    Test Your configuration
                 </h2>
                 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Set the Fuel</p>
-                    <p class="text-sm font-medium text-slate-600">Enter your monthly volume in the black box. <br><strong>Example:</strong> Type "$500,000".</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 1: Set Pipeline Flow</p>
+                    <p class="text-sm font-medium text-slate-600">Enter your monthly total in the black box (e.g., "$1,500,000").</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Attach Cargo</p>
-                    <p class="text-sm font-medium text-slate-600">Click <strong>+ Add Custom Car</strong>. <br><strong>Example:</strong> Name it "Staff Payroll".</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 2: Deploy Modules</p>
+                    <p class="text-sm font-medium text-slate-600">Use the Template buttons to add "Tax", "Savings", or "Other" cars. You can add as many as you need.</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Route the Funds</p>
-                    <p class="text-sm font-medium text-slate-600">Paste a wallet address into the <strong>Target Account</strong> field. This is where the money goes.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 3: Define Destinations</p>
+                    <p class="text-sm font-medium text-slate-600">Edit the Car Title (e.g., "State Tax") and paste the Target Wallet Address.</p>
                 </div>
 
                 <div class="step-card">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 4: Audit the Logic</p>
-                    <p class="text-sm font-medium text-slate-600">Adjust the slider. Watch the <strong>Monthly Route</strong> dollar amount update in real-time.</p>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Step 4: Balance the Load</p>
+                    <p class="text-sm font-medium text-slate-600">Slide the percentage to adjust the real-time dollar route.</p>
                 </div>
             </section>
 
             <section class="bg-black text-white p-8 rounded-[32px] shadow-2xl">
-                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block">Total Pipeline Volume (USD)</label>
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block">Monthly Pipeline Volume (USD)</label>
                 <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-2" oninput="updateVol(this.value)">
                 <div class="mt-8 flex justify-between items-center bg-slate-900 p-4 rounded-2xl">
-                    <span class="text-xs font-bold text-slate-400 uppercase">Base Friction</span>
+                    <span class="text-xs font-bold text-slate-400 uppercase">IAW Infrastructure Fee</span>
                     <span class="text-xl font-black text-blue-400">0.330%</span>
                 </div>
             </section>
         </div>
 
         <div class="lg:col-span-8">
-            <div class="mb-6 flex justify-between items-end">
-                <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Active Protocol Visual</h3>
-                <button onclick="addCar()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg transition-transform active:scale-95">
-                    + Add Custom Purpose Car
-                </button>
+            <div class="mb-6 flex flex-wrap gap-3 items-center">
+                <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest mr-2">Attach Cargo:</span>
+                <button onclick="addCar('Tax')" class="bg-red-50 hover:bg-red-500 hover:text-white text-red-600 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest border border-red-100 transition-all">+ Tax Module</button>
+                <button onclick="addCar('Savings')" class="bg-emerald-50 hover:bg-emerald-500 hover:text-white text-emerald-600 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest border border-emerald-100 transition-all">+ Savings</button>
+                <button onclick="addCar('Payroll')" class="bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-600 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest border border-amber-100 transition-all">+ Payroll</button>
+                <button onclick="addCar('Other')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg transition-all">+ Other / Custom</button>
             </div>
 
             <div class="train-viewport">
@@ -91,7 +93,7 @@
                             <circle cx="50" cy="54" r="6" />
                             <circle cx="78" cy="54" r="6" />
                         </svg>
-                        <span class="text-[10px] font-black uppercase mt-2 bg-slate-200 px-3 py-1 rounded">IAW Engine</span>
+                        <span class="text-[10px] font-black uppercase mt-2 bg-slate-200 px-3 py-1 rounded">IAW Locomotive</span>
                     </div>
 
                     <div class="w-8 h-1 bg-slate-300 mb-12 flex-shrink-0"></div>
@@ -99,18 +101,18 @@
                     <div class="car-box bg-white border-4 border-slate-900 rounded-[40px] p-6 shadow-xl">
                         <div class="flex flex-col h-full justify-between">
                             <div>
-                                <p class="text-[10px] font-black uppercase text-blue-600 mb-2">Primary Rail Fee</p>
-                                <label class="text-[8px] font-bold text-slate-400 uppercase">Target Account</label>
+                                <p class="text-[10px] font-black uppercase text-blue-600 mb-2 tracking-tighter">Primary Rail Routing</p>
+                                <label class="text-[8px] font-bold text-slate-400 uppercase">Default Settlement Account</label>
                                 <input type="text" value="rIAWCentralHubVault..." class="wallet-input" readonly>
                             </div>
                             <div>
                                 <p class="text-3xl font-black tracking-tighter">0.330%</p>
-                                <p class="text-xs font-bold text-slate-400 uppercase" id="core-dollars">$3,300</p>
+                                <p class="text-xs font-bold text-slate-400 uppercase" id="core-dollars">$3,300.00</p>
                             </div>
                         </div>
                         <div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8">
-                            <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
-                            <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
+                            <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white shadow-inner"></div>
+                            <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white shadow-inner"></div>
                         </div>
                     </div>
 
@@ -121,21 +123,43 @@
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-[40px] border border-slate-200">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6">Routing Ledger</h4>
-                    <div id="summary-list" class="space-y-3">
-                        </div>
+                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-6">Distribution Summary</h4>
+                    <div id="summary-list" class="space-y-3"></div>
                 </div>
                 <div class="bg-blue-600 p-8 rounded-[40px] text-white flex flex-col justify-center shadow-2xl">
-                    <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2">Net Monthly Outflow</p>
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-2 text-blue-200">Total Net Automated Routing</p>
                     <h2 id="total-dollars" class="text-5xl font-black tracking-tighter">$3,300.00</h2>
                     <div class="mt-4 pt-4 border-t border-blue-400/30 flex justify-between items-center">
-                        <span class="text-sm font-bold opacity-80 uppercase">Total Rail Load</span>
+                        <span class="text-sm font-bold opacity-80 uppercase">Total System Friction</span>
                         <span id="total-percent" class="text-xl font-black text-blue-200">0.330%</span>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="max-w-[1600px] mx-auto mt-24 pb-12 border-t border-slate-200 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="max-w-md">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-6 h-6 bg-black text-white flex items-center justify-center font-black rounded text-[8px]">IAW</div>
+                    <span class="text-xs font-black uppercase tracking-widest">Innovative App World LLC</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed font-medium">
+                    This automated rail system is designed for XRPL-native institution tokenization. 
+                    Calculations are based on 0.000 precision logic for payroll deductions and international exchange protocols.
+                </p>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] font-black uppercase text-slate-400 mb-2">Developed By</p>
+                <p class="text-sm font-black uppercase">Derek Benjamin Little</p>
+                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mt-1">Founder & CEO | Blockchain Architect</p>
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <p class="text-[9px] font-bold text-slate-300 uppercase tracking-[0.5em]">&copy; 2026 Innovative App World LLC | All Rights Reserved</p>
+        </div>
+    </footer>
 
     <script>
         let volume = 1000000;
@@ -150,13 +174,19 @@
             }
         }
 
-        function addCar() {
+        function addCar(type) {
             const id = Date.now();
+            let label = "Other Allocation";
+            if(type === 'Tax') label = "Tax Module 01";
+            if(type === 'Savings') label = "Savings Allocation";
+            if(type === 'Payroll') label = "Payroll Deduction";
+
             cars.push({
                 id: id,
-                title: "New Allocation",
+                title: label,
                 percent: 1.000,
-                wallet: "rDestinationAddress..."
+                wallet: "rDestinationAccount...",
+                type: type
             });
             render();
         }
@@ -177,15 +207,13 @@
         function calculate() {
             let totalP = 0.330;
             let totalD = volume * 0.00330;
-
             document.getElementById('core-dollars').innerText = formatCurrency(volume * 0.00330);
 
             let summaryHtml = `
                 <div class="flex justify-between items-center py-2 border-b border-slate-50">
-                    <span class="text-xs font-black uppercase text-slate-800">IAW Protocol Fee</span>
+                    <span class="text-xs font-black uppercase text-slate-800">IAW Base Protocol</span>
                     <span class="text-sm font-mono font-bold">0.330%</span>
-                </div>
-            `;
+                </div>`;
 
             cars.forEach(car => {
                 const amt = volume * (car.percent / 100);
@@ -201,8 +229,7 @@
                     <div class="flex justify-between items-center py-2 border-b border-slate-50">
                         <span class="text-xs font-bold text-slate-500 uppercase">${car.title}</span>
                         <span class="text-sm font-mono font-bold">${car.percent.toFixed(3)}%</span>
-                    </div>
-                `;
+                    </div>`;
             });
 
             document.getElementById('total-percent').innerText = totalP.toFixed(3) + '%';
@@ -223,14 +250,14 @@
                 coupler.className = "w-8 h-1 bg-slate-300 mb-12 flex-shrink-0";
                 
                 const carDiv = document.createElement('div');
-                carDiv.className = "car-box bg-white border border-slate-200 rounded-[40px] p-6 shadow-sm ml-2";
+                carDiv.className = "car-box bg-white border-2 border-slate-200 rounded-[40px] p-6 shadow-sm ml-2";
                 carDiv.innerHTML = `
                     <div class="h-full flex flex-col justify-between">
                         <div class="relative">
                             <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black text-xl">×</button>
-                            <input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-slate-100 outline-none focus:border-blue-500 mb-3" oninput="updateCar(${car.id}, 'title', this.value)">
+                            <input type="text" value="${car.title}" class="text-[10px] font-black uppercase text-black w-full border-b border-slate-100 outline-none focus:border-blue-500 mb-3 py-1" oninput="updateCar(${car.id}, 'title', this.value)">
                             
-                            <label class="text-[8px] font-bold text-slate-400 uppercase">Target Account</label>
+                            <label class="text-[8px] font-bold text-slate-400 uppercase">Route Destination</label>
                             <input type="text" value="${car.wallet}" placeholder="rAddress..." class="wallet-input" oninput="updateCar(${car.id}, 'wallet', this.value)">
                         </div>
                         <div class="mt-4">
@@ -244,8 +271,7 @@
                     <div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8">
                         <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
                         <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
-                    </div>
-                `;
+                    </div>`;
                 container.appendChild(coupler);
                 container.appendChild(carDiv);
             });
