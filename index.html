@@ -9,13 +9,14 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
         .logic-border { border: 1px solid #e5e7eb; }
-        input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 6px; border-radius: 3px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000000; cursor: pointer; border: 2px solid #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: #f3f4f6; height: 8px; border-radius: 4px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #000000; cursor: pointer; border: 3px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.1s ease; }
+        input[type=range]::-webkit-slider-thumb:active { transform: scale(1.1); }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="bg-blue-600 text-white py-3 px-6 text-center sticky top-0 z-[100] shadow-lg">
+    <div class="bg-blue-600 text-white py-3 px-6 text-center sticky top-0 z-[100] shadow-md">
         <p class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
             Platform Preview: Stage 4 Testing | Institutional Launch: 06.19.2026
         </p>
@@ -27,11 +28,11 @@
             <span class="text-sm font-bold tracking-tight uppercase">Innovative App World</span>
         </div>
         <div class="flex gap-6 items-center">
-            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="text-[10px] font-bold text-blue-600 hover:underline transition-colors uppercase tracking-widest flex items-center gap-2">
+            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold text-blue-600 hover:bg-blue-100 transition-all uppercase tracking-widest flex items-center gap-2 border border-blue-200 px-4 py-2 rounded-full bg-blue-50">
                 <span>View White Paper v2.1</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
-            <a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="px-5 py-2 bg-black text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-600 transition-colors">Contact</a>
+            <a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="px-5 py-2 bg-black text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-700 transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -42,100 +43,65 @@
                 Logic-Locked Institutional Rails.
             </h1>
             <p class="text-xl text-gray-500 max-w-2xl leading-relaxed">
-                The IAW Logic-Locked Rail is a multi-chain PaaS mainframe engineered for high-velocity institutional tokenization[cite: 13]. 
-                We enforce treasury routing at the ledger level via Xahau Hooks, anchoring digital value 1:1 with RLUSD[cite: 14, 15].
+                Utilizing Xahau Hooks to enforce treasury routing at the ledger level. 
+                Transparent 1:1 RLUSD parity with non-custodial sovereignty.
             </p>
         </div>
 
-        <div class="p-10 logic-border rounded-3xl mb-24 bg-gray-50/50">
-            <div class="flex justify-between items-end mb-12">
+        <div class="p-10 logic-border rounded-3xl mb-24 bg-gray-50/30">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                 <div>
                     <h3 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-2">Recovery Audit (Live Demo)</h3>
-                    <p class="text-xs text-gray-400 italic">Compare 1.8% legacy friction against the 0.33% IAW Integrity Fee.</p>
+                    <p class="text-xs text-gray-400 italic">Simulating Operational Revenue Recovery [Ref: White Paper Sec. 4]</p>
                 </div>
-                <span id="volDisplay" class="text-4xl font-light text-gray-900">$500,000</span>
+                <div class="text-right">
+                    <span id="volDisplay" class="text-5xl font-light text-gray-900">$1,000,000</span>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase mt-2">Monthly Transaction Volume</p>
+                </div>
             </div>
 
-            <input type="range" id="volRange" min="50000" max="10000000" step="50000" value="500000" class="mb-12" oninput="calculate()">
+            <div class="px-2">
+                <input type="range" id="volRange" min="50000" max="10000000" step="50000" value="1000000" class="w-full cursor-pointer" oninput="calculate()">
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                <div class="space-y-2">
-                    <span class="text-[10px] font-bold text-gray-400 uppercase">Legacy Banking Cost</span>
-                    <p id="legacyCost" class="text-2xl font-medium text-gray-400">$9,000.00</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                <div class="p-8 bg-white logic-border rounded-2xl shadow-sm">
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-4">Legacy Friction (1.8% Avg)</span>
+                    <p id="legacyCost" class="text-3xl font-medium text-gray-400">$18,000.00</p>
+                    <div class="mt-4 flex items-center gap-2 text-red-400">
+                        <span class="text-[10px] font-bold uppercase tracking-widest">3-5 Day Delay</span>
+                    </div>
                 </div>
-                <div class="space-y-2">
-                    <span class="text-[10px] font-bold text-blue-600 uppercase">IAW Protocol Fee (0.33%)</span>
-                    <p id="iawCost" class="text-2xl font-medium text-blue-600">$1,650.00</p>
+                <div class="p-8 bg-white logic-border rounded-2xl shadow-sm border-l-4 border-l-blue-600">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-4">IAW Protocol Fee (0.33%)</span>
+                    <p id="iawCost" class="text-3xl font-medium text-blue-600">$3,300.00</p>
+                    <div class="mt-4 flex items-center gap-2 text-green-500">
+                        <span class="text-[10px] font-bold uppercase tracking-widest">~5 Sec Finality</span>
+                    </div>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-gray-200">
-                <span class="text-[10px] font-bold text-gray-400 uppercase block mb-1">Monthly Operational Revenue Recovered</span>
-                <span id="savings" class="text-4xl font-bold text-gray-900">+$7,350.00</span>
+                <span class="text-[10px] font-bold text-gray-400 uppercase block mb-1 tracking-widest">Monthly Operational Revenue Recovered</span>
+                <span id="savings" class="text-5xl font-bold text-gray-900">+$14,700.00</span>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
-            <div>
-                <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-6 pb-2 border-b border-gray-100">Institutional Parity & Safety</h4>
-                <ul class="space-y-6">
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">Non-Custodial Sovereignty</p>
-                        <p class="text-gray-500 leading-relaxed">All private keys and collateral remain under sole control of the user. IAW never has access to credentials.</p>
-                    </li>
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">Asset Restitution (Flag 64)</p>
-                        <p class="text-gray-500 leading-relaxed">Protocol mandates tfMPTCanClawback for recovery in cases of lost keys or regulatory mandates[cite: 36].</p>
-                    </li>
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">Infrastructure Hosting</p>
-                        <p class="text-gray-500 leading-relaxed">Utilizes <a href="https://xrptokenizer.com" target="_blank" class="text-blue-600 hover:underline">XRP Tokenizer.com</a> for cryptographic verification and Hook hosting[cite: 25].</p>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] mb-6 pb-2 border-b border-gray-100">Global Regulatory Alignment</h4>
-                <ul class="space-y-6">
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">EU: MiCA Compliance</p>
-                        <p class="text-gray-500 leading-relaxed">Supports strict reserve and transparency requirements for asset-referenced tokens[cite: 19].</p>
-                    </li>
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">USA: Clarity for Payment Stablecoins</p>
-                        <p class="text-gray-500 leading-relaxed">Engineered for high standards of dollar-backed payment rails and software utilities[cite: 20].</p>
-                    </li>
-                    <li class="text-sm">
-                        <p class="font-bold text-gray-900 mb-1">Global: BIS Framework</p>
-                        <p class="text-gray-500 leading-relaxed">Prioritizes 1:1 parity and liquidity stability according to BIS cross-border recommendations[cite: 21].</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </main>
-
-    <footer class="max-w-5xl mx-auto px-6 py-16 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 opacity-50">
-        <div class="text-center md:text-left">
-            <p class="text-[10px] font-bold text-black uppercase tracking-[0.3em]">Innovative App World LLC</p>
-            <p class="text-[9px] text-gray-500 uppercase mt-1">Blockchain Architect: Derek Benjamin Little [cite: 4]</p>
-        </div>
-        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Launch No Later Than June 19, 2026 [cite: 40]</p>
-    </footer>
-
-    <script>
-        function calculate() {
-            const vol = parseInt(document.getElementById('volRange').value);
-            const legacyRate = 0.018; 
-            const iawRate = 0.0033;
-            const legacyCost = vol * legacyRate;
-            const iawCost = vol * iawRate;
-            const savings = legacyCost - iawCost;
-
-            document.getElementById('volDisplay').innerText = '$' + vol.toLocaleString();
-            document.getElementById('legacyCost').innerText = '$' + legacyCost.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('iawCost').innerText = '$' + iawCost.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('savings').innerText = '+$' + savings.toLocaleString(undefined, {minimumFractionDigits: 2});
-        }
-        calculate();
-    </script>
-</body>
-</html>
+        <div class="mb-24">
+            <h4 class="text-[11px] font-bold text-black uppercase tracking-[0.2em] pb-2 border-b border-gray-100 mb-8">Technical Reasoning [Source: v2.1 Spec]</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-3">Revenue Logic</p>
+                    <p class="text-sm text-gray-600 leading-relaxed italic">
+                        "Every transaction processed through the IAW logic triggers a fixed 0.33% infrastructure fee... instantly routed via 64-bit precision logic." [Sec 4]
+                    </p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-3">User Sovereignty</p>
+                    <p class="text-sm text-gray-600 leading-relaxed italic">
+                        "All private keys remain under the sole control of the user; IAW never has access to user credentials." [Sec 3]
+                    </p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-blue-600 uppercase mb-3">Asset Safety</p>
+                    <p class="text-sm text-gray-60
