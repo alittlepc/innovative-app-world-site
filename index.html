@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Institutional Multi Purpose Token Rail</title>
+    <title>IAW | Institutional RLUSD MPT Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #111827; }
         
-        /* ROLLING PREVIEW HEADER */
         .preview-ticker {
             background: #f1f5f9;
             border-bottom: 1px solid #e2e8f0;
@@ -35,21 +34,23 @@
         }
 
         .train-viewport { overflow-x: auto; padding: 60px 20px; background: #f8fafc; border-radius: 40px; border: 2px dashed #e2e8f0; scroll-behavior: smooth; }
-        .car-box { min-width: 280px; height: 280px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
+        .car-box { min-width: 300px; height: 300px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
         .wallet-input { font-family: monospace; font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; width: 100%; outline: none; color: #475569; }
         .wallet-input:focus { border-color: #3b82f6; background: #fff; color: #000; }
-        .step-card { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 20px; }
+        
         input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000; cursor: pointer; border: 3px solid #fff; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
-        .comparison-pill { font-size: 9px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        
+        .comparison-label { font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; }
+        .value-diff { color: #10b981; font-weight: 900; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col">
 
     <div class="preview-ticker">
         <div class="ticker-content">
-            Institutional Preview Mode — This is a technical demonstration of the RLUSD Rail Infrastructure — Estimated Production Release: June 19th, 2026 — Innovative App World LLC — Proprietary Architecture &copy; 2026 — 
-            Institutional Preview Mode — This is a technical demonstration of the RLUSD Rail Infrastructure — Estimated Production Release: June 19th, 2026 — Innovative App World LLC — Proprietary Architecture &copy; 2026
+            Institutional Preview Mode — Estimated Production Release: June 19th, 2026 — 1:1 RLUSD Value Matched — Clarity Alignment Protocol — 
+            Institutional Preview Mode — Estimated Production Release: June 19th, 2026 — 1:1 RLUSD Value Matched — Clarity Alignment Protocol
         </div>
     </div>
 
@@ -59,72 +60,63 @@
                 <div class="w-12 h-12 bg-black text-white flex items-center justify-center font-black rounded-xl shadow-lg">IAW</div>
                 <div>
                     <h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Innovative App World</h1>
-                    <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase mt-1">RLUSD Rail & Multi Purpose Token (MPT) Logic</p>
+                    <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase mt-1">Institutional Value Comparison Rail</p>
                 </div>
-            </div>
-            <div class="text-right">
-                <span class="text-[10px] font-black bg-blue-100 text-blue-600 px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">Status: RLUSD Optimized</span>
             </div>
         </nav>
 
         <main class="max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 flex-grow">
             
-            <div class="lg:col-span-12 mb-8 bg-white p-10 rounded-[40px] border border-slate-200 shadow-sm">
-                <h2 class="text-3xl font-black tracking-tighter mb-6 uppercase">The Efficiency of the IAW Rail</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p class="mb-4"><strong>The Multi Purpose Token (MPT):</strong> In our architecture, an MPT is a dynamic asset wrapper that allows a single token to carry multiple institutional data payloads. Whether it represents a tax obligation, a payroll disbursement, or a treasury transfer, the MPT remains 1:1 value-matched to RLUSD liquidity.</p>
-                    </div>
-                    <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p class="mb-4"><strong>Current Cost vs. IAW Rail:</strong> Traditional institutional banking involves a "fee stack"—intermediary bank fees, SWIFT costs, and manual reconciliation overhead—averaging 2.5% of total volume. The IAW Rail collapses this stack into a single 0.33% protocol fee, executing at the speed of the XRP Ledger.</p>
-                    </div>
-                    <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p><strong>Clarity Alignment:</strong> By utilizing Clarity Alignment, the IAW Rail ensures that every MPT follows your precise institutional rules across the entire distribution lifecycle, eliminating the risk of human error or manual settlement delays.</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="lg:col-span-4 space-y-6">
                 <section class="bg-black text-white p-8 rounded-[32px] shadow-2xl">
-                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block text-center">RLUSD Target Pipeline</label>
+                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block text-center">RLUSD Monthly Pipeline</label>
                     <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-2 text-center" oninput="updateVol(this.value)">
                     
                     <div class="mt-8 space-y-4">
-                        <div class="bg-slate-900 p-5 rounded-2xl border border-blue-900/30">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[10px] font-black text-blue-400 uppercase">IAW Protocol Total</span>
-                                <span class="comparison-pill bg-blue-600 text-white">IAW Managed</span>
-                            </div>
-                            <h3 id="iaw-cost-total" class="text-3xl font-black">$3,300.00</h3>
+                        <div class="bg-slate-900 p-6 rounded-2xl border border-blue-500/30">
+                            <span class="comparison-label text-blue-400 block mb-1">IAW Rail Efficiency Cost</span>
+                            <h3 id="iaw-total" class="text-3xl font-black">$3,300.00</h3>
+                            <p class="text-[9px] text-slate-500 mt-1 uppercase font-bold tracking-widest">Base 0.33% + Rail Logic</p>
                         </div>
 
-                        <div class="bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[10px] font-black text-slate-500 uppercase">Legacy Banking (2.5%)</span>
-                            </div>
-                            <h3 id="trad-cost-total" class="text-2xl font-black text-slate-500">$25,000.00</h3>
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                            <span class="comparison-label text-slate-500 block mb-1">Legacy Banking Friction (2.5%)</span>
+                            <h3 id="legacy-total" class="text-3xl font-black text-slate-500">$25,000.00</h3>
                         </div>
 
-                        <div class="pt-4 border-t border-slate-800 text-center">
-                            <p class="text-[10px] font-black text-green-500 uppercase tracking-widest">Monthly Capital Retention</p>
-                            <h2 id="savings-val" class="text-4xl font-black text-green-400 tracking-tighter">$21,700.00</h2>
+                        <div class="pt-6 border-t border-slate-800 text-center">
+                            <p class="text-[10px] font-black text-green-500 uppercase tracking-widest mb-1">Net Capital Retention</p>
+                            <h2 id="retention-val" class="text-5xl font-black text-green-400 tracking-tighter">+$21,700.00</h2>
                         </div>
                     </div>
                 </section>
 
-                <section class="bg-white p-8 rounded-[32px] shadow-sm border border-slate-200">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-4">Implementation Notes</h4>
-                    <div class="step-card"><p class="text-xs font-bold text-slate-600">Building a custom rail allows you to bypass legacy reconciliation. Every MPT added to the track operates as an autonomous settlement agent.</p></div>
-                </section>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-200">
+                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-4">Value Proof Directives</h4>
+                    <ul class="text-xs font-bold text-slate-600 space-y-4">
+                        <li class="flex gap-3">
+                            <span class="text-blue-600">1.</span>
+                            <span>Add a <strong>Tax Rail</strong> module.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-600">2.</span>
+                            <span>Set rate to <strong>7.000%</strong>.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-600">3.</span>
+                            <span>Compare the <strong>Outflow Comparison</strong> ledger below the train.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="lg:col-span-8">
                 <div class="mb-6 flex flex-wrap gap-3 items-end justify-between">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Programmable Rail Engine</h3>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Programmable Comparison Engine</h3>
                     <div class="flex gap-2">
-                        <button onclick="addCar('Tax')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm">+ Tax Module</button>
-                        <button onclick="addCar('Payroll')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm">+ Payroll Module</button>
-                        <button onclick="addCar('MPT')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg">+ MPT Rail</button>
+                        <button onclick="addCar('Tax')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all">+ Tax Rail</button>
+                        <button onclick="addCar('Payroll')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all">+ Payroll Rail</button>
+                        <button onclick="addCar('Custom')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg">+ Custom Rail</button>
                     </div>
                 </div>
 
@@ -132,81 +124,60 @@
                     <div class="flex items-end" id="train-track">
                         <div class="flex-shrink-0 mr-4 flex flex-col items-center">
                             <svg class="w-24 h-24 text-slate-900" viewBox="0 0 100 60" fill="currentColor"><path d="M10 25h25v25H10zM35 15h30v35H35zM65 25h25v25H65z"/><circle cx="22" cy="54" r="6"/><circle cx="50" cy="54" r="6"/><circle cx="78" cy="54" r="6"/></svg>
-                            <span class="text-[9px] font-black uppercase mt-2 bg-slate-200 px-2 py-1 rounded">RLUSD Source</span>
+                            <span class="text-[9px] font-black uppercase mt-2 bg-slate-200 px-2 py-1 rounded">Source</span>
                         </div>
                         <div class="w-8 h-1 bg-slate-300 mb-12 flex-shrink-0"></div>
 
                         <div class="car-box bg-white border-4 border-slate-900 rounded-[40px] p-6 shadow-xl">
                             <div class="flex flex-col h-full justify-between">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase text-blue-600 mb-2">IAW Protocol Fee</p>
-                                    <label class="text-[8px] font-bold text-slate-400 uppercase">Settlement Vault</label>
-                                    <input type="text" value="rIAWCentralHubVault..." class="wallet-input" readonly>
+                                    <p class="text-[10px] font-black uppercase text-blue-600 mb-1">Base Protocol Fee</p>
+                                    <p class="text-[8px] font-bold text-slate-400 uppercase leading-tight">Settlement Integrity<br>RLUSD 1:1 Peg</p>
                                 </div>
                                 <div>
                                     <p class="text-3xl font-black tracking-tighter">0.330%</p>
-                                    <p class="text-xs font-bold text-slate-400 uppercase" id="core-dollars">$3,300.00</p>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase" id="base-dollars">$3,300.00</p>
                                 </div>
                             </div>
                         </div>
+                        
                         <div id="dynamic-cars" class="flex items-end"></div>
                     </div>
                 </div>
 
-                <div class="mt-8 bg-white p-8 rounded-[40px] border border-slate-200 overflow-hidden">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-4">Value Proof: Simultaneous Comparison</h4>
-                    <div id="summary-list" class="space-y-2"></div>
+                <div class="mt-8 bg-white p-8 rounded-[40px] border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 gap-4 mb-4 border-b border-slate-100 pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <div class="col-span-5">Module Purpose</div>
+                        <div class="col-span-3 text-right">IAW Cost</div>
+                        <div class="col-span-4 text-right">Legacy Friction Cost</div>
+                    </div>
+                    <div id="summary-list" class="space-y-4"></div>
                 </div>
             </div>
         </main>
-
-        <footer class="max-w-[1600px] w-full mx-auto mt-20 pt-12 border-t border-slate-200 pb-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded-lg text-xs">IAW</div>
-                        <span class="text-xs font-black uppercase tracking-widest text-slate-900">Innovative App World</span>
-                    </div>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter leading-relaxed">
-                        Multi Purpose Token Verification<br>Clarity Alignment Protocol<br>Target Release: June 19, 2026
-                    </p>
-                </div>
-                
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Protocol Framework</h5>
-                    <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
-                        <li><a href="https://xrpl.org/docs/concepts/tokens/stablecoins/rlusd/" target="_blank" class="hover:text-blue-600 transition-colors">RLUSD 1:1 Value Match</a></li>
-                        <li><a href="https://www.clarity-lang.org/" target="_blank" class="hover:text-blue-600 transition-colors">Clarity Logic Alignment</a></li>
-                        <li><a href="https://www.fatf-gafi.org" target="_blank" class="hover:text-blue-600 transition-colors">Global Compliance</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Efficiency Benchmarks</h5>
-                    <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
-                        <li>Legacy Swift Cost: 2.5%</li>
-                        <li>IAW Protocol Cost: 0.33%</li>
-                        <li>Settlement Time: ~3-5 Seconds</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-slate-900 mb-6 tracking-widest">Institutional Contact</h5>
-                    <ul class="text-[10px] font-bold text-slate-500 space-y-3 uppercase tracking-tighter">
-                        <li><a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="flex items-center gap-2 hover:text-blue-600 transition-colors">
-                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            LinkedIn Company Page
-                        </a></li>
-                        <li><a href="mailto:alittlepc@gmail.com" class="hover:text-blue-600 transition-colors">Corporate Inquiry</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 flex justify-between items-center border-t border-slate-100 pt-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                <p>© 2026 Derek Benjamin Little | Innovative App World</p>
-                <p>System Status: Preview Phase</p>
-            </div>
-        </footer>
     </div>
+
+    <footer class="max-w-[1600px] w-full mx-auto mt-20 pt-12 border-t border-slate-200 pb-12 px-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
+            <div>
+                <p class="text-black font-black mb-4 tracking-widest text-xs">Innovative App World</p>
+                <p class="leading-relaxed">Programmable RLUSD Multi Purpose Token Rails. Clarity Alignment state verification.</p>
+            </div>
+            <div>
+                <p class="text-black font-black mb-4 tracking-widest text-xs">Proof of Value</p>
+                <p>Legacy Bank Avg: 2.5%<br>IAW Base Fee: 0.33%<br>Settlement: ~5s Finality</p>
+            </div>
+            <div>
+                <p class="text-black font-black mb-4 tracking-widest text-xs">Compliance</p>
+                <a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="hover:text-blue-600 block">LinkedIn Profile</a>
+                <a href="mailto:alittlepc@gmail.com" class="hover:text-blue-600 block mt-2">Corporate Inquiry</a>
+            </div>
+            <div class="text-right">
+                <p class="text-black font-black mb-2 tracking-widest text-xs">© 2026 Derek Little</p>
+                <p>Proprietary MPT Infrastructure</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         let volume = 1000000;
@@ -223,9 +194,10 @@
 
         function addCar(type) {
             const id = Date.now();
-            let title = type + (type === 'MPT' ? "" : " Module");
-            cars.push({ id, title: title, percent: 1.500, wallet: "rTarget..." });
+            cars.push({ id, title: type + " Rail", percent: 7.000, wallet: "rTarget..." });
             render();
+            const vp = document.getElementById('viewport');
+            setTimeout(() => { vp.scrollLeft = vp.scrollWidth; }, 100);
         }
 
         function removeCar(id) { cars = cars.filter(c => c.id !== id); render(); }
@@ -234,33 +206,50 @@
             const car = cars.find(c => c.id === id);
             if (field === 'percent') car.percent = parseFloat(value);
             if (field === 'title') car.title = value;
-            if (field === 'wallet') car.wallet = value;
             calculate();
         }
 
         function calculate() {
-            let iawBaseFee = volume * 0.00330;
-            let totalOutflow = iawBaseFee;
-            let summaryHtml = `<div class="flex justify-between py-1 border-b border-slate-50"><span class="text-[10px] font-black text-blue-600 uppercase">IAW Base Protocol (0.330%)</span><span class="text-[10px] font-bold font-mono">${formatCurrency(iawBaseFee)}</span></div>`;
+            const iawBaseCost = volume * 0.0033;
+            const legacyBaseRate = 0.025; // 2.5% total friction average
+            
+            let iawTotal = iawBaseCost;
+            let legacyTotal = volume * legacyBaseRate;
+
+            document.getElementById('base-dollars').innerText = formatCurrency(iawBaseCost);
+
+            let summaryHtml = `
+                <div class="grid grid-cols-12 gap-4 border-b border-slate-50 pb-2">
+                    <div class="col-span-5 text-[10px] font-black text-blue-600 uppercase">Base IAW Protocol</div>
+                    <div class="col-span-3 text-right text-[11px] font-black">${formatCurrency(iawBaseCost)}</div>
+                    <div class="col-span-4 text-right text-[11px] font-black text-slate-300">Included in 2.5% stack</div>
+                </div>
+            `;
 
             cars.forEach(car => {
-                const amt = volume * (car.percent / 100);
-                totalOutflow += amt;
-                summaryHtml += `<div class="flex justify-between py-1 border-b border-slate-50"><span class="text-[10px] font-bold text-slate-500 uppercase">${car.title} (${car.percent.toFixed(3)}%)</span><span class="text-[10px] font-bold font-mono">${formatCurrency(amt)}</span></div>`;
+                const railCost = volume * (car.percent / 100);
+                const carLegacyFriction = railCost * 0.025; // Additional friction on routed amounts
                 
+                iawTotal += railCost;
+                legacyTotal += (railCost + carLegacyFriction);
+
                 if(document.getElementById(`cost-${car.id}`)) {
-                    document.getElementById(`cost-${car.id}`).innerText = formatCurrency(amt);
+                    document.getElementById(`cost-${car.id}`).innerText = formatCurrency(railCost);
                     document.getElementById(`rate-${car.id}`).innerText = car.percent.toFixed(3) + '%';
                 }
+
+                summaryHtml += `
+                    <div class="grid grid-cols-12 gap-4 border-b border-slate-50 pb-2">
+                        <div class="col-span-5 text-[10px] font-bold text-slate-600 uppercase">${car.title} (${car.percent.toFixed(3)}%)</div>
+                        <div class="col-span-3 text-right text-[11px] font-black text-slate-900">${formatCurrency(railCost)}</div>
+                        <div class="col-span-4 text-right text-[11px] font-black text-red-400">${formatCurrency(railCost + carLegacyFriction)}</div>
+                    </div>
+                `;
             });
 
-            const tradCost = volume * 0.025; 
-            const savings = tradCost - totalOutflow;
-
-            document.getElementById('iaw-cost-total').innerText = formatCurrency(totalOutflow);
-            document.getElementById('trad-cost-total').innerText = formatCurrency(tradCost);
-            document.getElementById('savings-val').innerText = formatCurrency(savings);
-            document.getElementById('core-dollars').innerText = formatCurrency(iawBaseFee);
+            document.getElementById('iaw-total').innerText = formatCurrency(iawTotal);
+            document.getElementById('legacy-total').innerText = formatCurrency(legacyTotal);
+            document.getElementById('retention-val').innerText = '+' + formatCurrency(legacyTotal - iawTotal);
             document.getElementById('summary-list').innerHTML = summaryHtml;
         }
 
@@ -273,7 +262,27 @@
                 const coupler = document.createElement('div'); coupler.className = "w-8 h-1 bg-slate-300 mb-12 flex-shrink-0";
                 const div = document.createElement('div');
                 div.className = "car-box bg-white border-2 border-slate-100 rounded-[40px] p-6 shadow-lg ml-2";
-                div.innerHTML = `<div class="h-full flex flex-col justify-between"><div class="relative"><button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black">×</button><input type="text" value="${car.title}" class="text-[10px] font-black uppercase w-full border-b mb-3 outline-none" oninput="updateCar(${car.id}, 'title', this.value)"><label class="text-[8px] font-black text-slate-400 uppercase">Target Address (MPT Target)</label><input type="text" value="${car.wallet}" class="wallet-input" oninput="updateCar(${car.id}, 'wallet', this.value)"></div><div class="mt-4"><input type="range" min="0" max="10" step="0.001" value="${car.percent}" oninput="updateCar(${car.id}, 'percent', this.value)"><div class="flex justify-between items-end mt-2"><p class="text-2xl font-black tracking-tighter" id="rate-${car.id}">${car.percent.toFixed(3)}%</p><p class="text-[10px] font-black text-blue-600" id="cost-${car.id}">$0.00</p></div></div></div>`;
+                div.innerHTML = `
+                    <div class="h-full flex flex-col justify-between">
+                        <div class="relative">
+                            <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black">×</button>
+                            <input type="text" value="${car.title}" class="text-[10px] font-black uppercase w-full border-b mb-3 outline-none" oninput="updateCar(${car.id}, 'title', this.value)">
+                            <label class="text-[8px] font-black text-slate-400 uppercase">Target Address (MPT)</label>
+                            <input type="text" value="rTarget..." class="wallet-input" readonly>
+                        </div>
+                        <div class="mt-4">
+                            <input type="range" min="0" max="15" step="0.001" value="${car.percent}" oninput="updateCar(${car.id}, 'percent', this.value)">
+                            <div class="flex justify-between items-end mt-2">
+                                <p class="text-2xl font-black tracking-tighter" id="rate-${car.id}">${car.percent.toFixed(3)}%</p>
+                                <p class="text-[10px] font-black text-blue-600" id="cost-${car.id}">$0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-4 left-0 right-0 flex justify-around px-8">
+                        <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
+                        <div class="w-6 h-6 bg-slate-900 rounded-full border-4 border-white"></div>
+                    </div>
+                `;
                 container.appendChild(coupler); container.appendChild(div);
             });
             calculate();
