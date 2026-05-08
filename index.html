@@ -16,6 +16,7 @@
         .comparison-table { width: 100%; border-collapse: collapse; font-family: monospace; }
         .comparison-table th { text-align: left; padding: 12px; font-size: 10px; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #e2e8f0; }
         .comparison-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        .total-row { background: #f1f5f9; font-weight: 900; }
         
         input[type=range] { appearance: none; width: 100%; height: 4px; background: #e2e8f0; border-radius: 5px; outline: none; }
         input[type=range]::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
@@ -35,11 +36,11 @@
             <div class="w-14 h-14 bg-black text-white flex items-center justify-center font-black rounded-2xl text-xl shadow-xl">IAW</div>
             <div>
                 <h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Innovative App World</h1>
-                <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mt-1">Institutional PaaS v2.3</p>
+                <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mt-1">Institutional PaaS v2.6</p>
             </div>
         </div>
         <div class="flex gap-4">
-            <a href="Innovative%20App%20World%20White%20Paper.pdf" target="_blank" class="bg-slate-100 px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">White Paper (PDF)</a>
+            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="bg-slate-100 px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">White Paper (PDF)</a>
             <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="bg-black text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">Institutional Access</a>
         </div>
     </header>
@@ -68,11 +69,11 @@
             
             <div class="mt-12 space-y-8">
                 <div>
-                    <p class="text-[10px] font-black uppercase text-blue-400">IAW Integrity Fee (0.33%)</p>
+                    <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33%)</p>
                     <p id="iawFee" class="text-3xl font-mono font-bold">$3,580.50000000</p>
                 </div>
                 <div>
-                    <p class="text-[10px] font-black uppercase text-red-500">Legacy Stack Friction (2.5%)</p>
+                    <p class="text-[10px] font-black uppercase text-red-500">Total Legacy Friction (2.5%)</p>
                     <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$27,125.00000000</p>
                 </div>
                 <div class="pt-8 border-t border-slate-700">
@@ -129,6 +130,11 @@
                         <td id="row3-iaw" class="text-blue-600 font-bold">$0.00</td>
                         <td id="row3-leg" class="text-slate-400">$0.00</td>
                     </tr>
+                    <tr class="total-row">
+                        <td class="text-[10px] uppercase tracking-widest">Total Combined Friction</td>
+                        <td id="total-iaw" class="text-blue-600">$0.00</td>
+                        <td id="total-leg" class="text-slate-400">$0.00</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -169,6 +175,10 @@
         document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8});
         document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8});
         document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8});
+        
+        // Update Total Line
+        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8});
+        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8});
     }
     window.onload = calc;
 </script>
