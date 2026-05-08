@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Institutional PaaS v2.1</title>
+    <title>IAW | Logic-Locked Rail v2.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -13,7 +13,6 @@
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         
         .glass-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 32px; transition: all 0.3s ease; }
-        .rail-accent { color: #2563eb; }
         .comparison-table { width: 100%; border-collapse: collapse; font-family: monospace; }
         .comparison-table th { text-align: left; padding: 12px; font-size: 10px; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #e2e8f0; }
         .comparison-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
@@ -26,7 +25,7 @@
 
 <div class="ticker">
     <div class="ticker-wrap">
-        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% Integrity Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — 
+        IAW Logic-Locked Rail v2.1 — 64-Bit Precision — 0.33% Integrity Fee — Xahau Hook Enforcement — Institutional RLUSD Mirror — 
     </div>
 </div>
 
@@ -35,128 +34,109 @@
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 bg-black text-white flex items-center justify-center font-black rounded-2xl text-xl shadow-xl">IAW</div>
             <div>
-                <h1 class="text-2xl font-black tracking-tighter uppercase">Innovative App World</h1>
-                <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase">Specifications v2.1</p>
+                <h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Innovative App World</h1>
+                <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mt-1">Logic-Locked Rail v2.1</p>
             </div>
         </div>
         <div class="flex gap-4">
-            <a href="#" class="bg-slate-100 px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">White Paper (PDF)</a>
-            <a href="https://www.linkedin.com/company/innovativeappworld" target="_blank" class="bg-black text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">Contact For More</a>
+            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="bg-slate-100 px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">White Paper (v2.1)</a>
+            <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="bg-black text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">RyzerX Demo Align</a>
         </div>
     </header>
 
     <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
         <div>
-            <h2 class="text-4xl font-black tracking-tighter uppercase mb-6 leading-none">Mathematical Settlement Certainty</h2>
+            <h2 class="text-4xl font-black tracking-tighter uppercase mb-6 leading-tight">Institutional Hook Logic</h2>
             <p class="text-slate-500 font-bold mb-8 leading-relaxed">
-                The legacy financial stack rounds off value to hide friction. The IAW Rail exposes it. Our infrastructure provides <span class="text-blue-600">64-bit precision</span> for every move, ensuring that 1:1 shadow-mirroring with RLUSD remains accurate to the smallest unit of account.
+                The **$1M Test** validates the Xahau Hook's ability to enforce the <span class="text-blue-600 font-black">0.33% Integrity Fee</span> across high-velocity RLUSD settlement rails with zero slippage.
             </p>
-            <blockquote class="border-l-4 border-blue-600 pl-6 italic font-bold text-slate-800 mb-8">
-                "Decimals aren't just details—they're the difference between liquidity and loss. We've built a rail that respects the math of high-velocity capital."
+            <blockquote class="border-l-4 border-blue-600 pl-6 italic font-bold text-slate-800">
+                "We don't ask for permission to charge a fee; the Hook makes it a mathematical certainty."
             </blockquote>
         </div>
-        <div class="glass-card p-10">
-            <h3 class="font-black uppercase tracking-widest text-[10px] mb-8 text-blue-600">High-Precision PaaS</h3>
-            <p class="text-sm font-bold text-slate-600 mb-8">Utilizing account-level state locking and Xahau Hooks, we automate a 0.33% toll-keeper revenue logic. No custody. Just absolute precision.</p>
-            <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="inline-block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg">Connect via LinkedIn →</a>
+        <div class="glass-card p-10 border-2 border-blue-600/20">
+            <h3 class="font-black uppercase tracking-widest text-[10px] mb-8 text-blue-600">Hook Parameters</h3>
+            <p class="text-sm font-bold text-slate-600 mb-8">Non-custodial infrastructure utilizing account-level state locking. The 0.33% toll-keeper logic is triggered at the protocol layer.</p>
+            <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="inline-block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg">Verify Hook Logic →</a>
         </div>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-8 mb-16">
-        <div class="lg:col-span-4 bg-slate-900 text-white p-10 rounded-[40px] shadow-2xl">
-            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Volume (RLUSD)</label>
-            <input type="text" id="volInput" value="$1,000,000" class="bg-transparent text-4xl font-black border-b-2 border-slate-700 w-full pb-2 outline-none focus:border-blue-500 font-mono" oninput="updateVol(this.value)">
+        <div class="lg:col-span-4 bg-slate-900 text-white p-10 rounded-[48px] shadow-2xl">
+            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Demo Test Volume (RLUSD)</label>
+            <input type="text" id="volInput" value="$1,000,000" class="bg-transparent text-4xl font-black border-b-2 border-slate-700 w-full pb-4 outline-none focus:border-blue-500 font-mono" oninput="updateVol(this.value)">
             
             <div class="mt-12 space-y-8">
                 <div>
-                    <p class="text-[10px] font-black uppercase text-blue-400">IAW Protocol Toll (0.33%)</p>
-                    <p id="iawFee" class="text-2xl font-mono font-bold">$3,580.50000000</p>
+                    <p class="text-[10px] font-black uppercase text-blue-400">IAW Integrity Outflow (0.33%)</p>
+                    <p id="iawFee" class="text-3xl font-mono font-bold">$3,580.50000000</p>
                 </div>
                 <div>
-                    <p class="text-[10px] font-black uppercase text-red-400">Legacy Friction (2.5%)</p>
+                    <p class="text-[10px] font-black uppercase text-red-500">Legacy Friction (2.5%)</p>
                     <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$27,125.00000000</p>
                 </div>
-                <div class="pt-6 border-t border-slate-700">
-                    <p class="text-[10px] font-black uppercase text-green-400">Efficiency Gain</p>
-                    <p id="gain" class="text-4xl font-mono font-black text-green-400">+$23,544.50000000</p>
+                <div class="pt-8 border-t border-slate-700">
+                    <p class="text-[10px] font-black uppercase text-green-400 font-black tracking-widest">Efficiency Realization</p>
+                    <p id="gain" class="text-4xl font-mono font-black text-green-400 mt-2">+$23,544.50000000</p>
                 </div>
             </div>
         </div>
 
-        <div class="lg:col-span-8 glass-card p-10 overflow-hidden">
-            <div class="flex gap-4 mb-10 overflow-x-auto pb-4">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 min-w-[200px]">
-                    <span class="text-[9px] font-black text-blue-600 uppercase">Shadow Move 1</span>
-                    <h4 class="font-black uppercase text-sm mt-1">Tax Rail</h4>
-                    <input type="range" id="taxRange" min="0" max="20" value="7" class="mt-4" oninput="calc()">
-                    <p class="text-xs font-bold mt-2" id="taxLabel">7.000%</p>
+        <div class="lg:col-span-8 glass-card p-10 border border-slate-200">
+            <div class="flex gap-4 mb-12 overflow-x-auto pb-6">
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-100 min-w-[240px]">
+                    <span class="text-[9px] font-black text-red-600 uppercase">Hook: Outflow A</span>
+                    <h4 class="font-black uppercase text-sm mt-3">Compliance/Tax Rail</h4>
+                    <input type="range" id="taxRange" min="0" max="20" value="7" class="mt-6" oninput="calc()">
+                    <div class="flex justify-between mt-4">
+                        <p class="text-xs font-black" id="taxLabel">7.000%</p>
+                        <p class="text-xs font-mono font-bold text-blue-600" id="taxVolumeLabel">$70,000.00</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 min-w-[200px]">
-                    <span class="text-[9px] font-black text-blue-600 uppercase">Shadow Move 2</span>
-                    <h4 class="font-black uppercase text-sm mt-1">Custom Rail</h4>
-                    <input type="range" id="customRange" min="0" max="20" value="1.5" step="0.5" class="mt-4" oninput="calc()">
-                    <p class="text-xs font-bold mt-2" id="customLabel">1.500%</p>
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-100 min-w-[240px]">
+                    <span class="text-[9px] font-black text-blue-600 uppercase">Hook: Outflow B</span>
+                    <h4 class="font-black uppercase text-sm mt-3">IAW Multi-Purpose Rail</h4>
+                    <input type="range" id="customRange" min="0" max="20" value="1.5" step="0.5" class="mt-6" oninput="calc()">
+                    <div class="flex justify-between mt-4">
+                        <p class="text-xs font-black" id="customLabel">1.500%</p>
+                        <p class="text-xs font-mono font-bold text-blue-600" id="customVolumeLabel">$15,000.00</p>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] mb-6">Efficiency Verification (64-Bit Resolution)</h3>
+            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] mb-6 text-slate-400">Precision Verification (8 Decimals)</h3>
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Transaction Component</th>
-                        <th>IAW (0.33%)</th>
-                        <th>Legacy (2.5%)</th>
+                        <th>Rail Component</th>
+                        <th>Hook Enforcement (0.33%)</th>
+                        <th>Legacy Friction (2.5%)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="font-bold">System Initialization</td>
-                        <td id="row1-iaw" class="font-mono text-blue-600">$3,300.00000000</td>
-                        <td id="row1-leg" class="font-mono text-slate-400">$25,000.00000000</td>
+                        <td class="font-bold text-xs uppercase">Initialization</td>
+                        <td id="row1-iaw" class="text-blue-600 font-bold">$0.00000000</td>
+                        <td id="row1-leg" class="text-slate-400">$0.00000000</td>
                     </tr>
                     <tr>
-                        <td class="font-bold">Tax Rail Distribution</td>
-                        <td id="row2-iaw" class="font-mono text-blue-600">$231.00000000</td>
-                        <td id="row2-leg" class="font-mono text-slate-400">$1,750.00000000</td>
+                        <td class="font-bold text-xs uppercase">Tax Outflow</td>
+                        <td id="row2-iaw" class="text-blue-600 font-bold">$0.00000000</td>
+                        <td id="row2-leg" class="text-slate-400">$0.00000000</td>
                     </tr>
                     <tr>
-                        <td class="font-bold">Custom Rail Distribution</td>
-                        <td id="row3-iaw" class="font-mono text-blue-600">$49.50000000</td>
-                        <td id="row3-leg" class="font-mono text-slate-400">$375.00000000</td>
+                        <td class="font-bold text-xs uppercase">Custom Rail</td>
+                        <td id="row3-iaw" class="text-blue-600 font-bold">$0.00000000</td>
+                        <td id="row3-leg" class="text-slate-400">$0.00000000</td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr class="bg-slate-100">
-                        <td class="font-black uppercase text-xs">Infrastructure Toll Total</td>
-                        <td id="total-iaw" class="font-mono font-black text-blue-700">$3,580.50000000</td>
-                        <td id="total-leg" class="font-mono font-black text-slate-500">$27,125.00000000</td>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>
 
-    <footer class="mt-32 pt-16 border-t border-slate-100 grid md:grid-cols-3 gap-12">
-        <div>
-            <div class="flex items-center gap-2 mb-4">
-                <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-black rounded-lg text-xs">IAW</div>
-                <span class="font-black uppercase tracking-tighter">Innovative App World</span>
-            </div>
-            <p class="text-xs font-bold text-slate-400 leading-relaxed">Bridging financial rigor and decentralized utility. We provide the rails for the future of money.</p>
-        </div>
-        <div>
-            <h5 class="text-[10px] font-black uppercase mb-6 tracking-widest text-blue-600">Core Utility Pillars</h5>
-            <ul class="text-[10px] font-black uppercase space-y-2 text-slate-500">
-                <li>• 1:1 RLUSD Mirror State-Locking</li>
-                <li>• Xahau Hooks Enforcement</li>
-                <li>• Non-Custodial Infrastructure</li>
-                <li>• 64-Bit Precision Routing</li>
-            </ul>
-        </div>
-        <div class="text-right">
-            <p class="text-[10px] font-black uppercase text-slate-400 mb-2">© 2026 Innovative App World LLC</p>
-            <p class="text-xs font-bold italic text-slate-800">"The internet of value requires a rail that doesn't sleep."</p>
-        </div>
+    <footer class="mt-32 pt-16 border-t border-slate-100 grid md:grid-cols-2 gap-12 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+        <div>© 2026 Innovative App World LLC | XRPL/Xahau Infrastructure</div>
+        <div class="text-right">Logic-Locked Rail v2.1 | 64-Bit Verification Engine</div>
     </footer>
 </div>
 
@@ -170,11 +150,8 @@
     function calc() {
         const tRate = document.getElementById('taxRange').value / 100;
         const cRate = document.getElementById('customRange').value / 100;
-        
-        const tVol = vol * tRate;
-        const cVol = vol * cRate;
+        const tVol = vol * tRate; const cVol = vol * cRate;
 
-        // Fees
         const f1iaw = vol * 0.0033; const f1leg = vol * 0.025;
         const f2iaw = tVol * 0.0033; const f2leg = tVol * 0.025;
         const f3iaw = cVol * 0.0033; const f3leg = cVol * 0.025;
@@ -182,10 +159,10 @@
         const totalIaw = f1iaw + f2iaw + f3iaw;
         const totalLeg = f1leg + f2leg + f3leg;
 
-        // Update UI
         document.getElementById('taxLabel').innerText = (tRate * 100).toFixed(3) + '%';
         document.getElementById('customLabel').innerText = (cRate * 100).toFixed(3) + '%';
-        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString(undefined, {minimumFractionDigits: 2});
+        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString();
+        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString();
         
         document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8});
         document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8});
@@ -197,10 +174,8 @@
         document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8});
         document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8});
         document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8});
     }
-    calc();
+    window.onload = calc;
 </script>
 </body>
 </html>
