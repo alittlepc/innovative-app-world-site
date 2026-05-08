@@ -22,7 +22,7 @@
 
     <div class="preview-ticker">
         <div class="ticker-content">
-            IAW Institutional Liquidity Rail — 1:1 RLUSD Shadow Parity — 0.33% Integrity Fee Logic — Xahau Hook Mathematical Enforcement — MiCA & VARA Compliant — 
+            IAW Institutional Liquidity Rail — 64-Bit High-Precision Logic — 0.33% Integrity Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — 
         </div>
     </div>
 
@@ -40,23 +40,23 @@
             </nav>
 
             <div class="bg-white p-12 rounded-[56px] border border-slate-200 shadow-sm">
-                <h2 class="text-4xl font-black tracking-tighter mb-6 uppercase">Interoperability Without Compromise</h2>
+                <h2 class="text-4xl font-black tracking-tighter mb-6 uppercase">Mathematical Settlement Certainty</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div class="space-y-6">
                         <p class="text-lg text-slate-700 font-bold leading-relaxed">
-                            The legacy financial stack is a collection of silos, but the IAW Rail is a unified mainframe for value. By anchoring 1:1 with NYDFS-regulated RLUSD, we provide a non-custodial gateway for institutions to move liquidity with mathematical certainty.
+                            The legacy financial stack rounds off value to hide friction. The IAW Rail exposes it. Our infrastructure provides <strong>64-bit precision</strong> for every move, ensuring that 1:1 shadow-mirroring with RLUSD remains accurate to the smallest unit of account.
                         </p>
                         <p class="text-sm text-slate-500 font-bold border-l-4 border-blue-600 pl-6 leading-relaxed">
-                            "Utility is the only metric that matters in the internet of value. This rail collapses the 2.5% legacy friction stack into a precise, automated 0.33% protocol toll—enforced by code, not by middle-men."
+                            "When you're moving billions, the decimals aren't just details—they're the difference between liquidity and loss. We've built a rail that respects the math of high-velocity capital."
                         </p>
                     </div>
                     <div class="space-y-4">
-                        <div class="p-8 bg-slate-900 text-white rounded-[40px] border border-slate-800">
-                            <h3 class="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Shadow-Mirroring Legality</h3>
+                        <div class="p-8 bg-slate-900 text-white rounded-[40px] border border-slate-800 shadow-lg">
+                            <h3 class="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">High-Precision PaaS</h3>
                             <p class="text-sm font-bold mb-4">
-                                Our PaaS framework utilizes account-level state locking to isolate risk. IAW acts as the "Toll-Keeper," ensuring that every move is audited on-chain while the user maintains total sovereignty over their assets.
+                                Utilizing account-level state locking and Xahau Hooks, we automate a 0.33% toll-keeper revenue logic. No custody. No manual books. Just absolute precision.
                             </p>
-                            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="text-[10px] font-black uppercase text-blue-400 hover:text-white underline decoration-2 underline-offset-4">Review Institutional Compliance →</a>
+                            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="text-[10px] font-black uppercase text-blue-400 hover:text-white underline decoration-2 underline-offset-4">Technical Specification Sheet →</a>
                         </div>
                     </div>
                 </div>
@@ -67,21 +67,21 @@
             
             <div class="lg:col-span-4 space-y-6">
                 <section class="bg-black text-white p-10 rounded-[48px] shadow-2xl">
-                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 block text-center">Set Your Transaction Volume (RLUSD)</label>
+                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 block text-center">Institutional Transaction Volume (RLUSD)</label>
                     <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-4 text-center" oninput="updateVol(this.value)">
                     
                     <div class="mt-10 space-y-4">
                         <div class="bg-slate-900 p-6 rounded-3xl border border-blue-500/30">
-                            <span class="text-[10px] font-black text-blue-400 uppercase block mb-1">IAW Integrity Fees</span>
-                            <h3 id="iaw-sidebar-total" class="text-4xl font-black">$0.00</h3>
+                            <span class="text-[10px] font-black text-blue-400 uppercase block mb-1">IAW Protocol Toll (8-Digit Precision)</span>
+                            <h3 id="iaw-sidebar-total" class="text-3xl font-black text-white font-mono">$0.00000000</h3>
                         </div>
                         <div class="bg-slate-900/40 p-6 rounded-3xl border border-slate-800">
                             <span class="text-[10px] font-black text-slate-500 uppercase block mb-1">Legacy Stack Friction (2.5%)</span>
-                            <h3 id="legacy-sidebar-total" class="text-3xl font-black text-slate-600">$0.00</h3>
+                            <h3 id="legacy-sidebar-total" class="text-2xl font-black text-slate-600 font-mono">$0.00000000</h3>
                         </div>
                         <div class="pt-6 text-center border-t border-slate-800">
                             <p class="text-[11px] font-black text-green-500 uppercase tracking-[0.3em]">Capital Efficiency Gain</p>
-                            <h2 id="savings-val" class="text-6xl font-black text-green-400 tracking-tighter">$0.00</h2>
+                            <h2 id="savings-val" class="text-5xl font-black text-green-400 tracking-tighter font-mono">$0.00000000</h2>
                         </div>
                     </div>
                 </section>
@@ -107,7 +107,7 @@
                                     <input type="range" id="taxRange" min="0" max="40" step="0.1" value="7.0" oninput="calculate()">
                                     <div class="flex justify-between items-end mt-4">
                                         <p class="text-3xl font-black tracking-tighter" id="taxRateLabel">7.000%</p>
-                                        <p class="text-xs font-black text-blue-600 uppercase" id="taxVolumeLabel">$70,000</p>
+                                        <p class="text-xs font-black text-blue-600 uppercase font-mono" id="taxVolumeLabel">$0.00000000</p>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                     <input type="range" id="customRange" min="0" max="100" step="0.1" value="1.5" oninput="calculate()">
                                     <div class="flex justify-between items-end mt-4">
                                         <p class="text-3xl font-black tracking-tighter" id="customRateLabel">1.500%</p>
-                                        <p class="text-xs font-black text-blue-600 uppercase" id="customVolumeLabel">$15,000</p>
+                                        <p class="text-xs font-black text-blue-600 uppercase font-mono" id="customVolumeLabel">$0.00000000</p>
                                     </div>
                                 </div>
                             </div>
@@ -135,15 +135,16 @@
                 </div>
 
                 <div class="bg-white p-10 rounded-[48px] border border-slate-200">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Efficiency Verification Logic</h3>
-                    <div id="summary-list" class="space-y-4 text-[12px] font-bold font-mono"></div>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Efficiency Verification (64-Bit Resolution)</h3>
+                    <div id="summary-list" class="space-y-4 text-[11px] font-bold font-mono"></div>
                     
                     <div class="grid grid-cols-12 gap-6 mt-10 pt-8 border-t-8 border-black">
                         <div class="col-span-6">
-                            <p class="text-sm font-black uppercase">Infrastructure Cost Comparison</p>
+                            <p class="text-sm font-black uppercase">Infrastructure Toll Total</p>
+                            <p class="text-[9px] font-black text-slate-400 uppercase italic mt-1">Calculated per transaction move to preserve network liquidity.</p>
                         </div>
-                        <div id="iaw-chart-total" class="col-span-3 text-right text-2xl font-black text-blue-600">$0.00</div>
-                        <div id="legacy-chart-total" class="col-span-3 text-right text-2xl font-black text-red-600">$0.00</div>
+                        <div id="iaw-chart-total" class="col-span-3 text-right text-xl font-black text-blue-600 font-mono">$0.00000000</div>
+                        <div id="legacy-chart-total" class="col-span-3 text-right text-xl font-black text-red-600 font-mono">$0.00000000</div>
                     </div>
                 </div>
             </div>
@@ -152,9 +153,9 @@
         <footer class="max-w-[1600px] w-full mx-auto mt-24 pt-12 border-t border-slate-200 pb-20">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Innovative App World</h3>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Protocol Authority</h3>
                     <p class="text-sm text-slate-600 font-bold leading-relaxed mb-6">
-                        Bridging the gap between institutional finance and decentralised utility. We build the rails for the future of money.
+                        Innovative App World (IAW) is the bridge between financial rigor and decentralized speed. We provide the infrastructure for the next generation of global settlement.
                     </p>
                     <div class="flex gap-4">
                         <a href="https://xrptokenizer.com" target="_blank" class="text-[10px] font-black uppercase text-blue-600 hover:underline">xrptokenizer.com</a>
@@ -163,16 +164,16 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Protocol Anchors</h3>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Core Utility Pillars</h3>
                     <ul class="text-[11px] font-bold text-slate-600 space-y-3 uppercase tracking-tighter">
-                        <li>• 1:1 RLUSD Mirror Lock</li>
-                        <li>• Xahau Hook Logic Enforcement</li>
-                        <li>• Non-Custodial Infrastructure</li>
-                        <li>• 0.33% Per-Movement Revenue Logic</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> 1:1 RLUSD Mirroring (NYDFS Regulated)</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Xahau Hooks Mathematical Enforcement</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Non-Custodial Infrastructure (No Counterparty Risk)</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> 64-Bit Precision Revenue Routing</li>
                     </ul>
                 </div>
                 <div class="text-right flex flex-col justify-end">
-                    <p class="text-[10px] font-black uppercase text-slate-400 italic">"The internet of value requires a rail that doesn't sleep."</p>
+                    <p class="text-[10px] font-black uppercase text-slate-400 italic">"Utility isn't a goal; it's the requirement for the future of money."</p>
                     <p class="text-xs font-black text-slate-900 uppercase mt-2">© 2026 Innovative App World LLC</p>
                 </div>
             </div>
@@ -195,7 +196,7 @@
             const taxAmt = volume * (taxRate / 100);
             const customAmt = volume * (customRate / 100);
 
-            // Toll-Keeper Logic: Fees per volume moved
+            // Toll-Keeper Logic: Fees per move volume
             const feeInit = volume * iawRate; 
             const feeTax = taxAmt * iawRate; 
             const feeCustom = customAmt * iawRate; 
@@ -209,17 +210,17 @@
             document.getElementById('customVolumeLabel').innerText = formatCurrency(customAmt);
 
             document.getElementById('summary-list').innerHTML = `
-                <div class="grid grid-cols-12 gap-6 border-b py-3">
+                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-3">
                     <div class="col-span-6">System Initialization (Root Mirror)</div>
                     <div class="col-span-3 text-right text-blue-600">${formatCurrency(feeInit)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(volume * legacyRate)}</div>
                 </div>
-                <div class="grid grid-cols-12 gap-6 border-b py-3">
+                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-3">
                     <div class="col-span-6">Tax Rail Distribution ($${taxAmt.toLocaleString()} Move)</div>
                     <div class="col-span-3 text-right text-blue-600">${formatCurrency(feeTax)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(taxAmt * legacyRate)}</div>
                 </div>
-                <div class="grid grid-cols-12 gap-6 border-b py-3">
+                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-3">
                     <div class="col-span-6">Custom Rail Distribution ($${customAmt.toLocaleString()} Move)</div>
                     <div class="col-span-3 text-right text-blue-600">${formatCurrency(feeCustom)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(customAmt * legacyRate)}</div>
@@ -233,7 +234,11 @@
             document.getElementById('savings-val').innerText = "+" + formatCurrency(totalLegacy - totalIaw);
         }
 
-        function formatCurrency(v) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); }
+        // CORRECTED FOR 8-DIGIT PRECISION
+        function formatCurrency(v) { 
+            return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 8, maximumFractionDigits: 8 }); 
+        }
+        
         window.onload = () => { calculate(); };
     </script>
 </body>
