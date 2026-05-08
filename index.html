@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Institutional RLUSD Value Proof</title>
+    <title>IAW | Institutional Multi Purpose Token Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #111827; }
-        
-        .preview-ticker {
-            background: #f1f5f9; border-bottom: 1px solid #e2e8f0; padding: 8px 0;
-            overflow: hidden; white-space: nowrap; position: sticky; top: 0; z-index: 100;
-        }
-        .ticker-content {
-            display: inline-block; animation: ticker 30s linear infinite;
-            font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b;
-        }
+        .preview-ticker { background: #f1f5f9; border-bottom: 1px solid #e2e8f0; padding: 8px 0; overflow: hidden; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
+        .ticker-content { display: inline-block; animation: ticker 30s linear infinite; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
         .train-viewport { overflow-x: auto; padding: 60px 20px; background: #f8fafc; border-radius: 40px; border: 2px dashed #e2e8f0; scroll-behavior: smooth; }
-        .car-box { min-width: 300px; height: 300px; flex-shrink: 0; position: relative; }
+        .car-box { min-width: 280px; height: 280px; flex-shrink: 0; position: relative; transition: all 0.3s ease; }
         .wallet-input { font-family: monospace; font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; width: 100%; outline: none; color: #475569; }
-        
+        .step-card { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 20px; }
         input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #000; cursor: pointer; border: 3px solid #fff; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
-        
-        .comparison-label { font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; }
+        .comparison-pill { font-size: 9px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col">
 
     <div class="preview-ticker">
         <div class="ticker-content">
-            Institutional Preview Mode — Estimated Production Release: June 19th, 2026 — 1:1 RLUSD Value Matched — Clarity Alignment Protocol — Automated Revenue & Compliance — 
-            Institutional Preview Mode — Estimated Production Release: June 19th, 2026 — 1:1 RLUSD Value Matched — Clarity Alignment Protocol — Automated Revenue & Compliance
+            Institutional Preview Mode — Technical Demonstration of RLUSD Rail Infrastructure — Production Release: June 19th, 2026 — Innovative App World LLC — Proprietary Architecture &copy; 2026
         </div>
     </div>
 
@@ -44,97 +34,88 @@
                 <div class="w-12 h-12 bg-black text-white flex items-center justify-center font-black rounded-xl shadow-lg">IAW</div>
                 <div>
                     <h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Innovative App World</h1>
-                    <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase mt-1">Institutional Multi Purpose Token (MPT) Rail</p>
+                    <p class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase mt-1">RLUSD Rail & Multi Purpose Token (MPT) Logic</p>
                 </div>
             </div>
+            <span class="text-[10px] font-black bg-blue-100 text-blue-600 px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">Status: RLUSD Optimized</span>
         </nav>
 
         <main class="max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 flex-grow">
             
             <div class="lg:col-span-12 mb-8 bg-white p-10 rounded-[40px] border border-slate-200 shadow-sm">
-                <h2 class="text-3xl font-black tracking-tighter mb-6 uppercase">The IAW Protocol & Proof of Value</h2>
+                <h2 class="text-3xl font-black tracking-tighter mb-6 uppercase">The Efficiency of the IAW Rail</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p><strong>Clarity Alignment:</strong> IAW utilizes the Clarity Alignment Protocol to ensure technical execution matches institutional intent. This removes "logic drift" in cross-border distribution, ensuring programmed rules are final.</p>
+                        <p><strong>The Multi Purpose Token (MPT):</strong> In our architecture, an MPT is a dynamic asset wrapper that allows a single token to carry multiple institutional data payloads. Whether it represents a tax obligation or payroll, the MPT remains 1:1 value-matched to RLUSD liquidity.</p>
                     </div>
                     <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p><strong>Multi Purpose Token (MPT):</strong> An MPT is a dynamic asset wrapper that carries institutional data payloads. Whether it is Tax or Payroll, the MPT remains 1:1 value-matched to <strong>RLUSD</strong> liquidity.</p>
+                        <p><strong>Current Cost vs. IAW Rail:</strong> Traditional institutional banking involves a "fee stack"—intermediary fees and manual overhead—averaging 2.5% per movement. The IAW Rail collapses this into a single 0.33% protocol fee.</p>
                     </div>
                     <div class="text-sm text-slate-600 font-medium leading-relaxed">
-                        <p><strong>Institutional Scale:</strong> Built for global compliance, the IAW Rail transforms complex treasury management into a visual pipeline, reducing friction cost by over 85% compared to legacy banking.</p>
+                        <p><strong>Clarity Alignment:</strong> By utilizing Clarity Alignment, the IAW Rail ensures that every MPT follows your precise institutional rules, eliminating the risk of human error or manual settlement delays.</p>
                     </div>
                 </div>
             </div>
 
             <div class="lg:col-span-4 space-y-6">
                 <section class="bg-black text-white p-8 rounded-[32px] shadow-2xl">
-                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block text-center">Pipeline Volume (RLUSD)</label>
+                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 block text-center">RLUSD Target Pipeline</label>
                     <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-2 text-center" oninput="updateVol(this.value)">
                     
                     <div class="mt-8 space-y-4">
-                        <div class="bg-slate-900 p-6 rounded-2xl border border-blue-500/30">
-                            <span class="comparison-label text-blue-400 block mb-1">IAW Rail Efficiency Cost (0.33%)</span>
-                            <h3 id="iaw-total-fee" class="text-3xl font-black">$3,300.00</h3>
+                        <div class="bg-slate-900 p-5 rounded-2xl border border-blue-900/30">
+                            <span class="text-[10px] font-black text-blue-400 uppercase block mb-1">IAW Rail Efficiency (0.33%)</span>
+                            <h3 id="iaw-cost-total" class="text-3xl font-black">$3,300.00</h3>
                         </div>
-
-                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-                            <span class="comparison-label text-slate-500 block mb-1">Legacy Friction (2.5% per movement)</span>
-                            <h3 id="legacy-total-fee" class="text-3xl font-black text-slate-500">$25,000.00</h3>
+                        <div class="bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+                            <span class="text-[10px] font-black text-slate-500 uppercase block mb-1">Legacy Friction (2.5% avg)</span>
+                            <h3 id="trad-cost-total" class="text-3xl font-black text-slate-500">$25,000.00</h3>
                         </div>
-
-                        <div class="pt-6 border-t border-slate-800 text-center">
-                            <p class="text-[10px] font-black text-green-500 uppercase tracking-widest mb-1">Live Profit Retention</p>
-                            <h2 id="savings-val" class="text-5xl font-black text-green-400 tracking-tighter">+$21,700.00</h2>
+                        <div class="pt-4 border-t border-slate-800 text-center">
+                            <p class="text-[10px] font-black text-green-500 uppercase tracking-widest">Live Capital Retention</p>
+                            <h2 id="savings-val" class="text-4xl font-black text-green-400 tracking-tighter">$21,700.00</h2>
                         </div>
                     </div>
                 </section>
-
-                <div class="bg-white p-8 rounded-[32px] border border-slate-200">
-                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-4">Live Sync Status</h4>
-                    <div id="sync-status" class="text-xs font-bold text-slate-600 space-y-2">
-                        <p class="flex justify-between"><span>Base Friction (2.5%):</span> <span id="sync-legacy-base">$25,000</span></p>
-                        <p class="flex justify-between"><span>Module Friction:</span> <span id="sync-legacy-mods">$0</span></p>
-                    </div>
-                </div>
             </div>
 
             <div class="lg:col-span-8">
                 <div class="mb-6 flex flex-wrap gap-3 items-end justify-between">
                     <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Programmable Rail Engine</h3>
                     <div class="flex gap-2">
-                        <button onclick="addCar('Tax')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all">+ Tax Rail (7%)</button>
-                        <button onclick="addCar('Custom')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg">+ MPT Rail</button>
+                        <button onclick="addCar('Tax')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">+ Tax Module</button>
+                        <button onclick="addCar('MPT')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">+ MPT Rail</button>
                     </div>
                 </div>
 
-                <div class="train-viewport" id="viewport">
+                <div class="train-viewport">
                     <div class="flex items-end" id="train-track">
                         <div class="flex-shrink-0 mr-4 flex flex-col items-center">
                             <svg class="w-24 h-24 text-slate-900" viewBox="0 0 100 60" fill="currentColor"><path d="M10 25h25v25H10zM35 15h30v35H35zM65 25h25v25H65z"/><circle cx="22" cy="54" r="6"/><circle cx="50" cy="54" r="6"/><circle cx="78" cy="54" r="6"/></svg>
-                            <span class="text-[9px] font-black uppercase mt-2 bg-slate-200 px-2 py-1 rounded">Source</span>
+                            <span class="text-[9px] font-black uppercase mt-2 bg-slate-200 px-2 py-1 rounded">RLUSD Source</span>
                         </div>
                         <div class="w-8 h-1 bg-slate-300 mb-12 flex-shrink-0"></div>
-
                         <div class="car-box bg-white border-4 border-slate-900 rounded-[40px] p-6 shadow-xl">
                             <div class="flex flex-col h-full justify-between">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase text-blue-600 mb-1">IAW Core Fee</p>
-                                    <p class="text-[8px] font-bold text-slate-400 uppercase">Fixed Logic Protocol</p>
+                                    <p class="text-[10px] font-black uppercase text-blue-600 mb-2">IAW Protocol Fee</p>
+                                    <input type="text" value="rIAWCentralHub..." class="wallet-input" readonly>
                                 </div>
-                                <div><p class="text-3xl font-black tracking-tighter">0.330%</p></div>
+                                <div><p class="text-3xl font-black tracking-tighter">0.330%</p><p class="text-xs font-bold text-slate-400 uppercase" id="core-dollars">$3,300.00</p></div>
                             </div>
                         </div>
                         <div id="dynamic-cars" class="flex items-end"></div>
                     </div>
                 </div>
 
-                <div class="mt-8 bg-white p-8 rounded-[40px] border border-slate-200 shadow-sm overflow-hidden">
-                    <div class="grid grid-cols-12 gap-4 mb-4 border-b border-slate-100 pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                        <div class="col-span-5">Distribution Target</div>
-                        <div class="col-span-3 text-right">IAW Protocol Fee</div>
-                        <div class="col-span-4 text-right">Legacy Bank Fee (2.5%)</div>
+                <div class="mt-8 bg-white p-8 rounded-[40px] border border-slate-200 overflow-hidden">
+                    <h4 class="text-[10px] font-black uppercase text-slate-400 mb-4">Value Proof Ledger</h4>
+                    <div class="grid grid-cols-12 gap-4 text-[9px] font-black uppercase text-slate-400 mb-2 border-b pb-2">
+                        <div class="col-span-6">Rail Module</div>
+                        <div class="col-span-3 text-right">IAW Protocol</div>
+                        <div class="col-span-3 text-right">Legacy Bank Fee</div>
                     </div>
-                    <div id="summary-list" class="space-y-4"></div>
+                    <div id="summary-list" class="space-y-2"></div>
                 </div>
             </div>
         </main>
@@ -146,57 +127,67 @@
 
         function updateVol(val) {
             let num = parseFloat(val.replace(/[^0-9.]/g, ''));
-            if (!isNaN(num)) { volume = num; document.getElementById('volDisplay').value = formatCurrency(num).split('.')[0]; calculate(); }
+            if (!isNaN(num)) {
+                volume = num;
+                document.getElementById('volDisplay').value = formatCurrency(num).split('.')[0];
+                calculate();
+            }
         }
 
         function addCar(type) {
             const id = Date.now();
-            cars.push({ id, title: type + " Rail", percent: (type === 'Tax' ? 7.000 : 1.500) });
+            cars.push({ id, title: type + " Rail", percent: (type === 'Tax' ? 7.000 : 1.500), wallet: "rTarget..." });
             render();
         }
 
         function removeCar(id) { cars = cars.filter(c => c.id !== id); render(); }
 
+        function updateCar(id, field, value) {
+            const car = cars.find(c => c.id === id);
+            if (field === 'percent') car.percent = parseFloat(value);
+            calculate();
+        }
+
         function calculate() {
-            const legacyRate = 0.025;
-            const iawRate = 0.0033;
+            const iawFixedRate = 0.0033;
+            const legacyFrictionRate = 0.025;
 
-            // BASE CALCS
-            let totalLegacyFriction = volume * legacyRate;
-            let totalIawFriction = volume * iawRate;
-            let moduleFriction = 0;
+            let totalIawCost = volume * iawFixedRate;
+            let totalLegacyCost = volume * legacyFrictionRate; // Start with base friction
 
-            let summaryHtml = `
-                <div class="grid grid-cols-12 gap-4 border-b border-slate-50 pb-2">
-                    <div class="col-span-5 text-[10px] font-black text-blue-600 uppercase">System Initialization</div>
-                    <div class="col-span-3 text-right text-[11px] font-black">${formatCurrency(volume * iawRate)}</div>
-                    <div class="col-span-4 text-right text-[11px] font-black text-red-400">${formatCurrency(volume * legacyRate)}</div>
+            let ledgerHtml = `
+                <div class="grid grid-cols-12 gap-4 py-1 border-b border-slate-50">
+                    <div class="col-span-6 text-[10px] font-black text-blue-600 uppercase">Base Liquidity Routing</div>
+                    <div class="col-span-3 text-right text-[10px] font-bold font-mono">${formatCurrency(volume * iawFixedRate)}</div>
+                    <div class="col-span-3 text-right text-[10px] font-bold font-mono text-red-500">${formatCurrency(volume * legacyFrictionRate)}</div>
                 </div>
             `;
 
             cars.forEach(car => {
-                const distributedAmount = volume * (car.percent / 100);
-                const carLegacyFriction = distributedAmount * legacyRate; // Every sub-movement incurs cost in legacy
+                const railAmount = volume * (car.percent / 100);
+                const railLegacyFriction = railAmount * legacyFrictionRate;
                 
-                moduleFriction += carLegacyFriction;
-                totalLegacyFriction += carLegacyFriction;
+                totalLegacyCost += railLegacyFriction; // Add friction for every new movement
 
-                summaryHtml += `
-                    <div class="grid grid-cols-12 gap-4 border-b border-slate-50 pb-2">
-                        <div class="col-span-5 text-[10px] font-bold text-slate-600 uppercase">${car.title} (${car.percent.toFixed(3)}%)</div>
-                        <div class="col-span-3 text-right text-[11px] font-black text-blue-600">Included</div>
-                        <div class="col-span-4 text-right text-[11px] font-black text-red-400">${formatCurrency(carLegacyFriction)}</div>
+                ledgerHtml += `
+                    <div class="grid grid-cols-12 gap-4 py-1 border-b border-slate-50">
+                        <div class="col-span-6 text-[10px] font-bold text-slate-500 uppercase">${car.title} (${car.percent.toFixed(3)}%)</div>
+                        <div class="col-span-3 text-right text-[10px] font-bold text-blue-400 uppercase">Included</div>
+                        <div class="col-span-3 text-right text-[10px] font-bold font-mono text-red-400">${formatCurrency(railLegacyFriction)}</div>
                     </div>
                 `;
+
+                if(document.getElementById(`cost-${car.id}`)) {
+                    document.getElementById(`cost-${car.id}`).innerText = formatCurrency(railAmount);
+                    document.getElementById(`rate-${car.id}`).innerText = car.percent.toFixed(3) + '%';
+                }
             });
 
-            document.getElementById('iaw-total-fee').innerText = formatCurrency(totalIawFriction);
-            document.getElementById('legacy-total-fee').innerText = formatCurrency(totalLegacyFriction);
-            document.getElementById('savings-val').innerText = "+" + formatCurrency(totalLegacyFriction - totalIawFriction);
-            
-            document.getElementById('sync-legacy-base').innerText = formatCurrency(volume * legacyRate);
-            document.getElementById('sync-legacy-mods').innerText = formatCurrency(moduleFriction);
-            document.getElementById('summary-list').innerHTML = summaryHtml;
+            document.getElementById('iaw-cost-total').innerText = formatCurrency(totalIawCost);
+            document.getElementById('trad-cost-total').innerText = formatCurrency(totalLegacyCost);
+            document.getElementById('savings-val').innerText = formatCurrency(totalLegacyCost - totalIawCost);
+            document.getElementById('core-dollars').innerText = formatCurrency(volume * iawFixedRate);
+            document.getElementById('summary-list').innerHTML = ledgerHtml;
         }
 
         function formatCurrency(v) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); }
@@ -208,25 +199,4 @@
                 const coupler = document.createElement('div'); coupler.className = "w-8 h-1 bg-slate-300 mb-12 flex-shrink-0";
                 const div = document.createElement('div');
                 div.className = "car-box bg-white border-2 border-slate-100 rounded-[40px] p-6 shadow-lg ml-2";
-                div.innerHTML = `
-                    <div class="h-full flex flex-col justify-between">
-                        <div class="relative">
-                            <button onclick="removeCar(${car.id})" class="absolute -top-2 -right-2 text-slate-300 hover:text-red-500 font-black">×</button>
-                            <p class="text-[10px] font-black uppercase text-slate-900 mb-3">${car.title}</p>
-                            <label class="text-[8px] font-black text-slate-400 uppercase">Target Address (MPT)</label>
-                            <input type="text" value="rTarget..." class="wallet-input" readonly>
-                        </div>
-                        <div class="mt-4">
-                            <p class="text-2xl font-black tracking-tighter">${car.percent.toFixed(3)}%</p>
-                            <p class="text-[10px] font-black text-slate-400 uppercase">${formatCurrency(volume * (car.percent / 100))}</p>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(coupler); container.appendChild(div);
-            });
-            calculate();
-        }
-        window.onload = () => { updateVol('1000000'); };
-    </script>
-</body>
-</html>
+                div.innerHTML = `<div class
