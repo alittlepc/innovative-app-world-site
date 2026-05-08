@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Logic-Locked Shadow Rail</title>
+    <title>IAW | Logic-Locked Shadow Rail v2.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -23,18 +23,18 @@
 
     <div id="legalModal">
         <div class="bg-white max-w-2xl w-full p-12 rounded-[48px] shadow-2xl border border-slate-200">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-6 text-red-600">Institutional PaaS Disclaimer</h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-6 text-red-600">Institutional Responsibility Notice</h2>
             <div class="text-sm text-slate-600 font-bold space-y-5 mb-10 leading-relaxed">
-                <p>Innovative App World (IAW) provides <strong>Non-Custodial Infrastructure</strong>. Protocol enforcement occurs at the ledger level via Xahau Hooks. IAW holds zero responsibility for user-defined logic or financial outcomes.</p>
-                <p>The client is solely responsible for tax compliance and legal adherence. This system is a technical mainframe for 1:1 RLUSD Shadow Mirroring. IAW is NOT a financial fiduciary.</p>
+                <p>Innovative App World (IAW) provides <strong>Non-Custodial Infrastructure</strong>. Compliance is enforced at the ledger level via Xahau Hooks. IAW never has access to user assets or credentials.</p>
+                <p>The client is solely responsible for all tax compliance and legal adherence. This protocol operates as a technical software utility for 1:1 Shadow Mirroring.</p>
             </div>
-            <button onclick="document.getElementById('legalModal').style.display='none'" class="w-full bg-slate-900 text-white font-black py-5 rounded-2xl hover:bg-black transition-all uppercase tracking-widest text-sm shadow-xl">Acknowledge Accountability & Proceed</button>
+            <button onclick="document.getElementById('legalModal').style.display='none'" class="w-full bg-slate-900 text-white font-black py-5 rounded-2xl hover:bg-black transition-all uppercase tracking-widest text-sm shadow-xl">I Agree & Proceed</button>
         </div>
     </div>
 
     <div class="preview-ticker">
         <div class="ticker-content">
-            IAW Logic-Locked Rail v2.1 — Toll-Keeper Revenue Engine Active — 1:1 RLUSD Shadow Parity — MiCA & Clarity Compliant — 0.33% Per-Move Integrity Fee — 
+            IAW Logic-Locked Rail v2.1 — 1:1 RLUSD Shadow Parity — MiCA & Clarity Compliant — 0.33% Per-Move Integrity Fee — 
         </div>
     </div>
 
@@ -47,51 +47,23 @@
                     <p class="text-[10px] font-black text-blue-600 tracking-[0.4em] uppercase mt-1">Institutional PaaS Specifications v2.1</p>
                 </div>
             </div>
-            <div class="hidden md:flex gap-4">
-                <div class="px-4 py-2 bg-slate-100 rounded-lg border border-slate-200 text-[10px] font-black uppercase text-slate-500">64-Bit Precision Logic</div>
-                <div class="px-4 py-2 bg-slate-100 rounded-lg border border-slate-200 text-[10px] font-black uppercase text-slate-500">tfMPTCanClawback Enabled</div>
-            </div>
+            <a href="#" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all">White Paper v2.1</a>
         </nav>
 
         <main class="max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            <div class="lg:col-span-12 bg-white p-12 rounded-[56px] border border-slate-200 shadow-sm mb-4">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-2">
-                        <h2 class="text-4xl font-black tracking-tighter mb-6 uppercase">Shadow-Token Toll-Keeper Engine</h2>
-                        <p class="text-md text-slate-700 font-bold leading-relaxed mb-6">
-                            The IAW Rail utilizes **Shadow Mirroring** to anchor digital assets 1:1 with NYDFS-regulated RLUSD. This architecture eliminates counterparty risk by enforcing compliance via ledger-level math. 
-                        </p>
-                        <p class="text-md text-slate-600 font-medium leading-relaxed">
-                            Under the **"Toll-Keeper"** model, every wallet-to-wallet movement of the Shadow Token triggers a fixed **0.33% Integrity Fee**. This ensures continuous protocol revenue while delivering instant auditability—assuming all distribution targets utilize digital wallets for live book-balancing.
-                        </p>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="p-6 bg-blue-50 border border-blue-100 rounded-[32px]">
-                            <h3 class="text-xs font-black uppercase text-blue-700 mb-2">MiCA & Clarity Alignment</h3>
-                            <p class="text-[11px] font-bold text-blue-600/80 uppercase leading-tight">Engineered for reserve transparency and cross-border settlement frameworks.</p>
-                        </div>
-                        <div class="p-6 bg-slate-900 text-white rounded-[32px]">
-                            <h3 class="text-xs font-black uppercase text-slate-400 mb-2">Manual vs. Logic</h3>
-                            <p class="text-[11px] font-bold uppercase leading-tight">Collapsing 2.5% legacy fee stacks into automated 0.33% increments.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="lg:col-span-4 space-y-6">
-                <section class="bg-black text-white p-10 rounded-[48px] shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 blur-[80px]"></div>
-                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 block text-center">Shadow Asset Volume (RLUSD)</label>
+                <section class="bg-black text-white p-10 rounded-[48px] shadow-2xl">
+                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 block text-center">RLUSD Target Volume</label>
                     <input type="text" id="volDisplay" value="$1,000,000" class="bg-transparent text-5xl font-black outline-none border-b-4 border-slate-800 focus:border-blue-500 w-full pb-4 text-center" oninput="updateVol(this.value)">
                     
                     <div class="mt-10 space-y-4">
                         <div class="bg-slate-900 p-6 rounded-3xl border border-blue-500/30">
-                            <span class="text-[10px] font-black text-blue-400 uppercase block mb-1">IAW Protocol Toll (Cumulative)</span>
-                            <h3 id="iaw-sidebar-total" class="text-4xl font-black text-white">$0.00</h3>
+                            <span class="text-[10px] font-black text-blue-400 uppercase block mb-1">IAW Protocol Fee (Cumulative)</span>
+                            <h3 id="iaw-sidebar-total" class="text-4xl font-black">$0.00</h3>
                         </div>
                         <div class="bg-slate-900/40 p-6 rounded-3xl border border-slate-800">
-                            <span class="text-[10px] font-black text-slate-500 uppercase block mb-1">Legacy Institutional Cost (2.5%)</span>
+                            <span class="text-[10px] font-black text-slate-500 uppercase block mb-1">Legacy Institutional Friction (2.5%)</span>
                             <h3 id="legacy-sidebar-total" class="text-3xl font-black text-slate-600">$0.00</h3>
                         </div>
                         <div class="pt-6 text-center">
@@ -106,7 +78,7 @@
                 <div class="train-viewport mb-8">
                     <div class="flex items-end" id="train-track">
                         <div class="flex-shrink-0 mr-4 flex flex-col items-center">
-                            <div class="w-20 h-20 bg-slate-900 text-white rounded-3xl flex items-center justify-center font-black shadow-lg">ROOT</div>
+                            <div class="w-20 h-20 bg-slate-900 text-white rounded-3xl flex items-center justify-center font-black">ROOT</div>
                             <span class="text-[9px] font-black uppercase mt-3 text-slate-400 italic">RLUSD Ingress</span>
                         </div>
                         <div class="w-10 h-1 bg-slate-300 mb-14 flex-shrink-0"></div>
@@ -116,14 +88,13 @@
                                 <div>
                                     <span class="px-3 py-1 bg-red-100 text-red-600 text-[9px] font-black uppercase rounded-full">Shadow Move 1</span>
                                     <p class="text-lg font-black uppercase mt-4 text-slate-900">Tax Rail</p>
-                                    <label class="text-[9px] font-black text-slate-400 uppercase mt-4 block">Government Wallet (Digital)</label>
-                                    <input type="text" value="rIRS_Institutional_Gateway..." class="wallet-input mt-1">
+                                    <input type="text" value="rIRS_Official_Digital..." class="wallet-input mt-4">
                                 </div>
                                 <div>
                                     <input type="range" id="taxRange" min="0" max="40" step="0.1" value="7.0" oninput="calculate()">
                                     <div class="flex justify-between items-end mt-3">
                                         <p class="text-3xl font-black tracking-tighter" id="taxRateLabel">7.000%</p>
-                                        <p class="text-xs font-black text-blue-600 uppercase" id="taxCostLabel">$0.00</p>
+                                        <p class="text-xs font-black text-blue-600" id="taxVolumeLabel">$0.00</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,14 +107,13 @@
                                 <div>
                                     <span class="px-3 py-1 bg-blue-100 text-blue-600 text-[9px] font-black uppercase rounded-full">Shadow Move 2</span>
                                     <p class="text-lg font-black uppercase mt-4 text-slate-900">Custom Rail</p>
-                                    <label class="text-[9px] font-black text-slate-400 uppercase mt-4 block">Distribution Address</label>
-                                    <input type="text" value="rInstitutional_Target..." class="wallet-input mt-1">
+                                    <input type="text" value="rInstitutional_Target..." class="wallet-input mt-4">
                                 </div>
                                 <div>
                                     <input type="range" id="customRange" min="0" max="100" step="0.1" value="1.5" oninput="calculate()">
                                     <div class="flex justify-between items-end mt-3">
                                         <p class="text-3xl font-black tracking-tighter" id="customRateLabel">1.500%</p>
-                                        <p class="text-xs font-black text-blue-600 uppercase" id="customCostLabel">$0.00</p>
+                                        <p class="text-xs font-black text-blue-600" id="customVolumeLabel">$0.00</p>
                                     </div>
                                 </div>
                             </div>
@@ -151,23 +121,14 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-[48px] border border-slate-200 shadow-sm">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Comparison Logic Proof</h3>
-                    <div class="grid grid-cols-12 gap-6 text-[10px] font-black uppercase text-slate-400 mb-6 border-b-2 border-slate-50 pb-4">
-                        <div class="col-span-6">Rail Event (Ledger State)</div>
+                <div class="bg-white p-10 rounded-[48px] border border-slate-200">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Toll-Keeper Calculation Logic</h3>
+                    <div class="grid grid-cols-12 gap-6 text-[10px] font-black uppercase text-slate-400 border-b-2 pb-4">
+                        <div class="col-span-6">Rail Event</div>
                         <div class="col-span-3 text-right">IAW Protocol (0.33%)</div>
-                        <div class="col-span-3 text-right">Legacy Stack (2.5%)</div>
+                        <div class="col-span-3 text-right">Legacy Bank (2.5%)</div>
                     </div>
-                    <div id="summary-list" class="space-y-4 text-[12px] font-bold font-mono"></div>
-                    
-                    <div class="grid grid-cols-12 gap-6 mt-10 pt-8 border-t-8 border-black">
-                        <div class="col-span-6">
-                            <p class="text-sm font-black uppercase">Cumulative Infrastructure Toll</p>
-                            <p class="text-[9px] font-black text-slate-400 uppercase italic mt-1">Calculated per White Paper v2.1 Standards</p>
-                        </div>
-                        <div id="iaw-chart-total" class="col-span-3 text-right text-2xl font-black text-blue-600">$0.00</div>
-                        <div id="legacy-chart-total" class="col-span-3 text-right text-2xl font-black text-red-600">$0.00</div>
-                    </div>
+                    <div id="summary-list" class="space-y-4 mt-4 text-[12px] font-bold font-mono"></div>
                 </div>
             </div>
         </main>
@@ -190,50 +151,39 @@
             const taxAmt = volume * (taxRate / 100);
             const customAmt = volume * (customRate / 100);
 
-            // Toll-Keeper Logic: 0.33% triggers for EVERY TRANSACTION on the rail
+            // CORRECTED: Fees calculated per MOVE volume, not total pipeline volume
             const feeInit = volume * iawRate; 
-            const feeTax = volume * iawRate; 
-            const feeCustom = volume * iawRate; 
+            const feeTax = taxAmt * iawRate; 
+            const feeCustom = customAmt * iawRate; 
 
             const totalIaw = feeInit + feeTax + feeCustom;
             const totalLegacy = (volume * legacyRate) + (taxAmt * legacyRate) + (customAmt * legacyRate);
 
             document.getElementById('taxRateLabel').innerText = parseFloat(taxRate).toFixed(3) + '%';
             document.getElementById('customRateLabel').innerText = parseFloat(customRate).toFixed(3) + '%';
-            document.getElementById('taxCostLabel').innerText = formatCurrency(taxAmt);
-            document.getElementById('customCostLabel').innerText = formatCurrency(customAmt);
+            document.getElementById('taxVolumeLabel').innerText = formatCurrency(taxAmt);
+            document.getElementById('customVolumeLabel').innerText = formatCurrency(customAmt);
 
             document.getElementById('summary-list').innerHTML = `
-                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-2">
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-slate-900">1. Initialization / Shadow Sync</span>
-                        <span class="text-[9px] text-slate-400 uppercase italic">1:1 RLUSD Mirror Lock</span>
-                    </div>
+                <div class="grid grid-cols-12 gap-6 border-b py-2">
+                    <div class="col-span-6">1. Initialization (Total Vol)</div>
                     <div class="col-span-3 text-right text-blue-500">${formatCurrency(feeInit)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(volume * legacyRate)}</div>
                 </div>
-                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-2">
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-slate-900">2. Tax Rail Move (Audit Ready)</span>
-                        <span class="text-[9px] text-slate-400 uppercase italic">Distribution to Digital Gov Wallet</span>
-                    </div>
+                <div class="grid grid-cols-12 gap-6 border-b py-2">
+                    <div class="col-span-6">2. Tax Move (Shadow Asset)</div>
                     <div class="col-span-3 text-right text-blue-500">${formatCurrency(feeTax)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(taxAmt * legacyRate)}</div>
                 </div>
-                <div class="grid grid-cols-12 gap-6 border-b border-slate-50 py-2">
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-slate-900">3. Custom Rail Distribution</span>
-                        <span class="text-[9px] text-slate-400 uppercase italic">Institutional MPT Wallet-Change</span>
-                    </div>
+                <div class="grid grid-cols-12 gap-6 border-b py-2">
+                    <div class="col-span-6">3. Custom Move (Shadow Asset)</div>
                     <div class="col-span-3 text-right text-blue-500">${formatCurrency(feeCustom)}</div>
                     <div class="col-span-3 text-right text-red-500">${formatCurrency(customAmt * legacyRate)}</div>
                 </div>
             `;
 
             document.getElementById('iaw-sidebar-total').innerText = formatCurrency(totalIaw);
-            document.getElementById('iaw-chart-total').innerText = formatCurrency(totalIaw);
             document.getElementById('legacy-sidebar-total').innerText = formatCurrency(totalLegacy);
-            document.getElementById('legacy-chart-total').innerText = formatCurrency(totalLegacy);
             document.getElementById('savings-val').innerText = "+" + formatCurrency(totalLegacy - totalIaw);
         }
 
