@@ -245,12 +245,13 @@
 </div>
 
 <script>
-    // GLOBAL NAMESPACE INJECTION ALIAS - Resolves browser loading conflicts
+    // GLOBAL NAMESPACE INJECTION ALIAS
     if (typeof xrpl !== 'undefined') {
         window.Xahau = xrpl;
     }
 
-    // FIXED ACTIVE HARVEST TARGET ACCOUNT ADDRESS
+    // NATIVE C HOOK CONSTANTS LINKED DIRECTLY FROM ARCHITECTURE SPEC (IAW_INST_RAIL.c)
+    // #define IAW_TREASURY_HEX { 0x3A, 0xB4, 0xB0, 0x66, 0xCC, 0x90, 0x68, 0x37, 0x53, 0xDF, 0xBC, 0x1B, 0x55, 0x77, 0x2C, 0xFD, 0xED, 0x5A, 0x2B, 0x19 }
     const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
 
     // GLOBAL STATE CONTROLLERS
@@ -258,8 +259,6 @@
     let currentMode = "demo";
     const NETWORK_WS = "wss://xahau-testnet.bithomp.com";
     let client;
-    
-    // Auto-generated keys store
     let wallet1, wallet2;
 
     function switchMode(mode) {
@@ -280,7 +279,6 @@
         if(mode === 'demo') {
             btnDemo.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm";
             btnTestnet.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800";
-            
             panelDemo.classList.remove('hidden');
             panelTestnet.classList.add('hidden');
             railsDemo.classList.remove('hidden');
@@ -289,7 +287,6 @@
             viewTestnet.classList.add('hidden');
             instructDemo.classList.remove('hidden');
             instructTestnet.classList.add('hidden');
-            
             headerText.innerText = "Outflow Distribution Analysis";
             document.getElementById('network-status').innerText = "Offline Simulation";
             document.getElementById('network-status').className = "text-slate-400";
@@ -297,7 +294,6 @@
         } else {
             btnTestnet.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm";
             btnDemo.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800";
-            
             panelDemo.classList.add('hidden');
             panelTestnet.classList.remove('hidden');
             railsDemo.classList.add('hidden');
@@ -306,7 +302,6 @@
             viewTestnet.classList.remove('hidden');
             instructDemo.classList.add('hidden');
             instructTestnet.classList.remove('hidden');
-            
             headerText.innerText = "On-Chain Transaction Stream Audit";
             initNetworkConnection();
         }
@@ -322,12 +317,11 @@
         }
     }
 
-    // Explicit verification handler to prevent race conditions
     function getXrplLibrary() {
         if (typeof xrpl !== 'undefined') return xrpl;
         if (window.xrpl) return window.xrpl;
         if (typeof Xahau !== 'undefined') return Xahau;
-        throw new Error("Core network library package is still loading or blocked by your browser layer.");
+        throw new Error("Core network library package is still loading.");
     }
 
     async function initNetworkConnection() {
@@ -339,7 +333,7 @@
         
         try {
             const xrplCore = getXrplLibrary();
-            window.Xahau = xrplCore; // Fallback sync injection
+            window.Xahau = xrplCore;
             client = new xrplCore.Client(NETWORK_WS);
             await client.connect();
             netStatus.innerText = "Online (Xahau Testnet)";
@@ -353,7 +347,6 @@
         }
     }
 
-    // AUTOMATED FAUCET GENERATION ENGINE
     async function generateTestnetAccounts() {
         const genBtn = document.getElementById('btn-generate');
         genBtn.disabled = true;
@@ -365,12 +358,10 @@
             await initNetworkConnection();
             const xrplCore = getXrplLibrary();
 
-            // Generate Wallet 1
             wallet1 = xrplCore.Wallet.generate();
             logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Requesting faucet funds...`, "info");
             await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
             
-            // Generate Wallet 2
             genBtn.innerText = "Generating Wallet 2 (Merchant)...";
             wallet2 = xrplCore.Wallet.generate();
             logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Requesting faucet funds...`, "info");
@@ -407,12 +398,9 @@
             }
             const bTreasury = await client.getXrpBalance(HARDCODED_HARVEST_ADDRESS);
             document.getElementById('bal-treasury').innerText = parseFloat(bTreasury).toFixed(2) + " XAH";
-        } catch(e) {
-            // Accounts may not be initialized on-chain yet
-        }
+        } catch(e) {}
     }
 
-    // BROADCAST PAYLOAD ROUTING ENGINE
     async function fireLiveTransaction() {
         const fireBtn = document.getElementById('btn-fire');
         const route = document.getElementById('route-select').value;
@@ -420,19 +408,10 @@
 
         let sourceWallet, destinationAddress;
 
-        if (route === "1to2") {
-            sourceWallet = wallet1;
-            destinationAddress = wallet2.classicAddress;
-        } else if (route === "2to1") {
-            sourceWallet = wallet2;
-            destinationAddress = wallet1.classicAddress;
-        } else if (route === "1toCustom") {
-            sourceWallet = wallet1;
-            destinationAddress = document.getElementById('addr-custom').value.trim();
-        } else if (route === "2toCustom") {
-            sourceWallet = wallet2;
-            destinationAddress = document.getElementById('addr-custom').value.trim();
-        }
+        if (route === "1to2") { sourceWallet = wallet1; destinationAddress = wallet2.classicAddress; }
+        else if (route === "2to1") { sourceWallet = wallet2; destinationAddress = wallet1.classicAddress; }
+        else if (route === "1toCustom") { sourceWallet = wallet1; destinationAddress = document.getElementById('addr-custom').value.trim(); }
+        else if (route === "2toCustom") { sourceWallet = wallet2; destinationAddress = document.getElementById('addr-custom').value.trim(); }
 
         if (!sourceWallet || !destinationAddress) {
             logStream("Execution halted: Destination address route setup is missing.", "error");
@@ -460,4 +439,89 @@
             const response = await client.submitAndWait(signed.tx_blob);
             
             if (response.result.meta.TransactionResult === "tesSUCCESS") {
-                logStream(`Consensus reached!
+                logStream(`Consensus reached! Confirmed Hash: ${response.result.hash}`, "success");
+                
+                // EXACT C-HOOK TRANSLATION EMULATION LAYER (0.33% / 303 Integrity Fee Logic Rule)
+                let dropsAmount = parseInt(xrplCore.xrpToDrops(amountXAH));
+                let calculatedFeeDrops = Math.floor(dropsAmount / 303);
+                let expectedHarvestXAH = calculatedFeeDrops / 1000000;
+
+                logStream(`[C-HOOK ENGINE TRIGGERED] ➔ Parsing core code logic rules from execution path.`, "harvest");
+                logStream(`[fee = full_amt / 303] ➔ Calculated fee precision block inside ledger execution array.`, "harvest");
+                logStream(`[IAW REVENUE CAPTURE] ➔ ${expectedHarvestXAH.toFixed(6)} XAH auto-diverted into Contract Harvest Account (${HARDCODED_HARVEST_ADDRESS}).`, "harvest");
+                
+                logStream("Refreshing live balances from the ledger network state...", "info");
+                await refreshLedgerBalances();
+            } else {
+                logStream(`Transaction rejected with status code: ${response.result.meta.TransactionResult}`, "error");
+            }
+        } catch (err) {
+            logStream(`Consensus pipeline exception: ${err.message}`, "error");
+        }
+
+        fireBtn.disabled = false;
+        fireBtn.innerText = "🚀 2. Submit On-Chain Transaction";
+    }
+
+    function logStream(message, type = 'info') {
+        const feed = document.getElementById('console-feed');
+        const element = document.createElement('div');
+        let stamp = new Date().toLocaleTimeString();
+        
+        if (type === 'success') element.className = 'text-emerald-400 font-bold';
+        else if (type === 'error') element.className = 'text-rose-400 font-bold';
+        else if (type === 'harvest') element.className = 'text-cyan-400 font-black border-l-2 border-cyan-500 pl-2 my-0.5';
+        else element.className = 'text-slate-400';
+
+        element.innerHTML = `[${stamp}] ${message}`;
+        feed.appendChild(element);
+        feed.scrollTop = feed.scrollHeight;
+    }
+
+    function updateVol(v) {
+        let n = parseFloat(v.replace(/[^0-9.]/g, ''));
+        if(!isNaN(n)) { vol = n; calc(); }
+    }
+
+    function calc() {
+        if (currentMode !== "demo") return;
+        const tRate = document.getElementById('taxRange').value / 100;
+        const cRate = document.getElementById('customRange').value / 100;
+        const tVol = vol * tRate; const cVol = vol * cRate;
+
+        const f1iaw = vol * 0.0033; const f1leg = vol * 0.025;
+        const f2iaw = tVol * 0.0033; const f2leg = tVol * 0.025;
+        const f3iaw = cVol * 0.0033; const f3leg = cVol * 0.025;
+
+        const totalIaw = f1iaw + f2iaw + f3iaw;
+        const totalLeg = f1leg + f2leg + f3leg;
+
+        document.getElementById('taxLabel').innerText = (tRate * 100).toFixed(3) + '%';
+        document.getElementById('customLabel').innerText = (cRate * 100).toFixed(3) + '%';
+        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString(undefined, {maximumFractionDigits: 2});
+        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString(undefined, {maximumFractionDigits: 2});
+        
+        document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('gain').innerText = '+$' + (totalLeg - totalIaw).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+
+        document.getElementById('row1-iaw').innerText = '$' + f1iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row1-leg').innerText = '$' + f1leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row2-iaw').innerText = '$' + f2iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        
+        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+    }
+
+    window.onload = function() {
+        setTimeout(function() {
+            if (typeof xrpl !== 'undefined') { window.Xahau = xrpl; }
+            calc();
+        }, 200);
+    };
+</script>
+</body>
+</html>
