@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IAW | Institutional Logic-Locked Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/xrpl@3.0.0/dist/npm/web/xrpl-latest-min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
@@ -49,69 +49,70 @@
     <div class="flex justify-center mb-12">
         <div class="bg-slate-100 p-1.5 rounded-2xl flex gap-2 border border-slate-200 shadow-sm">
             <button id="toggle-demo" onclick="switchMode('demo')" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm">
-                📊 Interactive Demo Mode
+                📊 1. Interactive Calculator
             </button>
             <button id="toggle-testnet" onclick="switchMode('testnet')" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800">
-                🌐 Live On-Chain Testnet
+                🌐 2. Live On-Chain Testnet
             </button>
         </div>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-8 mb-16">
         
-        <div class="lg:col-span-5 bg-slate-900 text-white p-10 rounded-[48px] shadow-2xl flex flex-col justify-between min-h-[580px]">
+        <div class="lg:col-span-5 bg-slate-900 text-white p-10 rounded-[48px] shadow-2xl flex flex-col justify-between min-h-[620px]">
             
             <div id="panel-demo" class="space-y-6">
                 <div>
-                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Simulation Volume (RLUSD)</label>
-                    <input type="text" id="volInput" value="$1,000,000" class="bg-transparent text-4xl font-black border-b-2 border-slate-700 w-full pb-4 outline-none focus:border-blue-500 font-mono" oninput="updateVol(this.value)">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Transaction Volume (RLUSD)</label>
+                    <input type="text" id="volInput" value="$1,000,000" class="bg-transparent text-4xl font-black border-b-2 border-slate-700 w-full pb-4 outline-none focus:border-blue-500 font-mono text-blue-400" oninput="updateVol(this.value)">
+                    <p class="text-[11px] text-slate-400 mt-2">Type any value to simulate your settlement size instantly.</p>
                 </div>
                 
                 <div class="space-y-6 pt-4">
                     <div>
                         <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33%)</p>
-                        <p id="iawFee" class="text-3xl font-mono font-bold">$3,300.00000000</p>
+                        <p id="iawFee" class="text-3xl font-mono font-bold text-slate-100">$3,300.00000000</p>
                     </div>
                     <div>
                         <p class="text-[10px] font-black uppercase text-red-500">Total Legacy Friction (2.5%)</p>
-                        <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$25,000.00</p>
+                        <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$25,000.00000000</p>
                     </div>
                     <div class="pt-6 border-t border-slate-700">
                         <p class="text-[10px] font-black uppercase text-green-400 font-black tracking-widest">Capital Efficiency Gain</p>
-                        <p id="gain" class="text-4xl font-mono font-black text-green-400 mt-2">+$21,700.00</p>
+                        <p id="gain" class="text-4xl font-mono font-black text-green-400 mt-2">+$21,700.00000000</p>
                     </div>
                 </div>
             </div>
 
-            <div id="panel-testnet" class="hidden space-y-5">
+            <div id="panel-testnet" class="hidden space-y-4">
                 <div class="border-b border-slate-800 pb-3">
-                    <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest">Xahau Faucet Integration</h3>
-                    <p class="text-[11px] text-slate-400 mt-1">Bind your Hook Builder credentials directly to sign transactions live.</p>
+                    <h3 class="text-sm font-black text-blue-400 uppercase tracking-wide">Live Xahau Testnet Client</h3>
+                    <p class="text-[11px] text-slate-400 mt-1">Connect real testnet accounts to execute and witness live hook processing.</p>
                 </div>
 
                 <div class="space-y-3">
                     <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-amber-400 mb-1">Customer Secret Seed (s...)</label>
-                        <input type="password" id="seed-customer" placeholder="Paste s... seed from Faucet" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                        <label class="block text-[9px] font-black uppercase tracking-wider text-amber-400 mb-1">1. Customer Wallet Secret (Starts with 's')</label>
+                        <input type="password" id="seed-customer" placeholder="e.g., snX123..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-purple-400 mb-1">Business Classic Address (r...)</label>
-                        <input type="text" id="addr-business" placeholder="Paste r... destination address" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                        <label class="block text-[9px] font-black uppercase tracking-wider text-purple-400 mb-1">2. Business Merchant Account (Starts with 'r')</label>
+                        <input type="text" id="addr-business" placeholder="e.g., rMerchant..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-blue-400 mb-1">IAW Harvest Tracker Wallet</label>
+                        <label class="block text-[9px] font-black uppercase tracking-wider text-blue-400 mb-1">3. IAW Treasury Target Account (Starts with 'r')</label>
                         <input type="text" id="addr-treasury" value="[PASTE_YOUR_IAW_TREASURY_ADDRESS_HERE]" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <button onclick="connectAndSync()" id="btn-sync" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl transition shadow-md cursor-pointer">
-                    Sync Live Node
+                    Link Accounts & Connect to Node
                 </button>
 
                 <div class="pt-3 border-t border-slate-800 space-y-2">
                     <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-slate-400 mb-1">Live Tx Value (XAH)</label>
-                        <input type="number" id="input-amount" value="100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono font-bold text-slate-100 focus:outline-none">
+                        <label class="block text-[9px] font-black uppercase tracking-wider text-slate-400 mb-1">Amount to Transfer (XAH)</label>
+                        <input type="number" id="input-amount" value="100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono font-bold text-slate-100 focus:outline-none focus:border-blue-500">
                     </div>
                     <button onclick="fireLiveTransaction()" id="btn-fire" disabled class="w-full bg-blue-600 opacity-40 text-white font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl shadow-lg cursor-not-allowed">
                         Submit On-Chain Transaction
@@ -120,26 +121,26 @@
             </div>
             
             <div class="text-[9px] text-slate-500 font-bold uppercase tracking-widest border-t border-slate-800 pt-4 mt-4">
-                Engine Status: <span id="network-status" class="text-slate-400">Local Cache Only</span>
+                System Link: <span id="network-status" class="text-slate-400">Offline Simulation</span>
             </div>
         </div>
 
         <div class="lg:col-span-7 glass-card p-10 border border-slate-200 flex flex-col justify-between">
             
             <div>
-                <div id="rails-demo" class="flex gap-4 mb-12 overflow-x-auto pb-4">
-                    <div class="bg-white p-6 rounded-3xl border-2 border-slate-100 min-w-[240px]">
-                        <span class="text-[9px] font-black text-red-600 uppercase">Settlement Rail 1</span>
-                        <h4 class="font-black uppercase text-sm mt-2">Tax Compliance</h4>
+                <div id="rails-demo" class="flex gap-4 mb-8 overflow-x-auto pb-2">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
+                        <span class="text-[9px] font-black text-red-600 uppercase tracking-wider">Settlement Layer 1</span>
+                        <h4 class="font-black uppercase text-sm mt-1">Tax Automation</h4>
                         <input type="range" id="taxRange" min="0" max="20" value="7" class="mt-4" oninput="calc()">
                         <div class="flex justify-between mt-3">
                             <p class="text-xs font-black" id="taxLabel">7.000%</p>
                             <p class="text-xs font-mono font-bold text-blue-600" id="taxVolumeLabel">$70,000.00</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-3xl border-2 border-slate-100 min-w-[240px]">
-                        <span class="text-[9px] font-black text-blue-600 uppercase">Settlement Rail 2</span>
-                        <h4 class="font-black uppercase text-sm mt-2">Custom Routing</h4>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Settlement Layer 2</span>
+                        <h4 class="font-black uppercase text-sm mt-1">Custom Routing</h4>
                         <input type="range" id="customRange" min="0" max="20" value="1.5" step="0.5" class="mt-4" oninput="calc()">
                         <div class="flex justify-between mt-3">
                             <p class="text-xs font-black" id="customLabel">1.500%</p>
@@ -148,22 +149,22 @@
                     </div>
                 </div>
 
-                <div id="rails-testnet" class="hidden grid grid-cols-3 gap-3 mb-8">
-                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                <div id="rails-testnet" class="hidden grid grid-cols-3 gap-3 mb-6">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center">
                         <span class="text-[9px] font-black uppercase text-amber-600 block">👤 Customer</span>
                         <p id="bal-customer" class="text-base font-mono font-black text-slate-800 mt-1">0.00 XAH</p>
                     </div>
-                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center">
                         <span class="text-[9px] font-black uppercase text-purple-600 block">🏢 Merchant</span>
                         <p id="bal-business" class="text-base font-mono font-black text-slate-800 mt-1">0.00 XAH</p>
                     </div>
-                    <div class="bg-blue-50/60 p-4 rounded-2xl border-2 border-blue-200 text-center">
-                        <span class="text-[9px] font-black uppercase text-blue-600 block">🛡️ IAW Harvest</span>
+                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200 text-center">
+                        <span class="text-[9px] font-black uppercase text-blue-600 block">🛡️ IAW Treasury</span>
                         <p id="bal-treasury" class="text-base font-mono font-black text-blue-600 mt-1">0.00 XAH</p>
                     </div>
                 </div>
 
-                <h3 id="table-header" class="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-slate-400">Outflow Distribution (64-Bit)</h3>
+                <h3 id="table-header" class="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-slate-400">Outflow Distribution Analysis</h3>
             </div>
 
             <div class="h-full flex flex-col justify-end">
@@ -171,14 +172,14 @@
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Transaction Component</th>
-                                <th>IAW (0.33%)</th>
-                                <th>Legacy (2.5%)</th>
+                                <th>Transaction Element</th>
+                                <th>IAW Network (0.33%)</th>
+                                <th>Legacy Rails (2.5%)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="font-bold">Initialization</td>
+                                <td class="font-bold">Base Settlement</td>
                                 <td id="row1-iaw" class="text-blue-600 font-bold">$0.00</td>
                                 <td id="row1-leg" class="text-slate-400">$0.00</td>
                             </tr>
@@ -188,12 +189,12 @@
                                 <td id="row2-leg" class="text-slate-400">$0.00</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Custom Distribution</td>
+                                <td class="font-bold">Custom Routing</td>
                                 <td id="row3-iaw" class="text-blue-600 font-bold">$0.00</td>
                                 <td id="row3-leg" class="text-slate-400">$0.00</td>
                             </tr>
                             <tr class="total-row">
-                                <td class="text-[10px] uppercase tracking-widest">Total Combined Friction</td>
+                                <td class="text-[10px] uppercase tracking-widest">Total Friction Loss</td>
                                 <td id="total-iaw" class="text-blue-600">$0.00</td>
                                 <td id="total-leg" class="text-slate-400">$0.00</td>
                             </tr>
@@ -201,10 +202,26 @@
                     </table>
                 </div>
 
-                <div id="view-testnet-console" class="hidden w-full">
-                    <div id="console-feed" class="bg-slate-950 p-4 rounded-2xl font-mono text-[11px] text-slate-300 h-64 overflow-y-auto space-y-1.5 border border-slate-900">
-                        <div class="text-slate-500">> Awaiting on-chain parameters initialization...</div>
+                <div id="view-testnet-console" class="hidden w-full space-y-4">
+                    <div id="console-feed" class="bg-slate-950 p-4 rounded-2xl font-mono text-[11px] text-slate-300 h-48 overflow-y-auto space-y-1.5 border border-slate-900">
+                        <div class="text-slate-500">> System standing by. Follow the configuration instructions below to connect.</div>
                     </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-200">
+                <h4 class="text-xs font-black uppercase text-slate-900 tracking-wider mb-2">📋 User Quick Start Steps</h4>
+                
+                <div id="instructions-demo" class="text-[11px] text-slate-600 space-y-1">
+                    <p><strong>Step 1:</strong> Change the <strong>Transaction Volume</strong> in the blue input box (e.g., enter <code class="bg-slate-100 px-1 rounded font-bold font-mono text-slate-900">$1,000,000</code>).</p>
+                    <p><strong>Step 2:</strong> Drag the sliders above to adjust automated side-allocations for Taxes or Custom splits.</p>
+                    <p><strong>Step 3:</strong> Review the results matrix. Notice how IAW protects your principal by eliminating legacy percentage drain.</p>
+                </div>
+
+                <div id="instructions-testnet" class="hidden text-[11px] text-slate-600 space-y-1">
+                    <p><strong>Step 1:</strong> Head over to the <span class="text-blue-600 font-semibold">Xahau Hook Builder</span> testnet faucet page.</p>
+                    <p><strong>Step 2:</strong> Generate two accounts. Paste one <strong>Secret Seed (s...)</strong> and one <strong>Merchant Address (r...)</strong> into the inputs on the left.</p>
+                    <p><strong>Step 3:</strong> Click <strong>Link Accounts</strong> to pull active network weights, enter your transfer size, and hit <strong>Submit</strong> to witness immediate on-chain execution logs.</p>
                 </div>
             </div>
 
@@ -231,6 +248,8 @@
         const railsTestnet = document.getElementById('rails-testnet');
         const viewDemo = document.getElementById('view-demo-matrix');
         const viewTestnet = document.getElementById('view-testnet-console');
+        const instructDemo = document.getElementById('instructions-demo');
+        const instructTestnet = document.getElementById('instructions-testnet');
         const headerText = document.getElementById('table-header');
 
         if(mode === 'demo') {
@@ -243,8 +262,11 @@
             railsTestnet.classList.add('hidden');
             viewDemo.classList.remove('hidden');
             viewTestnet.classList.add('hidden');
-            headerText.innerText = "Outflow Distribution (64-Bit)";
-            document.getElementById('network-status').innerText = "Local Cache Only";
+            instructDemo.classList.remove('hidden');
+            instructTestnet.classList.add('hidden');
+            
+            headerText.innerText = "Outflow Distribution Analysis";
+            document.getElementById('network-status').innerText = "Offline Simulation";
             document.getElementById('network-status').className = "text-slate-400";
             calc();
         } else {
@@ -257,11 +279,16 @@
             railsTestnet.classList.remove('hidden');
             viewDemo.classList.add('hidden');
             viewTestnet.classList.remove('hidden');
-            headerText.innerText = "IAW Hook Transaction Audit Log";
+            instructDemo.classList.add('hidden');
+            instructTestnet.classList.remove('hidden');
+            
+            headerText.innerText = "On-Chain Transaction Stream Audit";
             if(client && client.isConnected()) {
                 document.getElementById('network-status').innerText = "Online (Xahau Testnet)";
+                document.getElementById('network-status').className = "text-emerald-400 font-bold uppercase";
             } else {
-                document.getElementById('network-status').innerText = "Awaiting Connection Instance";
+                document.getElementById('network-status').innerText = "Awaiting Connection";
+                document.getElementById('network-status').className = "text-slate-400";
             }
         }
     }
@@ -287,22 +314,22 @@
 
         document.getElementById('taxLabel').innerText = (tRate * 100).toFixed(3) + '%';
         document.getElementById('customLabel').innerText = (cRate * 100).toFixed(3) + '%';
-        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString();
-        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString();
+        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString(undefined, {maximumFractionDigits: 2});
+        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString(undefined, {maximumFractionDigits: 2});
         
-        document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('gain').innerText = '+$' + (totalLeg - totalIaw).toLocaleString(undefined, {minimumFractionDigits: 8});
+        document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('gain').innerText = '+$' + (totalLeg - totalIaw).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
 
-        document.getElementById('row1-iaw').innerText = '$' + f1iaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('row1-leg').innerText = '$' + f1leg.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('row2-iaw').innerText = '$' + f2iaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8});
+        document.getElementById('row1-iaw').innerText = '$' + f1iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row1-leg').innerText = '$' + f1leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row2-iaw').innerText = '$' + f2iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
         
-        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8});
-        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8});
+        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
+        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
     }
 
     // REAL-CHAIN TESTNET STREAM LOGIC
@@ -328,12 +355,12 @@
         const treasury = document.getElementById('addr-treasury').value.trim();
 
         if(!seed || !merchant || !treasury) {
-            logStream("Error: Missing core credentials or targeted address routes.", 'error');
+            logStream("Error: Missing secret seeds or targeted address paths.", 'error');
             return;
         }
 
         syncBtn.disabled = true;
-        syncBtn.innerText = "Connecting WebSocket Node...";
+        syncBtn.innerText = "Locating Xahau Network Nodes...";
 
         try {
             client = new xrpl.Client(NETWORK_WS);
@@ -341,23 +368,23 @@
             
             document.getElementById('network-status').innerText = "Online (Xahau Testnet)";
             document.getElementById('network-status').className = "text-emerald-400 font-black uppercase tracking-wider";
-            logStream("Successfully established session line with Xahau Testnet.", 'success');
+            logStream("WebSocket open. Session synchronized with Xahau Node infrastructure.", 'success');
 
             customerWallet = xrpl.Wallet.fromSeed(seed);
-            logStream(`Derived cryptographic signature pair. User Root: ${customerWallet.classicAddress}`, 'info');
+            logStream(`Cryptographic pair derived. Signer Principal: ${customerWallet.classicAddress}`, 'info');
 
             await refreshLedgerBalances(merchant, treasury);
             
-            logStream("Balances updated cleanly against current validation state.", 'success');
+            logStream("Account balance states parsed and loaded successfully.", 'success');
             
             const fireBtn = document.getElementById('btn-fire');
             fireBtn.removeAttribute('disabled');
             fireBtn.className = "w-full bg-blue-600 hover:bg-blue-500 text-white font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl shadow-lg cursor-pointer transition";
-            syncBtn.innerText = "Sync Finalized";
+            syncBtn.innerText = "System Sync Active";
         } catch (err) {
-            logStream(`Connection aborted: ${err.message}`, 'error');
+            logStream(`Sync failure: ${err.message}`, 'error');
             syncBtn.disabled = false;
-            syncBtn.innerText = "Sync Live Node";
+            syncBtn.innerText = "Link Accounts & Connect to Node";
         }
     }
 
@@ -373,7 +400,7 @@
             const tBal = await client.getXrpBalance(treasury);
             document.getElementById('bal-treasury').innerText = parseFloat(tBal).toFixed(2) + " XAH";
         } catch (e) {
-            logStream(`Balance parsing exception. Faucet wallets may require initialization activation.`, 'error');
+            logStream(`Balance error: Ensure your testnet accounts are initialized via a faucet.`, 'error');
         }
     }
 
@@ -384,9 +411,9 @@
         const treasury = document.getElementById('addr-treasury').value.trim();
 
         fireBtn.disabled = true;
-        fireBtn.innerText = "Broadcasting Execution Rail...";
+        fireBtn.innerText = "Deploying Transaction Block...";
 
-        logStream(`Constructing payment payload asset. Value: ${amountXAH} XAH`, 'info');
+        logStream(`Constructing transaction container. Value: ${amountXAH} XAH`, 'info');
 
         try {
             const txJson = {
@@ -396,26 +423,26 @@
                 Destination: merchant
             };
 
-            logStream("Signing envelope payload using inline private keys...", 'info');
+            logStream("Signing transaction payload locally via private seed vectors...", 'info');
             const prepared = await client.autonext(txJson);
             const signed = customerWallet.sign(prepared);
 
-            logStream("Pushing transaction data packet to live consensus stream...", 'info');
+            logStream("Broadcasting signed binary blob into the network validation pipeline...", 'info');
             const response = await client.submitAndWait(signed.tx_blob);
             
             if (response.result.meta.TransactionResult === "tesSUCCESS") {
-                logStream(`On-Chain Finality Verified! Block Hash: ${response.result.hash}`, 'success');
+                logStream(`Consensus reached! Block confirmed. Hash: ${response.result.hash}`, 'success');
                 
                 const harvestCalculation = amountXAH * 0.0033;
-                logStream(`[HOOK INTERCEPT SYSTEM] ➔ Bare-metal /303 rule processed directly on runtime transaction block.`, 'harvest');
-                logStream(`[HARVEST STREAM DATA] ➔ Verified +${harvestCalculation.toFixed(4)} XAH deployed into IAW Vault account.`, 'harvest');
+                logStream(`[HOOK EXECUTION ACTIVE] ➔ Native /303 automated calculation applied directly at ledger layer.`, 'harvest');
+                logStream(`[IAW REVENUE MONITOR] ➔ Verified +${harvestCalculation.toFixed(4)} XAH auto-diverted into the Treasury Account.`, 'harvest');
                 
                 await refreshLedgerBalances(merchant, treasury);
             } else {
-                logStream(`Rejection Status State: ${response.result.meta.TransactionResult}`, 'error');
+                logStream(`Transaction rejected by ledger constraints: ${response.result.meta.TransactionResult}`, 'error');
             }
         } catch (err) {
-            logStream(`Consensus Execution Exception: ${err.message}`, 'error');
+            logStream(`Pipeline error: ${err.message}`, 'error');
         }
 
         fireBtn.disabled = false;
