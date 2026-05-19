@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;900&display=swap" rel="stylesheet">
     
-    <script src="https://unpkg.com/xrpl@3.0.0/dist/npm/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xrpl/2.7.0/xrpl-latest-min.js"></script>
     
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
@@ -29,7 +29,7 @@
 
 <div class="ticker">
     <div class="ticker-wrap">
-        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% Integrity Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — 
+        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.75% Full Rail Target Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — 
     </div>
 </div>
 
@@ -91,7 +91,7 @@
                         <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$25,000.00000000</p>
                     </div>
                     <div class="pt-6 border-t border-slate-700">
-                        <p class="text-[10px] font-black uppercase text-green-400 font-black tracking-widest">Capital Efficiency Gain</p>
+                        <p class="text-[10px] font-black uppercase text-green-400 tracking-widest">Capital Efficiency Gain</p>
                         <p id="gain" class="text-4xl font-mono font-black text-green-400 mt-2">+$21,700.00000000</p>
                     </div>
                 </div>
@@ -245,16 +245,8 @@
 </div>
 
 <script>
-    // GLOBAL NAMESPACE INJECTION ALIAS
-    if (typeof xrpl !== 'undefined') {
-        window.Xahau = xrpl;
-    }
-
-    // NATIVE C HOOK CONSTANTS LINKED DIRECTLY FROM ARCHITECTURE SPEC (IAW_INST_RAIL.c)
-    // #define IAW_TREASURY_HEX { 0x3A, 0xB4, 0xB0, 0x66, 0xCC, 0x90, 0x68, 0x37, 0x53, 0xDF, 0xBC, 0x1B, 0x55, 0x77, 0x2C, 0xFD, 0xED, 0x5A, 0x2B, 0x19 }
     const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
 
-    // GLOBAL STATE CONTROLLERS
     let vol = 1000000;
     let currentMode = "demo";
     const NETWORK_WS = "wss://xahau-testnet.bithomp.com";
@@ -320,7 +312,6 @@
     function getXrplLibrary() {
         if (typeof xrpl !== 'undefined') return xrpl;
         if (window.xrpl) return window.xrpl;
-        if (typeof Xahau !== 'undefined') return Xahau;
         throw new Error("Core network library package is still loading.");
     }
 
@@ -333,7 +324,6 @@
         
         try {
             const xrplCore = getXrplLibrary();
-            window.Xahau = xrplCore;
             client = new xrplCore.Client(NETWORK_WS);
             await client.connect();
             netStatus.innerText = "Online (Xahau Testnet)";
@@ -359,16 +349,20 @@
             const xrplCore = getXrplLibrary();
 
             wallet1 = xrplCore.Wallet.generate();
-            logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Requesting faucet funds...`, "info");
-            await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
+            logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Fueling via network callback...`, "info");
+            
+            const f1 = await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
+            await f1.json();
             
             genBtn.innerText = "Generating Wallet 2 (Merchant)...";
             wallet2 = xrplCore.Wallet.generate();
-            logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Requesting faucet funds...`, "info");
-            await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet2.classicAddress}`);
+            logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Fueling via network callback...`, "info");
+            
+            const f2 = await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet2.classicAddress}`);
+            await f2.json();
 
-            logStream("Waiting 5 seconds for testnet block synchronization confirmation...", "info");
-            await new Promise(r => setTimeout(r, 5000));
+            logStream("Waiting for testnet ledger consensus confirmation...", "info");
+            await new Promise(r => setTimeout(r, 4000));
 
             await refreshLedgerBalances();
             logStream("Both demo wallets are locked, loaded, and initialized with test funds!", "success");
@@ -441,7 +435,6 @@
             if (response.result.meta.TransactionResult === "tesSUCCESS") {
                 logStream(`Consensus reached! Confirmed Hash: ${response.result.hash}`, "success");
                 
-                // EXACT C-HOOK TRANSLATION EMULATION LAYER (0.33% / 303 Integrity Fee Logic Rule)
                 let dropsAmount = parseInt(xrplCore.xrpToDrops(amountXAH));
                 let calculatedFeeDrops = Math.floor(dropsAmount / 303);
                 let expectedHarvestXAH = calculatedFeeDrops / 1000000;
@@ -518,7 +511,6 @@
 
     window.onload = function() {
         setTimeout(function() {
-            if (typeof xrpl !== 'undefined') { window.Xahau = xrpl; }
             calc();
         }, 200);
     };
