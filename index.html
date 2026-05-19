@@ -6,7 +6,7 @@
     <title>IAW | Institutional Logic-Locked Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/xrpl@3.0.0/dist/npm/web/xrpl-latest-min.js"></script>
+    <script src="https://github.com/Xahau/xahau-lib/releases/download/v1.0.1/xahau-1.0.1.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
         .ticker { background: #000; color: #fff; padding: 12px 0; overflow: hidden; white-space: nowrap; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
@@ -312,7 +312,7 @@
         netStatus.className = "text-amber-500 font-bold uppercase";
         
         try {
-            client = new xrpl.Client(NETWORK_WS);
+            client = new Xahau.Client(NETWORK_WS);
             await client.connect();
             netStatus.innerText = "Online (Xahau Testnet)";
             netStatus.className = "text-emerald-400 font-black uppercase tracking-wider";
@@ -336,14 +336,14 @@
         try {
             await initNetworkConnection();
 
-            // Generate Wallet 1
-            wallet1 = xrpl.Wallet.generate();
+            // Generate Wallet 1 via Xahau Wallet Primitives
+            wallet1 = Xahau.Wallet.generate();
             logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Requesting faucet funds...`, "info");
             await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
             
             // Generate Wallet 2
             genBtn.innerText = "Generating Wallet 2 (Merchant)...";
-            wallet2 = xrpl.Wallet.generate();
+            wallet2 = Xahau.Wallet.generate();
             logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Requesting faucet funds...`, "info");
             await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet2.classicAddress}`);
 
@@ -418,7 +418,7 @@
             const txJson = {
                 TransactionType: "Payment",
                 Account: sourceWallet.classicAddress,
-                Amount: xrpl.xrpToDrops(amountXAH),
+                Amount: Xahau.xrpToDrops(amountXAH),
                 Destination: destinationAddress
             };
 
