@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IAW | Institutional Logic-Locked Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;900&display=swap" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xrpl/3.0.0/xrpl-latest-min.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/xrpl@3.0.0/dist/npm/index.js"></script>
     
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
@@ -47,6 +47,17 @@
             <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="bg-black text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">Institutional Access</a>
         </div>
     </header>
+
+    <div class="mb-12 bg-blue-50 border-2 border-blue-200 rounded-3xl p-6 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-lg">🚀</div>
+            <div>
+                <h2 class="text-sm font-black uppercase tracking-tight text-slate-900">Beta Testing Is Officially Live</h2>
+                <p class="text-xs text-slate-600 font-medium mt-0.5">The native network sync pipeline is open for testing. Production logic assets shall be live and downloadable soon.</p>
+            </div>
+        </div>
+        <span class="bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-xl">Network Beta Active</span>
+    </div>
 
     <div class="flex justify-center mb-12">
         <div class="bg-slate-100 p-1.5 rounded-2xl flex gap-2 border border-slate-200 shadow-sm">
@@ -234,6 +245,11 @@
 </div>
 
 <script>
+    // GLOBAL NAMESPACE INJECTION ALIAS - Resolves browser loading conflicts
+    if (typeof xrpl !== 'undefined') {
+        window.Xahau = xrpl;
+    }
+
     // FIXED ACTIVE HARVEST TARGET ACCOUNT ADDRESS
     const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
 
@@ -310,7 +326,8 @@
     function getXrplLibrary() {
         if (typeof xrpl !== 'undefined') return xrpl;
         if (window.xrpl) return window.xrpl;
-        throw new Error("XRPL core dependency package is still downloading or blocked by your browser network layer.");
+        if (typeof Xahau !== 'undefined') return Xahau;
+        throw new Error("Core network library package is still loading or blocked by your browser layer.");
     }
 
     async function initNetworkConnection() {
@@ -322,6 +339,7 @@
         
         try {
             const xrplCore = getXrplLibrary();
+            window.Xahau = xrplCore; // Fallback sync injection
             client = new xrplCore.Client(NETWORK_WS);
             await client.connect();
             netStatus.innerText = "Online (Xahau Testnet)";
@@ -442,81 +460,4 @@
             const response = await client.submitAndWait(signed.tx_blob);
             
             if (response.result.meta.TransactionResult === "tesSUCCESS") {
-                logStream(`Consensus reached! Confirmed Hash: ${response.result.hash}`, "success");
-                
-                const expectedHarvest = amountXAH * 0.0033;
-                logStream(`[HOOK PARSING SUCCESS] ➔ Bare-metal /303 division triggered inside ledger runtime execution path.`, "harvest");
-                logStream(`[IAW REVENUE CAPTURE] ➔ ${expectedHarvest.toFixed(4)} XAH auto-diverted into Contract Harvest Account (${HARDCODED_HARVEST_ADDRESS}).`, "harvest");
-                
-                logStream("Refreshing live balances from the ledger network state...", "info");
-                await refreshLedgerBalances();
-            } else {
-                logStream(`Transaction rejected with status code: ${response.result.meta.TransactionResult}`, "error");
-            }
-        } catch (err) {
-            logStream(`Consensus pipeline exception: ${err.message}`, "error");
-        }
-
-        fireBtn.disabled = false;
-        fireBtn.innerText = "🚀 2. Submit On-Chain Transaction";
-    }
-
-    // LOG STREAM PRINTER
-    function logStream(message, type = 'info') {
-        const feed = document.getElementById('console-feed');
-        const element = document.createElement('div');
-        let stamp = new Date().toLocaleTimeString();
-        
-        if (type === 'success') element.className = 'text-emerald-400 font-bold';
-        else if (type === 'error') element.className = 'text-rose-400 font-bold';
-        else if (type === 'harvest') element.className = 'text-cyan-400 font-black border-l-2 border-cyan-500 pl-2 my-0.5';
-        else element.className = 'text-slate-400';
-
-        element.innerHTML = `[${stamp}] ${message}`;
-        feed.appendChild(element);
-        feed.scrollTop = feed.scrollHeight;
-    }
-
-    // CALCULATOR MATRIX LOGIC
-    function updateVol(v) {
-        let n = parseFloat(v.replace(/[^0-9.]/g, ''));
-        if(!isNaN(n)) { vol = n; calc(); }
-    }
-
-    function calc() {
-        if (currentMode !== "demo") return;
-        const tRate = document.getElementById('taxRange').value / 100;
-        const cRate = document.getElementById('customRange').value / 100;
-        const tVol = vol * tRate; const cVol = vol * cRate;
-
-        const f1iaw = vol * 0.0033; const f1leg = vol * 0.025;
-        const f2iaw = tVol * 0.0033; const f2leg = tVol * 0.025;
-        const f3iaw = cVol * 0.0033; const f3leg = cVol * 0.025;
-
-        const totalIaw = f1iaw + f2iaw + f3iaw;
-        const totalLeg = f1leg + f2leg + f3leg;
-
-        document.getElementById('taxLabel').innerText = (tRate * 100).toFixed(3) + '%';
-        document.getElementById('customLabel').innerText = (cRate * 100).toFixed(3) + '%';
-        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString(undefined, {maximumFractionDigits: 2});
-        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString(undefined, {maximumFractionDigits: 2});
-        
-        document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('gain').innerText = '+$' + (totalLeg - totalIaw).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-
-        document.getElementById('row1-iaw').innerText = '$' + f1iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row1-leg').innerText = '$' + f1leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row2-iaw').innerText = '$' + f2iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        
-        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-    }
-
-    window.onload = calc;
-</script>
-</body>
-</html>
+                logStream(`Consensus reached!
