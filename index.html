@@ -232,8 +232,8 @@
 </div>
 
 <script>
-    // HARDCODED IAW TARGET BASE ADDRESS
-    const HARDCODED_HARVEST_ADDRESS = "rPsh5D1Yv6MuxCByW8b8w7y1S8n42fPpkV"; // Put your live address here!
+    // FIXED ACTIVE HARVEST TARGET ACCOUNT ADDRESS
+    const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
 
     // GLOBAL STATE CONTROLLERS
     let vol = 1000000;
@@ -379,7 +379,7 @@
             const bTreasury = await client.getXrpBalance(HARDCODED_HARVEST_ADDRESS);
             document.getElementById('bal-treasury').innerText = parseFloat(bTreasury).toFixed(2) + " XAH";
         } catch(e) {
-            // Accounts might not be active yet on ledger
+            // Accounts may not be initialized on-chain yet
         }
     }
 
@@ -391,7 +391,6 @@
 
         let sourceWallet, destinationAddress;
 
-        // Assign correct source and destination routes based on select settings
         if (route === "1to2") {
             sourceWallet = wallet1;
             destinationAddress = wallet2.classicAddress;
@@ -435,7 +434,7 @@
                 
                 const expectedHarvest = amountXAH * 0.0033;
                 logStream(`[HOOK PARSING SUCCESS] ➔ Bare-metal /303 division triggered inside ledger runtime execution path.`, "harvest");
-                logStream(`[IAW REVENUE CAPTURE] ➔ ${expectedHarvest.toFixed(4)} XAH auto-diverted into IAW Target Wallet (${HARDCODED_HARVEST_ADDRESS}).`, "harvest");
+                logStream(`[IAW REVENUE CAPTURE] ➔ ${expectedHarvest.toFixed(4)} XAH auto-diverted into Contract Harvest Account (${HARDCODED_HARVEST_ADDRESS}).`, "harvest");
                 
                 logStream("Refreshing live balances from the ledger network state...", "info");
                 await refreshLedgerBalances();
