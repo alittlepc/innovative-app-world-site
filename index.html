@@ -6,7 +6,9 @@
     <title>IAW | Institutional Logic-Locked Rail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://github.com/Xahau/xahau-lib/releases/download/v1.0.1/xahau-1.0.1.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xrpl/3.0.0/xrpl-latest-min.js" crossorigin="anonymous" defer></script>
+    
     <style>
         body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
         .ticker { background: #000; color: #fff; padding: 12px 0; overflow: hidden; white-space: nowrap; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
@@ -70,7 +72,7 @@
                 
                 <div class="space-y-6 pt-4">
                     <div>
-                        <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33%)</p>
+                        <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33% / 303)</p>
                         <p id="iawFee" class="text-3xl font-mono font-bold text-slate-100">$3,300.00000000</p>
                     </div>
                     <div>
@@ -304,6 +306,13 @@
         }
     }
 
+    // Explicit verification handler to prevent race conditions
+    function getXrplLibrary() {
+        if (typeof xrpl !== 'undefined') return xrpl;
+        if (window.xrpl) return window.xrpl;
+        throw new Error("XRPL core dependency package is still downloading or blocked by your browser network layer.");
+    }
+
     async function initNetworkConnection() {
         const netStatus = document.getElementById('network-status');
         if (client && client.isConnected()) return;
@@ -312,7 +321,8 @@
         netStatus.className = "text-amber-500 font-bold uppercase";
         
         try {
-            client = new Xahau.Client(NETWORK_WS);
+            const xrplCore = getXrplLibrary();
+            client = new xrplCore.Client(NETWORK_WS);
             await client.connect();
             netStatus.innerText = "Online (Xahau Testnet)";
             netStatus.className = "text-emerald-400 font-black uppercase tracking-wider";
@@ -321,7 +331,7 @@
         } catch(e) {
             netStatus.innerText = "Connection Failed";
             netStatus.className = "text-rose-500 font-bold uppercase";
-            logStream("Network connection failed. Retrying shortly...", "error");
+            logStream(`Network connection failed: ${e.message}`, "error");
         }
     }
 
@@ -335,15 +345,16 @@
 
         try {
             await initNetworkConnection();
+            const xrplCore = getXrplLibrary();
 
-            // Generate Wallet 1 via Xahau Wallet Primitives
-            wallet1 = Xahau.Wallet.generate();
+            // Generate Wallet 1
+            wallet1 = xrplCore.Wallet.generate();
             logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Requesting faucet funds...`, "info");
             await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
             
             // Generate Wallet 2
             genBtn.innerText = "Generating Wallet 2 (Merchant)...";
-            wallet2 = Xahau.Wallet.generate();
+            wallet2 = xrplCore.Wallet.generate();
             logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Requesting faucet funds...`, "info");
             await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet2.classicAddress}`);
 
@@ -415,10 +426,11 @@
         logStream(`Constructing payment bundle. Route: ${sourceWallet.classicAddress} ➔ ${destinationAddress}`, "info");
 
         try {
+            const xrplCore = getXrplLibrary();
             const txJson = {
                 TransactionType: "Payment",
                 Account: sourceWallet.classicAddress,
-                Amount: Xahau.xrpToDrops(amountXAH),
+                Amount: xrplCore.xrpToDrops(amountXAH),
                 Destination: destinationAddress
             };
 
