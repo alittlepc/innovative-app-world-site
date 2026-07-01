@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;900&display=swap" rel="stylesheet">
     
+    <!-- Core Ledger Library Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xrpl/2.7.0/xrpl-latest-min.js"></script>
     
     <style>
@@ -27,13 +28,16 @@
 </head>
 <body>
 
+<!-- TOP SCROLLING TICKER RUNNING HEADER WITH EMAIL CONTACT LINK -->
 <div class="ticker">
     <div class="ticker-wrap">
-        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% IAW Rail Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — 
+        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% IAW Rail Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — CONTACT US: EXEC@INNOVATIVEAPPWORLD.COM — IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% IAW Rail Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — CONTACT US: EXEC@INNOVATIVEAPPWORLD.COM — 
     </div>
 </div>
 
 <div class="max-w-6xl mx-auto px-6 py-12">
+    
+    <!-- CORPORATE HEADER BRAND HUB -->
     <header class="flex justify-between items-center mb-16">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 bg-black text-white flex items-center justify-center font-black rounded-2xl text-xl shadow-xl">IAW</div>
@@ -48,6 +52,7 @@
         </div>
     </header>
 
+    <!-- NETWORK BANNER INFORMER -->
     <div class="mb-12 bg-blue-50 border-2 border-blue-200 rounded-3xl p-6 flex items-center justify-between shadow-sm">
         <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-lg">🚀</div>
@@ -59,6 +64,57 @@
         <span class="bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-xl">Network Beta Active</span>
     </div>
 
+    <!-- CUSTOM VISUAL RAIL DESIGN CAR MAPPER (TRAIN UI EFFECT) -->
+    <div class="mb-12 bg-slate-50 border border-slate-200 rounded-[32px] p-8">
+        <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Your Custom Single-Rail Cargo Assembly</h3>
+        <div class="flex flex-wrap items-stretch gap-2 font-mono">
+            
+            <!-- THE CORE ENGINE -->
+            <div class="bg-blue-600 text-white p-4 rounded-2xl flex flex-col justify-between min-w-[140px] shadow-md border-b-4 border-blue-800">
+                <div>
+                    <div class="text-[18px]">🚂</div>
+                    <div class="text-[10px] font-black uppercase tracking-wider mt-1">IAW ENGINE</div>
+                </div>
+                <div class="text-xs font-bold mt-4 bg-blue-700 px-2 py-0.5 rounded text-center">0.33% Fixed</div>
+            </div>
+
+            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
+
+            <!-- CARGO CAR 1: TAX FEES -->
+            <div id="car-tax" class="bg-white border-2 border-slate-200 p-4 rounded-2xl flex flex-col justify-between min-w-[140px] transition-all duration-200">
+                <div>
+                    <div class="text-[18px]">📦</div>
+                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Tax Ruleset</div>
+                </div>
+                <div id="car-tax-fee" class="text-xs font-bold mt-4 bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-center">7.00%</div>
+            </div>
+
+            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
+
+            <!-- CARGO CAR 2: CUSTOM CONDITIONS AND COMPRESSED BANK TRANSACTION CODES -->
+            <div id="car-custom" class="bg-white border-2 border-slate-200 p-4 rounded-2xl flex flex-col justify-between min-w-[140px] transition-all duration-200">
+                <div>
+                    <div class="text-[18px]">💼</div>
+                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Bank Conditions</div>
+                </div>
+                <div id="car-custom-fee" class="text-xs font-bold mt-4 bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-center">1.50%</div>
+            </div>
+
+            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
+
+            <!-- CARGO CAR 3: TERMINAL ENDPOINT -->
+            <div class="bg-slate-900 text-slate-100 p-4 rounded-2xl flex flex-col justify-between min-w-[120px] border-b-4 border-slate-950">
+                <div>
+                    <div class="text-[18px]">🛑</div>
+                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Rail End</div>
+                </div>
+                <div class="text-[9px] font-bold mt-4 uppercase tracking-widest text-emerald-400 text-center">Atomic Run</div>
+            </div>
+        </div>
+        <p class="text-[10px] text-slate-500 mt-3 italic font-medium">Notice: Conditions are completely native, flattened, and logic-locked inside the rail itself. No external multi-layered routing required.</p>
+    </div>
+
+    <!-- APPLICATION RUNTIME TOGGLE INTERFACES -->
     <div class="flex justify-center mb-12">
         <div class="bg-slate-100 p-1.5 rounded-2xl flex gap-2 border border-slate-200 shadow-sm">
             <button id="toggle-demo" onclick="switchMode('demo')" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm">
@@ -70,10 +126,13 @@
         </div>
     </div>
 
+    <!-- SPLIT EXECUTION CORE BODY -->
     <div class="grid lg:grid-cols-12 gap-8 mb-16">
         
+        <!-- LEFT CONTROL INTERFACES PANEL CONTAINER -->
         <div class="lg:col-span-5 bg-slate-900 text-white p-10 rounded-[48px] shadow-2xl flex flex-col justify-between min-h-[660px] relative overflow-hidden">
             
+            <!-- ACCESS LEAD GENERATION GATEKEEPER LAYOVER OVERLAY -->
             <div id="testnet-gatekeeper" class="hidden absolute inset-0 bg-slate-950/95 z-50 p-8 flex flex-col justify-center">
                 <div class="space-y-4">
                     <div class="border-b border-slate-800 pb-3">
@@ -98,6 +157,7 @@
                 </div>
             </div>
 
+            <!-- INTERACTIVE SIMULATION CALCULATION CONFIGS -->
             <div id="panel-demo" class="space-y-6">
                 <div>
                     <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Transaction Volume (RLUSD)</label>
@@ -107,7 +167,7 @@
                 
                 <div class="space-y-6 pt-4">
                     <div>
-                        <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33% / 303)</p>
+                        <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33% / 303 Engine)</p>
                         <p id="iawFee" class="text-3xl font-mono font-bold text-slate-100">$3,300.00000000</p>
                     </div>
                     <div>
@@ -121,6 +181,7 @@
                 </div>
             </div>
 
+            <!-- LIVE FIRED ON-CHAIN TESTING CONTROLS CONTAINER -->
             <div id="panel-testnet" class="hidden space-y-4">
                 <div class="border-b border-slate-800 pb-2">
                     <h3 class="text-sm font-black text-blue-400 uppercase tracking-wide">Live Xahau Account Provisioner</h3>
@@ -164,13 +225,15 @@
             </div>
         </div>
 
+        <!-- RIGHT DATA DISPENSARY DISPLAY GRID -->
         <div class="lg:col-span-7 glass-card p-10 border border-slate-200 flex flex-col justify-between">
             
             <div>
+                <!-- DEMO VIEW SLIDERS CONTROLS -->
                 <div id="rails-demo" class="flex gap-4 mb-8 overflow-x-auto pb-2">
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
-                        <span class="text-[9px] font-black text-red-600 uppercase tracking-wider">Settlement Layer 1</span>
-                        <h4 class="font-black uppercase text-sm mt-1">Tax Automation</h4>
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Cargo Condition Box A</span>
+                        <h4 class="font-black uppercase text-sm mt-1">Tax Ruleset Compression</h4>
                         <input type="range" id="taxRange" min="0" max="20" value="7" class="mt-4" oninput="calc()">
                         <div class="flex justify-between mt-3">
                             <p class="text-xs font-black" id="taxLabel">7.000%</p>
@@ -178,8 +241,8 @@
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
-                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Settlement Layer 2</span>
-                        <h4 class="font-black uppercase text-sm mt-1">Custom Routing</h4>
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Cargo Condition Box B</span>
+                        <h4 class="font-black uppercase text-sm mt-1">Institutional Ruleset Box</h4>
                         <input type="range" id="customRange" min="0" max="20" value="1.5" step="0.5" class="mt-4" oninput="calc()">
                         <div class="flex justify-between mt-3">
                             <p class="text-xs font-black" id="customLabel">1.500%</p>
@@ -188,6 +251,7 @@
                     </div>
                 </div>
 
+                <!-- TESTNET REAL-TIME ACCOUNT STATUS CARD TILES -->
                 <div id="rails-testnet" class="hidden grid grid-cols-3 gap-3 mb-6">
                     <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center">
                         <span class="text-[9px] font-black uppercase text-amber-600 block">👤 Wallet 1 (Customer)</span>
@@ -206,29 +270,32 @@
                 <h3 id="table-header" class="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-slate-400">Outflow Distribution Analysis</h3>
             </div>
 
+            <!-- DYNAMIC DISPLAY SWITCHER HOUSING ELEMENT -->
             <div class="h-full flex flex-col justify-end">
+                
+                <!-- DEMO COMPARISON DATA GRID -->
                 <div id="view-demo-matrix" class="w-full">
                     <table class="comparison-table">
                         <thead>
                             <tr>
                                 <th>Transaction Element</th>
-                                <th>IAW Network (0.33%)</th>
+                                <th>IAW Consolidated Rail (0.33%)</th>
                                 <th>Legacy Rails (2.5%)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="font-bold">Base Settlement</td>
+                                <td class="font-bold">Base Settlement Engine</td>
                                 <td id="row1-iaw" class="text-blue-600 font-bold">$0.00</td>
                                 <td id="row1-leg" class="text-slate-400">$0.00</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Tax Distribution</td>
+                                <td class="font-bold">Tax Distribution Engine</td>
                                 <td id="row2-iaw" class="text-blue-600 font-bold">$0.00</td>
                                 <td id="row2-leg" class="text-slate-400">$0.00</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Custom Routing</td>
+                                <td class="font-bold">Institutional Custom Conditions</td>
                                 <td id="row3-iaw" class="text-blue-600 font-bold">$0.00</td>
                                 <td id="row3-leg" class="text-slate-400">$0.00</td>
                             </tr>
@@ -241,6 +308,7 @@
                     </table>
                 </div>
 
+                <!-- LIVE CONSOLE TERMINAL OUTPUT FOR TESTING STREAM -->
                 <div id="view-testnet-console" class="hidden w-full space-y-4">
                     <div id="console-feed" class="bg-slate-950 p-4 rounded-2xl font-mono text-[11px] text-slate-300 h-48 overflow-y-auto space-y-1.5 border border-slate-900">
                         <div class="text-slate-500">> Standing by. Click "Initialize Demo Accounts" to fuel the local network runtimes.</div>
@@ -248,13 +316,14 @@
                 </div>
             </div>
 
+            <!-- EXPLICIT USER ACTION INSTRUCTIONS FOR CLEAR WORKFLOWS -->
             <div class="mt-6 pt-4 border-t border-slate-200">
                 <h4 class="text-xs font-black uppercase text-slate-900 tracking-wider mb-2">📋 User Quick Start Steps</h4>
                 
                 <div id="instructions-demo" class="text-[11px] text-slate-600 space-y-1">
                     <p><strong>Step 1:</strong> Change the <strong>Transaction Volume</strong> in the blue input box (e.g., enter <code class="bg-slate-100 px-1 rounded font-bold font-mono text-slate-900">$1,000,000</code>).</p>
-                    <p><strong>Step 2:</strong> Drag the sliders above to adjust automated side-allocations for Taxes or Custom splits.</p>
-                    <p><strong>Step 3:</strong> Review the results matrix. Notice how IAW protects your principal by eliminating legacy percentage drain.</p>
+                    <p><strong>Step 2:</strong> Drag the sliders above to compress customized conditions into the transaction flow.</p>
+                    <p><strong>Step 3:</strong> Review the results matrix. Notice how the IAW Engine stops cost leakage by blocking legacy rail compound splits.</p>
                 </div>
 
                 <div id="instructions-testnet" class="hidden text-[11px] text-slate-600 space-y-1">
@@ -277,7 +346,6 @@
     let client;
     let wallet1, wallet2;
 
-    // Gatekeeper submission state check
     function isUnlocked() {
         return localStorage.getItem('iaw_lead_unlocked') === 'true';
     }
@@ -537,6 +605,10 @@
         const tRate = document.getElementById('taxRange').value / 100;
         const cRate = document.getElementById('customRange').value / 100;
         const tVol = vol * tRate; const cVol = vol * cRate;
+
+        // Visual Rail Car Slider updates
+        document.getElementById('car-tax-fee').innerText = (tRate * 100).toFixed(2) + '%';
+        document.getElementById('car-custom-fee').innerText = (cRate * 100).toFixed(2) + '%';
 
         const f1iaw = vol * 0.0033; const f1leg = vol * 0.025;
         const f2iaw = tVol * 0.0033; const f2leg = tVol * 0.025;
