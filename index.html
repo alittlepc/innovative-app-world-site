@@ -6,57 +6,57 @@
     <title>IAW | Dynamic Logic Rail Builder Demo</title>
     
     <style>
-        /* --- BUILT-IN STYLES (WORKS COMPLETELY OFFLINE) --- */
+        /* --- INSTITUTIONAL STYLING LAYER (WORKS COMPLETELY OFFLINE) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; color: #0f172a; padding-bottom: 50px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #0f172a; padding-bottom: 50px; }
         
         /* Scrolling Header Banner */
-        .ticker { background-color: #1e1b4b; color: #a5f3fc; padding: 14px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; border-bottom: 4px solid #06b6d4; }
+        .ticker { background-color: #0f172a; color: #38bdf8; padding: 14px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-bottom: 3px solid #0284c7; }
         .ticker-wrap { display: inline-block; animation: ticker 35s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        .ticker a { color: #ffffff; text-decoration: underline; margin: 0 4px; }
-        .ticker a:hover { color: #22d3ee; }
+        .ticker a { color: #ffffff; text-decoration: underline; margin: 0 4px; font-weight: 900; }
+        .ticker a:hover { color: #38bdf8; }
 
         .container { max-w: 1100px; max-width: 1100px; margin: 0 auto; padding: 20px; }
         
         /* Top Branding Header */
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; margin-top: 10px; background: white; padding: 20px; border-radius: 20px; border: 1px solid #e2e8f0; }
-        .logo-box { width: 60px; height: 60px; background: linear-gradient(135deg, #0f172a, #1e293b); color: #22d3ee; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 22px; border-radius: 14px; border: 1px solid #06b6d4; font-family: monospace; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; margin-top: 10px; background: white; padding: 20px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); }
+        .logo-box { width: 60px; height: 60px; background: linear-gradient(135deg, #0f172a, #1e293b); color: #38bdf8; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 22px; border-radius: 14px; border: 1px solid #0284c7; font-family: monospace; }
         .header-text h1 { font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; }
-        .header-text p { font-size: 11px; font-weight: 900; color: #0891b2; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-        .btn-contact { background-color: #4f46e5; color: white; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2); transition: all 0.2s; }
-        .btn-contact:hover { background-color: #4338ca; transform: translateY(-1px); }
+        .header-text p { font-size: 11px; font-weight: 900; color: #0284c7; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+        .btn-contact { background-color: #0f172a; color: white; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2); transition: all 0.2s; border: 1px solid #334155; }
+        .btn-contact:hover { background-color: #1e293b; transform: translateY(-1px); }
 
         /* Train Station Area */
-        .train-station { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; margin-bottom: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: relative; }
-        .station-badge { position: absolute; top: 15px; right: 20px; background: #ecfeff; border: 1px solid #cffafe; color: #0891b2; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; }
+        .train-station { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); position: relative; }
+        .station-badge { position: absolute; top: 15px; right: 20px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.5px; }
         .station-title { font-size: 11px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         
         /* Train Track Graphics */
         .track-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
         .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-w: max-content; padding-bottom: 10px; }
-        .railway-line { height: 8px; background: #64748b; border-radius: 4px; position: relative; margin-top: 5px; }
-        .railway-line::before { content: ''; position: absolute; top: -4px; left: 0; width: 100%; height: 16px; background: repeating-linear-gradient(90deg, transparent, transparent 20px, #b45309 20px, #b45309 24px); z-index: -1; }
+        .railway-line { height: 8px; background: #475569; border-radius: 4px; position: relative; margin-top: 5px; }
+        .railway-line::before { content: ''; position: absolute; top: -4px; left: 0; width: 100%; height: 16px; background: repeating-linear-gradient(90deg, transparent, transparent 24px, #78350f 24px, #78350f 28px); z-index: -1; }
 
         /* Train Engine and Cars */
-        .engine { background: linear-gradient(180deg, #06b6d4, #4f46e5); color: white; padding: 15px; rounded: 16px; border-radius: 16px; width: 160px; h: 120px; height: 120px; display: flex; flex-col: column; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #312e81; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .engine-title { font-size: 10px; font-weight: 900; tracking-wider: uppercase; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
-        .engine-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        .engine { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 120px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); }
+        .engine-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
+        .engine-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
         
         .car-coupler { display: flex; align-items: flex-end; animation: popIn 0.25s ease-out forwards; }
         @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .link-hook { color: #cbd5e1; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 30px; }
+        .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 30px; }
         
-        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 120px; height: 90px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .car-name { font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase; }
-        .car-percentage { font-size: 11px; font-family: monospace; font-weight: 900; padding: 3px; border-radius: 6px; text-align: center; }
+        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 130px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); }
+        .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .car-percentage { font-size: 12px; font-family: monospace; font-weight: 900; padding: 4px; border-radius: 6px; text-align: center; }
         
-        /* Car Colors */
-        .car-tax { border-color: #bae6fd; } .car-tax .car-percentage { background: #f0f9ff; color: #0369a1; }
-        .car-bank { border-color: #fef08a; } .car-bank .car-percentage { background: #fefce8; color: #a16207; }
-        .car-risk { border-color: #c7d2fe; } .car-risk .car-percentage { background: #eef2ff; color: #4338ca; }
+        /* Corporate Car Palettes */
+        .car-liquidity { border-color: #cbd5e1; } .car-liquidity .car-percentage { background: #f1f5f9; color: #334155; }
+        .car-compliance { border-color: #93c5fd; } .car-compliance .car-percentage { background: #eff6ff; color: #1e40af; }
+        .car-risk { border-color: #fed7aa; } .car-risk .car-percentage { background: #fff7ed; color: #c2410c; }
 
-        .car-caboose { background: #0f172a; color: #94a3b8; padding: 15px; border-radius: 16px; width: 100px; height: 90px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; opacity: 0.8; }
+        .car-caboose { background: #0f172a; color: #94a3b8; padding: 15px; border-radius: 16px; width: 100px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; opacity: 0.9; }
         .track-summary { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #edf2f7; font-size: 12px; }
 
         /* Workspace Grid Layout */
@@ -65,14 +65,14 @@
 
         /* Control Panel Styles */
         .control-panel { display: flex; flex-direction: column; gap: 20px; }
-        .step-card { background: white; border: 1px solid #e2e8f0; border-radius: 28px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .step-card-dark { background: linear-gradient(135deg, #0f172a, #1e1b4b); color: white; border: none; }
-        .step-badge { display: inline-block; background: #4f46e5; color: white; font-size: 9px; font-weight: 900; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .step-badge-cyan { background: #06b6d4; }
+        .step-card { background: white; border: 1px solid #e2e8f0; border-radius: 28px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+        .step-card-dark { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border: none; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .step-badge { display: inline-block; background: #0284c7; color: white; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .step-badge-blue { background: #2563eb; }
         
         .input-group label { display: block; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 8px; }
-        .volume-input { background: transparent; border: none; border-bottom: 2px solid #334155; color: #22d3ee; font-family: monospace; font-size: 32px; font-weight: 900; width: 100%; padding-bottom: 8px; outline: none; }
-        .volume-input:focus { border-color: #06b6d4; }
+        .volume-input { background: transparent; border: none; border-bottom: 2px solid #334155; color: #38bdf8; font-family: monospace; font-size: 32px; font-weight: 900; width: 100%; padding-bottom: 8px; outline: none; }
+        .volume-input:focus { border-color: #0284c7; }
         
         .slider-box { background: #f8fafc; border: 1px solid #f1f5f9; padding: 15px; border-radius: 16px; margin-top: 15px; }
         .slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -81,7 +81,7 @@
         .slider-badge-rose { background: #ffe4e6; color: #b91c1c; }
         
         input[type=range] { appearance: none; -webkit-appearance: none; width: 100%; height: 6px; background: #cbd5e1; border-radius: 99px; outline: none; margin: 10px 0; }
-        input[type=range]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; background: #06b6d4; border-radius: 50%; cursor: pointer; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type=range]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; background: #0284c7; border-radius: 50%; cursor: pointer; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .accent-rose[type=range]::-webkit-slider-thumb { background: #f43f5e; }
 
         /* Display Panel Styles */
@@ -90,42 +90,41 @@
         @media (min-width: 500px) { .totals-grid { grid-template-columns: 1fr 1fr; } }
         
         .total-box { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; position: relative; overflow: hidden; }
-        .total-box-iaw { border-color: #6366f1; border-width: 2px; }
-        .box-tag { position: absolute; top: 0; right: 0; font-size: 8px; font-weight: 900; text-transform: uppercase; padding: 4px 10px; border-bottom-left-radius: 10px; color: white; font-family: monospace; }
-        .box-tag-iaw { background: #6366f1; }
+        .total-box-iaw { border-color: #0284c7; border-width: 2px; }
+        .box-tag { position: absolute; top: 0; right: 0; font-size: 8px; font-weight: 900; text-transform: uppercase; padding: 4px 10px; border-bottom-left-radius: 10px; color: white; font-family: monospace; letter-spacing: 0.5px; }
+        .box-tag-iaw { background: #0284c7; }
         .box-tag-leg { background: #f43f5e; }
         .total-box label { font-size: 10px; font-weight: 900; color: #94a3b8; text-transform: uppercase; }
-        .total-value { font-size: 22px; font-family: monospace; font-weight: 900; margin-top: 5px; }
-        .text-iaw { color: #4f46e5; } .text-leg { color: #e11d48; }
+        .total-value { font-size: 24px; font-family: monospace; font-weight: 900; margin-top: 5px; }
+        .text-iaw { color: #0284c7; } .text-leg { color: #e11d48; }
         .total-box p { font-size: 11px; color: #64748b; margin-top: 4px; }
 
-        .savings-hero { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
+        .savings-hero { background: linear-gradient(135deg, #059669, #10b981); color: white; padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2); }
         .savings-title { font-size: 10px; font-weight: 900; text-transform: uppercase; opacity: 0.9; letter-spacing: 1px; }
-        .savings-value { font-size: 28px; font-family: monospace; font-weight: 900; margin-top: 2px; }
-        .savings-badge { background: rgba(0,0,0,0.15); font-size: 10px; font-weight: 900; text-transform: uppercase; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+        .savings-value { font-size: 30px; font-family: monospace; font-weight: 900; margin-top: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .savings-badge { background: rgba(0,0,0,0.15); font-size: 10px; font-weight: 900; text-transform: uppercase; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.5px; }
 
         /* Matrix Table View */
-        .matrix-card { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .matrix-card { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
         .matrix-title { font-size: 11px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         .matrix-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 12px; text-align: left; }
         .matrix-table th { padding-bottom: 10px; font-size: 10px; text-transform: uppercase; color: #94a3b8; border-bottom: 1px solid #e2e8f0; font-weight: 900; }
         .matrix-table td { padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #334155; }
-        .matrix-table font-sans-td { font-family: system-ui, sans-serif; font-weight: 700; color: #0f172a; }
         .row-total { background: #f8fafc; font-weight: 900; font-size: 13px; }
         .row-total td { padding: 12px 6px; border-top: 2px solid #e2e8f0; }
 
         /* Instructions Info Box */
-        .info-box { background-color: #fef9c3; border: 2px solid #fef08a; border-radius: 20px; padding: 20px; color: #713f12; }
-        .info-box h4 { font-size: 13px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-        .info-box p { font-size: 12px; margin-bottom: 6px; line-height: 1.5; }
-        .info-box code { background: rgba(254, 240, 138, 0.6); padding: 2px 5px; border-radius: 4px; font-weight: 700; font-family: monospace; }
+        .info-box { background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 20px; padding: 20px; color: #0369a1; }
+        .info-box h4 { font-size: 12px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; color: #0369a1; }
+        .info-box p { font-size: 12px; margin-bottom: 8px; line-height: 1.5; color: #0c4a6e; }
+        .info-box code { background: #e0f2fe; padding: 2px 5px; border-radius: 4px; font-weight: 700; font-family: monospace; color: #0369a1; }
     </style>
 </head>
-<body>
+<body onload="recalculateAll()">
 
 <div class="ticker">
     <div class="ticker-wrap">
-        ⚠️ THIS INTERACTIVE ENVIRONMENT IS FOR TESTING PURPOSES ONLY — NOT FOR PRODUCTION USE — THE OFFICIAL PRODUCTION RELEASE TIMELINE WILL BE NOTED ON THE OFFICIAL LINKEDIN FEED — REFRESH OR CLONE RULES AT WILL — FIND OFFICIALLY NOTED RELEASES AT: <a href="https://www.linkedin.com/feed/" target="_blank">FEED | LINKEDIN</a> — LOGIC BALANCES DEMO ON EVERY INTERACTION — ⚠️
+        ⚠️ INTERACTIVE CALCULATOR ENVIRONMENT FOR SIMULATION PURPOSES ONLY — NOT FOR PRODUCTION USE — PRODUCTION RELEASE NOTATIONS WILL BE COMMITTED TO THE OFFICIAL LINKEDIN FEED — VISIT HERE: <a href="https://www.linkedin.com/feed/" target="_blank">FEED | LINKEDIN</a> — REAL-TIME COMPLIANCE COST REDUCTION BALANCES VALIDATED — ⚠️
     </div>
 </div>
 
@@ -136,15 +135,15 @@
             <div class="logo-box">IAW</div>
             <div class="header-text">
                 <h1>Innovative App World</h1>
-                <p>Single-Rail Technology Interactive Demo</p>
+                <p>Single-Rail Technology Institutional Evaluation Demo</p>
             </div>
         </div>
         <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="btn-contact">Contact Derek Little | LinkedIn</a>
     </header>
 
     <div class="train-station">
-        <div class="station-badge"><span style="color: #06b6d4; margin-right: 4px;">●</span> Live Rail Assembly Track</div>
-        <h3 class="station-title">Your Custom Interactive Train Layout</h3>
+        <div class="station-badge"><span style="color: #0284c7; margin-right: 4px;">●</span> Live Rail Assembly Track</div>
+        <h3 class="station-title">Custom Settlement Single-Rail Composition</h3>
         
         <div class="track-scroll-box">
             <div class="train-assembly">
@@ -162,7 +161,7 @@
 
                 <div class="car-caboose">
                     <div style="font-size: 20px;">🛑</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #10b981; text-align: center; text-transform: uppercase; letter-spacing: 1px;">Settled Base</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #10b981; text-align: center; text-transform: uppercase; letter-spacing: 1px;">Atomic Base</div>
                 </div>
 
             </div>
@@ -171,8 +170,8 @@
         </div>
         
         <div class="track-summary">
-            <p style="color: #64748b; font-weight: 500;">💡 Adjust compliance rules using the controls below to lengthen or shorten your train cars dynamically.</p>
-            <p style="font-weight: 900;">Accumulated Train Load Size: <span id="track-total-percentage" style="color: #4f46e5;">0.33%</span></p>
+            <p style="color: #64748b; font-weight: 500;">💡 Adjust structural conditions using the parameters below to modularly attach or remove protocol logic variables.</p>
+            <p style="font-weight: 900;">Accumulated Single-Rail Total: <span id="track-total-percentage" style="color: #0284c7;">0.33%</span></p>
         </div>
     </div>
 
@@ -181,51 +180,51 @@
         <div class="control-panel">
             
             <div class="step-card step-card-dark">
-                <span class="step-badge">Step 1</span>
+                <span class="step-badge">Configuration 1</span>
                 
                 <div class="input-group" style="margin-top: 10px; margin-bottom: 20px;">
-                    <label>Simulated Transaction Volume ($)</label>
+                    <label>Simulated Settlement Volume ($)</label>
                     <input type="text" id="volumeField" value="$10,000,000" class="volume-input" oninput="processVolumeTyping(this.value)">
-                    <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Type any number to watch the pricing outcome pivot live.</p>
+                    <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Modify this number to calculate enterprise settlement metrics in real time.</p>
                 </div>
 
                 <div style="border-top: 1px solid #334155; padding-top: 15px;">
-                    <label>Custom Legacy Competitor Rate (%)</label>
+                    <label>Custom Legacy Competitor Benchmark (%)</label>
                     <div style="display: flex; align-items: center; gap: 15px; margin-top: 8px;">
                         <input type="range" id="competitorRateSlider" class="accent-rose" min="0.5" max="7.0" step="0.05" value="2.5" oninput="recalculateAll()">
                         <span id="competitorRateLabel" class="slider-badge slider-badge-rose" style="font-size: 14px; padding: 4px 10px;">2.50%</span>
                     </div>
-                    <p style="font-size: 11px; color: #64748b; margin-top: 6px;">Slide this to set the base layer overhead score you are currently paying on outdated networks.</p>
+                    <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Modify the benchmark variable to match existing cross-border or clearing layer overhead.</p>
                 </div>
             </div>
 
             <div class="step-card">
-                <span class="step-badge step-badge-cyan">Step 2</span>
-                <h2 style="font-size: 16px; font-weight: 900; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px;">Add Custom Cargo Car Load Rules</h2>
-                <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">Toggle compliance friction rates. Zeroing a slider detaches that car completely from the train layout above.</p>
+                <span class="step-badge step-badge-blue">Configuration 2</span>
+                <h2 style="font-size: 15px; font-weight: 900; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px;">Modular Pipeline Compliance Parameters</h2>
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">Toggle custom institution friction variables. Moving a slider to zero detaches that asset car logic from the single-rail engine.</p>
 
                 <div class="slider-box">
                     <div class="slider-header">
-                        <span class="slider-title">📦 National Tax Ruleset</span>
-                        <span id="sliderValueLabel1" class="slider-badge">0.50%</span>
+                        <span class="slider-title">💵 Interbank Liquidity Route Premium</span>
+                        <span id="sliderValueLabel1" class="slider-badge">0.00%</span>
                     </div>
-                    <input type="range" id="ruleSlider1" min="0" max="5" step="0.1" value="0.5" oninput="recalculateAll()">
+                    <input type="range" id="ruleSlider1" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
                 </div>
 
                 <div class="slider-box">
                     <div class="slider-header">
-                        <span class="slider-title">💼 Bank Branch Margin</span>
-                        <span id="sliderValueLabel2" class="slider-badge">1.20%</span>
+                        <span class="slider-title">🔍 Compliance & AML Verification Hook</span>
+                        <span id="sliderValueLabel2" class="slider-badge">0.00%</span>
                     </div>
-                    <input type="range" id="ruleSlider2" min="0" max="5" step="0.1" value="1.2" oninput="recalculateAll()">
+                    <input type="range" id="ruleSlider2" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
                 </div>
 
                 <div class="slider-box">
                     <div class="slider-header">
-                        <span class="slider-title">🛡️ Counterparty Protection Risk</span>
-                        <span id="sliderValueLabel3" class="slider-badge">0.80%</span>
+                        <span class="slider-title">🛡️ Counterparty Clearing Risk Margin</span>
+                        <span id="sliderValueLabel3" class="slider-badge">0.00%</span>
                     </div>
-                    <input type="range" id="ruleSlider3" min="0" max="5" step="0.1" value="0.8" oninput="recalculateAll()">
+                    <input type="range" id="ruleSlider3" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
                 </div>
             </div>
 
@@ -243,7 +242,7 @@
                 </div>
 
                 <div class="total-box">
-                    <div class="box-tag box-tag-leg">Old Competitor Rail</div>
+                    <div class="box-tag box-tag-leg">Legacy Alternative Rail</div>
                     <label>Total Legacy Drag Loss</label>
                     <div id="legacyGrandTotalLabel" class="total-value text-leg">$0.00</div>
                     <p>Based on Custom Competitor Base + Attached Car Rules.</p>
@@ -253,46 +252,46 @@
 
             <div class="savings-hero">
                 <div>
-                    <p class="savings-title">Capital Overhead Preserved via IAW Optimization</p>
+                    <p class="savings-title">Capital Efficiency Saved via IAW Single-Rail Deployment</p>
                     <div id="capitalSavingsLabel" class="savings-value">+$0.00</div>
                 </div>
-                <div class="savings-badge">Highest Profit Efficiency Option</div>
+                <div class="savings-badge">Optimized Route Selection</div>
             </div>
 
             <div class="matrix-card">
-                <h3 class="matrix-title">Itemized Cost Component Audit Matrix</h3>
+                <h3 class="matrix-title">Itemized Structural Cost Comparison Matrix</h3>
                 <table class="matrix-table">
                     <thead>
                         <tr>
-                            <th style="text-align: left;">Transaction Layer Fee</th>
-                            <th style="color: #4f46e5; text-align: right;">IAW Rail Solution</th>
-                            <th style="color: #e11d48; text-align: right;">Legacy Competitor</th>
+                            <th style="text-align: left;">Protocol Core Layer Element</th>
+                            <th style="color: #0284c7; text-align: right;">IAW Rail Pipeline</th>
+                            <th style="color: #e11d48; text-align: right;">Legacy Benchmark</th>
                         </tr>
                     </thead>
                     <tbody id="matrixTableBody">
                         <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">Base Layer Architecture Settlement</td>
-                            <td id="matrixRow1IAW" style="color: #4f46e5; text-align: right; font-weight: bold;">$0.00 (0.33%)</td>
+                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">Base Architecture Clearing Settlement</td>
+                            <td id="matrixRow1IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00 (0.33%)</td>
                             <td id="matrixRow1Legacy" style="color: #64748b; text-align: right;">$0.00 (2.50%)</td>
                         </tr>
                         <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">📦 National Tax Ruleset</td>
-                            <td id="matrixRow2IAW" style="color: #4f46e5; text-align: right; font-weight: bold;">$0.00</td>
+                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">💵 Interbank Liquidity Route Premium</td>
+                            <td id="matrixRow2IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
                             <td id="matrixRow2Legacy" style="color: #64748b; text-align: right;">$0.00</td>
                         </tr>
                         <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">💼 Bank Branch Margin</td>
-                            <td id="matrixRow3IAW" style="color: #4f46e5; text-align: right; font-weight: bold;">$0.00</td>
+                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">🔍 Compliance & AML Verification Hook</td>
+                            <td id="matrixRow3IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
                             <td id="matrixRow3Legacy" style="color: #64748b; text-align: right;">$0.00</td>
                         </tr>
                         <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">🛡️ Counterparty Protection Risk</td>
-                            <td id="matrixRow4IAW" style="color: #4f46e5; text-align: right; font-weight: bold;">$0.00</td>
+                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">🛡️ Counterparty Clearing Risk Margin</td>
+                            <td id="matrixRow4IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
                             <td id="matrixRow4Legacy" style="color: #64748b; text-align: right;">$0.00</td>
                         </tr>
                         <tr class="row-total">
-                            <td style="font-family: system-ui, sans-serif; text-transform: uppercase; font-size: 10px; color: #64748b; letter-spacing: 0.5px;">Total Layer Drag</td>
-                            <td id="matrixTotalIAW" style="color: #4f46e5; text-align: right;">$0.00</td>
+                            <td style="font-family: system-ui, sans-serif; text-transform: uppercase; font-size: 10px; color: #64748b; letter-spacing: 0.5px;">Total Net Capital Attrition</td>
+                            <td id="matrixTotalIAW" style="color: #0284c7; text-align: right;">$0.00</td>
                             <td id="matrixTotalLegacy" style="color: #e11d48; text-align: right;">$0.00</td>
                         </tr>
                     </tbody>
@@ -300,11 +299,11 @@
             </div>
 
             <div class="info-box">
-                <h4>🏁 Super Easy Directions (A Fifth Grader Can Do It!)</h4>
-                <p><strong>Step 1:</strong> Type how much money you want to send into the big dark box on the left. (For example: change it to <code>$5,000,000</code>!)</p>
-                <p><strong>Step 2:</strong> Use the sliders on the left to add extra fees, or turn them all the way down to zero to delete that train car instantly from the track on top!</p>
-                <p><strong>Step 3:</strong> Change the red competitor slider to change what percentage your old bank setup forces you to lose.</p>
-                <p><strong>Step 4:</strong> Check out the green savings bar to find out exactly how many millions of dollars the <strong>IAW Rail saves you!</strong></p>
+                <h4>📋 Sandbox Quickstart Guide</h4>
+                <p><strong>Step 1:</strong> Define your desired <strong>Settlement Volume</strong> target inside the dark primary input card (e.g., input <code>$25,000,000</code>).</p>
+                <p><strong>Step 2:</strong> Pivot the compliance variables under Configuration 2 to watch train cars stack, scale, or detach in real time based on active load guidelines.</p>
+                <p><strong>Step 3:</strong> Tune the custom legacy benchmark slider to test performance comparisons against high-friction banking models.</p>
+                <p><strong>Step 4:</strong> Track the emerald dashboard metrics to view exact figures highlighting where the <strong>IAW Rail optimizes corporate liquidity reserves.</strong></p>
             </div>
 
         </div>
@@ -341,12 +340,12 @@
 
         if (carRate1 > 0) {
             aggregatedIawPercentageTotal += carRate1;
-            trainDockElement.innerHTML += createTrainCarHtmlElement("📦 Tax Car", carRate1, "car-tax");
+            trainDockElement.innerHTML += createTrainCarHtmlElement("💵 Route Car", carRate1, "car-liquidity");
         }
         
         if (carRate2 > 0) {
             aggregatedIawPercentageTotal += carRate2;
-            trainDockElement.innerHTML += createTrainCarHtmlElement("💼 Bank Car", carRate2, "car-bank");
+            trainDockElement.innerHTML += createTrainCarHtmlElement("🔍 AML Car", carRate2, "car-compliance");
         }
 
         if (carRate3 > 0) {
