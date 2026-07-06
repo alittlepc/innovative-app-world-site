@@ -1,286 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAW | Dynamic Logic Rail Builder Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #fafafa; color: #0f172a; margin: 0; padding: 0; }
+        
+        /* Smooth ticker banner animation */
+        .ticker { background: #1e1b4b; color: #a5f3fc; padding: 14px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; border-bottom: 4px solid #06b6d4; }
+        .ticker-wrap { display: inline-block; animation: ticker 35s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        
+        /* Train tracks styled in pure CSS */
+        .railway-track { background: linear-gradient(90deg, #64748b 0%, #64748b 100%); height: 8px; width: 100%; position: relative; border-radius: 4px; }
+        .railway-track::before { content: ''; position: absolute; top: -4px; left: 0; width: 100%; height: 16px; background: repeating-linear-gradient(90deg, transparent, transparent 20px, #b45309 20px, #b45309 26px); z-index: -1; }
+
+        /* Animation for newly generated cars */
+        .train-car-bounce { animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popIn { 0% { transform: scale(0.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* Custom stylish ranges */
+        input[type=range] { appearance: none; width: 100%; height: 6px; background: #cbd5e1; border-radius: 9999px; outline: none; }
+        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #06b6d4; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); transition: transform 0.1s; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    </style>
+</head>
+<body onload="recalculateAll()">
+
+<div class="ticker">
+    <div class="ticker-wrap">
+        ⚠️ THIS INTERACTIVE ENVIRONMENT IS FOR TESTING PURPOSES ONLY — NOT FOR PRODUCTION USE — THE OFFICIAL PRODUCTION RELEASE TIMELINE WILL BE NOTED ON THE OFFICIAL LINKEDIN FEED — REFRESH OR CLONE RULES AT WILL — FIND OFFICIALLY NOTED RELEASES AT: <a href="https://www.linkedin.com/feed/" target="_blank" class="underline mx-1 text-white hover:text-cyan-300">FEED | LINKEDIN</a> — LOGIC BALANCES DEMO ON EVERY INTERACTION — ⚠️
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-6 py-10">
+    
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+        <div class="flex items-center gap-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-indigo-950 to-slate-900 text-cyan-400 flex items-center justify-center font-black rounded-2xl text-2xl shadow-xl border border-cyan-500/30 font-mono">IAW</div>
+            <div>
+                <h1 class="text-3xl font-black tracking-tight uppercase leading-none">Innovative App World</h1>
+                <p class="text-[11px] font-black text-cyan-600 tracking-widest uppercase mt-1">Single-Rail Technology Interactive Demo</p>
+            </div>
+        </div>
+        <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[11px] uppercase tracking-widest px-6 py-4 rounded-xl shadow-lg shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5">Contact Derek Little | LinkedIn</a>
+    </header>
+
+    <div class="mb-10 bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm relative overflow-hidden">
+        <div class="absolute top-4 right-6 flex items-center gap-2 bg-cyan-50 border border-cyan-200 px-3 py-1 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span class="text-[10px] font-black text-cyan-700 uppercase tracking-wider">Live Rail Assembly Track</span>
+        </div>
+        
+        <h3 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Your Custom Interactive Train Layout</h3>
+        
+        <div class="overflow-x-auto pb-6 pt-2">
+            <div class="flex items-end gap-1.5 min-w-max px-2 mb-2">
+                
+                <div class="bg-gradient-to-b from-cyan-500 to-indigo-600 text-white p-4 rounded-2xl flex flex-col justify-between w-40 h-32 shadow-xl border-b-4 border-indigo-900 relative">
+                    <div>
+                        <div class="text-2xl">🚂</div>
+                        <div class="text-[10px] font-black uppercase tracking-wider mt-1 leading-tight">IAW COMPLIANCE ENGINE</div>
+                    </div>
+                    <div class="text-[11px] font-mono font-bold bg-indigo-950/40 px-2 py-1 rounded text-center border border-white/10">0.33% Fixed Fee</div>
+                    <div class="absolute -top-1 left-6 w-3 h-3 bg-cyan-400 rounded-sm opacity-60 animate-bounce"></div>
+                </div>
+
+                <div id="dynamic-train-cars" class="flex items-end gap-1.5">
+                    </div>
+
+                <div class="bg-slate-900 text-slate-400 p-4 rounded-2xl flex flex-col justify-between w-28 h-24 border-b-4 border-slate-950 opacity-80 shadow-md">
+                    <div class="text-xl">🛑</div>
+                    <div class="text-[9px] font-black uppercase tracking-widest text-emerald-400 text-center">Settled Base</div>
+                </div>
+
+            </div>
+            
+            <div class="railway-track mt-1"></div>
+        </div>
+        
+        <div class="flex justify-between items-center mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+            <p class="text-[11px] text-slate-500 font-medium">💡 Adjust compliance rules using the controls below to lengthen or shorten your train cars dynamically.</p>
+            <p class="text-xs font-mono font-black text-slate-800">Accumulated Train Load Size: <span id="track-total-percentage" class="text-indigo-600 font-black">0.33%</span></p>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+        
+        <div class="lg:col-span-5 space-y-6">
+            
+            <div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-8 rounded-[36px] shadow-xl border border-slate-800">
+                <span class="bg-indigo-500 text-white text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Step 1</span>
+                
+                <div class="mt-4 mb-6">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">Simulated Transaction Volume ($)</label>
+                    <input type="text" id="volumeField" value="$10,000,000" class="bg-transparent text-4xl font-black border-b border-slate-700 w-full pb-3 outline-none focus:border-cyan-400 font-mono text-cyan-400 tracking-tight" oninput="processVolumeTyping(this.value)">
+                    <p class="text-[11px] text-slate-400 mt-1.5">Type any number to watch the pricing outcome pivot live.</p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">Custom Legacy Competitor Rate (%)</label>
+                    <div class="flex items-center gap-3">
+                        <input type="range" id="competitorRateSlider" min="0.5" max="7.0" step="0.05" value="2.5" class="accent-cyan-400" oninput="recalculateAll()">
+                        <span id="competitorRateLabel" class="font-mono font-black text-lg text-rose-400 bg-rose-950/40 px-3 py-1 rounded-lg border border-rose-900/40 min-w-[70px] text-center">2.50%</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mt-1.5">Slide this to set the base layer overhead score you are currently paying on outdated networks.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-[36px] border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="bg-cyan-500 text-white text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Step 2</span>
+                    <h2 class="text-base font-black uppercase tracking-tight text-slate-900 mt-3">Add Custom Cargo Car Load Rules</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">Toggle compliance friction rates. Zeroing a slider detaches that car completely from the train layout above.</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-black text-slate-800 uppercase tracking-tight">📦 National Tax Ruleset</span>
+                        <span id="sliderValueLabel1" class="text-xs font-mono font-black text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">0.50%</span>
+                    </div>
+                    <input type="range" id="ruleSlider1" min="0" max="5" step="0.1" value="0.5" oninput="recalculateAll()">
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-black text-slate-800 uppercase tracking-tight">💼 Bank Branch Margin</span>
+                        <span id="sliderValueLabel2" class="text-xs font-mono font-black text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">1.20%</span>
+                    </div>
+                    <input type="range" id="ruleSlider2" min="0" max="5" step="0.1" value="1.2" oninput="recalculateAll()">
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-black text-slate-800 uppercase tracking-tight">🛡️ Counterparty Protection Risk</span>
+                        <span id="sliderValueLabel3" class="text-xs font-mono font-black text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">0.80%</span>
+                    </div>
+                    <input type="range" id="ruleSlider3" min="0" max="5" step="0.1" value="0.8" oninput="recalculateAll()">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+            
+            <div class="grid sm:grid-cols-2 gap-4">
+                
+                <div class="bg-white p-6 rounded-3xl border-2 border-indigo-600 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white font-mono font-black text-[9px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">IAW Consolidated</div>
+                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Total IAW Rail Drag Loss</p>
+                    <p id="iawGrandTotalLabel" class="text-2xl font-mono font-black text-indigo-600 mt-2">$0.00</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1">Based on Engine Fee + Attached Car Rules.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-rose-500 text-white font-mono font-black text-[9px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">Old Competitor Rail</div>
+                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Total Legacy Drag Loss</p>
+                    <p id="legacyGrandTotalLabel" class="text-2xl font-mono font-black text-rose-500 mt-2">$0.00</p>
+                    <p class="text-[11px] font-medium text-slate-500 mt-1">Based on Custom Competitor Base + Attached Car Rules.</p>
+                </div>
+
+            </div>
+
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-6 rounded-3xl text-white shadow-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div>
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-80">Capital Overhead Preserved via IAW Optimization</p>
+                    <h3 id="capitalSavingsLabel" class="text-3xl font-mono font-black tracking-tight mt-1">+$0.00</h3>
+                </div>
+                <div class="text-xs font-black uppercase tracking-wider bg-black/20 px-3 py-2 rounded-xl border border-white/10">
+                    Highest Profit Efficiency Option
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[36px] border border-slate-200 p-8 shadow-sm">
+                <h3 class="text-[11px] font-black uppercase tracking-[0.2em] mb-4 text-slate-400">Itemized Cost Component Audit Matrix</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left font-mono border-collapse text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-200 text-slate-400 text-[10px] uppercase">
+                                <th class="pb-3 font-black">Transaction Layer Fee</th>
+                                <th class="pb-3 font-black text-indigo-600">IAW Rail Solution</th>
+                                <th class="pb-3 font-black text-rose-500">Legacy Competitor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="py-4 font-sans font-bold text-slate-900">Base Layer Architecture Settlement</td>
+                                <td id="matrixRow1IAW" class="text-indigo-600 font-bold">$0.00 (0.33%)</td>
+                                <td id="matrixRow1Legacy" class="text-slate-500">$0.00 (2.50%)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-sans font-bold text-slate-900">📦 National Tax Ruleset</td>
+                                <td id="matrixRow2IAW" class="text-indigo-600 font-bold">$0.00</td>
+                                <td id="matrixRow2Legacy" class="text-slate-400">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-sans font-bold text-slate-900">💼 Bank Branch Margin</td>
+                                <td id="matrixRow3IAW" class="text-indigo-600 font-bold">$0.00</td>
+                                <td id="matrixRow3Legacy" class="text-slate-400">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-sans font-bold text-slate-900">🛡️ Counterparty Protection Risk</td>
+                                <td id="matrixRow4IAW" class="text-indigo-600 font-bold">$0.00</td>
+                                <td id="matrixRow4Legacy" class="text-slate-400">$0.00</td>
+                            </tr>
+                            <tr class="bg-slate-50 font-black text-slate-900 border-t-2 border-slate-200">
+                                <td class="py-4 px-2 font-sans uppercase tracking-wider text-[10px] text-slate-500">Total Layer Drag</td>
+                                <td id="matrixTotalIAW" class="py-4 text-indigo-600 text-sm">$0.00</td>
+                                <td id="matrixTotalLegacy" class="py-4 text-rose-500 text-sm">$0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6">
+                <h4 class="text-xs font-black uppercase text-amber-900 tracking-wider mb-2">🏁 Super Easy Directions (A Fifth Grader Can Do It!)</h4>
+                <div class="text-[12px] text-amber-950 space-y-2 font-medium leading-relaxed">
+                    <p><strong>Step 1:</strong> Type how much money you want to send into the big dark box on the left. (For example: change it to <code class="bg-amber-200/50 px-1 rounded font-bold font-mono">$5,000,000</code>!)</p>
+                    <p><strong>Step 2:</strong> Use the sliders on the left to add extra fees, or turn them all the way down to zero to delete that train car instantly from the track on top!</p>
+                    <p><strong>Step 3:</strong> Change the red competitor slider to change what percentage your old bank setup forces you to lose.</p>
+                    <p><strong>Step 4:</strong> Check out the green savings bar to find out exactly how many millions of dollars the <strong>IAW Rail saves you!</strong></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
-    const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
+    // System base level numeric tracking variables
+    let operationalVolume = 10000000;
 
-    let vol = 1000000;
-    let currentMode = "demo";
-    const NETWORK_WS = "wss://xahau-testnet.bithomp.com";
-    let client;
-    let wallet1, wallet2;
+    /**
+     * Captures typing patterns inside the volume field, strip out currency characters, 
+     * recalculates formulas and maintains reactive state logic.
+     */
+    function processVolumeTyping(enteredText) {
+        const structuralNumericString = enteredText.replace(/[^0-9.]/g, '');
+        operationalVolume = parseFloat(structuralNumericString) || 0;
+        recalculateAll();
+    }
 
-    // --- STEP 1: MATHEMATICAL EVALUATION ENGINE ---
-    function calc() {
-        // Read raw configuration numbers directly from the input fields
-        const rawVolString = document.getElementById('volInput').value;
-        vol = parseFloat(rawVolString.replace(/[^0-9.]/g, '')) || 0;
+    /**
+     * Master pricing core function. Extracts user inputs from DOM endpoints, 
+     * rebuilds the UI train layout from scratch, coordinates mathematical models, 
+     * and displays itemized cost analytics fields.
+     */
+    function recalculateAll() {
+        // --- READ SLIDERS AND USER INPUT FIELDS ---
+        const competitorBaseRate = parseFloat(document.getElementById('competitorRateSlider').value) || 0;
+        document.getElementById('competitorRateLabel').innerText = competitorBaseRate.toFixed(2) + "%";
 
-        const taxRate = parseFloat(document.getElementById('taxRange').value) || 0;
-        const customRate = parseFloat(document.getElementById('customRange').value) || 0;
+        const carRate1 = parseFloat(document.getElementById('ruleSlider1').value) || 0;
+        const carRate2 = parseFloat(document.getElementById('ruleSlider2').value) || 0;
+        const carRate3 = parseFloat(document.getElementById('ruleSlider3').value) || 0;
 
-        // Update Slider Labels Instantly
-        document.getElementById('taxLabel').innerText = taxRate.toFixed(3) + "%";
-        document.getElementById('customLabel').innerText = customRate.toFixed(3) + "%";
+        // Display current individual rate values beside the active sliders
+        document.getElementById('sliderValueLabel1').innerText = carRate1.toFixed(2) + "%";
+        document.getElementById('sliderValueLabel2').innerText = carRate2.toFixed(2) + "%";
+        document.getElementById('sliderValueLabel3').innerText = carRate3.toFixed(2) + "%";
 
-        // Calculate Absolute Dollar Volumes Based on User Inputs
-        const taxVolumeDollar = vol * (taxRate / 100);
-        const customVolumeDollar = vol * (customRate / 100);
+        // --- DYNAMICALLY CONSTRUCT TRAIN CARS IN THE UI TRACK VIEW ---
+        const trainDockElement = document.getElementById('dynamic-train-cars');
+        trainDockElement.innerHTML = ''; // Strip out any old cars on the track
+
+        // Track aggregate total percentage calculation across the active train config
+        let aggregatedIawPercentageTotal = 0.33; // Starts with the core engine rate constant
+
+        // Build Car 1 if the value slider is greater than zero
+        if (carRate1 > 0) {
+            aggregatedIawPercentageTotal += carRate1;
+            trainDockElement.innerHTML += createTrainCarHtmlElement("📦 Tax Car", carRate1, "border-cyan-200", "bg-cyan-50 text-cyan-700");
+        }
         
-        document.getElementById('taxVolumeLabel').innerText = formatCurrency(taxVolumeDollar);
-        document.getElementById('customVolumeLabel').innerText = formatCurrency(customVolumeDollar);
-
-        // Update Train Car Visual UI Badges
-        document.getElementById('car-tax-fee').innerText = taxRate.toFixed(2) + "%";
-        document.getElementById('car-custom-fee').innerText = customRate.toFixed(2) + "%";
-
-        // --- STEP 2: CONSOLIDATION COMPARISON CALCULATIONS ---
-        // IAW Rail consolidated model uses a flat 0.33% engine fee
-        const iawEngineFee = vol * 0.0033;
-        const iawTotalFriction = iawEngineFee + taxVolumeDollar + customVolumeDollar;
-
-        // Legacy systems incur compounding structural friction (avg 2.5% base layer overhead)
-        const legacyBaseFee = vol * 0.025;
-        const legacyTotalFriction = legacyBaseFee + taxVolumeDollar + customVolumeDollar;
-
-        // Determine Total Capital Efficiency Saved
-        const capitalGain = legacyTotalFriction - iawTotalFriction;
-
-        // --- STEP 3: FLUID TEXT AND TABLE RENDERING ---
-        document.getElementById('iawFee').innerText = formatCurrency(iawTotalFriction);
-        document.getElementById('legacyFee').innerText = formatCurrency(legacyTotalFriction);
-        
-        const gainElement = document.getElementById('gain');
-        if (capitalGain >= 0) {
-            gainElement.innerText = "+" + formatCurrency(capitalGain);
-            gainElement.className = "text-4xl font-mono font-black text-green-400 mt-2";
-        } else {
-            gainElement.innerText = formatCurrency(capitalGain);
-            gainElement.className = "text-4xl font-mono font-black text-rose-400 mt-2";
+        // Build Car 2 if the value slider is greater than zero
+        if (carRate2 > 0) {
+            aggregatedIawPercentageTotal += carRate2;
+            trainDockElement.innerHTML += createTrainCarHtmlElement("💼 Bank Car", carRate2, "border-amber-200", "bg-amber-50 text-amber-700");
         }
 
-        // Update Matrix Breakdown Rows
-        document.getElementById('row1-iaw').innerText = formatCurrency(iawEngineFee);
-        document.getElementById('row1-leg').innerText = formatCurrency(legacyBaseFee);
+        // Build Car 3 if the value slider is greater than zero
+        if (carRate3 > 0) {
+            aggregatedIawPercentageTotal += carRate3;
+            trainDockElement.innerHTML += createTrainCarHtmlElement("🛡️ Risk Car", carRate3, "border-indigo-200", "bg-indigo-50 text-indigo-700");
+        }
 
-        document.getElementById('row2-iaw').innerText = formatCurrency(taxVolumeDollar);
-        document.getElementById('row2-leg').innerText = formatCurrency(taxVolumeDollar);
+        // Output cumulative load size indicator badge
+        document.getElementById('track-total-percentage').innerText = aggregatedIawPercentageTotal.toFixed(2) + "%";
 
-        document.getElementById('row3-iaw').innerText = formatCurrency(customVolumeDollar);
-        document.getElementById('row3-leg').innerText = formatCurrency(customVolumeDollar);
+        // --- COMPUTE MATHEMATICAL OVERHEAD TRANSACTION COSTS ---
+        const iawBaseFeeDollar = operationalVolume * 0.0033; // 0.33% Fixed Base Engine
+        const taxFeeDollar = operationalVolume * (carRate1 / 100);
+        const bankFeeDollar = operationalVolume * (carRate2 / 100);
+        const riskFeeDollar = operationalVolume * (carRate3 / 100);
 
-        document.getElementById('total-iaw').innerText = formatCurrency(iawTotalFriction);
-        document.getElementById('total-leg').innerText = formatCurrency(legacyTotalFriction);
+        const iawGrandTotalOverheadDollar = iawBaseFeeDollar + taxFeeDollar + bankFeeDollar + riskFeeDollar;
+
+        // Legacy setup uses user-defined base slider rate compounded with the same custom car criteria
+        const legacyBaseFeeDollar = operationalVolume * (competitorBaseRate / 100);
+        const legacyGrandTotalOverheadDollar = legacyBaseFeeDollar + taxFeeDollar + bankFeeDollar + riskFeeDollar;
+
+        const netPreservedEfficiencyCapital = legacyGrandTotalOverheadDollar - iawGrandTotalOverheadDollar;
+
+        // --- UPDATE SYSTEM DASHBOARD INTERFACES ---
+        document.getElementById('iawGrandTotalLabel').innerText = renderCurrencyString(iawGrandTotalOverheadDollar);
+        document.getElementById('legacyGrandTotalLabel').innerText = renderCurrencyString(legacyGrandTotalOverheadDollar);
+
+        const efficiencyLabelContainer = document.getElementById('capitalSavingsLabel');
+        if (netPreservedEfficiencyCapital >= 0) {
+            efficiencyLabelContainer.innerText = "+" + renderCurrencyString(netPreservedEfficiencyCapital);
+            efficiencyLabelContainer.className = "text-3xl font-mono font-black tracking-tight mt-1 text-white text-emerald-100";
+        } else {
+            efficiencyLabelContainer.innerText = renderCurrencyString(netPreservedEfficiencyCapital);
+            efficiencyLabelContainer.className = "text-3xl font-mono font-black tracking-tight mt-1 text-rose-200";
+        }
+
+        // --- FILL CORES INTO DETAILED AUDIT DATA MATRIX LINES ---
+        document.getElementById('matrixRow1IAW').innerText = renderCurrencyString(iawBaseFeeDollar) + " (0.33%)";
+        document.getElementById('matrixRow1Legacy').innerText = renderCurrencyString(legacyBaseFeeDollar) + " (" + competitorBaseRate.toFixed(2) + "%)";
+
+        document.getElementById('matrixRow2IAW').innerText = renderCurrencyString(taxFeeDollar);
+        document.getElementById('matrixRow2Legacy').innerText = renderCurrencyString(taxFeeDollar);
+
+        document.getElementById('matrixRow3IAW').innerText = renderCurrencyString(bankFeeDollar);
+        document.getElementById('matrixRow3Legacy').innerText = renderCurrencyString(bankFeeDollar);
+
+        document.getElementById('matrixRow4IAW').innerText = renderCurrencyString(riskFeeDollar);
+        document.getElementById('matrixRow4Legacy').innerText = renderCurrencyString(riskFeeDollar);
+
+        document.getElementById('matrixTotalIAW').innerText = renderCurrencyString(iawGrandTotalOverheadDollar) + " (" + aggregatedIawPercentageTotal.toFixed(2) + "%)";
+        document.getElementById('matrixTotalLegacy').innerText = renderCurrencyString(legacyGrandTotalOverheadDollar) + " (" + (competitorBaseRate + carRate1 + carRate2 + carRate3).toFixed(2) + "%)";
     }
 
-    function formatCurrency(num) {
-        return "$" + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 });
+    /**
+     * Generates a structural string of HTML code block detailing an operational cargo car.
+     */
+    function createTrainCarHtmlElement(carTitle, rateValue, borderStyle, badgeStyle) {
+        return `
+            <div class="flex items-end train-car-bounce">
+                <div class="flex items-center text-slate-300 font-black text-xs px-0.5 mb-8">🔗</div>
+                <div class="bg-white border-2 ${borderStyle} p-3 rounded-xl flex flex-col justify-between w-32 h-24 shadow-md transition-all">
+                    <div>
+                        <div class="text-sm">🧳</div>
+                        <div class="text-[9px] font-black uppercase tracking-wider text-slate-400 mt-0.5 leading-none">${carTitle}</div>
+                    </div>
+                    <div class="text-[10px] font-mono font-black ${badgeStyle} px-1.5 py-0.5 rounded text-center">${rateValue.toFixed(2)}%</div>
+                </div>
+            </div>
+        `;
     }
 
-    function updateVol(val) {
-        // Stripe formatting to keep calculation active during user typing
-        const cleanVal = val.replace(/[^0-9.]/g, '');
-        vol = parseFloat(cleanVal) || 0;
-        calc();
+    /**
+     * Formats floating numbers into clean financial string layouts.
+     */
+    function renderCurrencyString(rawNumericValue) {
+        return "$" + rawNumericValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    // Bind clean financial formatting when user clicks out of input box
-    document.getElementById('volInput').addEventListener('blur', function(e) {
-        e.target.value = formatCurrency(vol).replace('.00000000', '');
+    // Standardize input blur field configurations
+    document.getElementById('volumeField').addEventListener('blur', function(e) {
+        e.target.value = renderCurrencyString(operationalVolume);
     });
 
-    document.getElementById('volInput').addEventListener('focus', function(e) {
-        e.target.value = vol > 0 ? vol : '';
+    document.getElementById('volumeField').addEventListener('focus', function(e) {
+        e.target.value = operationalVolume > 0 ? operationalVolume : '';
     });
-
-    // --- STEP 4: ACCESS CONTROL LAYOVER LOGIC ---
-    function isUnlocked() {
-        return localStorage.getItem('iaw_lead_unlocked') === 'true';
-    }
-
-    function submitGatekeeper(e) {
-        e.preventDefault();
-        const emailInput = document.getElementById('gatekeeper-email').value;
-        const usecaseSelect = document.getElementById('gatekeeper-usecase').value;
-
-        if(!emailInput.includes('@')) {
-            alert('Please check your email formatting specifications.');
-            return;
-        }
-
-        localStorage.setItem('iaw_lead_email', emailInput);
-        localStorage.setItem('iaw_lead_usecase', usecaseSelect);
-        localStorage.setItem('iaw_lead_unlocked', 'true');
-
-        document.getElementById('testnet-gatekeeper').classList.add('hidden');
-        initNetworkConnection();
-    }
-
-    function switchMode(mode) {
-        currentMode = mode;
-        const btnDemo = document.getElementById('toggle-demo');
-        const btnTestnet = document.getElementById('toggle-testnet');
-        
-        const panelDemo = document.getElementById('panel-demo');
-        const panelTestnet = document.getElementById('panel-testnet');
-        const railsDemo = document.getElementById('rails-demo');
-        const railsTestnet = document.getElementById('rails-testnet');
-        const viewDemo = document.getElementById('view-demo-matrix');
-        const viewTestnet = document.getElementById('view-testnet-console');
-        const instructDemo = document.getElementById('instructions-demo');
-        const instructTestnet = document.getElementById('instructions-testnet');
-        const headerText = document.getElementById('table-header');
-        const gatekeeper = document.getElementById('testnet-gatekeeper');
-
-        if(mode === 'demo') {
-            btnDemo.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm";
-            btnTestnet.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800";
-            panelDemo.classList.remove('hidden');
-            panelTestnet.classList.add('hidden');
-            railsDemo.classList.remove('hidden');
-            railsTestnet.classList.add('hidden');
-            viewDemo.classList.remove('hidden');
-            viewTestnet.classList.add('hidden');
-            instructDemo.classList.remove('hidden');
-            instructTestnet.classList.add('hidden');
-            gatekeeper.classList.add('hidden');
-            headerText.innerText = "Outflow Distribution Analysis";
-            document.getElementById('network-status').innerText = "Offline Simulation";
-            document.getElementById('network-status').className = "text-slate-400";
-            calc();
-        } else {
-            btnTestnet.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm";
-            btnDemo.className = "px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800";
-            panelDemo.classList.add('hidden');
-            panelTestnet.classList.remove('hidden');
-            railsDemo.classList.add('hidden');
-            railsTestnet.classList.remove('hidden');
-            viewDemo.classList.add('hidden');
-            viewTestnet.classList.remove('hidden');
-            instructDemo.classList.add('hidden');
-            instructTestnet.classList.remove('hidden');
-            headerText.innerText = "On-Chain Transaction Stream Audit";
-            
-            if (!isUnlocked()) {
-                gatekeeper.classList.remove('hidden');
-                document.getElementById('network-status').innerText = "Awaiting Verification";
-                document.getElementById('network-status').className = "text-blue-400 font-bold uppercase";
-            } else {
-                initNetworkConnection();
-            }
-        }
-    }
-
-    function handleRouteSelection() {
-        const select = document.getElementById('route-select').value;
-        const customField = document.getElementById('custom-address-field');
-        if(select.includes('Custom')) {
-            customField.classList.remove('hidden');
-        } else {
-            customField.classList.add('hidden');
-        }
-    }
-
-    function getXrplLibrary() {
-        if (typeof xrpl !== 'undefined') return xrpl;
-        if (window.xrpl) return window.xrpl;
-        throw new Error("Core network library package is still loading.");
-    }
-
-    async function initNetworkConnection() {
-        const netStatus = document.getElementById('network-status');
-        if (client && client.isConnected()) return;
-        
-        netStatus.innerText = "Connecting to Xahau Testnet...";
-        netStatus.className = "text-amber-500 font-bold uppercase";
-        
-        try {
-            const xrplCore = getXrplLibrary();
-            client = new xrplCore.Client(NETWORK_WS);
-            await client.connect();
-            netStatus.innerText = "Online (Xahau Testnet)";
-            netStatus.className = "text-emerald-400 font-black uppercase tracking-wider";
-            logStream("Successfully connected to live Xahau Testnet Node.", "success");
-            await refreshLedgerBalances();
-        } catch(e) {
-            netStatus.innerText = "Connection Failed";
-            netStatus.className = "text-rose-500 font-bold uppercase";
-            logStream(`Network connection failed: ${e.message}`, "error");
-        }
-    }
-
-    async function generateTestnetAccounts() {
-        const genBtn = document.getElementById('btn-generate');
-        genBtn.disabled = true;
-        genBtn.innerText = "Generating Wallet 1 (Customer)...";
-        
-        logStream("Requesting allocations from the Xahau Testnet Faucet hub...", "info");
-
-        try {
-            await initNetworkConnection();
-            const xrplCore = getXrplLibrary();
-
-            wallet1 = xrplCore.Wallet.generate();
-            logStream(`Wallet 1 Created: ${wallet1.classicAddress}. Fueling via network callback...`, "info");
-            
-            const f1 = await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet1.classicAddress}`);
-            await f1.json();
-            
-            genBtn.innerText = "Generating Wallet 2 (Merchant)...";
-            wallet2 = xrplCore.Wallet.generate();
-            logStream(`Wallet 2 Created: ${wallet2.classicAddress}. Fueling via network callback...`, "info");
-            
-            const f2 = await fetch(`https://xahau-testnet.bithomp.com/api/v1/faucet?address=${wallet2.classicAddress}`);
-            await f2.json();
-
-            logStream("Waiting for testnet ledger consensus confirmation...", "info");
-            await new Promise(r => setTimeout(r, 4000));
-
-            await refreshLedgerBalances();
-            logStream("Both demo wallets are locked, loaded, and initialized with test funds!", "success");
-
-            const fireBtn = document.getElementById('btn-fire');
-            fireBtn.removeAttribute('disabled');
-            fireBtn.className = "w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl shadow-lg cursor-pointer transition";
-            genBtn.innerText = "Regenerate Demo Accounts";
-            genBtn.disabled = false;
-        } catch(err) {
-            logStream(`Account provision failed: ${err.message}`, "error");
-            genBtn.disabled = false;
-            genBtn.innerText = "⚡ 1. Initialize Demo Accounts";
-        }
-    }
-
-    async function refreshLedgerBalances() {
-        if (!client || !client.isConnected()) return;
-        try {
-            if (wallet1) {
-                const b1 = await client.getXrpBalance(wallet1.classicAddress);
-                document.getElementById('bal-wallet1').innerText = parseFloat(b1).toFixed(2) + " XAH";
-            }
-            if (wallet2) {
-                const b2 = await client.getXrpBalance(wallet2.classicAddress);
-                document.getElementById('bal-wallet2').innerText = parseFloat(b2).toFixed(2) + " XAH";
-            }
-            const bTreasury = await client.getXrpBalance(HARDCODED_HARVEST_ADDRESS);
-            document.getElementById('bal-treasury').innerText = parseFloat(bTreasury).toFixed(2) + " XAH";
-        } catch(e) {
-            console.error("Balance refresh loop halted:", e);
-        }
-    }
-
-    function logStream(msg, type="info") {
-        const consoleFeed = document.getElementById('console-feed');
-        const timestamp = new Date().toLocaleTimeString();
-        let colorClass = "text-slate-300";
-        if(type === "success") colorClass = "text-emerald-400 font-bold";
-        if(type === "error") colorClass = "text-rose-400";
-        
-        consoleFeed.innerHTML += `<div class="${colorClass}">[${timestamp}] > ${msg}</div>`;
-        consoleFeed.scrollTop = consoleFeed.scrollHeight;
-    }
-
-    // Initialize layout default computation immediately on application boot
-    window.onload = function() {
-        calc();
-    };
 </script>
 </body>
 </html>
