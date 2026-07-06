@@ -1,342 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Institutional Logic-Locked Rail</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Core Ledger Library Bundle -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xrpl/2.7.0/xrpl-latest-min.js"></script>
-    
-    <style>
-        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0f172a; margin: 0; padding: 0; }
-        .ticker { background: #000; color: #fff; padding: 12px 0; overflow: hidden; white-space: nowrap; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
-        .ticker-wrap { display: inline-block; animation: ticker 40s linear infinite; }
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        
-        .glass-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 32px; transition: all 0.3s ease; }
-        .comparison-table { width: 100%; border-collapse: collapse; font-family: monospace; }
-        .comparison-table th { text-align: left; padding: 12px; font-size: 10px; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #e2e8f0; }
-        .comparison-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
-        .total-row { background: #f1f5f9; font-weight: 900; }
-        
-        input[type=range] { appearance: none; width: 100%; height: 4px; background: #e2e8f0; border-radius: 5px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    </style>
-</head>
-<body>
-
-<!-- TOP SCROLLING TICKER RUNNING HEADER WITH EMAIL CONTACT LINK -->
-<div class="ticker">
-    <div class="ticker-wrap">
-        IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% IAW Rail Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — CONTACT US: EXEC@INNOVATIVEAPPWORLD.COM — IAW Institutional Liquidity Rail — 64-Bit Precision Logic — 0.33% IAW Rail Fee — 1:1 RLUSD Shadow Parity — Xahau Hook Mathematical Enforcement — CONTACT US: EXEC@INNOVATIVEAPPWORLD.COM — 
-    </div>
-</div>
-
-<div class="max-w-6xl mx-auto px-6 py-12">
-    
-    <!-- CORPORATE HEADER BRAND HUB -->
-    <header class="flex justify-between items-center mb-16">
-        <div class="flex items-center gap-4">
-            <div class="w-14 h-14 bg-black text-white flex items-center justify-center font-black rounded-2xl text-xl shadow-xl">IAW</div>
-            <div>
-                <h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Innovative App World</h1>
-                <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mt-1">Institutional PaaS v2.6</p>
-            </div>
-        </div>
-        <div class="flex gap-4">
-            <a href="IAW_Logic-Locked_Rail_v2.1.pdf" target="_blank" class="bg-slate-100 px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">White Paper (PDF)</a>
-            <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="bg-black text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest">Institutional Access</a>
-        </div>
-    </header>
-
-    <!-- NETWORK BANNER INFORMER -->
-    <div class="mb-12 bg-blue-50 border-2 border-blue-200 rounded-3xl p-6 flex items-center justify-between shadow-sm">
-        <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-lg">🚀</div>
-            <div>
-                <h2 class="text-sm font-black uppercase tracking-tight text-slate-900">Beta Testing Is Officially Live</h2>
-                <p class="text-xs text-slate-600 font-medium mt-0.5">The native network sync pipeline is open for testing. Production logic assets shall be live and downloadable soon.</p>
-            </div>
-        </div>
-        <span class="bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-xl">Network Beta Active</span>
-    </div>
-
-    <!-- CUSTOM VISUAL RAIL DESIGN CAR MAPPER (TRAIN UI EFFECT) -->
-    <div class="mb-12 bg-slate-50 border border-slate-200 rounded-[32px] p-8">
-        <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Your Custom Single-Rail Cargo Assembly</h3>
-        <div class="flex flex-wrap items-stretch gap-2 font-mono">
-            
-            <!-- THE CORE ENGINE -->
-            <div class="bg-blue-600 text-white p-4 rounded-2xl flex flex-col justify-between min-w-[140px] shadow-md border-b-4 border-blue-800">
-                <div>
-                    <div class="text-[18px]">🚂</div>
-                    <div class="text-[10px] font-black uppercase tracking-wider mt-1">IAW ENGINE</div>
-                </div>
-                <div class="text-xs font-bold mt-4 bg-blue-700 px-2 py-0.5 rounded text-center">0.33% Fixed</div>
-            </div>
-
-            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
-
-            <!-- CARGO CAR 1: TAX FEES -->
-            <div id="car-tax" class="bg-white border-2 border-slate-200 p-4 rounded-2xl flex flex-col justify-between min-w-[140px] transition-all duration-200">
-                <div>
-                    <div class="text-[18px]">📦</div>
-                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Tax Ruleset</div>
-                </div>
-                <div id="car-tax-fee" class="text-xs font-bold mt-4 bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-center">7.00%</div>
-            </div>
-
-            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
-
-            <!-- CARGO CAR 2: CUSTOM CONDITIONS AND COMPRESSED BANK TRANSACTION CODES -->
-            <div id="car-custom" class="bg-white border-2 border-slate-200 p-4 rounded-2xl flex flex-col justify-between min-w-[140px] transition-all duration-200">
-                <div>
-                    <div class="text-[18px]">💼</div>
-                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Bank Conditions</div>
-                </div>
-                <div id="car-custom-fee" class="text-xs font-bold mt-4 bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-center">1.50%</div>
-            </div>
-
-            <div class="flex items-center text-slate-300 font-bold px-1 text-lg">🔗</div>
-
-            <!-- CARGO CAR 3: TERMINAL ENDPOINT -->
-            <div class="bg-slate-900 text-slate-100 p-4 rounded-2xl flex flex-col justify-between min-w-[120px] border-b-4 border-slate-950">
-                <div>
-                    <div class="text-[18px]">🛑</div>
-                    <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 mt-1">Rail End</div>
-                </div>
-                <div class="text-[9px] font-bold mt-4 uppercase tracking-widest text-emerald-400 text-center">Atomic Run</div>
-            </div>
-        </div>
-        <p class="text-[10px] text-slate-500 mt-3 italic font-medium">Notice: Conditions are completely native, flattened, and logic-locked inside the rail itself. No external multi-layered routing required.</p>
-    </div>
-
-    <!-- APPLICATION RUNTIME TOGGLE INTERFACES -->
-    <div class="flex justify-center mb-12">
-        <div class="bg-slate-100 p-1.5 rounded-2xl flex gap-2 border border-slate-200 shadow-sm">
-            <button id="toggle-demo" onclick="switchMode('demo')" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-white text-blue-600 shadow-sm">
-                📊 1. Interactive Calculator
-            </button>
-            <button id="toggle-testnet" onclick="switchMode('testnet')" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-500 hover:text-slate-800">
-                🌐 2. Live On-Chain Testnet
-            </button>
-        </div>
-    </div>
-
-    <!-- SPLIT EXECUTION CORE BODY -->
-    <div class="grid lg:grid-cols-12 gap-8 mb-16">
-        
-        <!-- LEFT CONTROL INTERFACES PANEL CONTAINER -->
-        <div class="lg:col-span-5 bg-slate-900 text-white p-10 rounded-[48px] shadow-2xl flex flex-col justify-between min-h-[660px] relative overflow-hidden">
-            
-            <!-- ACCESS LEAD GENERATION GATEKEEPER LAYOVER OVERLAY -->
-            <div id="testnet-gatekeeper" class="hidden absolute inset-0 bg-slate-950/95 z-50 p-8 flex flex-col justify-center">
-                <div class="space-y-4">
-                    <div class="border-b border-slate-800 pb-3">
-                        <h3 class="text-base font-black text-blue-400 uppercase tracking-wide">Request Tokenization Rail Access</h3>
-                        <p class="text-[11px] text-slate-400 mt-1">Provide your credentials to unlock custom live-fire testing paths and white paper briefs.</p>
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-slate-400 mb-1.5">Corporate Email Address</label>
-                        <input type="email" id="gatekeeper-email" placeholder="exec@enterprise.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-slate-400 mb-1.5">Target Use Case Configuration</label>
-                        <select id="gatekeeper-usecase" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
-                            <option value="rwa">Real Estate / RWA Tokenization</option>
-                            <option value="settlement">Post-Trade Clearing & Settlement</option>
-                            <option value="liquidity">Automated Liquidity Rails</option>
-                        </select>
-                    </div>
-                    <button onclick="submitGatekeeper(event)" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl transition shadow-md mt-2">
-                        Unlock Live Testnet Core
-                    </button>
-                </div>
-            </div>
-
-            <!-- INTERACTIVE SIMULATION CALCULATION CONFIGS -->
-            <div id="panel-demo" class="space-y-6">
-                <div>
-                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-4">Transaction Volume (RLUSD)</label>
-                    <input type="text" id="volInput" value="$1,000,000" class="bg-transparent text-4xl font-black border-b-2 border-slate-700 w-full pb-4 outline-none focus:border-blue-500 font-mono text-blue-400" oninput="updateVol(this.value)">
-                    <p class="text-[11px] text-slate-400 mt-2">Type any value to simulate your settlement size instantly.</p>
-                </div>
-                
-                <div class="space-y-6 pt-4">
-                    <div>
-                        <p class="text-[10px] font-black uppercase text-blue-400">Total IAW Friction (0.33% / 303 Engine)</p>
-                        <p id="iawFee" class="text-3xl font-mono font-bold text-slate-100">$3,300.00000000</p>
-                    </div>
-                    <div>
-                        <p class="text-[10px] font-black uppercase text-red-500">Total Legacy Friction (2.5%)</p>
-                        <p id="legacyFee" class="text-2xl font-mono font-bold text-slate-500">$25,000.00000000</p>
-                    </div>
-                    <div class="pt-6 border-t border-slate-700">
-                        <p class="text-[10px] font-black uppercase text-green-400 tracking-widest">Capital Efficiency Gain</p>
-                        <p id="gain" class="text-4xl font-mono font-black text-green-400 mt-2">+$21,700.00000000</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- LIVE FIRED ON-CHAIN TESTING CONTROLS CONTAINER -->
-            <div id="panel-testnet" class="hidden space-y-4">
-                <div class="border-b border-slate-800 pb-2">
-                    <h3 class="text-sm font-black text-blue-400 uppercase tracking-wide">Live Xahau Account Provisioner</h3>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Generate or assign test tokens on the network with one click.</p>
-                </div>
-
-                <button onclick="generateTestnetAccounts()" id="btn-generate" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black text-[11px] uppercase tracking-wider py-3 rounded-xl transition shadow-md cursor-pointer">
-                    ⚡ 1. Initialize Demo Accounts
-                </button>
-
-                <div class="space-y-3 pt-2 border-t border-slate-800/60">
-                    <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-slate-400 mb-1">Select Active Transaction Path</label>
-                        <select id="route-select" onchange="handleRouteSelection()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
-                            <option value="1to2">Wallet 1 (Customer) ➔ Wallet 2 (Merchant)</option>
-                            <option value="2to1">Wallet 2 (Merchant) ➔ Wallet 1 (Customer)</option>
-                            <option value="1toCustom">Wallet 1 (Customer) ➔ Custom Address</option>
-                            <option value="2toCustom">Wallet 2 (Merchant) ➔ Custom Address</option>
-                        </select>
-                    </div>
-
-                    <div id="custom-address-field" class="hidden">
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-purple-400 mb-1">Target Custom Xahau Testnet Address (r...)</label>
-                        <input type="text" id="addr-custom" placeholder="Paste target r-address here" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-100 focus:outline-none focus:border-blue-500">
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-800 space-y-2">
-                    <div>
-                        <label class="block text-[9px] font-black uppercase tracking-wider text-amber-400 mb-1">Amount to Transfer (XAH tokens)</label>
-                        <input type="number" id="input-amount" value="50" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono font-bold text-slate-100 focus:outline-none focus:border-blue-500">
-                    </div>
-                    <button onclick="fireLiveTransaction()" id="btn-fire" disabled class="w-full bg-emerald-500 opacity-40 text-slate-950 font-black text-[11px] uppercase tracking-wider py-3.5 rounded-xl shadow-lg cursor-not-allowed">
-                        🚀 2. Submit On-Chain Transaction
-                    </button>
-                </div>
-            </div>
-            
-            <div class="text-[9px] text-slate-500 font-bold uppercase tracking-widest border-t border-slate-800 pt-4 mt-4">
-                System Link: <span id="network-status" class="text-slate-400">Offline Simulation</span>
-            </div>
-        </div>
-
-        <!-- RIGHT DATA DISPENSARY DISPLAY GRID -->
-        <div class="lg:col-span-7 glass-card p-10 border border-slate-200 flex flex-col justify-between">
-            
-            <div>
-                <!-- DEMO VIEW SLIDERS CONTROLS -->
-                <div id="rails-demo" class="flex gap-4 mb-8 overflow-x-auto pb-2">
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
-                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Cargo Condition Box A</span>
-                        <h4 class="font-black uppercase text-sm mt-1">Tax Ruleset Compression</h4>
-                        <input type="range" id="taxRange" min="0" max="20" value="7" class="mt-4" oninput="calc()">
-                        <div class="flex justify-between mt-3">
-                            <p class="text-xs font-black" id="taxLabel">7.000%</p>
-                            <p class="text-xs font-mono font-bold text-blue-600" id="taxVolumeLabel">$70,000.00</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 min-w-[240px]">
-                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider">Cargo Condition Box B</span>
-                        <h4 class="font-black uppercase text-sm mt-1">Institutional Ruleset Box</h4>
-                        <input type="range" id="customRange" min="0" max="20" value="1.5" step="0.5" class="mt-4" oninput="calc()">
-                        <div class="flex justify-between mt-3">
-                            <p class="text-xs font-black" id="customLabel">1.500%</p>
-                            <p class="text-xs font-mono font-bold text-blue-600" id="customVolumeLabel">$15,000.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TESTNET REAL-TIME ACCOUNT STATUS CARD TILES -->
-                <div id="rails-testnet" class="hidden grid grid-cols-3 gap-3 mb-6">
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center">
-                        <span class="text-[9px] font-black uppercase text-amber-600 block">👤 Wallet 1 (Customer)</span>
-                        <p id="bal-wallet1" class="text-xs font-mono font-bold text-slate-500 mt-1">Not Active</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center">
-                        <span class="text-[9px] font-black uppercase text-purple-600 block">🏢 Wallet 2 (Merchant)</span>
-                        <p id="bal-wallet2" class="text-xs font-mono font-bold text-slate-500 mt-1">Not Active</p>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-2xl border-2 border-blue-200 text-center">
-                        <span class="text-[9px] font-black uppercase text-blue-600 block">🛡️ Live IAW Harvest Vault</span>
-                        <p id="bal-treasury" class="text-base font-mono font-black text-blue-600 mt-1">0.00 XAH</p>
-                    </div>
-                </div>
-
-                <h3 id="table-header" class="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-slate-400">Outflow Distribution Analysis</h3>
-            </div>
-
-            <!-- DYNAMIC DISPLAY SWITCHER HOUSING ELEMENT -->
-            <div class="h-full flex flex-col justify-end">
-                
-                <!-- DEMO COMPARISON DATA GRID -->
-                <div id="view-demo-matrix" class="w-full">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Transaction Element</th>
-                                <th>IAW Consolidated Rail (0.33%)</th>
-                                <th>Legacy Rails (2.5%)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-bold">Base Settlement Engine</td>
-                                <td id="row1-iaw" class="text-blue-600 font-bold">$0.00</td>
-                                <td id="row1-leg" class="text-slate-400">$0.00</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Tax Distribution Engine</td>
-                                <td id="row2-iaw" class="text-blue-600 font-bold">$0.00</td>
-                                <td id="row2-leg" class="text-slate-400">$0.00</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Institutional Custom Conditions</td>
-                                <td id="row3-iaw" class="text-blue-600 font-bold">$0.00</td>
-                                <td id="row3-leg" class="text-slate-400">$0.00</td>
-                            </tr>
-                            <tr class="total-row">
-                                <td class="text-[10px] uppercase tracking-widest">Total Friction Loss</td>
-                                <td id="total-iaw" class="text-blue-600">$0.00</td>
-                                <td id="total-leg" class="text-slate-400">$0.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- LIVE CONSOLE TERMINAL OUTPUT FOR TESTING STREAM -->
-                <div id="view-testnet-console" class="hidden w-full space-y-4">
-                    <div id="console-feed" class="bg-slate-950 p-4 rounded-2xl font-mono text-[11px] text-slate-300 h-48 overflow-y-auto space-y-1.5 border border-slate-900">
-                        <div class="text-slate-500">> Standing by. Click "Initialize Demo Accounts" to fuel the local network runtimes.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EXPLICIT USER ACTION INSTRUCTIONS FOR CLEAR WORKFLOWS -->
-            <div class="mt-6 pt-4 border-t border-slate-200">
-                <h4 class="text-xs font-black uppercase text-slate-900 tracking-wider mb-2">📋 User Quick Start Steps</h4>
-                
-                <div id="instructions-demo" class="text-[11px] text-slate-600 space-y-1">
-                    <p><strong>Step 1:</strong> Change the <strong>Transaction Volume</strong> in the blue input box (e.g., enter <code class="bg-slate-100 px-1 rounded font-bold font-mono text-slate-900">$1,000,000</code>).</p>
-                    <p><strong>Step 2:</strong> Drag the sliders above to compress customized conditions into the transaction flow.</p>
-                    <p><strong>Step 3:</strong> Review the results matrix. Notice how the IAW Engine stops cost leakage by blocking legacy rail compound splits.</p>
-                </div>
-
-                <div id="instructions-testnet" class="hidden text-[11px] text-slate-600 space-y-1">
-                    <p><strong>Step 1:</strong> Click the blue <strong>"Initialize Demo Accounts"</strong> button to generate live funded testing wallets instantly.</p>
-                    <p><strong>Step 2:</strong> Use the dropdown to choose your sender and receiver paths, or drop in your own custom Xahau testing address.</p>
-                    <p><strong>Step 3:</strong> Click <strong>"Submit On-Chain Transaction"</strong> to fire the execution bundle and watch the 0.33% harvest land in the live tracker box above.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
 <script>
     const HARDCODED_HARVEST_ADDRESS = "raMQedfvpoGgi1bGjpYc94ka5NH4UA3H7c";
 
@@ -346,6 +7,90 @@
     let client;
     let wallet1, wallet2;
 
+    // --- STEP 1: MATHEMATICAL EVALUATION ENGINE ---
+    function calc() {
+        // Read raw configuration numbers directly from the input fields
+        const rawVolString = document.getElementById('volInput').value;
+        vol = parseFloat(rawVolString.replace(/[^0-9.]/g, '')) || 0;
+
+        const taxRate = parseFloat(document.getElementById('taxRange').value) || 0;
+        const customRate = parseFloat(document.getElementById('customRange').value) || 0;
+
+        // Update Slider Labels Instantly
+        document.getElementById('taxLabel').innerText = taxRate.toFixed(3) + "%";
+        document.getElementById('customLabel').innerText = customRate.toFixed(3) + "%";
+
+        // Calculate Absolute Dollar Volumes Based on User Inputs
+        const taxVolumeDollar = vol * (taxRate / 100);
+        const customVolumeDollar = vol * (customRate / 100);
+        
+        document.getElementById('taxVolumeLabel').innerText = formatCurrency(taxVolumeDollar);
+        document.getElementById('customVolumeLabel').innerText = formatCurrency(customVolumeDollar);
+
+        // Update Train Car Visual UI Badges
+        document.getElementById('car-tax-fee').innerText = taxRate.toFixed(2) + "%";
+        document.getElementById('car-custom-fee').innerText = customRate.toFixed(2) + "%";
+
+        // --- STEP 2: CONSOLIDATION COMPARISON CALCULATIONS ---
+        // IAW Rail consolidated model uses a flat 0.33% engine fee
+        const iawEngineFee = vol * 0.0033;
+        const iawTotalFriction = iawEngineFee + taxVolumeDollar + customVolumeDollar;
+
+        // Legacy systems incur compounding structural friction (avg 2.5% base layer overhead)
+        const legacyBaseFee = vol * 0.025;
+        const legacyTotalFriction = legacyBaseFee + taxVolumeDollar + customVolumeDollar;
+
+        // Determine Total Capital Efficiency Saved
+        const capitalGain = legacyTotalFriction - iawTotalFriction;
+
+        // --- STEP 3: FLUID TEXT AND TABLE RENDERING ---
+        document.getElementById('iawFee').innerText = formatCurrency(iawTotalFriction);
+        document.getElementById('legacyFee').innerText = formatCurrency(legacyTotalFriction);
+        
+        const gainElement = document.getElementById('gain');
+        if (capitalGain >= 0) {
+            gainElement.innerText = "+" + formatCurrency(capitalGain);
+            gainElement.className = "text-4xl font-mono font-black text-green-400 mt-2";
+        } else {
+            gainElement.innerText = formatCurrency(capitalGain);
+            gainElement.className = "text-4xl font-mono font-black text-rose-400 mt-2";
+        }
+
+        // Update Matrix Breakdown Rows
+        document.getElementById('row1-iaw').innerText = formatCurrency(iawEngineFee);
+        document.getElementById('row1-leg').innerText = formatCurrency(legacyBaseFee);
+
+        document.getElementById('row2-iaw').innerText = formatCurrency(taxVolumeDollar);
+        document.getElementById('row2-leg').innerText = formatCurrency(taxVolumeDollar);
+
+        document.getElementById('row3-iaw').innerText = formatCurrency(customVolumeDollar);
+        document.getElementById('row3-leg').innerText = formatCurrency(customVolumeDollar);
+
+        document.getElementById('total-iaw').innerText = formatCurrency(iawTotalFriction);
+        document.getElementById('total-leg').innerText = formatCurrency(legacyTotalFriction);
+    }
+
+    function formatCurrency(num) {
+        return "$" + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 });
+    }
+
+    function updateVol(val) {
+        // Stripe formatting to keep calculation active during user typing
+        const cleanVal = val.replace(/[^0-9.]/g, '');
+        vol = parseFloat(cleanVal) || 0;
+        calc();
+    }
+
+    // Bind clean financial formatting when user clicks out of input box
+    document.getElementById('volInput').addEventListener('blur', function(e) {
+        e.target.value = formatCurrency(vol).replace('.00000000', '');
+    });
+
+    document.getElementById('volInput').addEventListener('focus', function(e) {
+        e.target.value = vol > 0 ? vol : '';
+    });
+
+    // --- STEP 4: ACCESS CONTROL LAYOVER LOGIC ---
     function isUnlocked() {
         return localStorage.getItem('iaw_lead_unlocked') === 'true';
     }
@@ -516,131 +261,25 @@
             }
             const bTreasury = await client.getXrpBalance(HARDCODED_HARVEST_ADDRESS);
             document.getElementById('bal-treasury').innerText = parseFloat(bTreasury).toFixed(2) + " XAH";
-        } catch(e) {}
-    }
-
-    async function fireLiveTransaction() {
-        const fireBtn = document.getElementById('btn-fire');
-        const route = document.getElementById('route-select').value;
-        const amountXAH = document.getElementById('input-amount').value;
-
-        let sourceWallet, destinationAddress;
-
-        if (route === "1to2") { sourceWallet = wallet1; destinationAddress = wallet2.classicAddress; }
-        else if (route === "2to1") { sourceWallet = wallet2; destinationAddress = wallet1.classicAddress; }
-        else if (route === "1toCustom") { sourceWallet = wallet1; destinationAddress = document.getElementById('addr-custom').value.trim(); }
-        else if (route === "2toCustom") { sourceWallet = wallet2; destinationAddress = document.getElementById('addr-custom').value.trim(); }
-
-        if (!sourceWallet || !destinationAddress) {
-            logStream("Execution halted: Destination address route setup is missing.", "error");
-            return;
+        } catch(e) {
+            console.error("Balance refresh loop halted:", e);
         }
-
-        fireBtn.disabled = true;
-        fireBtn.innerText = "Broadcasting Payment Block...";
-        logStream(`Constructing payment bundle. Route: ${sourceWallet.classicAddress} ➔ ${destinationAddress}`, "info");
-
-        try {
-            const xrplCore = getXrplLibrary();
-            const txJson = {
-                TransactionType: "Payment",
-                Account: sourceWallet.classicAddress,
-                Amount: xrplCore.xrpToDrops(amountXAH),
-                Destination: destinationAddress
-            };
-
-            logStream("Signing transaction bundle locally with cryptographic seed arrays...", "info");
-            const prepared = await client.autonext(txJson);
-            const signed = sourceWallet.sign(prepared);
-
-            logStream("Broadcasting binary blob into the network confirmation loop...", "info");
-            const response = await client.submitAndWait(signed.tx_blob);
-            
-            if (response.result.meta.TransactionResult === "tesSUCCESS") {
-                logStream(`Consensus reached! Confirmed Hash: ${response.result.hash}`, "success");
-                
-                let dropsAmount = parseInt(xrplCore.xrpToDrops(amountXAH));
-                let calculatedFeeDrops = Math.floor(dropsAmount / 303);
-                let expectedHarvestXAH = calculatedFeeDrops / 1000000;
-
-                logStream(`[C-HOOK ENGINE TRIGGERED] ➔ Parsing core code logic rules from execution path.`, "harvest");
-                logStream(`[fee = full_amt / 303] ➔ Calculated fee precision block inside ledger execution array.`, "harvest");
-                logStream(`[IAW REVENUE CAPTURE] ➔ ${expectedHarvestXAH.toFixed(6)} XAH auto-diverted into Contract Harvest Account (${HARDCODED_HARVEST_ADDRESS}).`, "harvest");
-                
-                logStream("Refreshing live balances from the ledger network state...", "info");
-                await refreshLedgerBalances();
-            } else {
-                logStream(`Transaction rejected with status code: ${response.result.meta.TransactionResult}`, "error");
-            }
-        } catch (err) {
-            logStream(`Consensus pipeline exception: ${err.message}`, "error");
-        }
-
-        fireBtn.disabled = false;
-        fireBtn.innerText = "🚀 2. Submit On-Chain Transaction";
     }
 
-    function logStream(message, type = 'info') {
-        const feed = document.getElementById('console-feed');
-        const element = document.createElement('div');
-        let stamp = new Date().toLocaleTimeString();
+    function logStream(msg, type="info") {
+        const consoleFeed = document.getElementById('console-feed');
+        const timestamp = new Date().toLocaleTimeString();
+        let colorClass = "text-slate-300";
+        if(type === "success") colorClass = "text-emerald-400 font-bold";
+        if(type === "error") colorClass = "text-rose-400";
         
-        if (type === 'success') element.className = 'text-emerald-400 font-bold';
-        else if (type === 'error') element.className = 'text-rose-400 font-bold';
-        else if (type === 'harvest') element.className = 'text-cyan-400 font-black border-l-2 border-cyan-500 pl-2 my-0.5';
-        else element.className = 'text-slate-400';
-
-        element.innerHTML = `[${stamp}] ${message}`;
-        feed.appendChild(element);
-        feed.scrollTop = feed.scrollHeight;
+        consoleFeed.innerHTML += `<div class="${colorClass}">[${timestamp}] > ${msg}</div>`;
+        consoleFeed.scrollTop = consoleFeed.scrollHeight;
     }
 
-    function updateVol(v) {
-        let n = parseFloat(v.replace(/[^0-9.]/g, ''));
-        if(!isNaN(n)) { vol = n; calc(); }
-    }
-
-    function calc() {
-        if (currentMode !== "demo") return;
-        const tRate = document.getElementById('taxRange').value / 100;
-        const cRate = document.getElementById('customRange').value / 100;
-        const tVol = vol * tRate; const cVol = vol * cRate;
-
-        // Visual Rail Car Slider updates
-        document.getElementById('car-tax-fee').innerText = (tRate * 100).toFixed(2) + '%';
-        document.getElementById('car-custom-fee').innerText = (cRate * 100).toFixed(2) + '%';
-
-        const f1iaw = vol * 0.0033; const f1leg = vol * 0.025;
-        const f2iaw = tVol * 0.0033; const f2leg = tVol * 0.025;
-        const f3iaw = cVol * 0.0033; const f3leg = cVol * 0.025;
-
-        const totalIaw = f1iaw + f2iaw + f3iaw;
-        const totalLeg = f1leg + f2leg + f3leg;
-
-        document.getElementById('taxLabel').innerText = (tRate * 100).toFixed(3) + '%';
-        document.getElementById('customLabel').innerText = (cRate * 100).toFixed(3) + '%';
-        document.getElementById('taxVolumeLabel').innerText = '$' + tVol.toLocaleString(undefined, {maximumFractionDigits: 2});
-        document.getElementById('customVolumeLabel').innerText = '$' + cVol.toLocaleString(undefined, {maximumFractionDigits: 2});
-        
-        document.getElementById('iawFee').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('legacyFee').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('gain').innerText = '+$' + (totalLeg - totalIaw).toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-
-        document.getElementById('row1-iaw').innerText = '$' + f1iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row1-leg').innerText = '$' + f1leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row2-iaw').innerText = '$' + f2iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row2-leg').innerText = '$' + f2leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row3-iaw').innerText = '$' + f3iaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('row3-leg').innerText = '$' + f3leg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        
-        document.getElementById('total-iaw').innerText = '$' + totalIaw.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-        document.getElementById('total-leg').innerText = '$' + totalLeg.toLocaleString(undefined, {minimumFractionDigits: 8, maximumFractionDigits: 8});
-    }
-
+    // Initialize layout default computation immediately on application boot
     window.onload = function() {
-        setTimeout(function() {
-            calc();
-        }, 200);
+        calc();
     };
 </script>
 </body>
