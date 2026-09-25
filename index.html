@@ -6,10 +6,13 @@
     <title>IAW | Dynamic Logic Rail Builder Demo</title>
     
     <style>
-        /* --- INSTITUTIONAL STYLING LAYER (WORKS COMPLETELY OFFLINE) --- */
+        /* --- INSTITUTIONAL STYLING LAYER (WORKS COMPLETELY OFFLINE - UNRESTRICTED) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #0f172a; padding-bottom: 50px; }
         
+        /* Demonstration Notice Banner */
+        .demo-banner { background: #e0f2fe; color: #0369a1; padding: 12px 20px; text-align: center; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #bae6fd; }
+
         /* Scrolling Header Banner */
         .ticker { background-color: #0f172a; color: #38bdf8; padding: 14px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-bottom: 3px solid #0284c7; }
         .ticker-wrap { display: inline-block; animation: ticker 35s linear infinite; }
@@ -17,7 +20,7 @@
         .ticker a { color: #ffffff; text-decoration: underline; margin: 0 4px; font-weight: 900; }
         .ticker a:hover { color: #38bdf8; }
 
-        .container { max-w: 1100px; max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
         
         /* Top Branding Header */
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; margin-top: 10px; background: white; padding: 20px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); }
@@ -34,7 +37,7 @@
         
         /* Train Track Graphics */
         .track-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
-        .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-w: max-content; padding-bottom: 10px; }
+        .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-width: max-content; padding-bottom: 10px; }
         .railway-line { height: 8px; background: #475569; border-radius: 4px; position: relative; margin-top: 5px; }
         .railway-line::before { content: ''; position: absolute; top: -4px; left: 0; width: 100%; height: 16px; background: repeating-linear-gradient(90deg, transparent, transparent 24px, #78350f 24px, #78350f 28px); z-index: -1; }
 
@@ -66,366 +69,123 @@
         /* Control Panel Styles */
         .control-panel { display: flex; flex-direction: column; gap: 20px; }
         .step-card { background: white; border: 1px solid #e2e8f0; border-radius: 28px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-        .step-card-dark { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border: none; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         .step-badge { display: inline-block; background: #0284c7; color: white; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
         .step-badge-blue { background: #2563eb; }
         
-        .input-group label { display: block; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 8px; }
-        .volume-input { background: transparent; border: none; border-bottom: 2px solid #334155; color: #38bdf8; font-family: monospace; font-size: 32px; font-weight: 900; width: 100%; padding-bottom: 8px; outline: none; }
-        .volume-input:focus { border-color: #0284c7; }
-        
-        .slider-box { background: #f8fafc; border: 1px solid #f1f5f9; padding: 15px; border-radius: 16px; margin-top: 15px; }
-        .slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .slider-title { font-size: 12px; font-weight: 700; color: #334155; }
-        .slider-badge { font-family: monospace; font-weight: 900; font-size: 12px; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px; }
-        .slider-badge-rose { background: #ffe4e6; color: #b91c1c; }
-        
-        input[type=range] { appearance: none; -webkit-appearance: none; width: 100%; height: 6px; background: #cbd5e1; border-radius: 99px; outline: none; margin: 10px 0; }
-        input[type=range]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; background: #0284c7; border-radius: 50%; cursor: pointer; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .accent-rose[type=range]::-webkit-slider-thumb { background: #f43f5e; }
-
-        /* Display Panel Styles */
-        .display-panel { display: flex; flex-direction: column; gap: 20px; }
-        .totals-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        @media (min-width: 500px) { .totals-grid { grid-template-columns: 1fr 1fr; } }
-        
-        .total-box { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; position: relative; overflow: hidden; }
-        .total-box-iaw { border-color: #0284c7; border-width: 2px; }
-        .box-tag { position: absolute; top: 0; right: 0; font-size: 8px; font-weight: 900; text-transform: uppercase; padding: 4px 10px; border-bottom-left-radius: 10px; color: white; font-family: monospace; letter-spacing: 0.5px; }
-        .box-tag-iaw { background: #0284c7; }
-        .box-tag-leg { background: #f43f5e; }
-        .total-box label { font-size: 10px; font-weight: 900; color: #94a3b8; text-transform: uppercase; }
-        .total-value { font-size: 24px; font-family: monospace; font-weight: 900; margin-top: 5px; }
-        .text-iaw { color: #0284c7; } .text-leg { color: #e11d48; }
-        .total-box p { font-size: 11px; color: #64748b; margin-top: 4px; }
-
-        .savings-hero { background: linear-gradient(135deg, #059669, #10b981); color: white; padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2); }
-        .savings-title { font-size: 10px; font-weight: 900; text-transform: uppercase; opacity: 0.9; letter-spacing: 1px; }
-        .savings-value { font-size: 30px; font-family: monospace; font-weight: 900; margin-top: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .savings-badge { background: rgba(0,0,0,0.15); font-size: 10px; font-weight: 900; text-transform: uppercase; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.5px; }
-
-        /* Matrix Table View */
-        .matrix-card { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
-        .matrix-title { font-size: 11px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
-        .matrix-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 12px; text-align: left; }
-        .matrix-table th { padding-bottom: 10px; font-size: 10px; text-transform: uppercase; color: #94a3b8; border-bottom: 1px solid #e2e8f0; font-weight: 900; }
-        .matrix-table td { padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #334155; }
-        .row-total { background: #f8fafc; font-weight: 900; font-size: 13px; }
-        .row-total td { padding: 12px 6px; border-top: 2px solid #e2e8f0; }
-
-        /* Instructions Info Box */
-        .info-box { background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 20px; padding: 20px; color: #0369a1; }
-        .info-box h4 { font-size: 12px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; color: #0369a1; }
-        .info-box p { font-size: 12px; margin-bottom: 8px; line-height: 1.5; color: #0c4a6e; }
-        .info-box code { background: #e0f2fe; padding: 2px 5px; border-radius: 4px; font-weight: 700; font-family: monospace; color: #0369a1; }
+        .btn-action { background: #0284c7; color: white; border: none; padding: 12px 20px; font-weight: 700; border-radius: 10px; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; width: 100%; transition: background 0.2s; }
+        .btn-action:hover { background: #0369a1; }
     </style>
 </head>
-<body onload="recalculateAll()">
+<body>
 
-<div class="ticker">
-    <div class="ticker-wrap">
-        ⚠️ INTERACTIVE CALCULATOR ENVIRONMENT FOR SIMULATION PURPOSES ONLY — NOT FOR PRODUCTION USE — PRODUCTION RELEASE NOTATIONS WILL BE COMMITTED TO THE OFFICIAL LINKEDIN FEED — VISIT HERE: <a href="https://www.linkedin.com/feed/" target="_blank">FEED | LINKEDIN</a> — REAL-TIME COMPLIANCE COST REDUCTION BALANCES VALIDATED — ⚠️
+    <!-- DEMONSTRATION DISCLAIMER BANNER -->
+    <div class="demo-banner">
+        ⚠️ For Demonstration Purposes Only &bull; Unrestricted Public Access &bull; Standalone Simulation
     </div>
-</div>
 
-<div class="container">
-    
-    <header>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <div class="logo-box">IAW</div>
-            <div class="header-text">
-                <h1>Innovative App World</h1>
-                <p>Single-Rail Technology Institutional Evaluation Demo</p>
-            </div>
+    <!-- Scrolling Header Banner -->
+    <div class="ticker">
+        <div class="ticker-wrap">
+            <span>IAW DYNAMIC LOGIC RAIL BUILDER &bull; <a href="#">DEMO MODE ACTIVE</a> &bull; SECURE OFFLINE SIMULATION &bull; ZERO ACCESS BLOCKS &bull;</span>
         </div>
-        <a href="https://www.linkedin.com/in/derek-little-iaw/" target="_blank" class="btn-contact">Contact Derek Little | LinkedIn</a>
-    </header>
+    </div>
 
-    <div class="train-station">
-        <div class="station-badge"><span style="color: #0284c7; margin-right: 4px;">●</span> Live Rail Assembly Track</div>
-        <h3 class="station-title">Custom Settlement Single-Rail Composition</h3>
-        
-        <div class="track-scroll-box">
-            <div class="train-assembly">
-                
-                <div class="engine">
-                    <div>
-                        <div style="font-size: 24px;">🚂</div>
-                        <div class="engine-title">IAW COMPLIANCE ENGINE</div>
-                    </div>
-                    <div class="engine-badge">0.33% Fixed Fee</div>
+    <div class="container">
+        <!-- Top Branding Header -->
+        <header>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo-box">IAW</div>
+                <div class="header-text">
+                    <h1>Logic Rail Builder</h1>
+                    <p>Demonstration Environment</p>
                 </div>
-
-                <div id="dynamic-train-cars" style="display: flex; align-items: flex-end;">
-                    </div>
-
-                <div class="car-caboose">
-                    <div style="font-size: 20px;">🛑</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #10b981; text-align: center; text-transform: uppercase; letter-spacing: 1px;">Atomic Base</div>
-                </div>
-
             </div>
+            <a href="#" class="btn-contact" onclick="alert('Notice: This is a standalone demonstration for viewing purposes only.'); return false;">Demo Info</a>
+        </header>
+
+        <!-- Train Station Area -->
+        <div class="train-station">
+            <div class="station-badge">Demo Mode &bull; Unrestricted View</div>
+            <div class="station-title">Active Logic Rail Assembly (Simulation)</div>
             
+            <div class="track-scroll-box">
+                <div class="train-assembly">
+                    <!-- Engine -->
+                    <div class="engine">
+                        <div>
+                            <span class="engine-title">Rail Engine</span>
+                            <div style="font-size: 13px; font-weight: 700; margin-top: 4px;">IAW Core</div>
+                        </div>
+                        <div class="engine-badge">SIMULATED</div>
+                    </div>
+                    
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 1 -->
+                    <div class="cargo-car car-liquidity">
+                        <span class="car-name">Liquidity Rail</span>
+                        <div class="car-percentage">100% Demo</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 2 -->
+                    <div class="cargo-car car-compliance">
+                        <span class="car-name">Compliance Hook</span>
+                        <div class="car-percentage">Active</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 3 -->
+                    <div class="cargo-car car-risk">
+                        <span class="car-name">Risk Guard</span>
+                        <div class="car-percentage">Offline</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Caboose -->
+                    <div class="car-caboose">
+                        <span class="car-name" style="color: #38bdf8;">Terminal</span>
+                        <div style="font-size: 11px; font-family: monospace; font-weight: bold;">SECURE</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="railway-line"></div>
-        </div>
-        
-        <div class="track-summary">
-            <p style="color: #64748b; font-weight: 500;">💡 Adjust structural conditions using the parameters below to modularly attach or remove protocol logic variables.</p>
-            <p style="font-weight: 900;">Accumulated Single-Rail Total: <span id="track-total-percentage" style="color: #0284c7;">0.33%</span></p>
-        </div>
-    </div>
 
-    <div class="workspace">
-        
-        <div class="control-panel">
-            
-            <div class="step-card step-card-dark">
-                <span class="step-badge">Configuration 1</span>
-                
-                <div class="input-group" style="margin-top: 10px; margin-bottom: 20px;">
-                    <label>Simulated Settlement Volume ($)</label>
-                    <input type="text" id="volumeField" value="$10,000,000" class="volume-input" oninput="processVolumeTyping(this.value)">
-                    <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Modify this number to calculate enterprise settlement metrics in real time.</p>
-                </div>
+            <div class="track-summary" style="margin-top: 20px;">
+                <span><strong>Status:</strong> Unrestricted Public Demonstration View</span>
+                <span><strong>Integration:</strong> Standalone (Testnet Removed)</span>
+            </div>
+        </div>
 
-                <div style="border-top: 1px solid #334155; padding-top: 15px;">
-                    <label>Custom Legacy Competitor Benchmark (%)</label>
-                    <div style="display: flex; align-items: center; gap: 15px; margin-top: 8px;">
-                        <input type="range" id="competitorRateSlider" class="accent-rose" min="0.5" max="7.0" step="0.05" value="2.5" oninput="recalculateAll()">
-                        <span id="competitorRateLabel" class="slider-badge slider-badge-rose" style="font-size: 14px; padding: 4px 10px;">2.50%</span>
-                    </div>
-                    <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Modify the benchmark variable to match existing cross-border or clearing layer overhead.</p>
+        <!-- Workspace Grid Layout -->
+        <div class="workspace">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="step-card">
+                    <span class="step-badge">Step 1</span>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Run Demo Simulation</h3>
+                    <p style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Execute local demonstration sequence. For visual review only.</p>
+                    <button class="btn-action" onclick="alert('Demonstration Mode: Sequence executed successfully. For demonstration purposes only.')">Execute Demo</button>
                 </div>
             </div>
 
+            <!-- Overview / Access Note -->
             <div class="step-card">
-                <span class="step-badge step-badge-blue">Configuration 2</span>
-                <h2 style="font-size: 15px; font-weight: 900; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px;">Modular Pipeline Compliance Parameters</h2>
-                <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">Toggle custom institution friction variables. Moving a slider to zero detaches that asset car logic from the single-rail engine.</p>
-
-                <div class="slider-box">
-                    <div class="slider-header">
-                        <span class="slider-title">💵 Interbank Liquidity Route Premium</span>
-                        <span id="sliderValueLabel1" class="slider-badge">0.00%</span>
-                    </div>
-                    <input type="range" id="ruleSlider1" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
-                </div>
-
-                <div class="slider-box">
-                    <div class="slider-header">
-                        <span class="slider-title">🔍 Compliance & AML Verification Hook</span>
-                        <span id="sliderValueLabel2" class="slider-badge">0.00%</span>
-                    </div>
-                    <input type="range" id="ruleSlider2" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
-                </div>
-
-                <div class="slider-box">
-                    <div class="slider-header">
-                        <span class="slider-title">🛡️ Counterparty Clearing Risk Margin</span>
-                        <span id="sliderValueLabel3" class="slider-badge">0.00%</span>
-                    </div>
-                    <input type="range" id="ruleSlider3" min="0" max="5" step="0.1" value="0" oninput="recalculateAll()">
+                <span class="step-badge step-badge-blue">Access Notice</span>
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Security & Visibility</h3>
+                <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 15px;">
+                    This interface operates entirely as a secure offline mockup. All testnet integrations and external network calls have been removed. The viewing layer is fully open with no restrictions or blocks preventing viewers.
+                </p>
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 11px; font-family: monospace; color: #0f172a;">
+                    MODE: DEMO_ONLY // TESTNET: REMOVED // BLOCKS: NONE
                 </div>
             </div>
-
-        </div>
-
-        <div class="display-panel">
-            
-            <div class="totals-grid">
-                
-                <div class="total-box total-box-iaw">
-                    <div class="box-tag box-tag-iaw">IAW Consolidated</div>
-                    <label>Total IAW Rail Drag Loss</label>
-                    <div id="iawGrandTotalLabel" class="total-value text-iaw">$0.00</div>
-                    <p>Based on Engine Fee + Attached Car Rules.</p>
-                </div>
-
-                <div class="total-box">
-                    <div class="box-tag box-tag-leg">Legacy Alternative Rail</div>
-                    <label>Total Legacy Drag Loss</label>
-                    <div id="legacyGrandTotalLabel" class="total-value text-leg">$0.00</div>
-                    <p>Based on Custom Competitor Base + Attached Car Rules.</p>
-                </div>
-
-            </div>
-
-            <div class="savings-hero">
-                <div>
-                    <p class="savings-title">Capital Efficiency Saved via IAW Single-Rail Deployment</p>
-                    <div id="capitalSavingsLabel" class="savings-value">+$0.00</div>
-                </div>
-                <div class="savings-badge">Optimized Route Selection</div>
-            </div>
-
-            <div class="matrix-card">
-                <h3 class="matrix-title">Itemized Structural Cost Comparison Matrix</h3>
-                <table class="matrix-table">
-                    <thead>
-                        <tr>
-                            <th style="text-align: left;">Protocol Core Layer Element</th>
-                            <th style="color: #0284c7; text-align: right;">IAW Rail Pipeline</th>
-                            <th style="color: #e11d48; text-align: right;">Legacy Benchmark</th>
-                        </tr>
-                    </thead>
-                    <tbody id="matrixTableBody">
-                        <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">Base Architecture Clearing Settlement</td>
-                            <td id="matrixRow1IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00 (0.33%)</td>
-                            <td id="matrixRow1Legacy" style="color: #64748b; text-align: right;">$0.00 (2.50%)</td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">💵 Interbank Liquidity Route Premium</td>
-                            <td id="matrixRow2IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
-                            <td id="matrixRow2Legacy" style="color: #64748b; text-align: right;">$0.00</td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">🔍 Compliance & AML Verification Hook</td>
-                            <td id="matrixRow3IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
-                            <td id="matrixRow3Legacy" style="color: #64748b; text-align: right;">$0.00</td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: system-ui, sans-serif; font-weight: 700;">🛡️ Counterparty Clearing Risk Margin</td>
-                            <td id="matrixRow4IAW" style="color: #0284c7; text-align: right; font-weight: bold;">$0.00</td>
-                            <td id="matrixRow4Legacy" style="color: #64748b; text-align: right;">$0.00</td>
-                        </tr>
-                        <tr class="row-total">
-                            <td style="font-family: system-ui, sans-serif; text-transform: uppercase; font-size: 10px; color: #64748b; letter-spacing: 0.5px;">Total Net Capital Attrition</td>
-                            <td id="matrixTotalIAW" style="color: #0284c7; text-align: right;">$0.00</td>
-                            <td id="matrixTotalLegacy" style="color: #e11d48; text-align: right;">$0.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="info-box">
-                <h4>📋 Sandbox Quickstart Guide</h4>
-                <p><strong>Step 1:</strong> Define your desired <strong>Settlement Volume</strong> target inside the dark primary input card (e.g., input <code>$25,000,000</code>).</p>
-                <p><strong>Step 2:</strong> Pivot the compliance variables under Configuration 2 to watch train cars stack, scale, or detach in real time based on active load guidelines.</p>
-                <p><strong>Step 3:</strong> Tune the custom legacy benchmark slider to test performance comparisons against high-friction banking models.</p>
-                <p><strong>Step 4:</strong> Track the emerald dashboard metrics to view exact figures highlighting where the <strong>IAW Rail optimizes corporate liquidity reserves.</strong></p>
-            </div>
-
         </div>
     </div>
-</div>
 
-<script>
-    let operationalVolume = 10000000;
-
-    function processVolumeTyping(enteredText) {
-        const structuralNumericString = enteredText.replace(/[^0-9.]/g, '');
-        operationalVolume = parseFloat(structuralNumericString) || 0;
-        recalculateAll();
-    }
-
-    function recalculateAll() {
-        // Read Sliders
-        const competitorBaseRate = parseFloat(document.getElementById('competitorRateSlider').value) || 0;
-        document.getElementById('competitorRateLabel').innerText = competitorBaseRate.toFixed(2) + "%";
-
-        const carRate1 = parseFloat(document.getElementById('ruleSlider1').value) || 0;
-        const carRate2 = parseFloat(document.getElementById('ruleSlider2').value) || 0;
-        const carRate3 = parseFloat(document.getElementById('ruleSlider3').value) || 0;
-
-        document.getElementById('sliderValueLabel1').innerText = carRate1.toFixed(2) + "%";
-        document.getElementById('sliderValueLabel2').innerText = carRate2.toFixed(2) + "%";
-        document.getElementById('sliderValueLabel3').innerText = carRate3.toFixed(2) + "%";
-
-        // Rebuild Train View Elements on the DOM Track
-        const trainDockElement = document.getElementById('dynamic-train-cars');
-        trainDockElement.innerHTML = ''; 
-
-        let aggregatedIawPercentageTotal = 0.33; 
-
-        if (carRate1 > 0) {
-            aggregatedIawPercentageTotal += carRate1;
-            trainDockElement.innerHTML += createTrainCarHtmlElement("💵 Route Car", carRate1, "car-liquidity");
-        }
-        
-        if (carRate2 > 0) {
-            aggregatedIawPercentageTotal += carRate2;
-            trainDockElement.innerHTML += createTrainCarHtmlElement("🔍 AML Car", carRate2, "car-compliance");
-        }
-
-        if (carRate3 > 0) {
-            aggregatedIawPercentageTotal += carRate3;
-            trainDockElement.innerHTML += createTrainCarHtmlElement("🛡️ Risk Car", carRate3, "car-risk");
-        }
-
-        document.getElementById('track-total-percentage').innerText = aggregatedIawPercentageTotal.toFixed(2) + "%";
-
-        // Math Formulas Calculations
-        const iawBaseFeeDollar = operationalVolume * 0.0033; 
-        const taxFeeDollar = operationalVolume * (carRate1 / 100);
-        const bankFeeDollar = operationalVolume * (carRate2 / 100);
-        const riskFeeDollar = operationalVolume * (carRate3 / 100);
-
-        const iawGrandTotalOverheadDollar = iawBaseFeeDollar + taxFeeDollar + bankFeeDollar + riskFeeDollar;
-
-        const legacyBaseFeeDollar = operationalVolume * (competitorBaseRate / 100);
-        const legacyGrandTotalOverheadDollar = legacyBaseFeeDollar + taxFeeDollar + bankFeeDollar + riskFeeDollar;
-
-        const netPreservedEfficiencyCapital = legacyGrandTotalOverheadDollar - iawGrandTotalOverheadDollar;
-
-        // UI Displays Output updates
-        document.getElementById('iawGrandTotalLabel').innerText = renderCurrencyString(iawGrandTotalOverheadDollar);
-        document.getElementById('legacyGrandTotalLabel').innerText = renderCurrencyString(legacyGrandTotalOverheadDollar);
-
-        const efficiencyLabelContainer = document.getElementById('capitalSavingsLabel');
-        if (netPreservedEfficiencyCapital >= 0) {
-            efficiencyLabelContainer.innerText = "+" + renderCurrencyString(netPreservedEfficiencyCapital);
-            efficiencyLabelContainer.style.color = "#ffffff";
-        } else {
-            efficiencyLabelContainer.innerText = renderCurrencyString(netPreservedEfficiencyCapital);
-            efficiencyLabelContainer.style.color = "#fecdd3";
-        }
-
-        // Table Rows Content Updates
-        document.getElementById('matrixRow1IAW').innerText = renderCurrencyString(iawBaseFeeDollar) + " (0.33%)";
-        document.getElementById('matrixRow1Legacy').innerText = renderCurrencyString(legacyBaseFeeDollar) + " (" + competitorBaseRate.toFixed(2) + "%)";
-
-        document.getElementById('matrixRow2IAW').innerText = renderCurrencyString(taxFeeDollar);
-        document.getElementById('matrixRow2Legacy').innerText = renderCurrencyString(taxFeeDollar);
-
-        document.getElementById('matrixRow3IAW').innerText = renderCurrencyString(bankFeeDollar);
-        document.getElementById('matrixRow3Legacy').innerText = renderCurrencyString(bankFeeDollar);
-
-        document.getElementById('matrixRow4IAW').innerText = renderCurrencyString(riskFeeDollar);
-        document.getElementById('matrixRow4Legacy').innerText = renderCurrencyString(riskFeeDollar);
-
-        document.getElementById('matrixTotalIAW').innerText = renderCurrencyString(iawGrandTotalOverheadDollar) + " (" + aggregatedIawPercentageTotal.toFixed(2) + "%)";
-        document.getElementById('matrixTotalLegacy').innerText = renderCurrencyString(legacyGrandTotalOverheadDollar) + " (" + (competitorBaseRate + carRate1 + carRate2 + carRate3).toFixed(2) + "%)";
-    }
-
-    function createTrainCarHtmlElement(carTitle, rateValue, carColorClass) {
-        return `
-            <div class="car-coupler">
-                <div class="link-hook">🔗</div>
-                <div class="cargo-car ${carColorClass}">
-                    <div class="car-name">${carTitle}</div>
-                    <div class="car-percentage">${rateValue.toFixed(2)}%</div>
-                </div>
-            </div>
-        `;
-    }
-
-    function renderCurrencyString(rawNumericValue) {
-        return "$" + rawNumericValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    document.getElementById('volumeField').addEventListener('blur', function(e) {
-        e.target.value = renderCurrencyString(operationalVolume);
-    });
-
-    document.getElementById('volumeField').addEventListener('focus', function(e) {
-        e.target.value = operationalVolume > 0 ? operationalVolume : '';
-    });
-
-    // Boot execution loop configuration
-    window.onload = function() {
-        recalculateAll();
-    };
-</script>
 </body>
 </html>
