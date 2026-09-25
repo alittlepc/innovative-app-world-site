@@ -38,7 +38,7 @@
         .core-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
         .core-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
         
-        .pipeline-connector { color: #94a3b8; font-weight: 900; font-size: 16px; padding: 0 4px; flex-shrink: 0; }
+        .pipeline-connector { color: #0284c7; font-weight: 900; font-size: 16px; padding: 0 4px; flex-shrink: 0; }
         
         .pipeline-card { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 165px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; }
         .pipeline-card-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -264,7 +264,19 @@
         function renderPipeline() {
             const assembly = document.getElementById('pipelineAssembly');
             const activeMods = availableModules.filter(m => m.active);
+            const totalAmount = parseFloat(slider.value) || 0;
 
+            // 1. Define Sender (Party A)
+            const senderHTML = `
+                <div class="pipeline-card" style="background: #0f172a; color: white; border-color: #334155;">
+                    <div class="pipeline-card-name" style="color: #38bdf8;">Party A: Sender</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase;">Origin</div>
+                    <div class="pipeline-calc" style="background: #1e293b; color: #38bdf8;">$${Math.round(totalAmount).toLocaleString()}</div>
+                </div>
+                <div class="pipeline-connector">➔</div>
+            `;
+
+            // 2. Define IAW Core Engine
             const coreHTML = `
                 <div class="pipeline-core">
                     <div>
@@ -275,10 +287,11 @@
                 </div>
             `;
             
+            // 3. Build Active Modules
             let cardsHTML = '';
             activeMods.forEach((mod, index) => {
                 cardsHTML += `
-                    <div class="pipeline-connector">[==]</div>
+                    <div class="pipeline-connector">➔</div>
                     <div class="pipeline-card mod-${mod.id}">
                         <div class="pipeline-card-name">Module #${index + 1}: ${mod.name}</div>
                         <div class="pipeline-control-row">
@@ -290,8 +303,18 @@
                 `;
             });
 
-            assembly.innerHTML = coreHTML + cardsHTML;
-            renderMounts(activeMods.length);
+            // 4. Define Receiver (Party B) - Securing 100% Profit Retention
+            const receiverHTML = `
+                <div class="pipeline-connector">➔</div>
+                <div class="pipeline-card" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
+                    <div class="pipeline-card-name" style="color: #166534;">Party B: Receiver</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #15803d; text-transform: uppercase;">Destination</div>
+                    <div class="pipeline-calc" style="background: #dcfce7; color: #166534;">$${Math.round(totalAmount).toLocaleString()}</div>
+                </div>
+            `;
+
+            assembly.innerHTML = senderHTML + coreHTML + cardsHTML + receiverHTML;
+            renderMounts(activeMods.length + 2);
             updateCalculations();
         }
 
@@ -364,7 +387,6 @@
             const activeMods = availableModules.filter(m => m.active);
             let totalPct = activeMods.reduce((sum, m) => sum + m.percent, 0);
 
-            // Strict validation check added to enforce 100% total allocation before simulation
             if (totalPct !== 100) {
                 logConsole(`[Error] Simulation halted. Total module allocation must equal 100% (currently ${totalPct}%).`);
                 alert(`Allocation mismatch: Total shares equal ${totalPct}%. Modules must balance to exactly 100% before running simulations.`);
