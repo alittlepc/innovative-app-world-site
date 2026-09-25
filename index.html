@@ -41,24 +41,29 @@
         .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-width: max-content; padding-bottom: 10px; }
         
         /* Train Engine and Cars */
-        .engine { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 120px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
+        .engine { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
         .engine-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
         .engine-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
         
         .car-coupler { display: flex; align-items: flex-end; animation: popIn 0.25s ease-out forwards; flex-shrink: 0; }
         @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 30px; }
+        .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 40px; }
         
-        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 145px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
-        .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-        .car-percentage { font-size: 12px; font-family: monospace; font-weight: 900; padding: 4px; border-radius: 6px; text-align: center; }
+        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 160px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
+        .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .car-control-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; background: #f8fafc; padding: 4px 6px; border-radius: 6px; border: 1px solid #e2e8f0; }
+        .car-control-row label { font-size: 9px; font-weight: 900; color: #475569; text-transform: uppercase; }
+        .car-percent-input { width: 55px; font-family: monospace; font-size: 11px; font-weight: 900; padding: 2px 4px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: right; background: white; }
+        
+        .car-calc { font-size: 11px; font-family: monospace; font-weight: 900; padding: 6px; border-radius: 6px; text-align: center; }
         
         /* Corporate Car Palettes */
-        .car-clearing { border-color: #cbd5e1; } .car-clearing .car-percentage { background: #f1f5f9; color: #334155; }
-        .car-messaging { border-color: #93c5fd; } .car-messaging .car-percentage { background: #eff6ff; color: #1e40af; }
-        .car-ledger { border-color: #fed7aa; } .car-ledger .car-percentage { background: #fff7ed; color: #c2410c; }
-        .car-compliance { border-color: #cbd5e1; } .car-compliance .car-percentage { background: #f8fafc; color: #475569; }
-        .car-profit { border-color: #86efac; } .car-profit .car-percentage { background: #f0fdf4; color: #166534; }
+        .car-clearing { border-color: #cbd5e1; } .car-calc { background: #f1f5f9; color: #334155; }
+        .car-messaging { border-color: #93c5fd; } .car-messaging .car-calc { background: #eff6ff; color: #1e40af; }
+        .car-ledger { border-color: #fed7aa; } .car-ledger .car-calc { background: #fff7ed; color: #c2410c; }
+        .car-compliance { border-color: #cbd5e1; } .car-compliance .car-calc { background: #f8fafc; color: #475569; }
+        .car-profit { border-color: #86efac; } .car-profit .car-calc { background: #f0fdf4; color: #166534; }
 
         /* Train Wheels & Track Bed */
         .track-rail { height: 8px; background: #cbd5e1; border-radius: 4px; margin-top: -10px; position: relative; z-index: -1; margin-bottom: 20px; }
@@ -129,11 +134,11 @@
             <!-- Builder Commands -->
             <div class="card">
                 <h3>1. Attach Logic Rails</h3>
-                <button class="btn-action btn-profit" onclick="addCar('profit', 'Max Profit Yield', '+98.4%')">+ Attach Profit Maximization Rail</button>
-                <button class="btn-action" onclick="addCar('clearing', 'Clearing & Settlement', 'Instantaneous')">+ Attach Clearing & Settlement Rail</button>
-                <button class="btn-action" onclick="addCar('messaging', 'ISO 20022 Messaging', '100% Format')">+ Attach ISO 20022 Messaging Rail</button>
-                <button class="btn-action" onclick="addCar('ledger', 'Multi-Currency Ledger', 'Real-Time FX')">+ Attach Multi-Currency Ledger Rail</button>
-                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Compliance', 'AML / KYC')">+ Attach Regulatory Compliance Rail</button>
+                <button class="btn-action btn-profit" onclick="addCar('profit', 'Max Profit Yield', 50)">+ Attach Profit Maximization Rail</button>
+                <button class="btn-action" onclick="addCar('clearing', 'Clearing & Settlement', 25)">+ Attach Clearing & Settlement Rail</button>
+                <button class="btn-action" onclick="addCar('messaging', 'ISO 20022 Messaging', 10)">+ Attach ISO 20022 Messaging Rail</button>
+                <button class="btn-action" onclick="addCar('ledger', 'Multi-Currency Ledger', 10)">+ Attach Multi-Currency Ledger Rail</button>
+                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Compliance', 5)">+ Attach Regulatory Compliance Rail</button>
                 <button class="btn-action btn-danger" onclick="removeLastCar()">- Remove Last Rail</button>
             </div>
 
@@ -146,7 +151,7 @@
                 </div>
                 <div class="step-box">
                     <div class="step-number">Profit Priority</div>
-                    <div class="step-instruction">Maximum yield slider scale activated for top profitability.</div>
+                    <div class="step-instruction">Maximum yield scale active. Adjust percentages per rail to calculate precise allocations.</div>
                 </div>
             </div>
 
@@ -165,8 +170,8 @@
 
     <script>
         let cars = [
-            { type: 'profit', name: 'Max Profit Yield', val: '+98.4%' },
-            { type: 'clearing', name: 'Clearing & Settlement', val: 'Instantaneous' }
+            { type: 'profit', name: 'Max Profit Yield', percent: 60 },
+            { type: 'clearing', name: 'Clearing & Settlement', percent: 40 }
         ];
 
         const slider = document.getElementById('demoMoneySlider');
@@ -174,6 +179,7 @@
 
         slider.addEventListener('input', (event) => {
             display.textContent = Number(event.target.value).toLocaleString();
+            updateCalculations();
         });
 
         function renderTrain() {
@@ -195,7 +201,11 @@
                         <div class="link-hook">[==]</div>
                         <div class="cargo-car car-${car.type}">
                             <div class="car-name">Rail #${index + 1}: ${car.name}</div>
-                            <div class="car-percentage">${car.val}</div>
+                            <div class="car-control-row">
+                                <label>Share %</label>
+                                <input type="number" class="car-percent-input" min="0" max="100" value="${car.percent}" oninput="updateCarPercent(${index}, this.value)">
+                            </div>
+                            <div class="car-calc" id="calc-${index}">$0</div>
                         </div>
                     </div>
                 `;
@@ -203,6 +213,7 @@
 
             assembly.innerHTML = engineHTML + carsHTML;
             renderWheels();
+            updateCalculations();
         }
 
         function renderWheels() {
@@ -215,10 +226,26 @@
             wheelBase.innerHTML = wheelsHTML;
         }
 
-        function addCar(type, name, val) {
-            cars.push({ type, name, val });
+        function updateCarPercent(index, val) {
+            cars[index].percent = parseFloat(val) || 0;
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            const totalAmount = parseFloat(slider.value) || 0;
+            cars.forEach((car, index) => {
+                const calculatedValue = (totalAmount * (car.percent / 100));
+                const calcEl = document.getElementById(`calc-${index}`);
+                if (calcEl) {
+                    calcEl.textContent = '$' + Math.round(calculatedValue).toLocaleString();
+                }
+            });
+        }
+
+        function addCar(type, name, defaultPercent) {
+            cars.push({ type, name, percent: defaultPercent });
             renderTrain();
-            logConsole(`[Attached] Added ${name} rail (${val}). Profit priority optimized.`);
+            logConsole(`[Attached] Added ${name} rail (${defaultPercent}%). Profit priority optimized.`);
         }
 
         function removeLastCar() {
@@ -233,9 +260,10 @@
 
         function runSimulation() {
             const currentAmount = Number(slider.value).toLocaleString();
-            logConsole(`[Executing] Starting IAW Logic Rail Simulation with Demo Amount: $${currentAmount}...`);
+            let totalPct = cars.reduce((sum, c) => sum + c.percent, 0);
+            logConsole(`[Executing] Starting IAW Simulation | Amount: $${currentAmount} | Total Allocation: ${totalPct}%...`);
             setTimeout(() => {
-                logConsole(`[Success] All ${cars.length} rails verified. Profitability maximized at 99.9%. Settlement finalized via deterministic code execution.`);
+                logConsole(`[Success] All ${cars.length} rails verified. Profitability maximized. Settlement finalized via deterministic code execution.`);
             }, 400);
         }
 
