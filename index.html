@@ -139,12 +139,12 @@
             <div class="card">
                 <h3>2. Demo Money Scale</h3>
                 <div style="margin-bottom: 15px;">
-                    <label for="demoMoneySlider" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: block;">Simulation Amount: $<span id="demoMoneyDisplay" style="color: #166534; font-size: 14px;">10,000,000</span></label>
+                    <label for="demoMoneySlider" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: block;">Intended Target Amount: $<span id="demoMoneyDisplay" style="color: #166534; font-size: 14px;">10,000,000</span></label>
                     <input type="range" id="demoMoneySlider" min="100000" max="50000000" step="100000" value="10000000" style="width: 100%; cursor: pointer;">
                 </div>
                 <div class="step-box">
                     <div class="step-number">Train Engine Architecture</div>
-                    <div class="step-instruction">The IAW Rail Core engine runs at a fixed 0.33%. Active module cars add their specific percentage per transaction on top.</div>
+                    <div class="step-instruction">The slider sets the intended amount delivered to Party B. Sender (Party A) covers the target amount plus all rail/car fees on top.</div>
                 </div>
             </div>
 
@@ -261,14 +261,13 @@
         function renderPipeline() {
             const assembly = document.getElementById('pipelineAssembly');
             const activeMods = availableModules.filter(m => m.active);
-            const totalAmount = parseFloat(slider.value) || 0;
 
-            // 1. Define Sender (Party A - Gross)
+            // 1. Define Sender (Party A - Gross Total Paid)
             const senderHTML = `
                 <div class="pipeline-card" style="background: #0f172a; color: white; border-color: #334155;">
                     <div class="pipeline-card-name" style="color: #38bdf8;">Party A: Sender</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase;">Gross Origin</div>
-                    <div class="pipeline-calc" style="background: #1e293b; color: #38bdf8;">$${Math.round(totalAmount).toLocaleString()}</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase;">Gross Total Paid</div>
+                    <div class="pipeline-calc" id="partyAGrossDisplay" style="background: #1e293b; color: #38bdf8;">$0</div>
                 </div>
                 <div class="pipeline-connector">➔</div>
             `;
@@ -300,12 +299,12 @@
                 `;
             });
 
-            // 4. Define Receiver (Party B - Net Destination)
+            // 4. Define Receiver (Party B - Intended Target Destination)
             const receiverHTML = `
                 <div class="pipeline-connector">➔</div>
                 <div class="pipeline-card" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
                     <div class="pipeline-card-name" style="color: #166534;">Party B: Receiver</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #15803d; text-transform: uppercase;">Net Destination</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #15803d; text-transform: uppercase;">Intended Target</div>
                     <div class="pipeline-calc" id="netReceiverDisplay" style="background: #dcfce7; color: #166534;">$0</div>
                 </div>
             `;
@@ -334,34 +333,41 @@
         }
 
         function updateCalculations() {
-            const totalAmount = parseFloat(slider.value) || 0;
+            const targetAmount = parseFloat(slider.value) || 0; // Party B intended delivery
             const activeMods = availableModules.filter(m => m.active);
             
             let modsFeePct = 0;
             activeMods.forEach((mod) => {
                 modsFeePct += mod.percent;
-                const calculatedCost = totalAmount * (mod.percent / 100);
+                const calculatedCost = targetAmount * (mod.percent / 100);
                 const calcEl = document.getElementById(`calc-${mod.id}`);
                 if (calcEl) {
                     calcEl.textContent = '$' + Math.round(calculatedCost).toLocaleString() + ` (+${mod.percent}%)`;
                 }
             });
 
-            // Calculate core fee harvest
-            const coreFeeAmount = totalAmount * (CORE_ENGINE_COST / 100);
+            // Calculate core fee harvest based on target amount
+            const coreFeeAmount = targetAmount * (CORE_ENGINE_COST / 100);
             const coreDisplay = document.getElementById('coreFeeHarvestDisplay');
             if (coreDisplay) {
                 coreDisplay.textContent = `0.33% ($${Math.round(coreFeeAmount).toLocaleString()})`;
             }
 
             const totalIawFeePct = CORE_ENGINE_COST + modsFeePct;
-            const totalIawCost = totalAmount * (totalIawFeePct / 100);
-            const netReceiverAmount = totalAmount - totalIawCost;
+            const totalFeesAmount = targetAmount * (totalIawFeePct / 100);
+            const partyAGrossTotal = targetAmount + totalFeesAmount;
 
-            // Update Net Receiver display
+            // Update Party A Gross Paid
+            const grossDisplay = document.getElementById('partyAGrossDisplay');
+            if (grossDisplay) {
+                grossDisplay.textContent = '$' + Math.round(partyAGrossTotal).toLocaleString();
+            }
+
+            // Update Net Receiver display (matches intended target)
             const netDisplay = document.getElementById('netReceiverDisplay');
             if (netDisplay) {
-                netDisplay.textContent = '$' + Math.round(netReceiverAmount).toLocaleString();
+                netDestinationAmount = targetAmount;
+                netDisplay.textContent = '$' + Math.round(netDestinationAmount).toLocaleString();
             }
 
             // Update summary bar
@@ -370,14 +376,14 @@
 
             // Legacy calculations
             const legacyFeePct = parseFloat(document.getElementById('legacyFeePct').value) || 0;
-            const legacyTotalCost = totalAmount * (legacyFeePct / 100);
+            const legacyTotalCost = targetAmount * (legacyFeePct / 100);
             
             document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyTotalCost).toLocaleString();
-            document.getElementById('iawTotalVal').textContent = '$' + Math.round(totalIawCost).toLocaleString();
+            document.getElementById('iawTotalVal').textContent = '$' + Math.round(totalFeesAmount).toLocaleString();
 
             document.getElementById('iawTotalFeePctDisplay').textContent = totalIawFeePct.toFixed(2) + '% (Engine + Cars)';
             
-            const savingsDelta = legacyTotalCost - totalIawCost;
+            const savingsDelta = legacyTotalCost - totalFeesAmount;
             document.getElementById('deltaTotalVal').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' Net Advantage';
             document.getElementById('deltaFeeDisplay').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' saved';
         }
@@ -391,7 +397,7 @@
             logConsole(`[ITL™ Pre-Ingestion Gate] Validating authority, timing, and predecessor dependencies...[cite: 3, 4]`);
             setTimeout(() => {
                 logConsole(`[FRE 902(13)/(14) Generated] Self-authenticating evidentiary log recorded[cite: 3, 4].`);
-                logConsole(`[Success] Pipeline Gross: $${currentAmount} | Harvested Fee: ${totalFeePct}% | Net Delivered.`);
+                logConsole(`[Success] Party B Target: $${currentAmount} | Total Fee Paid by Sender: ${totalFeePct}%`);
             }, 500);
         }
 
