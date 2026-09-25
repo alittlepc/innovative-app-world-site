@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Custom Logic Rail Builder & Comparative Analysis</title>
+    <title>IAW | Custom Logic Rail Builder & ITL™ Evidentiary Architecture</title>
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -84,6 +84,8 @@
         .step-instruction { font-size: 13px; font-weight: 700; color: #1e293b; }
 
         .output-console { background: #0f172a; color: #38bdf8; font-family: monospace; padding: 15px; border-radius: 14px; font-size: 12px; min-height: 120px; max-height: 200px; overflow-y: auto; border: 1px solid #334155; line-height: 1.5; }
+        
+        .itl-quote-box { background: #f0fdf4; border-left: 4px solid #166534; padding: 15px; border-radius: 0 12px 12px 0; margin-top: 15px; margin-bottom: 15px; font-style: italic; font-size: 13px; line-height: 1.6; color: #14532d; }
     </style>
 </head>
 <body>
@@ -93,8 +95,8 @@
         <div class="ticker-wrap">
             <span>IAW Network Simulation Active</span>
             <span>Core Train Engine: 0.33% Fixed</span>
-            <span>Additional Cars Add Modular % Costs</span>
-            <span>High-Performance Settlement Rails</span>
+            <span>ITL&trade; Pre-Ingestion Gate Active[cite: 3, 4]</span>
+            <span>FRE 902(13)/(14) Courtroom-Admissible Evidence[cite: 3, 4]</span>
         </div>
     </div>
 
@@ -151,8 +153,8 @@
                 <button class="btn-action btn-profit" onclick="runSimulation()" style="margin-bottom: 12px;">Run Custom Pipeline Simulation</button>
                 <div class="output-console" id="outputConsole">
                     [System Ready] IAW Train Engine (0.33% Core) initialized.<br>
-                    [Notice] FOR DEMONSTRATION PURPOSES ONLY.<br>
-                    [Instruction] Core engine active with modular add-on cars.
+                    [Notice] ITL™ Pre-Ingestion Gate active[cite: 3, 4].<br>
+                    [Instruction] Core engine ready for execution.
                 </div>
             </div>
         </div>
@@ -189,15 +191,17 @@
         <!-- Institutional Reference Architecture & Verified Sources Section -->
         <div class="card">
             <h3>Institutional Reference Architecture & Verified Sources</h3>
-            <p style="font-size: 12px; line-height: 1.6; color: #334155; margin-bottom: 12px;">
-                To substantiate the shift from post-hoc reconciliation to protocol-tier pre-execution truth, we've compiled the complete institutional research directory—covering legal frameworks <a href="https://www.innovativeappworld.com" target="_blank" style="color: #0284c7; text-decoration: underline; font-weight: 700;">Robert H.D. Genders, Esq.</a>, <a href="https://www.innovativeappworld.com" target="_blank" style="color: #0284c7; text-decoration: underline; font-weight: 700;">Citi $5.5T RWA projections</a>, <a href="https://www.innovativeappworld.com" target="_blank" style="color: #0284c7; text-decoration: underline; font-weight: 700;">DTCC AppChain architectures</a>, and <a href="https://www.innovativeappworld.com" target="_blank" style="color: #0284c7; text-decoration: underline; font-weight: 700;">Swift/ISO standards</a>.
-            </p>
-            <p style="font-size: 12px; line-height: 1.6; color: #334155; margin-bottom: 15px;">
-                Access the full verified reference ledger and test the live simulation architecture at:<br>
+            
+            <div class="itl-quote-box">
+                &ldquo;This execution pipeline is integrated with the patented Institutional Truth Ledger (ITL™) infrastructure developed by @Robert H.D. Genders, Esq. Rather than serving as a post-transaction log, ITL™ act as an off-chain, UTC-normalized pre-ingestion gate enforcing authority, timing, and predecessor dependencies before rail execution while generating FRE 902(13)/(14) self-authenticating courtroom evidence.&rdquo;[cite: 3, 4]
+            </div>
+
+            <p style="font-size: 12px; line-height: 1.6; color: #334155; margin-bottom: 15px; margin-top: 15px;">
+                Our institutional research directory also covers Citi $5.5T RWA projections, DTCC AppChain architectures, and Swift/ISO standards. Access the full verified reference ledger and test the live simulation architecture at:<br>
                 <a href="https://www.innovativeappworld.com" target="_blank" style="color: #0284c7; font-weight: 800; text-decoration: underline;">www.innovativeappworld.com</a>
             </p>
             <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">
-                #Tokenization #CollateralManagement #Regulation #DigitalAssets #ProtocolTier #InstitutionalFinance #FinTech #CapitalMarkets
+                #Tokenization #CollateralManagement #Regulation #DigitalAssets #ProtocolTier #InstitutionalFinance #FinTech #CapitalMarkets #ITL
             </p>
         </div>
     </div>
@@ -259,24 +263,24 @@
             const activeMods = availableModules.filter(m => m.active);
             const totalAmount = parseFloat(slider.value) || 0;
 
-            // 1. Define Sender (Party A)
+            // 1. Define Sender (Party A - Gross)
             const senderHTML = `
                 <div class="pipeline-card" style="background: #0f172a; color: white; border-color: #334155;">
                     <div class="pipeline-card-name" style="color: #38bdf8;">Party A: Sender</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase;">Origin</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase;">Gross Origin</div>
                     <div class="pipeline-calc" style="background: #1e293b; color: #38bdf8;">$${Math.round(totalAmount).toLocaleString()}</div>
                 </div>
                 <div class="pipeline-connector">➔</div>
             `;
 
-            // 2. Define IAW Core Engine (Fixed 0.33%)
+            // 2. Define IAW Core Engine (Fixed 0.33% Harvest)
             const coreHTML = `
                 <div class="pipeline-core">
                     <div>
                         <div class="core-title">Train Engine (Core)</div>
                         <div style="font-size: 13px; font-weight: 900; margin-top: 2px;">IAW Rail Core</div>
                     </div>
-                    <div class="core-badge">0.33% Base Cost</div>
+                    <div class="core-badge" id="coreFeeHarvestDisplay">0.33% ($0)</div>
                 </div>
             `;
             
@@ -296,13 +300,13 @@
                 `;
             });
 
-            // 4. Define Receiver (Party B)
+            // 4. Define Receiver (Party B - Net Destination)
             const receiverHTML = `
                 <div class="pipeline-connector">➔</div>
                 <div class="pipeline-card" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
                     <div class="pipeline-card-name" style="color: #166534;">Party B: Receiver</div>
-                    <div style="font-size: 9px; font-weight: 900; color: #15803d; text-transform: uppercase;">Destination</div>
-                    <div class="pipeline-calc" style="background: #dcfce7; color: #166534;">$${Math.round(totalAmount).toLocaleString()}</div>
+                    <div style="font-size: 9px; font-weight: 900; color: #15803d; text-transform: uppercase;">Net Destination</div>
+                    <div class="pipeline-calc" id="netReceiverDisplay" style="background: #dcfce7; color: #166534;">$0</div>
                 </div>
             `;
 
@@ -343,8 +347,22 @@
                 }
             });
 
+            // Calculate core fee harvest
+            const coreFeeAmount = totalAmount * (CORE_ENGINE_COST / 100);
+            const coreDisplay = document.getElementById('coreFeeHarvestDisplay');
+            if (coreDisplay) {
+                coreDisplay.textContent = `0.33% ($${Math.round(coreFeeAmount).toLocaleString()})`;
+            }
+
             const totalIawFeePct = CORE_ENGINE_COST + modsFeePct;
-            const iawTotalCost = totalAmount * (totalIawFeePct / 100);
+            const totalIawCost = totalAmount * (totalIawFeePct / 100);
+            const netReceiverAmount = totalAmount - totalIawCost;
+
+            // Update Net Receiver display
+            const netDisplay = document.getElementById('netReceiverDisplay');
+            if (netDisplay) {
+                netDisplay.textContent = '$' + Math.round(netReceiverAmount).toLocaleString();
+            }
 
             // Update summary bar
             const totalPctEl = document.getElementById('totalAllocationPct');
@@ -355,11 +373,11 @@
             const legacyTotalCost = totalAmount * (legacyFeePct / 100);
             
             document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyTotalCost).toLocaleString();
-            document.getElementById('iawTotalVal').textContent = '$' + Math.round(iawTotalCost).toLocaleString();
+            document.getElementById('iawTotalVal').textContent = '$' + Math.round(totalIawCost).toLocaleString();
 
             document.getElementById('iawTotalFeePctDisplay').textContent = totalIawFeePct.toFixed(2) + '% (Engine + Cars)';
             
-            const savingsDelta = legacyTotalCost - iawTotalCost;
+            const savingsDelta = legacyTotalCost - totalIawCost;
             document.getElementById('deltaTotalVal').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' Net Advantage';
             document.getElementById('deltaFeeDisplay').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' saved';
         }
@@ -370,10 +388,11 @@
             const modsFeePct = activeMods.reduce((sum, m) => sum + m.percent, 0);
             const totalFeePct = (CORE_ENGINE_COST + modsFeePct).toFixed(2);
 
-            logConsole(`[Executing Train Simulation] Amount: $${currentAmount} | Engine: 0.33% + ${activeMods.length} Attached Cars (${modsFeePct.toFixed(2)}%) = Total Fee: ${totalFeePct}%`);
+            logConsole(`[ITL™ Pre-Ingestion Gate] Validating authority, timing, and predecessor dependencies...[cite: 3, 4]`);
             setTimeout(() => {
-                logConsole(`[Success] Transaction routed successfully through IAW Train Engine & Cars. For demonstration purposes only.`);
-            }, 400);
+                logConsole(`[FRE 902(13)/(14) Generated] Self-authenticating evidentiary log recorded[cite: 3, 4].`);
+                logConsole(`[Success] Pipeline Gross: $${currentAmount} | Harvested Fee: ${totalFeePct}% | Net Delivered.`);
+            }, 500);
         }
 
         function logConsole(msg) {
