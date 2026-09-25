@@ -34,13 +34,13 @@
         .pipeline-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 10px; }
         .pipeline-assembly { display: flex; align-items: center; gap: 8px; min-width: max-content; padding-bottom: 10px; }
         
-        .pipeline-core { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; flex-shrink: 0; }
-        .core-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
+        .pipeline-core { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 180px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; flex-shrink: 0; }
+        .core-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; color: #38bdf8; }
         .core-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
         
         .pipeline-connector { color: #0284c7; font-weight: 900; font-size: 16px; padding: 0 4px; flex-shrink: 0; }
         
-        .pipeline-card { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 165px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; }
+        .pipeline-card { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 175px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; }
         .pipeline-card-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .pipeline-control-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; background: #f8fafc; padding: 4px 6px; border-radius: 6px; border: 1px solid #e2e8f0; }
@@ -92,8 +92,8 @@
     <div class="ticker">
         <div class="ticker-wrap">
             <span>IAW Network Simulation Active</span>
-            <span>Maximize Profit Yields</span>
-            <span>Deterministic Code Valuation Ready</span>
+            <span>Core Train Engine: 0.33% Fixed</span>
+            <span>Additional Cars Add Modular % Costs</span>
             <span>High-Performance Settlement Rails</span>
         </div>
     </div>
@@ -112,7 +112,7 @@
 
         <div class="pipeline-station">
             <div class="station-badge">Live Architecture View</div>
-            <div class="station-title">Custom Logic Rail Pipeline & Flow Illustration</div>
+            <div class="station-title">Train Engine & Additional Modular Cars Flow Illustration</div>
             
             <div class="pipeline-scroll-box">
                 <div class="pipeline-assembly" id="pipelineAssembly"></div>
@@ -121,16 +121,16 @@
             <div class="pipeline-mounts" id="mountBase"></div>
             
             <div class="allocation-bar" id="allocationBar">
-                <span>Total Pipeline Allocation:</span>
-                <span id="totalAllocationPct">100% (Fully Balanced)</span>
+                <span>Total Active Rail Fee Structure:</span>
+                <span id="totalAllocationPct" style="font-family: monospace;">0.33% Core + Cars = Total Fee</span>
             </div>
         </div>
 
         <div class="control-grid">
             <div class="card">
-                <h3>1. Configure User Rail Modules</h3>
+                <h3>1. Configure Additional Rail Cars (Modules)</h3>
                 <div class="module-toggle-list" id="moduleToggles"></div>
-                <button class="btn-action btn-profit" onclick="autoBalanceModules()">Auto-Optimize Profit Yields</button>
+                <button class="btn-action btn-profit" onclick="resetDefaultModules()">Reset Default Car Add-ons</button>
             </div>
 
             <div class="card">
@@ -140,8 +140,8 @@
                     <input type="range" id="demoMoneySlider" min="100000" max="50000000" step="100000" value="10000000" style="width: 100%; cursor: pointer;">
                 </div>
                 <div class="step-box">
-                    <div class="step-number">Profit Priority</div>
-                    <div class="step-instruction">Maximum yield scale active. IAW eliminates external third-party fees, routing asset value entirely through custom logic rails.</div>
+                    <div class="step-number">Train Engine Architecture</div>
+                    <div class="step-instruction">The IAW Rail Core engine runs at a fixed 0.33%. Active module cars add their specific percentage per transaction on top.</div>
                 </div>
             </div>
 
@@ -149,43 +149,37 @@
                 <h3>3. Settlement Console</h3>
                 <button class="btn-action btn-profit" onclick="runSimulation()" style="margin-bottom: 12px;">Run Custom Pipeline Simulation</button>
                 <div class="output-console" id="outputConsole">
-                    [System Ready] IAW Custom Logic Rail Builder initialized.<br>
+                    [System Ready] IAW Train Engine (0.33% Core) initialized.<br>
                     [Notice] FOR DEMONSTRATION PURPOSES ONLY.<br>
-                    [Instruction] Prioritizing maximum profitability options.
+                    [Instruction] Core engine active with modular add-on cars.
                 </div>
             </div>
         </div>
 
         <div class="card" style="margin-bottom: 30px;">
             <h3>4. Comparative Analysis: IAW Custom Rails vs. Legacy Typical Rails</h3>
-            <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Adjust legacy friction, fee, or overhead percentages to compare against your active IAW custom rail pipeline.</p>
+            <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Compare legacy transaction loss against your active IAW Train Engine (0.33%) plus attached car modules.</p>
             <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Metric</th>
                         <th>Legacy Typical (Editable)</th>
-                        <th>IAW Custom Logic Rails</th>
+                        <th>IAW Custom Train Rails</th>
                         <th>Net Advantage / Delta</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Intermediary Fee / Cut</strong></td>
-                        <td><input type="number" id="legacyFeePct" class="comparison-input" value="3.5" min="0" max="100" step="0.1" oninput="updateCalculations()">%</td>
-                        <td id="iawFeeDisplay" style="font-family: monospace; font-weight: 900; color: #166534;">0.0% (Optimized)</td>
-                        <td id="deltaFeeDisplay" style="font-family: monospace; font-weight: 900; color: #0284c7;">+$350,000 saved</td>
+                        <td><strong>Total Transaction Cost %</strong></td>
+                        <td><input type="number" id="legacyFeePct" class="comparison-input" value="5.3" min="0" max="100" step="0.1" oninput="updateCalculations()">%</td>
+                        <td id="iawTotalFeePctDisplay" style="font-family: monospace; font-weight: 900; color: #166534;">0.33% (Core Only)</td>
+                        <td id="deltaFeeDisplay" style="font-family: monospace; font-weight: 900; color: #0284c7;">+$530,000 saved</td>
                     </tr>
                     <tr>
-                        <td><strong>Settlement Friction Cost</strong></td>
-                        <td><input type="number" id="legacyFrictionPct" class="comparison-input" value="1.8" min="0" max="100" step="0.1" oninput="updateCalculations()">%</td>
-                        <td style="font-family: monospace; font-weight: 900; color: #166534;">0.01% (Deterministic)</td>
-                        <td id="deltaFrictionDisplay" style="font-family: monospace; font-weight: 900; color: #0284c7;">+$180,000 saved</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total Retained Value</strong></td>
-                        <td id="legacyTotalVal" style="font-family: monospace; font-weight: 900; color: #dc2626;">$9,470,000</td>
-                        <td id="iawTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">$10,000,000</td>
-                        <td id="deltaTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">+$530,000 Net Advantage</td>
+                        <td><strong>Total Cost in Dollars</strong></td>
+                        <td id="legacyTotalVal" style="font-family: monospace; font-weight: 900; color: #dc2626;">$530,000</td>
+                        <td id="iawTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">$33,000</td>
+                        <td id="deltaTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">+$497,000 Net Advantage</td>
                     </tr>
                 </tbody>
             </table>
@@ -208,12 +202,14 @@
     </div>
 
     <script>
+        const CORE_ENGINE_COST = 0.33; // Fixed 0.33% base engine cost
+
         let availableModules = [
-            { id: 'profit', name: 'Max Profit Yield', active: true, percent: 60 },
-            { id: 'clearing', name: 'Clearing & Settlement', active: true, percent: 40 },
-            { id: 'messaging', name: 'ISO 20022 Messaging', active: false, percent: 0 },
-            { id: 'ledger', name: 'Multi-Currency Ledger', active: false, percent: 0 },
-            { id: 'compliance', name: 'Regulatory Compliance', active: false, percent: 0 }
+            { id: 'profit', name: 'Max Profit Yield Car', active: true, percent: 0.15 },
+            { id: 'clearing', name: 'Clearing & Settlement Car', active: true, percent: 0.10 },
+            { id: 'messaging', name: 'ISO 20022 Messaging Car', active: false, percent: 0.05 },
+            { id: 'ledger', name: 'Multi-Currency Ledger Car', active: false, percent: 0.05 },
+            { id: 'compliance', name: 'Regulatory Compliance Car', active: false, percent: 0.05 }
         ];
 
         const slider = document.getElementById('demoMoneySlider');
@@ -235,7 +231,7 @@
             availableModules.forEach((mod, index) => {
                 html += `
                     <div class="module-toggle-item">
-                        <span>${mod.name}</span>
+                        <span>${mod.name} (+${mod.percent}%)</span>
                         <input type="checkbox" ${mod.active ? 'checked' : ''} onchange="toggleModule(${index}, this.checked)">
                     </div>
                 `;
@@ -245,35 +241,16 @@
 
         function toggleModule(index, isChecked) {
             availableModules[index].active = isChecked;
-            if (isChecked && availableModules[index].percent === 0) {
-                autoBalanceModules();
-            } else if (!isChecked) {
-                availableModules[index].percent = 0;
-                autoBalanceModules();
-            }
             renderPipeline();
         }
 
-        function autoBalanceModules() {
-            const activeMods = availableModules.filter(m => m.active);
-            if (activeMods.length === 0) return;
-            
-            const profitMod = activeMods.find(m => m.id === 'profit');
-            if (profitMod) {
-                profitMod.percent = 60;
-                const remainingMods = activeMods.filter(m => m.id !== 'profit');
-                const sharePerOther = remainingMods.length > 0 ? Math.floor(40 / remainingMods.length) : 0;
-                remainingMods.forEach((m, idx) => {
-                    m.percent = (idx === remainingMods.length - 1) ? (40 - (sharePerOther * (remainingMods.length - 1))) : sharePerOther;
-                });
-            } else {
-                const equalShare = Math.floor(100 / activeMods.length);
-                activeMods.forEach((m, idx) => {
-                    m.percent = (idx === activeMods.length - 1) ? (100 - (equalShare * (activeMods.length - 1))) : equalShare;
-                });
-            }
+        function resetDefaultModules() {
+            availableModules.forEach((m, idx) => {
+                m.active = (idx < 2); // Enable first two by default
+            });
+            renderToggles();
             renderPipeline();
-            logConsole('[Optimized] Custom rail modules auto-balanced for maximum profit yield.');
+            logConsole('[Reset] Train car modules reset to default configuration.');
         }
 
         function renderPipeline() {
@@ -291,27 +268,27 @@
                 <div class="pipeline-connector">➔</div>
             `;
 
-            // 2. Define IAW Core Engine
+            // 2. Define IAW Core Engine (Fixed 0.33%)
             const coreHTML = `
                 <div class="pipeline-core">
                     <div>
-                        <div class="core-title">IAW Engine</div>
-                        <div style="font-size: 14px; font-weight: 900; margin-top: 4px;">IAW Core v2.4</div>
+                        <div class="core-title">Train Engine (Core)</div>
+                        <div style="font-size: 13px; font-weight: 900; margin-top: 2px;">IAW Rail Core</div>
                     </div>
-                    <div class="core-badge" id="engineStatus">${activeMods.length > 0 ? activeMods.length + ' Active Modules' : 'Standby'}</div>
+                    <div class="core-badge">0.33% Base Cost</div>
                 </div>
             `;
             
-            // 3. Build Active Modules
+            // 3. Build Active Add-on Cars (Modules)
             let cardsHTML = '';
             activeMods.forEach((mod, index) => {
                 cardsHTML += `
                     <div class="pipeline-connector">➔</div>
                     <div class="pipeline-card mod-${mod.id}">
-                        <div class="pipeline-card-name">Module #${index + 1}: ${mod.name}</div>
+                        <div class="pipeline-card-name">Car #${index + 1}: ${mod.name}</div>
                         <div class="pipeline-control-row">
-                            <label>Share %</label>
-                            <input type="number" class="pipeline-percent-input" min="0" max="100" value="${mod.percent}" oninput="updateModulePercent('${mod.id}', this.value)">
+                            <label>Add-on %</label>
+                            <input type="number" class="pipeline-percent-input" min="0" max="10" step="0.01" value="${mod.percent}" oninput="updateModulePercent('${mod.id}', this.value)">
                         </div>
                         <div class="pipeline-calc" id="calc-${mod.id}">$0</div>
                     </div>
@@ -355,62 +332,46 @@
             const totalAmount = parseFloat(slider.value) || 0;
             const activeMods = availableModules.filter(m => m.active);
             
-            let totalPctSum = 0;
+            let modsFeePct = 0;
             activeMods.forEach((mod) => {
-                totalPctSum += mod.percent;
-                const calculatedValue = (totalAmount * (mod.percent / 100));
+                modsFeePct += mod.percent;
+                const calculatedCost = totalAmount * (mod.percent / 100);
                 const calcEl = document.getElementById(`calc-${mod.id}`);
                 if (calcEl) {
-                    calcEl.textContent = '$' + Math.round(calculatedValue).toLocaleString();
+                    calcEl.textContent = '$' + Math.round(calculatedCost).toLocaleString() + ` (+${mod.percent}%)`;
                 }
             });
 
-            const allocationBar = document.getElementById('allocationBar');
+            const totalIawFeePct = CORE_ENGINE_COST + modsFeePct;
+            const iawTotalCost = totalAmount * (totalIawFeePct / 100);
+
+            // Update summary bar
             const totalPctEl = document.getElementById('totalAllocationPct');
-            if (totalPctSum === 100) {
-                allocationBar.style.background = '#f0fdf4';
-                allocationBar.style.borderColor = '#bbf7d0';
-                totalPctEl.style.color = '#166534';
-                totalPctEl.textContent = '100% (Fully Balanced ✓)';
-            } else {
-                allocationBar.style.background = '#fef2f2';
-                allocationBar.style.borderColor = '#fecaca';
-                totalPctEl.style.color = '#b91c1c';
-                totalPctEl.textContent = totalPctSum + '% (Must equal 100%)';
-            }
+            totalPctEl.textContent = `0.33% (Engine) + ${modsFeePct.toFixed(2)}% (Cars) = ${totalIawFeePct.toFixed(2)}% Total Fee`;
 
-            const legacyFeePct = parseFloat(document.getElementById('legacyFeePct').value) || 0;
-            const legacyFrictionPct = parseFloat(document.getElementById('legacyFrictionPct').value) || 0;
+            // Legacy calculations
+            const legacyFeePct = parseFloat(document.getElementById('legacyFeePct')->value) || 0;
+            const legacyTotalCost = totalAmount * (legacyFeePct / 100);
             
-            const legacyFeeCost = totalAmount * (legacyFeePct / 100);
-            const legacyFrictionCost = totalAmount * (legacyFrictionPct / 100);
-            const legacyTotalLoss = legacyFeeCost + legacyFrictionCost;
-            const legacyRetained = totalAmount - legacyTotalLoss;
+            document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyTotalCost).toLocaleString();
+            document.getElementById('iawTotalVal').textContent = '$' + Math.round(iawTotalCost).toLocaleString();
+
+            document.getElementById('iawTotalFeePctDisplay').textContent = totalIawFeePct.toFixed(2) + '% (Engine + Cars)';
             
-            document.getElementById('deltaFeeDisplay').textContent = '+$' + Math.round(legacyFeeCost).toLocaleString() + ' saved';
-            document.getElementById('deltaFrictionDisplay').textContent = '+$' + Math.round(legacyFrictionCost).toLocaleString() + ' saved';
-
-            document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyRetained).toLocaleString();
-            document.getElementById('iawTotalVal').textContent = '$' + Math.round(totalAmount).toLocaleString();
-
-            const savingsDelta = legacyTotalLoss;
+            const savingsDelta = legacyTotalCost - iawTotalCost;
             document.getElementById('deltaTotalVal').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' Net Advantage';
+            document.getElementById('deltaFeeDisplay').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' saved';
         }
 
         function runSimulation() {
             const currentAmount = Number(slider.value).toLocaleString();
             const activeMods = availableModules.filter(m => m.active);
-            let totalPct = activeMods.reduce((sum, m) => sum + m.percent, 0);
+            const modsFeePct = activeMods.reduce((sum, m) => sum + m.percent, 0);
+            const totalFeePct = (CORE_ENGINE_COST + modsFeePct).toFixed(2);
 
-            if (totalPct !== 100) {
-                logConsole(`[Error] Simulation halted. Total module allocation must equal 100% (currently ${totalPct}%).`);
-                alert(`Allocation mismatch: Total shares equal ${totalPct}%. Modules must balance to exactly 100% before running simulations.`);
-                return;
-            }
-
-            logConsole(`[Executing] Simulation Model | Amount: $${currentAmount} | Total Allocation: ${totalPct}%...`);
+            logConsole(`[Executing Train Simulation] Amount: $${currentAmount} | Engine: 0.33% + ${activeMods.length} Attached Cars (${modsFeePct.toFixed(2)}%) = Total Fee: ${totalFeePct}%`);
             setTimeout(() => {
-                logConsole(`[Success] Simulation verified across ${activeMods.length} configured modules. For demonstration purposes only.`);
+                logConsole(`[Success] Transaction routed successfully through IAW Train Engine & Cars. For demonstration purposes only.`);
             }, 400);
         }
 
@@ -422,7 +383,6 @@
 
         window.onload = function() {
             renderApp();
-            autoBalanceModules();
         };
     </script>
 </body>
