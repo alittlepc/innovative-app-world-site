@@ -17,6 +17,7 @@
         .ticker { background-color: #0f172a; color: #38bdf8; padding: 14px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-bottom: 3px solid #0284c7; }
         .ticker-wrap { display: inline-block; animation: ticker 35s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .ticker span { margin-right: 40px; }
         .ticker a { color: #ffffff; text-decoration: underline; margin: 0 4px; font-weight: 900; }
         .ticker a:hover { color: #38bdf8; }
 
@@ -27,7 +28,7 @@
         .logo-box { width: 60px; height: 60px; background: linear-gradient(135deg, #0f172a, #1e293b); color: #38bdf8; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 22px; border-radius: 14px; border: 1px solid #0284c7; font-family: monospace; }
         .header-text h1 { font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; }
         .header-text p { font-size: 11px; font-weight: 900; color: #0284c7; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-        .btn-contact { background-color: #0f172a; color: white; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2); transition: all 0.2s; border: 1px solid #334155; }
+        .btn-contact { background-color: #0f172a; color: white; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2); transition: all 0.2s; border: 1px solid #334155; cursor: pointer; }
         .btn-contact:hover { background-color: #1e293b; transform: translateY(-1px); }
 
         /* Train Station Area */
@@ -38,9 +39,7 @@
         /* Train Track Graphics */
         .track-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
         .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-width: max-content; padding-bottom: 10px; }
-        .railway-line { height: 8px; background: #475569; border-radius: 4px; position: relative; margin-top: 5px; }
-        .railway-line::before { content: ''; position: absolute; top: -4px; left: 0; width: 100%; height: 16px; background: repeating-linear-gradient(90deg, transparent, transparent 24px, #78350f 24px, #78350f 28px); z-index: -1; }
-
+        
         /* Train Engine and Cars */
         .engine { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 120px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
         .engine-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
@@ -50,20 +49,18 @@
         @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 30px; }
         
-        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 130px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); position: relative; }
+        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 135px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
         .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
         .car-percentage { font-size: 12px; font-family: monospace; font-weight: 900; padding: 4px; border-radius: 6px; text-align: center; }
-        .btn-remove-car { position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; border: none; width: 20px; height: 20px; border-radius: 50%; font-size: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .btn-remove-car:hover { background: #dc2626; }
         
         /* Corporate Car Palettes */
         .car-liquidity { border-color: #cbd5e1; } .car-liquidity .car-percentage { background: #f1f5f9; color: #334155; }
         .car-compliance { border-color: #93c5fd; } .car-compliance .car-percentage { background: #eff6ff; color: #1e40af; }
         .car-risk { border-color: #fed7aa; } .car-risk .car-percentage { background: #fff7ed; color: #c2410c; }
-        .car-profit { border-color: #bbf7d0; } .car-profit .car-percentage { background: #f0fdf4; color: #166534; }
+        .car-profit { border-color: #86efac; } .car-profit .car-percentage { background: #f0fdf4; color: #166534; }
 
-        .car-caboose { background: #0f172a; color: #94a3b8; padding: 15px; border-radius: 16px; width: 100px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; opacity: 0.9; flex-shrink: 0; }
-        .track-summary { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #edf2f7; font-size: 12px; }
+        .car-caboose { background: #0f172a; color: #94a3b8; padding: 15px; border-radius: 16px; width: 110px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; opacity: 0.9; flex-shrink: 0; }
+        .track-summary { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #edf2f7; font-size: 12px; margin-top: 15px; font-weight: 700; }
 
         /* Workspace Grid Layout */
         .workspace { display: grid; grid-template-columns: 1fr; gap: 24px; }
@@ -73,41 +70,35 @@
         .control-panel { display: flex; flex-direction: column; gap: 20px; }
         .step-card { background: white; border: 1px solid #e2e8f0; border-radius: 28px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
         .step-badge { display: inline-block; background: #0284c7; color: white; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .step-badge-blue { background: #2563eb; }
+        .step-badge-green { background: #16a34a; }
         
-        .btn-action { background: #0284c7; color: white; border: none; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 14px 20px; border-radius: 12px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2); width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-action:hover { background: #0369a1; transform: translateY(-1px); }
-        .btn-action.secondary { background: #0f172a; color: #38bdf8; border: 1px solid #334155; }
-        .btn-action.secondary:hover { background: #1e293b; }
-        
-        .control-group { margin-bottom: 15px; }
-        .control-label { font-size: 10px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
-        .control-input, .control-select { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 13px; font-weight: 600; outline: none; background: #f8fafc; color: #0f172a; }
-        .control-input:focus, .control-select:focus { border-color: #0284c7; background: #fff; box-shadow: 0 0 0 3px rgba(2,132,199,0.1); }
+        .btn-action { background: #0284c7; color: white; border: none; padding: 12px 20px; font-weight: 700; border-radius: 10px; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; width: 100%; transition: background 0.2s; margin-top: 10px; }
+        .btn-action:hover { background: #0369a1; }
+        .btn-success { background: #16a34a; }
+        .btn-success:hover { background: #15803d; }
 
-        .dashboard-panel { background: white; border: 1px solid #e2e8f0; border-radius: 28px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 20px; }
-        .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 15px; text-align: center; }
-        .metric-val { font-size: 20px; font-weight: 900; font-family: monospace; color: #0f172a; margin-top: 5px; }
-        .metric-title { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #64748b; }
-        
-        .console-output { background: #0f172a; color: #38bdf8; font-family: monospace; font-size: 11px; padding: 15px; border-radius: 14px; height: 160px; overflow-y: auto; border: 1px solid #334155; line-height: 1.5; }
+        .control-group { margin-bottom: 15px; }
+        .control-group label { display: block; font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 6px; letter-spacing: 0.5px; }
+        .control-group select, .control-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 700; font-size: 12px; }
+
+        /* Console Output Box */
+        .console-box { background: #0f172a; color: #38bdf8; font-family: monospace; padding: 15px; border-radius: 12px; font-size: 11px; height: 180px; overflow-y: auto; border: 1px solid #334155; line-height: 1.5; }
+        .console-line { margin-bottom: 4px; }
+        .console-success { color: #4ade80; }
+        .console-highlight { color: #facc15; }
     </style>
 </head>
 <body>
 
+    <!-- DEMONSTRATION DISCLAIMER BANNER -->
     <div class="demo-banner">
-        IAW Secure Demonstration Environment // Single-Holder Autonomous Settlement Engine
+        ⚠️ IAW Institutional Rail Demonstration &bull; 100% Sole Holder Control &bull; Xahau Hooks Active
     </div>
 
+    <!-- Scrolling Header Banner -->
     <div class="ticker">
         <div class="ticker-wrap">
-            <span>IAW SYSTEM ACTIVE:</span>
-            <a href="#">Xahau Hooks Loaded</a> &bull;
-            <a href="#">Maximize Profit Optimization Mode</a> &bull;
-            <a href="#">RLUSD Gateway Ready</a> &bull;
-            <a href="#">Autonomous Fee Rails Configured</a> &bull;
-            <a href="#">Single-Holder Governance Enforced</a>
+            <span>IAW DYNAMIC LOGIC RAIL BUILDER &bull; <a href="#">LIVE DEMO ACTIVE</a> &bull; XAHAU HOOKS SETTLEMENT &bull; MPT & RLUSD CORRIDOR &bull; 100% IAW OWNERSHIP &bull; ZERO ACCESS BLOCKS &bull;</span>
         </div>
     </div>
 
@@ -117,116 +108,109 @@
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo-box">IAW</div>
                 <div class="header-text">
-                    <h1>Dynamic Logic Rail Builder</h1>
-                    <p>Autonomous Settlement Architecture</p>
+                    <h1>Innovative App World — Logic Rail Builder</h1>
+                    <p>Institutional Settlement & Tokenization Engine</p>
                 </div>
             </div>
-            <a href="mailto:admin@innovativeappworld.com" class="btn-contact">Initialize Secure Node</a>
+            <button class="btn-contact" onclick="runFullSimulation()">Execute Demo Run</button>
         </header>
 
         <!-- Train Station Area -->
         <div class="train-station">
-            <div class="station-badge">Live Track Status: Operational</div>
-            <div class="station-title">Active Logic Rail Assembly</div>
+            <div class="station-badge">100% IAW Secured Rail</div>
+            <div class="station-title">Active Logic Rail Assembly (Simulation)</div>
             
             <div class="track-scroll-box">
                 <div class="train-assembly" id="trainAssembly">
-                    <!-- Train Engine -->
+                    <!-- Engine -->
                     <div class="engine">
                         <div>
-                            <div class="car-name" style="color: #38bdf8;">Engine Lead</div>
-                            <div class="engine-title">IAW Core Rail</div>
+                            <span class="engine-title">Rail Engine</span>
+                            <div style="font-size: 13px; font-weight: 700; margin-top: 4px;">IAW Core v2.6</div>
                         </div>
-                        <div class="engine-badge" id="engineStatus">READY</div>
+                        <div class="engine-badge">XAHAU HOOK</div>
                     </div>
                     
-                    <!-- Dynamic Cargo Cars Injected Here -->
-                    <div id="dynamicCarsContainer" style="display: flex; gap: 6px; align-items: flex-end;"></div>
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 1: MPT Liquidity -->
+                    <div class="cargo-car car-liquidity">
+                        <span class="car-name">MPT Liquidity</span>
+                        <div class="car-percentage">100% Active</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 2: RLUSD Corridor -->
+                    <div class="cargo-car car-compliance">
+                        <span class="car-name">RLUSD Settlement</span>
+                        <div class="car-percentage">Optimized</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
+
+                    <!-- Cargo Car 3: Profit Max -->
+                    <div class="cargo-car car-profit">
+                        <span class="car-name">Profit Engine</span>
+                        <div class="car-percentage">Max Yield</div>
+                    </div>
+
+                    <div class="car-coupler"><span class="link-hook">⟷</span></div>
 
                     <!-- Caboose -->
-                    <div class="car-coupler">
-                        <div class="link-hook">⚯</div>
-                        <div class="car-caboose">
-                            <div class="car-name" style="color: #38bdf8;">Terminal</div>
-                            <div style="font-size: 12px; font-family: monospace; font-weight: 900;">REST</div>
-                        </div>
+                    <div class="car-caboose">
+                        <span class="car-name" style="color: #38bdf8;">Control Node</span>
+                        <div style="font-size: 11px; font-family: monospace; font-weight: 700;">SOLED-100</div>
                     </div>
                 </div>
             </div>
 
-            <div class="railway-line"></div>
-
-            <div class="track-summary" style="margin-top: 15px;">
-                <span id="carCountText">Total Attached Modules: 3</span>
-                <span id="optimizationStatus" style="font-weight: 900; color: #0284c7;">Profit Optimization: Maximum Yield Active</span>
+            <div class="track-summary">
+                <span>Status: Ready for Live Institutional Deployment</span>
+                <span style="color: #16a34a;">● Profit Optimization: Maximum</span>
             </div>
         </div>
 
-        <!-- Workspace Grid -->
+        <!-- Workspace Grid Layout -->
         <div class="workspace">
-            <!-- Control Panel -->
+            <!-- Control Panel Column -->
             <div class="control-panel">
                 <div class="step-card">
-                    <span class="step-badge">Step 1: Configure Rail Module</span>
+                    <span class="step-badge">Step 1</span>
+                    <h3 style="font-size: 14px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase;">Configure Rail Module</h3>
                     
                     <div class="control-group">
-                        <label class="control-label">Module Type</label>
-                        <select id="moduleType" class="control-select">
-                            <option value="liquidity">Liquidity Pool (AMM Router)</option>
-                            <option value="profit" selected>Profit Optimization (High-Yield)</option>
-                            <option value="compliance">Compliance Guardrail (Hook)</option>
-                            <option value="risk">Risk Mitigation Engine</option>
+                        <label for="moduleSelect">Select Settlement Hook</label>
+                        <select id="moduleSelect">
+                            <option value="mpt">MPT Tokenization Corridor</option>
+                            <option value="rlusd">RLUSD Stablecoin Settlement</option>
+                            <option value="amm">AMM Liquidity Pool Hook</option>
                         </select>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Allocation / Yield Multiplier</label>
-                        <input type="text" id="moduleValue" class="control-input" value="99.9% Yield">
+                        <label for="yieldMode">Execution Priority</label>
+                        <select id="yieldMode">
+                            <option value="max">Maximum Profit Yield (Priority)</option>
+                            <option value="balanced">Balanced Settlement</option>
+                        </select>
                     </div>
 
-                    <button class="btn-action" onclick="addModule()">
-                        <span>+ Attach Car to Rail</span>
-                    </button>
-                </div>
-
-                <div class="step-card">
-                    <span class="step-badge step-badge-blue">Step 2: Execute Simulation</span>
-                    <button class="btn-action secondary" onclick="runSimulation()">
-                        <span>Run Full Logic Simulation</span>
-                    </button>
+                    <button class="btn-action" onclick="addCargoCar()">Attach Module Car</button>
+                    <button class="btn-action btn-success" onclick="runFullSimulation()">Run Live Demo Simulation</button>
                 </div>
             </div>
 
-            <!-- Dashboard Panel -->
-            <div class="dashboard-panel">
-                <span class="step-badge">System Performance Metrics</span>
-                
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Estimated Yield Efficiency</div>
-                        <div class="metric-val" id="metricYield">99.98%</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Active Hooks</div>
-                        <div class="metric-val" id="metricHooks">5 Hooks</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Settlement Latency</div>
-                        <div class="metric-val">3.2s</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Single Holder Status</div>
-                        <div class="metric-val" style="color: #16a34a;">SECURED</div>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="control-label" style="margin-bottom: 8px;">Live Console Output</span>
-                    <div class="console-output" id="consoleOutput">
-[04:58:18] INITIALIZING IAW DYNAMIC LOGIC RAIL BUILDER...<br>
-[04:58:18] CONNECTED TO LOCAL OFFLINE OFFLINE CONTAINER.<br>
-[04:58:18] DEFAULT PROFIT OPTIMIZATION RAILS LOADED.<br>
-[04:58:18] READY FOR USER CONFIGURATION.
+            <!-- Console Output Column -->
+            <div class="control-panel">
+                <div class="step-card" style="height: 100%; display: flex; flex-direction: column;">
+                    <span class="step-badge step-badge-green">Step 2</span>
+                    <h3 style="font-size: 14px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase;">Live Execution Log</h3>
+                    
+                    <div class="console-box" id="consoleOutput">
+                        <div class="console-line">[05:02:58 UTC] IAW Rail Builder initialized.</div>
+                        <div class="console-line">[05:02:58 UTC] Sole-holder authority verified (100% IAW).</div>
+                        <div class="console-line console-highlight">[05:02:58 UTC] Xahau Hook active on testnet bridge. Ready.</div>
                     </div>
                 </div>
             </div>
@@ -234,85 +218,52 @@
     </div>
 
     <script>
-        // Initial cargo cars
-        let cargoCars = [
-            { type: 'profit', name: 'High-Yield Engine', val: '99.9% MAX' },
-            { type: 'liquidity', name: 'XRPL AMM Pool', val: '50/50 LPs' },
-            { type: 'compliance', name: 'Xahau Hook', val: 'Verified' }
-        ];
-
-        function renderTrain() {
-            const container = document.getElementById('dynamicCarsContainer');
-            container.innerHTML = '';
-
-            cargoCars.forEach((car, index) => {
-                let carClass = 'car-liquidity';
-                if (car.type === 'profit') carClass = 'car-profit';
-                if (car.type === 'compliance') carClass = 'car-compliance';
-                if (car.type === 'risk') carClass = 'car-risk';
-
-                let html = `
-                    <div class="car-coupler">
-                        <div class="link-hook">⚯</div>
-                        <div class="cargo-car ${carClass}">
-                            <button class="btn-remove-car" onclick="removeModule(${index})" title="Remove car">&times;</button>
-                            <div>
-                                <div class="car-name">Car 0${index + 1}</div>
-                                <div style="font-size: 10px; font-weight: 800; color: #0f172a; margin-top:2px;">${car.name}</div>
-                            </div>
-                            <div class="car-percentage">${car.val}</div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
-
-            document.getElementById('carCountText').innerText = `Total Attached Modules: ${cargoCars.length + 1}`;
-            document.getElementById('metricHooks').innerText = `${cargoCars.length + 2} Hooks`;
-        }
-
-        function addModule() {
-            const type = document.getElementById('moduleType').value;
-            const val = document.getElementById('moduleValue').value;
-            
-            let name = 'Custom Module';
-            if (type === 'liquidity') name = 'XRPL AMM Pool';
-            if (type === 'profit') name = 'Profit Opt Module';
-            if (type === 'compliance') name = 'Compliance Hook';
-            if (type === 'risk') name = 'Risk Mitigator';
-
-            cargoCars.push({ type: type, name: name, val: val });
-            renderTrain();
-            
-            logToConsole(`Attached new [${name.toUpperCase()}] rail car with value: ${val}`);
-        }
-
-        function removeModule(index) {
-            let removed = cargoCars.splice(index, 1);
-            renderTrain();
-            logToConsole(`Detached rail car module at position 0${index + 1}.`);
-        }
-
-        function runSimulation() {
-            logToConsole(`EXECUTING SIMULATION ACROSS ${cargoCars.length + 1} ACTIVE RAILS...`);
-            setTimeout(() => {
-                logToConsole(`-> Profit optimization routing validated successfully.`);
-                logToConsole(`-> Maximum yield thresholds verified. Single-holder parameters secure.`);
-                document.getElementById('metricYield').innerText = (99.90 + Math.random() * 0.09).toFixed(2) + '%';
-            }, 400);
-        }
-
-        function logToConsole(message) {
+        function logMessage(text, type = '') {
             const consoleBox = document.getElementById('consoleOutput');
-            const timeStr = new Date().toTimeString().split(' ')[0];
-            consoleBox.innerHTML += `<br>[${timeStr}] ${message}`;
+            const time = new Date().toISOString().substring(11, 19);
+            const line = document.createElement('div');
+            line.className = 'console-line ' + type;
+            line.textContent = `[${time} UTC] ${text}`;
+            consoleBox.appendChild(line);
             consoleBox.scrollTop = consoleBox.scrollHeight;
         }
 
-        // Initial render on load
-        window.onload = function() {
-            renderTrain();
-        };
+        function addCargoCar() {
+            const select = document.getElementById('moduleSelect');
+            const moduleName = select.options[select.selectedIndex].text;
+            const assembly = document.getElementById('trainAssembly');
+
+            // Create Coupler
+            const coupler = document.createElement('div');
+            coupler.className = 'car-coupler';
+            coupler.innerHTML = '<span class="link-hook">⟷</span>';
+
+            // Create Cargo Car
+            const car = document.createElement('div');
+            car.className = 'cargo-car car-profit';
+            car.innerHTML = `
+                <span class="car-name">${moduleName.split(' ')[0]} Module</span>
+                <div class="car-percentage">100% Yield</div>
+            `;
+
+            assembly.appendChild(coupler);
+            assembly.appendChild(car);
+
+            logMessage(`Attached new module car: "${moduleName}" to IAW Rail.`, 'console-success');
+        }
+
+        function runFullSimulation() {
+            logMessage('Starting 100% IAW Rail institutional settlement sequence...', 'console-highlight');
+            setTimeout(() => {
+                logMessage('Verifying MPT liquidity corridors and AMM pool weights...');
+            }, 600);
+            setTimeout(() => {
+                logMessage('Executing Xahau hook logic across nodes with maximum profitability priority...');
+            }, 1200);
+            setTimeout(() => {
+                logMessage('SUCCESS: Settlement rail simulation verified and fully operational!', 'console-success');
+            }, 1800);
+        }
     </script>
 </body>
 </html>
