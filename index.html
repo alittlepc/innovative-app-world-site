@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Dynamic Logic Rail Builder Demo</title>
+    <title>IAW | Dynamic Logic Rail Builder & Comparative Analysis</title>
     
     <style>
-        /* --- INSTITUTIONAL STYLING LAYER (WORKS COMPLETELY OFFLINE - UNRESTRICTED) --- */
+        /* --- INSTITUTIONAL STYLING LAYER --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #0f172a; padding-bottom: 50px; }
         
@@ -59,7 +59,7 @@
         .car-calc { font-size: 11px; font-family: monospace; font-weight: 900; padding: 6px; border-radius: 6px; text-align: center; }
         
         /* Corporate Car Palettes */
-        .car-clearing { border-color: #cbd5e1; } .car-calc { background: #f1f5f9; color: #334155; }
+        .car-clearing { border-color: #cbd5e1; } .car-clearing .car-calc { background: #f1f5f9; color: #334155; }
         .car-messaging { border-color: #93c5fd; } .car-messaging .car-calc { background: #eff6ff; color: #1e40af; }
         .car-ledger { border-color: #fed7aa; } .car-ledger .car-calc { background: #fff7ed; color: #c2410c; }
         .car-compliance { border-color: #cbd5e1; } .car-compliance .car-calc { background: #f8fafc; color: #475569; }
@@ -71,7 +71,7 @@
         .wheel { width: 18px; height: 18px; background: #334155; border-radius: 50%; border: 3px solid #94a3b8; }
 
         /* Control Grid & Panels */
-        .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
         .card h3 { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #0f172a; margin-bottom: 12px; }
         
@@ -81,6 +81,12 @@
         .btn-profit:hover { background: #14532d; }
         .btn-danger { background: #ef4444; }
         .btn-danger:hover { background: #dc2626; }
+
+        /* Comparative Analysis Section */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
+        .comparison-table th, .comparison-table td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
+        .comparison-table th { background: #f8fafc; font-weight: 900; text-transform: uppercase; color: #475569; }
+        .comparison-input { width: 60px; font-family: monospace; font-weight: 900; padding: 3px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: right; background: #fff; }
 
         /* Step-by-Step Action Panel */
         .step-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 12px 15px; margin-bottom: 10px; }
@@ -92,7 +98,7 @@
     </style>
 </head>
 <body>
-    <div class="demo-banner">Innovative App World LLC &bull; Official Logic Rail Builder Demo</div>
+    <div class="demo-banner">Innovative App World LLC &bull; Official Logic Rail Builder & Comparative Analysis Demo</div>
     <div class="ticker">
         <div class="ticker-wrap">
             <span>IAW Network Active</span>
@@ -146,12 +152,12 @@
             <div class="card">
                 <h3>2. Demo Money Scale</h3>
                 <div style="margin-bottom: 15px;">
-                    <label for="demoMoneySlider" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: block;">Associated Amount: $<span id="demoMoneyDisplay" style="color: #166534; font-size: 14px;">10,000,000</span></label>
+                    <label for="demoMoneySlider" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: block;">Transaction Amount: $<span id="demoMoneyDisplay" style="color: #166534; font-size: 14px;">10,000,000</span></label>
                     <input type="range" id="demoMoneySlider" min="100000" max="50000000" step="100000" value="10000000" style="width: 100%; cursor: pointer;">
                 </div>
                 <div class="step-box">
                     <div class="step-number">Profit Priority</div>
-                    <div class="step-instruction">Maximum yield scale active. Adjust percentages per rail to calculate precise allocations.</div>
+                    <div class="step-instruction">Maximum yield scale active. Enter exact share percentages per rail to calculate live financial allocations.</div>
                 </div>
             </div>
 
@@ -165,6 +171,42 @@
                     [Instruction] Prioritizing maximum profitability options.
                 </div>
             </div>
+        </div>
+
+        <!-- Comparative Analysis Panel -->
+        <div class="card">
+            <h3>4. Comparative Analysis: IAW vs. Legacy Typical Rails</h3>
+            <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Adjust legacy friction, fee, or overhead percentages to compare against your active IAW train structure.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Legacy Typical (Editable)</th>
+                        <th>IAW Logic Rails</th>
+                        <th>Net Advantage / Delta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Intermediary Fee / Cut</strong></td>
+                        <td><input type="number" id="legacyFeePct" class="comparison-input" value="3.5" min="0" max="100" step="0.1" oninput="updateCalculations()">%</td>
+                        <td id="iawFeeDisplay" style="font-family: monospace; font-weight: 900; color: #166534;">0.0%</td>
+                        <td id="deltaFeeDisplay" style="font-family: monospace; font-weight: 900; color: #0284c7;">+$350,000 saved</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Settlement Friction Cost</strong></td>
+                        <td><input type="number" id="legacyFrictionPct" class="comparison-input" value="1.8" min="0" max="100" step="0.1" oninput="updateCalculations()">%</td>
+                        <td style="font-family: monospace; font-weight: 900; color: #166534;">0.01% (Deterministic)</td>
+                        <td id="deltaFrictionDisplay" style="font-family: monospace; font-weight: 900; color: #0284c7;">+$179,000 saved</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Retained Value</strong></td>
+                        <td id="legacyTotalVal" style="font-family: monospace; font-weight: 900; color: #dc2626;">$94,700,000</td>
+                        <td id="iawTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">$10,000,000</td>
+                        <td id="deltaTotalVal" style="font-family: monospace; font-weight: 900; color: #166534;">+5.3% Profit Gain</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -233,6 +275,8 @@
 
         function updateCalculations() {
             const totalAmount = parseFloat(slider.value) || 0;
+            
+            // Update individual train car allocations
             cars.forEach((car, index) => {
                 const calculatedValue = (totalAmount * (car.percent / 100));
                 const calcEl = document.getElementById(`calc-${index}`);
@@ -240,6 +284,33 @@
                     calcEl.textContent = '$' + Math.round(calculatedValue).toLocaleString();
                 }
             });
+
+            // Comparative Analysis Calculations
+            const legacyFeePct = parseFloat(document.getElementById('legacyFeePct').value) || 0;
+            const legacyFrictionPct = parseFloat(document.getElementById('legacyFrictionPct').value) || 0;
+            
+            const legacyFeeCost = totalAmount * (legacyFeePct / 100);
+            const legacyFrictionCost = totalAmount * (legacyFrictionPct / 100);
+            const legacyTotalLoss = legacyFeeCost + legacyFrictionCost;
+            const legacyRetained = totalAmount - legacyTotalLoss;
+
+            // Find profit car percentage if available, or total allocated percentage
+            const profitCar = cars.find(c => c.type === 'profit');
+            const profitSharePct = profitCar ? profitCar.percent : cars.reduce((sum, c) => sum + c.percent, 0) / Math.max(cars.length, 1);
+            
+            document.getElementById('iawFeeDisplay').textContent = '0.0% (Optimized)';
+            document.getElementById('deltaFeeDisplay.textContent'] = '';
+            
+            document.getElementById('deltaFeeDisplay').textContent = '+' + Math.round(legacyFeeCost).toLocaleString() + ' saved';
+            document.getElementById('deltaFrictionDisplay').textContent = '+' + Math.round(legacyFrictionCost).toLocaleString() + ' saved';
+
+            document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyRetained).toLocaleString();
+            
+            const iawRetained = totalAmount * (profitSharePct / 100);
+            document.getElementById('iawTotalVal').textContent = '$' + Math.round(iawRetained).toLocaleString();
+
+            const savingsDelta = legacyTotalLoss;
+            document.getElementById('deltaTotalVal').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' Net Advantage';
         }
 
         function addCar(type, name, defaultPercent) {
