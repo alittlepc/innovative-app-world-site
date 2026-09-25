@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW | Dynamic Logic Rail Builder & Comparative Analysis</title>
+    <title>IAW | Custom Logic Rail Builder & Comparative Analysis</title>
     
     <style>
         /* --- INSTITUTIONAL STYLING LAYER --- */
@@ -31,44 +31,42 @@
         .btn-contact { background-color: #0f172a; color: white; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2); transition: all 0.2s; border: 1px solid #334155; cursor: pointer; }
         .btn-contact:hover { background-color: #1e293b; transform: translateY(-1px); }
 
-        /* Train Station Area */
-        .train-station { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); position: relative; }
+        /* Custom Rail Pipeline Visualizer */
+        .pipeline-station { background: white; border: 1px solid #e2e8f0; border-radius: 24px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); position: relative; }
         .station-badge { position: absolute; top: 15px; right: 20px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.5px; }
         .station-title { font-size: 11px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         
-        /* Train Track Graphics */
-        .track-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
-        .train-assembly { display: flex; align-items: flex-end; gap: 6px; min-width: max-content; padding-bottom: 10px; }
+        .pipeline-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
+        .pipeline-assembly { display: flex; align-items: center; gap: 8px; min-width: max-content; padding-bottom: 10px; }
         
-        /* Train Engine and Cars */
-        .engine { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
-        .engine-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
-        .engine-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
+        /* Pipeline Core Engine & Modules */
+        .pipeline-core { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
+        .core-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: #38bdf8; }
+        .core-badge { font-size: 11px; font-family: monospace; font-weight: 700; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.15); color: #ffffff; }
         
-        .car-coupler { display: flex; align-items: flex-end; animation: popIn 0.25s ease-out forwards; flex-shrink: 0; }
+        .pipeline-connector { color: #94a3b8; font-weight: 900; font-size: 16px; padding: 0 4px; flex-shrink: 0; }
+        
+        .pipeline-card { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 165px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; animation: popIn 0.25s ease-out forwards; }
         @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 40px; }
+        .pipeline-card-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 10px; border-radius: 14px; width: 160px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
-        .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pipeline-control-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; background: #f8fafc; padding: 4px 6px; border-radius: 6px; border: 1px solid #e2e8f0; }
+        .pipeline-control-row label { font-size: 9px; font-weight: 900; color: #475569; text-transform: uppercase; }
+        .pipeline-percent-input { width: 55px; font-family: monospace; font-size: 11px; font-weight: 900; padding: 2px 4px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: right; background: white; }
         
-        .car-control-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; background: #f8fafc; padding: 4px 6px; border-radius: 6px; border: 1px solid #e2e8f0; }
-        .car-control-row label { font-size: 9px; font-weight: 900; color: #475569; text-transform: uppercase; }
-        .car-percent-input { width: 55px; font-family: monospace; font-size: 11px; font-weight: 900; padding: 2px 4px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: right; background: white; }
+        .pipeline-calc { font-size: 11px; font-family: monospace; font-weight: 900; padding: 6px; border-radius: 6px; text-align: center; }
         
-        .car-calc { font-size: 11px; font-family: monospace; font-weight: 900; padding: 6px; border-radius: 6px; text-align: center; }
-        
-        /* Corporate Car Palettes */
-        .car-clearing { border-color: #cbd5e1; } .car-clearing .car-calc { background: #f1f5f9; color: #334155; }
-        .car-messaging { border-color: #93c5fd; } .car-messaging .car-calc { background: #eff6ff; color: #1e40af; }
-        .car-ledger { border-color: #fed7aa; } .car-ledger .car-calc { background: #fff7ed; color: #c2410c; }
-        .car-compliance { border-color: #cbd5e1; } .car-compliance .car-calc { background: #f8fafc; color: #475569; }
-        .car-profit { border-color: #86efac; } .car-profit .car-calc { background: #f0fdf4; color: #166534; }
+        /* Module Palettes */
+        .mod-clearing { border-color: #cbd5e1; } .mod-clearing .pipeline-calc { background: #f1f5f9; color: #334155; }
+        .mod-messaging { border-color: #93c5fd; } .mod-messaging .pipeline-calc { background: #eff6ff; color: #1e40af; }
+        .mod-ledger { border-color: #fed7aa; } .mod-ledger .pipeline-calc { background: #fff7ed; color: #c2410c; }
+        .mod-compliance { border-color: #cbd5e1; } .mod-compliance .pipeline-calc { background: #f8fafc; color: #475569; }
+        .mod-profit { border-color: #86efac; } .mod-profit .pipeline-calc { background: #f0fdf4; color: #166534; }
 
-        /* Train Wheels & Track Bed */
-        .track-rail { height: 8px; background: #cbd5e1; border-radius: 4px; margin-top: -10px; position: relative; z-index: -1; margin-bottom: 20px; }
-        .train-wheels { display: flex; justify-content: space-around; padding: 0 15px; margin-top: -8px; }
-        .wheel { width: 18px; height: 18px; background: #334155; border-radius: 50%; border: 3px solid #94a3b8; }
+        /* Track Bed Foundation */
+        .pipeline-bed { height: 8px; background: #cbd5e1; border-radius: 4px; margin-top: -10px; position: relative; z-index: -1; margin-bottom: 20px; }
+        .pipeline-mounts { display: flex; justify-content: space-around; padding: 0 15px; margin-top: -8px; }
+        .mount-node { width: 18px; height: 18px; background: #334155; border-radius: 50%; border: 3px solid #94a3b8; }
 
         /* Control Grid & Panels */
         .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
@@ -79,8 +77,11 @@
         .btn-action:hover { background: #0284c7; }
         .btn-profit { background: #166534; }
         .btn-profit:hover { background: #14532d; }
-        .btn-danger { background: #ef4444; }
-        .btn-danger:hover { background: #dc2626; }
+        
+        /* Module Toggle Checkbox List */
+        .module-toggle-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+        .module-toggle-item { display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #334155; }
+        .module-toggle-item input { width: 16px; height: 16px; cursor: pointer; accent-color: #166534; }
 
         /* Comparative Analysis Section */
         .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
@@ -88,7 +89,7 @@
         .comparison-table th { background: #f8fafc; font-weight: 900; text-transform: uppercase; color: #475569; }
         .comparison-input { width: 60px; font-family: monospace; font-weight: 900; padding: 3px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: right; background: #fff; }
 
-        /* Step-by-Step Action Panel */
+        /* Action Steps */
         .step-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 12px 15px; margin-bottom: 10px; }
         .step-number { font-size: 10px; font-weight: 900; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
         .step-instruction { font-size: 13px; font-weight: 700; color: #1e293b; }
@@ -98,7 +99,7 @@
     </style>
 </head>
 <body>
-    <div class="demo-banner">Innovative App World LLC &bull; Official Logic Rail Builder & Comparative Analysis Demo</div>
+    <div class="demo-banner">Innovative App World LLC &bull; Custom Logic Rail Builder & Comparative Analysis</div>
     <div class="ticker">
         <div class="ticker-wrap">
             <span>IAW Network Active</span>
@@ -114,38 +115,36 @@
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo-box">IAW</div>
                 <div class="header-text">
-                    <h1>Dynamic Logic Rail Builder</h1>
+                    <h1>Custom Logic Rail Builder</h1>
                     <p>Innovative App World LLC &bull; Settlement Engine</p>
                 </div>
             </div>
             <button class="btn-contact" onclick="alert('Contact IAW Engineering Team: admin@innovativeappworld.com')">Contact IAW</button>
         </header>
 
-        <!-- Train Station Area -->
-        <div class="train-station">
-            <div class="station-badge">Live Assembly Line</div>
-            <div class="station-title">Active Logic Train & Cargo Rails</div>
+        <!-- Custom Rail Pipeline Station Area (Illustration Restored) -->
+        <div class="pipeline-station">
+            <div class="station-badge">Live Architecture View</div>
+            <div class="station-title">Custom Logic Rail Pipeline & Flow Illustration</div>
             
-            <div class="track-scroll-box">
-                <div class="train-assembly" id="trainAssembly">
-                    <!-- Engine injected via JS -->
+            <div class="pipeline-scroll-box">
+                <div class="pipeline-assembly" id="pipelineAssembly">
+                    <!-- Core Engine and Modules injected via JS -->
                 </div>
             </div>
-            <div class="track-rail"></div>
-            <div class="train-wheels" id="wheelBase"></div>
+            <div class="pipeline-bed"></div>
+            <div class="pipeline-mounts" id="mountBase"></div>
         </div>
 
         <!-- Control Grid -->
         <div class="control-grid">
-            <!-- Builder Commands -->
+            <!-- Custom Module Configuration -->
             <div class="card">
-                <h3>1. Attach Logic Rails</h3>
-                <button class="btn-action btn-profit" onclick="addCar('profit', 'Max Profit Yield', 50)">+ Attach Profit Maximization Rail</button>
-                <button class="btn-action" onclick="addCar('clearing', 'Clearing & Settlement', 25)">+ Attach Clearing & Settlement Rail</button>
-                <button class="btn-action" onclick="addCar('messaging', 'ISO 20022 Messaging', 10)">+ Attach ISO 20022 Messaging Rail</button>
-                <button class="btn-action" onclick="addCar('ledger', 'Multi-Currency Ledger', 10)">+ Attach Multi-Currency Ledger Rail</button>
-                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Compliance', 5)">+ Attach Regulatory Compliance Rail</button>
-                <button class="btn-action btn-danger" onclick="removeLastCar()">- Remove Last Rail</button>
+                <h3>1. Configure User Rail Modules</h3>
+                <div class="module-toggle-list" id="moduleToggles">
+                    <!-- Populated by JS -->
+                </div>
+                <button class="btn-action btn-profit" onclick="autoBalanceModules()">Auto-Optimize Profit Yields</button>
             </div>
 
             <!-- Demo Money Scale -->
@@ -157,17 +156,17 @@
                 </div>
                 <div class="step-box">
                     <div class="step-number">Profit Priority</div>
-                    <div class="step-instruction">Maximum yield scale active. Enter exact share percentages per rail to calculate live financial allocations.</div>
+                    <div class="step-instruction">Maximum yield scale active. Allocate exact share percentages across your custom user rail configuration below.</div>
                 </div>
             </div>
 
             <!-- Simulation Console -->
             <div class="card">
                 <h3>3. Settlement Console</h3>
-                <button class="btn-action btn-profit" onclick="runSimulation()" style="margin-bottom: 12px;">Run Simulation</button>
+                <button class="btn-action btn-profit" onclick="runSimulation()" style="margin-bottom: 12px;">Run Custom Pipeline Simulation</button>
                 <div class="output-console" id="outputConsole">
-                    [System Ready] IAW Logic Rail Builder initialized.<br>
-                    [Status] Code-based valuation active.<br>
+                    [System Ready] IAW Custom Logic Rail Builder initialized.<br>
+                    [Status] User-specific custom module configuration active.<br>
                     [Instruction] Prioritizing maximum profitability options.
                 </div>
             </div>
@@ -175,14 +174,14 @@
 
         <!-- Comparative Analysis Panel -->
         <div class="card">
-            <h3>4. Comparative Analysis: IAW vs. Legacy Typical Rails</h3>
-            <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Adjust legacy friction, fee, or overhead percentages to compare against your active IAW train structure.</p>
+            <h3>4. Comparative Analysis: IAW Custom Rails vs. Legacy Typical Rails</h3>
+            <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Adjust legacy friction, fee, or overhead percentages to compare against your active IAW custom rail pipeline.</p>
             <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Metric</th>
                         <th>Legacy Typical (Editable)</th>
-                        <th>IAW Logic Rails</th>
+                        <th>IAW Custom Logic Rails</th>
                         <th>Net Advantage / Delta</th>
                     </tr>
                 </thead>
@@ -211,9 +210,13 @@
     </div>
 
     <script>
-        let cars = [
-            { type: 'profit', name: 'Max Profit Yield', percent: 60 },
-            { type: 'clearing', name: 'Clearing & Settlement', percent: 40 }
+        // Available modules for building the custom user rail
+        let availableModules = [
+            { id: 'profit', name: 'Max Profit Yield', active: true, percent: 60 },
+            { id: 'clearing', name: 'Clearing & Settlement', active: true, percent: 40 },
+            { id: 'messaging', name: 'ISO 20022 Messaging', active: false, percent: 0 },
+            { id: 'ledger', name: 'Multi-Currency Ledger', active: false, percent: 0 },
+            { id: 'compliance', name: 'Regulatory Compliance', active: false, percent: 0 }
         ];
 
         const slider = document.getElementById('demoMoneySlider');
@@ -224,62 +227,119 @@
             updateCalculations();
         });
 
-        function renderTrain() {
-            const assembly = document.getElementById('trainAssembly');
-            const engineHTML = `
-                <div class="engine">
+        function renderApp() {
+            renderToggles();
+            renderPipeline();
+        }
+
+        function renderToggles() {
+            const toggleList = document.getElementById('moduleToggles');
+            let html = '';
+            availableModules.forEach((mod, index) => {
+                html += `
+                    <div class="module-toggle-item">
+                        <span>${mod.name}</span>
+                        <input type="checkbox" ${mod.active ? 'checked' : ''} onchange="toggleModule(${index}, this.checked)">
+                    </div>
+                `;
+            });
+            toggleList.innerHTML = html;
+        }
+
+        function toggleModule(index, isChecked) {
+            availableModules[index].active = isChecked;
+            if (isChecked && availableModules[index].percent === 0) {
+                // Give it a default active share if turned on
+                availableModules[index].percent = 10;
+            } else if (!isChecked) {
+                availableModules[index].percent = 0;
+            }
+            renderPipeline();
+        }
+
+        function autoBalanceModules() {
+            const activeMods = availableModules.filter(m => m.active);
+            if (activeMods.length === 0) return;
+            
+            // Prioritize profit module with highest share, split remainder
+            const profitMod = activeMods.find(m => m.id === 'profit');
+            if (profitMod) {
+                profitMod.percent = 60;
+                const remainingMods = activeMods.filter(m => m.id !== 'profit');
+                const sharePerOther = remainingMods.length > 0 ? Math.floor(40 / remainingMods.length) : 0;
+                remainingMods.forEach((m, idx) => {
+                    m.percent = (idx === remainingMods.length - 1) ? (40 - (sharePerOther * (remainingMods.length - 1))) : sharePerOther;
+                });
+            } else {
+                const equalShare = Math.floor(100 / activeMods.length);
+                activeMods.forEach((m, idx) => {
+                    m.percent = (idx === activeMods.length - 1) ? (100 - (equalShare * (activeMods.length - 1))) : equalShare;
+                });
+            }
+            renderPipeline();
+            logConsole('[Optimized] Custom rail modules auto-balanced for maximum profit yield.');
+        }
+
+        function renderPipeline() {
+            const assembly = document.getElementById('pipelineAssembly');
+            const activeMods = availableModules.filter(m => m.active);
+
+            const coreHTML = `
+                <div class="pipeline-core">
                     <div>
-                        <div class="engine-title">IAW Engine</div>
+                        <div class="core-title">IAW Engine</div>
                         <div style="font-size: 14px; font-weight: 900; margin-top: 4px;">IAW Core v2.4</div>
                     </div>
-                    <div class="engine-badge" id="engineStatus">${cars.length > 0 ? 'Active: ' + cars.length + ' Rails' : 'Ready'}</div>
+                    <div class="core-badge" id="engineStatus">${activeMods.length > 0 ? activeMods.length + ' Active Modules' : 'Standby'}</div>
                 </div>
             `;
             
-            let carsHTML = '';
-            cars.forEach((car, index) => {
-                carsHTML += `
-                    <div class="car-coupler">
-                        <div class="link-hook">[==]</div>
-                        <div class="cargo-car car-${car.type}">
-                            <div class="car-name">Rail #${index + 1}: ${car.name}</div>
-                            <div class="car-control-row">
-                                <label>Share %</label>
-                                <input type="number" class="car-percent-input" min="0" max="100" value="${car.percent}" oninput="updateCarPercent(${index}, this.value)">
-                            </div>
-                            <div class="car-calc" id="calc-${index}">$0</div>
+            let cardsHTML = '';
+            activeMods.forEach((mod, index) => {
+                cardsHTML += `
+                    <div class="pipeline-connector">[==]</div>
+                    <div class="pipeline-card mod-${mod.id}">
+                        <div class="pipeline-card-name">Module #${index + 1}: ${mod.name}</div>
+                        <div class="pipeline-control-row">
+                            <label>Share %</label>
+                            <input type="number" class="pipeline-percent-input" min="0" max="100" value="${mod.percent}" oninput="updateModulePercent('${mod.id}', this.value)">
                         </div>
+                        <div class="pipeline-calc" id="calc-${mod.id}">$0</div>
                     </div>
                 `;
             });
 
-            assembly.innerHTML = engineHTML + carsHTML;
-            renderWheels();
+            assembly.innerHTML = coreHTML + cardsHTML;
+            renderMounts(activeMods.length);
             updateCalculations();
         }
 
-        function renderWheels() {
-            const wheelBase = document.getElementById('wheelBase');
-            let count = 4 + (cars.length * 2);
-            let wheelsHTML = '';
+        function renderMounts(activeCount) {
+            const mountBase = document.getElementById('mountBase');
+            let count = 4 + (activeCount * 2);
+            let mountsHTML = '';
             for (let i = 0; i < count; i++) {
-                wheelsHTML += `<div class="wheel"></div>`;
+                mountsHTML += `<div class="mount-node"></div>`;
             }
-            wheelBase.innerHTML = wheelsHTML;
+            mountBase.innerHTML = mountsHTML;
         }
 
-        function updateCarPercent(index, val) {
-            cars[index].percent = parseFloat(val) || 0;
-            updateCalculations();
+        function updateModulePercent(id, val) {
+            const mod = availableModules.find(m => m.id === id);
+            if (mod) {
+                mod.percent = parseFloat(val) || 0;
+                updateCalculations();
+            }
         }
 
         function updateCalculations() {
             const totalAmount = parseFloat(slider.value) || 0;
+            const activeMods = availableModules.filter(m => m.active);
             
-            // Update individual train car allocations
-            cars.forEach((car, index) => {
-                const calculatedValue = (totalAmount * (car.percent / 100));
-                const calcEl = document.getElementById(`calc-${index}`);
+            // Update individual module calculations
+            activeMods.forEach((mod) => {
+                const calculatedValue = (totalAmount * (mod.percent / 100));
+                const calcEl = document.getElementById(`calc-${mod.id}`);
                 if (calcEl) {
                     calcEl.textContent = '$' + Math.round(calculatedValue).toLocaleString();
                 }
@@ -294,9 +354,8 @@
             const legacyTotalLoss = legacyFeeCost + legacyFrictionCost;
             const legacyRetained = totalAmount - legacyTotalLoss;
 
-            // Find profit car percentage if available, or total allocated percentage
-            const profitCar = cars.find(c => c.type === 'profit');
-            const profitSharePct = profitCar ? profitCar.percent : cars.reduce((sum, c) => sum + c.percent, 0) / Math.max(cars.length, 1);
+            const profitMod = availableModules.find(m => m.id === 'profit' && m.active);
+            const profitSharePct = profitMod ? profitMod.percent : (activeMods.length > 0 ? activeMods.reduce((sum, m) => sum + m.percent, 0) / activeMods.length : 0);
             
             document.getElementById('deltaFeeDisplay').textContent = '+$' + Math.round(legacyFeeCost).toLocaleString() + ' saved';
             document.getElementById('deltaFrictionDisplay').textContent = '+$' + Math.round(legacyFrictionCost).toLocaleString() + ' saved';
@@ -310,28 +369,13 @@
             document.getElementById('deltaTotalVal').textContent = '+$' + Math.round(savingsDelta).toLocaleString() + ' Net Advantage';
         }
 
-        function addCar(type, name, defaultPercent) {
-            cars.push({ type, name, percent: defaultPercent });
-            renderTrain();
-            logConsole(`[Attached] Added ${name} rail (${defaultPercent}%). Profit priority optimized.`);
-        }
-
-        function removeLastCar() {
-            if (cars.length > 0) {
-                const removed = cars.pop();
-                renderTrain();
-                logConsole(`[Removed] Detached ${removed.name} rail.`);
-            } else {
-                logConsole(`[Warning] No rails to detach.`);
-            }
-        }
-
         function runSimulation() {
             const currentAmount = Number(slider.value).toLocaleString();
-            let totalPct = cars.reduce((sum, c) => sum + c.percent, 0);
-            logConsole(`[Executing] Starting IAW Simulation | Amount: $${currentAmount} | Total Allocation: ${totalPct}%...`);
+            const activeMods = availableModules.filter(m => m.active);
+            let totalPct = activeMods.reduce((sum, m) => sum + m.percent, 0);
+            logConsole(`[Executing] IAW Custom Rail Simulation | Amount: $${currentAmount} | Total Allocation: ${totalPct}%...`);
             setTimeout(() => {
-                logConsole(`[Success] All ${cars.length} rails verified. Profitability maximized. Settlement finalized via deterministic code execution.`);
+                logConsole(`[Success] Custom pipeline verified across ${activeMods.length} configured modules. Profitability maximized. Settlement finalized.`);
             }, 400);
         }
 
@@ -342,7 +386,7 @@
         }
 
         window.onload = function() {
-            renderTrain();
+            renderApp();
         };
     </script>
 </body>
