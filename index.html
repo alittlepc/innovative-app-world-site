@@ -31,7 +31,7 @@
         .station-badge { position: absolute; top: 15px; right: 20px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; }
         .station-title { font-size: 11px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         
-        .pipeline-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 15px; }
+        .pipeline-scroll-box { overflow-x: auto; padding: 15px 0; margin-bottom: 10px; }
         .pipeline-assembly { display: flex; align-items: center; gap: 8px; min-width: max-content; padding-bottom: 10px; }
         
         .pipeline-core { background: linear-gradient(180deg, #0284c7, #0f172a); color: white; padding: 15px; border-radius: 16px; width: 170px; height: 135px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #020617; flex-shrink: 0; }
@@ -55,9 +55,11 @@
         .mod-compliance { border-color: #cbd5e1; } .mod-compliance .pipeline-calc { background: #f8fafc; color: #475569; }
         .mod-profit { border-color: #86efac; } .mod-profit .pipeline-calc { background: #f0fdf4; color: #166534; }
 
-        .pipeline-bed { height: 8px; background: #cbd5e1; border-radius: 4px; margin-top: -10px; position: relative; z-index: -1; margin-bottom: 20px; }
+        .pipeline-bed { height: 8px; background: #cbd5e1; border-radius: 4px; margin-top: 5px; position: relative; z-index: -1; margin-bottom: 20px; }
         .pipeline-mounts { display: flex; justify-content: space-around; padding: 0 15px; margin-top: -8px; }
         .mount-node { width: 18px; height: 18px; background: #334155; border-radius: 50%; border: 3px solid #94a3b8; }
+
+        .allocation-bar { display: flex; justify-content: space-between; align-items: center; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 15px; border-radius: 10px; font-size: 11px; font-weight: 900; color: #166534; text-transform: uppercase; }
 
         .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
@@ -85,7 +87,6 @@
     </style>
 </head>
 <body>
-    <!-- Explicit Warning Disclaimer Banner -->
     <div class="demo-disclaimer-banner">⚠️ For Demonstration Purposes Only &bull; Not Financial Advice &bull; Simulation Model Only</div>
     
     <div class="ticker">
@@ -118,6 +119,11 @@
             </div>
             <div class="pipeline-bed"></div>
             <div class="pipeline-mounts" id="mountBase"></div>
+            
+            <div class="allocation-bar" id="allocationBar">
+                <span>Total Pipeline Allocation:</span>
+                <span id="totalAllocationPct">100% (Fully Balanced)</span>
+            </div>
         </div>
 
         <div class="control-grid">
@@ -225,9 +231,10 @@
         function toggleModule(index, isChecked) {
             availableModules[index].active = isChecked;
             if (isChecked && availableModules[index].percent === 0) {
-                availableModules[index].percent = 10;
+                autoBalanceModules();
             } else if (!isChecked) {
                 availableModules[index].percent = 0;
+                autoBalanceModules();
             }
             renderPipeline();
         }
@@ -310,13 +317,29 @@
             const totalAmount = parseFloat(slider.value) || 0;
             const activeMods = availableModules.filter(m => m.active);
             
+            let totalPctSum = 0;
             activeMods.forEach((mod) => {
+                totalPctSum += mod.percent;
                 const calculatedValue = (totalAmount * (mod.percent / 100));
                 const calcEl = document.getElementById(`calc-${mod.id}`);
                 if (calcEl) {
                     calcEl.textContent = '$' + Math.round(calculatedValue).toLocaleString();
                 }
             });
+
+            const allocationBar = document.getElementById('allocationBar');
+            const totalPctEl = document.getElementById('totalAllocationPct');
+            if (totalPctSum === 100) {
+                allocationBar.style.background = '#f0fdf4';
+                allocationBar.style.borderColor = '#bbf7d0';
+                totalPctEl.style.color = '#166534';
+                totalPctEl.textContent = '100% (Fully Balanced ✓)';
+            } else {
+                allocationBar.style.background = '#fef2f2';
+                allocationBar.style.borderColor = '#fecaca';
+                totalPctEl.style.color = '#b91c1c';
+                totalPctEl.textContent = totalPctSum + '% (Must equal 100%)';
+            }
 
             const legacyFeePct = parseFloat(document.getElementById('legacyFeePct').value) || 0;
             const legacyFrictionPct = parseFloat(document.getElementById('legacyFrictionPct').value) || 0;
@@ -354,6 +377,7 @@
 
         window.onload = function() {
             renderApp();
+            autoBalanceModules();
         };
     </script>
 </body>
