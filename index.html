@@ -363,6 +363,14 @@
             const currentAmount = Number(slider.value).toLocaleString();
             const activeMods = availableModules.filter(m => m.active);
             let totalPct = activeMods.reduce((sum, m) => sum + m.percent, 0);
+
+            // Strict validation check added to enforce 100% total allocation before simulation
+            if (totalPct !== 100) {
+                logConsole(`[Error] Simulation halted. Total module allocation must equal 100% (currently ${totalPct}%).`);
+                alert(`Allocation mismatch: Total shares equal ${totalPct}%. Modules must balance to exactly 100% before running simulations.`);
+                return;
+            }
+
             logConsole(`[Executing] Simulation Model | Amount: $${currentAmount} | Total Allocation: ${totalPct}%...`);
             setTimeout(() => {
                 logConsole(`[Success] Simulation verified across ${activeMods.length} configured modules. For demonstration purposes only.`);
