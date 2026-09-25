@@ -91,8 +91,7 @@
         <div class="ticker-wrap">
             <span>IAW Network Active</span>
             <span>Maximize Profit Yields</span>
-            <span>Xahau Hook Integration Ready</span>
-            <span>Automated Market Maker Active</span>
+            <span>Deterministic Code Valuation Ready</span>
             <span>High-Performance Settlement Rails</span>
         </div>
     </div>
@@ -104,7 +103,7 @@
                 <div class="logo-box">IAW</div>
                 <div class="header-text">
                     <h1>Dynamic Logic Rail Builder</h1>
-                    <p>Innovative App World LLC &bull; Settlement & Liquidity Engine</p>
+                    <p>Innovative App World LLC &bull; Settlement Engine</p>
                 </div>
             </div>
             <button class="btn-contact" onclick="alert('Contact IAW Engineering Team: admin@innovativeappworld.com')">Contact IAW</button>
@@ -130,21 +129,21 @@
             <div class="card">
                 <h3>1. Attach Logic Rails</h3>
                 <button class="btn-action btn-profit" onclick="addCar('profit', 'Max Profit Yield', '+98.4%')">+ Attach Profit Maximization Rail</button>
-                <button class="btn-action" onclick="addCar('liquidity', 'AMM Liquidity Pool', '+85.0%')">+ Attach Liquidity Rail</button>
-                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Hook', '100% Secure')">+ Attach Compliance Rail</button>
+                <button class="btn-action" onclick="addCar('liquidity', 'Code-Based Value Rail', '+85.0%')">+ Attach Value Rail</button>
+                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Rail', '100% Secure')">+ Attach Compliance Rail</button>
                 <button class="btn-action btn-danger" onclick="removeLastCar()">- Remove Last Rail</button>
             </div>
 
-            <!-- Step-by-Step Action Guide -->
+            <!-- Demo Money Scale -->
             <div class="card">
-                <h3>2. Execution Protocol</h3>
-                <div class="step-box">
-                    <div class="step-number">Step 1</div>
-                    <div class="step-instruction">Click "Attach Profit Maximization Rail" to prioritize highest yield.</div>
+                <h3>2. Demo Money Scale</h3>
+                <div style="margin-bottom: 15px;">
+                    <label for="demoMoneySlider" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: block;">Associated Amount: $<span id="demoMoneyDisplay" style="color: #166534; font-size: 14px;">10,000,000</span></label>
+                    <input type="range" id="demoMoneySlider" min="100000" max="50000000" step="100000" value="10000000" style="width: 100%; cursor: pointer;">
                 </div>
                 <div class="step-box">
-                    <div class="step-number">Step 2</div>
-                    <div class="step-instruction">Click "Run Simulation" below to execute the IAW logic train.</div>
+                    <div class="step-number">Profit Priority</div>
+                    <div class="step-instruction">Maximum yield slider scale activated for top profitability.</div>
                 </div>
             </div>
 
@@ -154,7 +153,7 @@
                 <button class="btn-action btn-profit" onclick="runSimulation()" style="margin-bottom: 12px;">Run Simulation</button>
                 <div class="output-console" id="outputConsole">
                     [System Ready] IAW Logic Rail Builder initialized.<br>
-                    [Status] Awaiting cargo attachment...<br>
+                    [Status] Code-based valuation active.<br>
                     [Instruction] Prioritizing maximum profitability options.
                 </div>
             </div>
@@ -164,8 +163,15 @@
     <script>
         let cars = [
             { type: 'profit', name: 'Max Profit Yield', val: '+98.4%' },
-            { type: 'liquidity', name: 'AMM Liquidity', val: '+85.0%' }
+            { type: 'liquidity', name: 'Code-Based Value', val: '+85.0%' }
         ];
+
+        const slider = document.getElementById('demoMoneySlider');
+        const display = document.getElementById('demoMoneyDisplay');
+
+        slider.addEventListener('input', (event) => {
+            display.textContent = Number(event.target.value).toLocaleString();
+        });
 
         function renderTrain() {
             const assembly = document.getElementById('trainAssembly');
@@ -173,7 +179,7 @@
                 <div class="engine">
                     <div>
                         <div class="engine-title">IAW Engine</div>
-                        <div style="font-size: 14px; font-weight: 900; margin-top: 4px;">Xahau Hook v2.4</div>
+                        <div style="font-size: 14px; font-weight: 900; margin-top: 4px;">IAW Core v2.4</div>
                     </div>
                     <div class="engine-badge" id="engineStatus">${cars.length > 0 ? 'Active: ' + cars.length + ' Rails' : 'Ready'}</div>
                 </div>
@@ -223,9 +229,10 @@
         }
 
         function runSimulation() {
-            logConsole(`[Executing] Starting IAW Logic Rail Simulation...`);
+            const currentAmount = Number(slider.value).toLocaleString();
+            logConsole(`[Executing] Starting IAW Logic Rail Simulation with Demo Amount: $${currentAmount}...`);
             setTimeout(() => {
-                logConsole(`[Success] All ${cars.length} rails verified. Profitability maximized at 99.9%. Settlement finalized on Xahau hook.`);
+                logConsole(`[Success] All ${cars.length} rails verified. Profitability maximized at 99.9%. Settlement finalized via deterministic code execution.`);
             }, 400);
         }
 
