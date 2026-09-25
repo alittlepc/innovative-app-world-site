@@ -129,8 +129,9 @@
         <div class="control-grid">
             <div class="card">
                 <h3>1. Configure Additional Rail Cars (Modules)</h3>
+                <p style="font-size: 11px; color: #64748b; margin-bottom: 10px;">Check any additional car below to attach it to the train pipeline in real time.</p>
                 <div class="module-toggle-list" id="moduleToggles"></div>
-                <button class="btn-action btn-profit" onclick="resetDefaultModules()">Reset Default Car Add-ons</button>
+                <button class="btn-action btn-profit" onclick="resetDefaultModules()" style="margin-top: 10px;">Reset Default Car Add-ons</button>
             </div>
 
             <div class="card">
@@ -350,7 +351,7 @@
             totalPctEl.textContent = `0.33% (Engine) + ${modsFeePct.toFixed(2)}% (Cars) = ${totalIawFeePct.toFixed(2)}% Total Fee`;
 
             // Legacy calculations
-            const legacyFeePct = parseFloat(document.getElementById('legacyFeePct')->value) || 0;
+            const legacyFeePct = parseFloat(document.getElementById('legacyFeePct').value) || 0;
             const legacyTotalCost = totalAmount * (legacyFeePct / 100);
             
             document.getElementById('legacyTotalVal').textContent = '$' + Math.round(legacyTotalCost).toLocaleString();
