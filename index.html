@@ -49,14 +49,15 @@
         @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .link-hook { color: #94a3b8; font-weight: 900; font-size: 14px; padding: 0 2px; margin-bottom: 30px; }
         
-        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 135px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
+        .cargo-car { background: white; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; width: 145px; height: 95px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); flex-shrink: 0; }
         .car-name { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
         .car-percentage { font-size: 12px; font-family: monospace; font-weight: 900; padding: 4px; border-radius: 6px; text-align: center; }
         
         /* Corporate Car Palettes */
-        .car-liquidity { border-color: #cbd5e1; } .car-liquidity .car-percentage { background: #f1f5f9; color: #334155; }
-        .car-compliance { border-color: #93c5fd; } .car-compliance .car-percentage { background: #eff6ff; color: #1e40af; }
-        .car-risk { border-color: #fed7aa; } .car-risk .car-percentage { background: #fff7ed; color: #c2410c; }
+        .car-clearing { border-color: #cbd5e1; } .car-clearing .car-percentage { background: #f1f5f9; color: #334155; }
+        .car-messaging { border-color: #93c5fd; } .car-messaging .car-percentage { background: #eff6ff; color: #1e40af; }
+        .car-ledger { border-color: #fed7aa; } .car-ledger .car-percentage { background: #fff7ed; color: #c2410c; }
+        .car-compliance { border-color: #cbd5e1; } .car-compliance .car-percentage { background: #f8fafc; color: #475569; }
         .car-profit { border-color: #86efac; } .car-profit .car-percentage { background: #f0fdf4; color: #166534; }
 
         /* Train Wheels & Track Bed */
@@ -69,7 +70,7 @@
         .card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
         .card h3 { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #0f172a; margin-bottom: 12px; }
         
-        .btn-action { display: block; width: 100%; background: #0ea5e9; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-bottom: 10px; transition: background 0.2s; }
+        .btn-action { display: block; width: 100%; background: #0ea5e9; color: white; border: none; padding: 11px; border-radius: 10px; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-bottom: 10px; transition: background 0.2s; }
         .btn-action:hover { background: #0284c7; }
         .btn-profit { background: #166534; }
         .btn-profit:hover { background: #14532d; }
@@ -129,8 +130,10 @@
             <div class="card">
                 <h3>1. Attach Logic Rails</h3>
                 <button class="btn-action btn-profit" onclick="addCar('profit', 'Max Profit Yield', '+98.4%')">+ Attach Profit Maximization Rail</button>
-                <button class="btn-action" onclick="addCar('liquidity', 'Code-Based Value Rail', '+85.0%')">+ Attach Value Rail</button>
-                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Rail', '100% Secure')">+ Attach Compliance Rail</button>
+                <button class="btn-action" onclick="addCar('clearing', 'Clearing & Settlement', 'Instantaneous')">+ Attach Clearing & Settlement Rail</button>
+                <button class="btn-action" onclick="addCar('messaging', 'ISO 20022 Messaging', '100% Format')">+ Attach ISO 20022 Messaging Rail</button>
+                <button class="btn-action" onclick="addCar('ledger', 'Multi-Currency Ledger', 'Real-Time FX')">+ Attach Multi-Currency Ledger Rail</button>
+                <button class="btn-action" onclick="addCar('compliance', 'Regulatory Compliance', 'AML / KYC')">+ Attach Regulatory Compliance Rail</button>
                 <button class="btn-action btn-danger" onclick="removeLastCar()">- Remove Last Rail</button>
             </div>
 
@@ -163,7 +166,7 @@
     <script>
         let cars = [
             { type: 'profit', name: 'Max Profit Yield', val: '+98.4%' },
-            { type: 'liquidity', name: 'Code-Based Value', val: '+85.0%' }
+            { type: 'clearing', name: 'Clearing & Settlement', val: 'Instantaneous' }
         ];
 
         const slider = document.getElementById('demoMoneySlider');
