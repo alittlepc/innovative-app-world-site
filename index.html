@@ -31,8 +31,10 @@
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
         label { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
         input { width: 100%; background: #030712; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 6px; font-family: inherit; margin-bottom: 20px; box-sizing: border-box; }
-        button { background: var(--accent); color: #fff; border: none; width: 100%; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        button { background: var(--accent); color: #fff; border: none; width: 100%; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-bottom: 10px; }
         button:hover { background: #2563eb; }
+        button.secondary { background: #4b5563; }
+        button.secondary:hover { background: #374151; }
         pre { background: #030712; border: 1px solid var(--border); padding: 15px; border-radius: 6px; font-size: 0.75rem; color: #34d399; height: 160px; overflow-y: auto; margin-top: 25px; white-space: pre-wrap; }
     </style>
 </head>
@@ -54,9 +56,9 @@
             <input type="number" id="amount" value="10" min="1">
 
             <button onclick="executeRealTransaction()">Submit Real On-Chain Test</button>
-            <button style="margin-top: 10px; background: #4b5563;" onclick="generateTestnetWallet()">Fund Testnet Wallet</button>
+            <button class="secondary" onclick="generateTestnetWallet()">Fund Testnet Wallet</button>
 
-            <pre id="log">[READY] Click 'Fund Testnet Wallet' to generate a funded testing account.</pre>
+            <pre id="log">[READY] Click 'Fund Testnet Wallet' to generate a funded testing account automatically.</pre>
         </div>
     </div>
 
@@ -72,7 +74,7 @@
                 await client.connect();
                 const funded = (await client.fundWallet()).wallet;
                 document.getElementById('seed').value = funded.seed;
-                log.innerText = `[SUCCESS] Wallet generated & funded: ${funded.address}`;
+                log.innerText = `[SUCCESS] Wallet generated & funded: ${funded.address}\nYou can now click 'Submit Real On-Chain Test'.`;
                 await client.disconnect();
             } catch (err) {
                 log.innerText = `[ERROR] ${err.message}`;
@@ -85,7 +87,7 @@
             const log = document.getElementById('log');
 
             if (!seed) {
-                alert("Please generate or enter a testnet wallet seed first.");
+                alert("Please click 'Fund Testnet Wallet' first to generate a funded testing seed.");
                 return;
             }
 
@@ -97,7 +99,7 @@
 
                 const wallet = xrpl.Wallet.fromSeed(seed);
                 log.innerText += `[WALLET] Loaded: ${wallet.address}\n`;
-                log.innerText += `[SUBMIT] Sending ${amount} XRP to Hook Rail...\n`;
+                log.innerText += `[SUBMIT] Sending ${amount} XRP to Hook Rail (${HOOK_ACCOUNT})...\n`;
 
                 const tx = {
                     TransactionType: "Payment",
@@ -111,7 +113,7 @@
                 const result = await client.submitAndWait(signed.tx_blob);
 
                 log.innerText += `[SUCCESS] Result: ${result.result.meta.TransactionResult}\n`;
-                log.innerText += `[FEE HARVEST] Hook triggered! Check Xaman for fee routing.`;
+                log.innerText += `[FEE HARVEST] Hook triggered successfully!`;
 
                 await client.disconnect();
             } catch (err) {
