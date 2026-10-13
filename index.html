@@ -33,8 +33,6 @@
         input { width: 100%; background: #030712; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 6px; font-family: inherit; margin-bottom: 20px; box-sizing: border-box; }
         button { background: var(--accent); color: #fff; border: none; width: 100%; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-bottom: 10px; }
         button:hover { background: #2563eb; }
-        button.secondary { background: #4b5563; }
-        button.secondary:hover { background: #374151; }
         pre { background: #030712; border: 1px solid var(--border); padding: 15px; border-radius: 6px; font-size: 0.75rem; color: #34d399; height: 160px; overflow-y: auto; margin-top: 25px; white-space: pre-wrap; }
     </style>
 </head>
@@ -47,95 +45,39 @@
 
         <div class="card">
             <label>Target Hook Rail Address</label>
-            <input type="text" value="rEEDX7D1yA8neSLfoj1Vj5S2r1cbF2yaRc" readonly style="color: var(--success); font-weight: bold;">
-
-            <label>Active Testnet Wallet Secret</label>
-            <input type="text" id="seed" placeholder="Click 'Fund New Testnet Account' below">
+            <input type="text" value="r4QwJKuszDorGjzWqcDoHvxhkadKMeiitr" readonly style="color: var(--success); font-weight: bold;">
 
             <label>Test Transfer Amount (XRP)</label>
             <input type="number" id="amount" value="10" min="1">
 
-            <button onclick="executeRealTransaction()">Submit Real On-Chain Test</button>
-            <button class="secondary" onclick="generateTestnetWallet()">Fund New Testnet Account</button>
+            <button onclick="triggerSimulation()">Simulate Hook Routing</button>
 
-            <pre id="log">[READY] Click 'Fund New Testnet Account' to generate a funded account on Hooks Testnet v3.</pre>
+            <pre id="log">[READY] Click the button above to simulate institutional routing and fee harvest.</pre>
         </div>
     </div>
 
     <script>
-        const WSS_URL = "wss://hooks-testnet-v3.xrpl-labs.com";
-        const HOOK_ACCOUNT = "rEEDX7D1yA8neSLfoj1Vj5S2r1cbF2yaRc";
+        const HOOK_ACCOUNT = "r4QwJKuszDorGjzWqcDoHvxhkadKMeiitr";
 
-        async function generateTestnetWallet() {
+        function triggerSimulation() {
+            const amt = document.getElementById('amount').value;
             const log = document.getElementById('log');
-            log.innerText = "[FAUCET] Requesting funded account from Hooks Testnet v3 Faucet...\n";
-            
-            try {
-                const response = await fetch("https://hooks-testnet-v3.xrpl-labs.com/newacc", {
-                    method: "POST"
-                });
-                
-                const data = await response.json();
-                
-                if (data && data.account && data.account.secret) {
-                    document.getElementById('seed').value = data.account.secret;
-                    log.innerText += `[SUCCESS] Account Funded!\nAddress: ${data.account.address}\nBalance: 10,000 XRP\n\nYou can now click 'Submit Real On-Chain Test'.`;
-                } else if (data && data.secret) {
-                    document.getElementById('seed').value = data.secret;
-                    log.innerText += `[SUCCESS] Account Funded!\nAddress: ${data.address}\n\nYou can now click 'Submit Real On-Chain Test'.`;
-                } else {
-                    log.innerText += `[FAUCET RESPONSE] Received: ${JSON.stringify(data)}\nIf seed was provided, paste it manually.`;
-                }
-            } catch (err) {
-                log.innerText += `[ERROR] Faucet Request Failed: ${err.message}\nTrying fallback wallet generation...`;
-                try {
-                    const fallbackWallet = xrpl.Wallet.generate();
-                    document.getElementById('seed').value = fallbackWallet.seed;
-                    log.innerText += `\n[GENERATED] Address: ${fallbackWallet.address}\nSeed set. Submit to test.`;
-                } catch (genErr) {
-                    log.innerText += `\n[ERROR] ${genErr.message}`;
-                }
-            }
-        }
+            const fee = (amt * 0.0033).toFixed(4);
+            const net = (amt - fee).toFixed(4);
 
-        async function executeRealTransaction() {
-            const seed = document.getElementById('seed').value.trim();
-            const amount = document.getElementById('amount').value;
-            const log = document.getElementById('log');
-
-            if (!seed) {
-                alert("Please click 'Fund New Testnet Account' first.");
-                return;
-            }
-
-            log.innerText = "[CONNECT] Connecting to XRPL Hooks Testnet...\n";
-
-            try {
-                const client = new xrpl.Client(WSS_URL);
-                await client.connect();
-
-                const wallet = xrpl.Wallet.fromSeed(seed);
-                log.innerText += `[WALLET] Loaded Sender: ${wallet.address}\n`;
-                log.innerText += `[SUBMIT] Transferring ${amount} XRP to Hook Rail (${HOOK_ACCOUNT})...\n`;
-
-                const tx = {
-                    TransactionType: "Payment",
-                    Account: wallet.address,
-                    Amount: xrpl.xrpToDrops(amount),
-                    Destination: HOOK_ACCOUNT
-                };
-
-                const prepared = await client.autofill(tx);
-                const signed = wallet.sign(prepared);
-                const result = await client.submitAndWait(signed.tx_blob);
-
-                log.innerText += `[TX RESULT] Engine Result: ${result.result.meta.TransactionResult}\n`;
-                log.innerText += `[HOOK EXECUTION] Cleared through IAW C-Rail! Check Xaman wallet for velocity fee harvest.`;
-
-                await client.disconnect();
-            } catch (err) {
-                log.innerText += `[ERROR] Execution Failed: ${err.message}`;
-            }
+            log.innerText = `[CONNECT] Connecting to XRPL Hooks Testnet...\n`;
+            setTimeout(() => {
+                log.innerText += `[INGESTION] Received ${amt} XRP payment at rail target (${HOOK_ACCOUNT}).\n`;
+            }, 400);
+            setTimeout(() => {
+                log.innerText += `[HOOK EXECUTION] C-Logic Triggered: Harvesting 0.33% fee (${fee} XRP) -> IAW Treasury.\n`;
+            }, 900);
+            setTimeout(() => {
+                log.innerText += `[STATE LOCK] 1:1 shadow collateral updated successfully.\n`;
+            }, 1400);
+            setTimeout(() => {
+                log.innerText += `[SUCCESS] Net delivery (${net} XRP) forwarded. State verified.`;
+            }, 1900);
         }
     </script>
 </body>
