@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW Settlement Rail | Live Hooks Testnet Playground</title>
-    <!-- XRPL JavaScript SDK -->
+    <title>IAW Settlement Rail | Live Testnet Gateway</title>
     <script src="https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js"></script>
     <style>
         :root {
@@ -20,7 +19,7 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-family: ui-monospace, monospace;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -28,91 +27,73 @@
         }
         .container { width: 100%; max-width: 900px; }
         header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 25px; }
-        h1 { font-size: 1.5rem; margin: 0; color: #fff; }
-        p.subtitle { color: var(--muted); font-size: 0.85rem; margin: 5px 0 0 0; }
-        
+        h1 { font-size: 1.4rem; margin: 0; color: #fff; }
+        p.subtitle { color: var(--muted); font-size: 0.8rem; margin: 5px 0 0 0; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-        .card h3 { margin-top: 0; font-size: 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        
-        label { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; }
-        input, select {
-            width: 100%; background: #030712; border: 1px solid var(--border); color: #fff;
-            padding: 10px; border-radius: 4px; font-family: inherit; margin-bottom: 15px; box-sizing: border-box;
-        }
-        button {
-            background: var(--accent); color: #fff; border: none; width: 100%; padding: 12px;
-            border-radius: 4px; font-weight: bold; cursor: pointer; font-family: inherit; transition: background 0.2s;
-        }
+        .card h3 { margin-top: 0; font-size: 0.95rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        label { display: block; font-size: 0.7rem; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; }
+        input { width: 100%; background: #030712; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 4px; font-family: inherit; margin-bottom: 15px; box-sizing: border-box; }
+        button { background: var(--accent); color: #fff; border: none; width: 100%; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: inherit; }
         button:hover { background: #2563eb; }
-        button:disabled { background: var(--border); cursor: not-allowed; }
-
         .stats-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; }
         .stats-row span:last-child { font-weight: bold; }
-
         .console-card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-        .console-card h3 { margin-top: 0; font-size: 1rem; color: var(--success); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        pre#log {
-            background: #030712; border: 1px solid var(--border); padding: 15px; border-radius: 4px;
-            font-size: 0.8rem; color: #34d399; height: 220px; overflow-y: auto; margin: 0; white-space: pre-wrap;
-        }
+        .console-card h3 { margin-top: 0; font-size: 0.95rem; color: var(--success); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        pre#log { background: #030712; border: 1px solid var(--border); padding: 15px; border-radius: 4px; font-size: 0.75rem; color: #34d399; height: 200px; overflow-y: auto; margin: 0; white-space: pre-wrap; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>IAW Settlement Rail | Live Testnet Gateway</h1>
-            <p class="subtitle">Connected to XRPL Hooks Testnet Network</p>
+            <h1>IAW Settlement Rail | Public Testnet Gateway</h1>
+            <p class="subtitle">Live Hooks Execution Engine</p>
         </header>
 
         <div class="grid">
             <div class="card">
-                <h3>Live Transaction Gate</h3>
+                <h3>Submit Transaction to Rail</h3>
                 
-                <label for="seed">Sender Wallet Secret (Seed)</label>
-                <input type="text" id="seed" placeholder="Click 'Fund New Wallet' or enter seed">
+                <label>Sender Wallet Secret (Seed)</label>
+                <input type="text" id="seed" placeholder="Enter testnet seed or fund new">
 
-                <label for="destination">Destination Account</label>
-                <input type="text" id="destination" placeholder="r... (or Burn Account)">
+                <label>Target Hook Address</label>
+                <input type="text" id="hookAddress" value="r4QwJKuszDorGjzWqcDoHvxhkadKMeiitr" readonly style="color: var(--success);">
 
-                <label for="amount">Amount (XRP / Drops)</label>
+                <label>Amount (XRP)</label>
                 <input type="number" id="amount" value="10" min="1">
 
-                <button id="submitBtn" onclick="submitLiveTransaction()">Submit Payment to Testnet</button>
+                <button onclick="submitToHook()">Execute On-Chain Transaction</button>
                 <button style="margin-top: 10px; background: #4b5563;" onclick="generateFundedWallet()">Fund New Testnet Wallet</button>
             </div>
 
             <div class="card">
-                <h3>Network & Node Status</h3>
+                <h3>Gateway Status</h3>
                 <div class="stats-row">
-                    <span>Node Endpoint:</span>
-                    <span id="statEndpoint">Hooks Testnet v3</span>
+                    <span>Network:</span>
+                    <span>XRPL Hooks Testnet</span>
                 </div>
                 <div class="stats-row">
-                    <span>Connection Status:</span>
+                    <span>Connection:</span>
                     <span id="statConn" style="color: var(--error);">DISCONNECTED</span>
                 </div>
                 <div class="stats-row">
                     <span>Active Account:</span>
                     <span id="statAccount">None</span>
                 </div>
-                <div class="stats-row">
-                    <span>Account Balance:</span>
-                    <span id="statBalance">0 XRP</span>
-                </div>
             </div>
         </div>
 
         <div class="console-card">
-            <h3>Hooks Execution & Network Logs</h3>
-            <pre id="log">[IAW_INIT] Initializing XRPL Hooks Client...</pre>
+            <h3>Live Execution Log</h3>
+            <pre id="log">[INIT] Initializing XRPL connection...</pre>
         </div>
     </div>
 
     <script>
-        const HOOKS_TESTNET_WSS = "wss://hooks-testnet-v3.xrpl-labs.com";
+        const WSS_URL = "wss://hooks-testnet-v3.xrpl-labs.com";
+        const HOOK_ACCOUNT = "r4QwJKuszDorGjzWqcDoHvxhkadKMeiitr";
         let client;
 
         function appendLog(msg) {
@@ -123,70 +104,59 @@
 
         async function initXRPL() {
             try {
-                appendLog("Connecting to XRPL Hooks Testnet...");
-                client = new xrpl.Client(HOOKS_TESTNET_WSS);
+                client = new xrpl.Client(WSS_URL);
                 await client.connect();
-                
                 document.getElementById('statConn').innerText = "CONNECTED";
                 document.getElementById('statConn').style.color = "var(--success)";
-                appendLog("Connected to XRPL Hooks Node successfully.");
+                appendLog("Connected to XRPL Hooks Testnet.");
             } catch (err) {
-                appendLog(`Connection Error: ${err.message}`);
+                appendLog(`Connection error: ${err.message}`);
             }
         }
 
         async function generateFundedWallet() {
             if (!client || !client.isConnected()) await initXRPL();
-            appendLog("Requesting funded testnet wallet from faucet...");
+            appendLog("Requesting testnet faucet funds...");
             try {
-                const faucetWallet = (await client.fundWallet()).wallet;
-                document.getElementById('seed').value = faucetWallet.seed;
-                document.getElementById('statAccount').innerText = faucetWallet.address.substring(0, 8) + "...";
-                
-                const balance = await client.getXrpBalance(faucetWallet.address);
-                document.getElementById('statBalance').innerText = `${balance} XRP`;
-                appendLog(`Wallet Funded: ${faucetWallet.address}`);
+                const wallet = (await client.fundWallet()).wallet;
+                document.getElementById('seed').value = wallet.seed;
+                document.getElementById('statAccount').innerText = wallet.address.substring(0, 8) + "...";
+                appendLog(`Wallet generated and funded: ${wallet.address}`);
             } catch (err) {
-                appendLog(`Faucet Error: ${err.message}`);
+                appendLog(`Faucet error: ${err.message}`);
             }
         }
 
-        async function submitLiveTransaction() {
+        async function submitToHook() {
             const seed = document.getElementById('seed').value;
-            const dest = document.getElementById('destination').value;
             const amount = document.getElementById('amount').value;
 
-            if (!seed || !dest) {
-                alert("Please provide both a wallet seed and a destination account.");
+            if (!seed) {
+                alert("Please provide a sender wallet seed.");
                 return;
             }
 
             try {
                 if (!client || !client.isConnected()) await initXRPL();
-                
                 const wallet = xrpl.Wallet.fromSeed(seed);
-                appendLog(`Preparing payment of ${amount} XRP from ${wallet.address} to ${dest}...`);
+                
+                appendLog(`Submitting ${amount} XRP from ${wallet.address} to Hook ${HOOK_ACCOUNT}...`);
 
                 const tx = {
                     TransactionType: "Payment",
                     Account: wallet.address,
                     Amount: xrpl.xrpToDrops(amount),
-                    Destination: dest
+                    Destination: HOOK_ACCOUNT
                 };
 
                 const prepared = await client.autofill(tx);
                 const signed = wallet.sign(prepared);
-                appendLog(`Transaction Signed. Submitting to network hash: ${signed.hash}`);
-
                 const result = await client.submitAndWait(signed.tx_blob);
-                appendLog(`Execution Result: ${result.result.meta.TransactionResult}`);
-                appendLog(`Engine Log Result: Cleared through IAW Hook Rail.`);
 
-                // Refresh Balance
-                const newBalance = await client.getXrpBalance(wallet.address);
-                document.getElementById('statBalance').innerText = `${newBalance} XRP`;
+                appendLog(`Transaction Result: ${result.result.meta.TransactionResult}`);
+                appendLog(`Hook executed successfully. Check your Xaman wallet for the fee harvest.`);
             } catch (err) {
-                appendLog(`Transaction Failure: ${err.message}`);
+                appendLog(`Execution failure: ${err.message}`);
             }
         }
 
