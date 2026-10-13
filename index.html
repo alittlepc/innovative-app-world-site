@@ -48,14 +48,15 @@
             <input type="text" value="rEEDX7D1yA8neSLfoj1Vj5S2r1cbF2yaRc" readonly style="color: var(--success); font-weight: bold;">
 
             <label>Your Testnet Wallet Seed</label>
-            <input type="text" id="seed" placeholder="Enter testnet seed (s... )">
+            <input type="text" id="seed" placeholder="Click 'Fund Testnet Wallet' below">
 
             <label>Test Transfer Amount (XRP)</label>
             <input type="number" id="amount" value="10" min="1">
 
             <button onclick="executeRealTransaction()">Submit Real On-Chain Test</button>
+            <button style="margin-top: 10px; background: #4b5563;" onclick="generateTestnetWallet()">Fund Testnet Wallet</button>
 
-            <pre id="log">[READY] Enter your testnet seed and click submit to trigger real on-chain execution.</pre>
+            <pre id="log">[READY] Click 'Fund Testnet Wallet' to generate a funded testing account.</pre>
         </div>
     </div>
 
@@ -63,13 +64,28 @@
         const WSS_URL = "wss://hooks-testnet-v3.xrpl-labs.com";
         const HOOK_ACCOUNT = "rEEDX7D1yA8neSLfoj1Vj5S2r1cbF2yaRc";
 
+        async function generateTestnetWallet() {
+            const log = document.getElementById('log');
+            log.innerText = "[FAUCET] Requesting funded testnet wallet...";
+            try {
+                const client = new xrpl.Client(WSS_URL);
+                await client.connect();
+                const funded = (await client.fundWallet()).wallet;
+                document.getElementById('seed').value = funded.seed;
+                log.innerText = `[SUCCESS] Wallet generated & funded: ${funded.address}`;
+                await client.disconnect();
+            } catch (err) {
+                log.innerText = `[ERROR] ${err.message}`;
+            }
+        }
+
         async function executeRealTransaction() {
             const seed = document.getElementById('seed').value.trim();
             const amount = document.getElementById('amount').value;
             const log = document.getElementById('log');
 
             if (!seed) {
-                alert("Please enter your testnet wallet seed.");
+                alert("Please generate or enter a testnet wallet seed first.");
                 return;
             }
 
