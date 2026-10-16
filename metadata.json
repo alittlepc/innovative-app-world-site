@@ -1,0 +1,6 @@
+{
+  "name": "IAW Settlement Rail - Xahau Institutional Execution Console",
+  "description": "Zero-friction institutional treasury settlement demo executing live, verifiable on-chain transactions on the Xahau Hooks Testnet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
